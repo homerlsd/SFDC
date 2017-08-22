@@ -90,7 +90,8 @@
     </types>
     <types>
         <members>*</members>
+        <members>Language</members>
         <name>GlobalPicklist</name>
     </types>
-    <version>34.0</version>
+    <version>31.0</version>
 </Package>

@@ -45,10 +45,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -70,6 +66,10 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -722,53 +722,6 @@
     </fields>
     <fields>
         <fullName>LeadSource</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employee Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum direct</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHG</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trade Show</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Word of mouth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
@@ -807,18 +760,20 @@
         <description>Used to track which newsletters the contact receives from Marketing.</description>
         <externalId>false</externalId>
         <label>Newsletters</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Health with Benefits</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Health with Benefits</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -985,65 +940,67 @@ Partner_lookup__r.Name == &apos;Unknown&apos;), &apos;Match&apos;,
         <fullName>Partner__c</fullName>
         <externalId>false</externalId>
         <label>Partner Picklist</label>
-        <picklist>
-            <picklistValues>
-                <fullName>All Savers</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>BCBS South Carolina</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Excellus</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Great West Life</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Alliance Medical Plans</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mercer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Military Wellness Initiative</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Health</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Marketplace</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Univera</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unknown</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>None</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All Savers</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>BCBS South Carolina</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Excellus</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Great West Life</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Alliance Medical Plans</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mercer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Military Wellness Initiative</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optum</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Health</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Marketplace</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Univera</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Partner_lookup__c</fullName>
@@ -1128,25 +1085,33 @@ SUBSTITUTE(Phone, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &q
         <description>If chat user is flagged for review, the agent will be prompted to select a reason.</description>
         <externalId>false</externalId>
         <label>Reason for Review</label>
-        <picklist>
-            <controllingField>Flag_for_Review__c</controllingField>
-            <picklistValues>
-                <fullName>Inappropriate language</fullName>
-                <default>false</default>
-                <controllingFieldValues>checked</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contact not authorized</fullName>
-                <default>false</default>
-                <controllingFieldValues>checked</controllingFieldValues>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Flag_for_Review__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inappropriate language</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Contact not authorized</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>checked</controllingFieldValue>
+                <valueName>Inappropriate language</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>checked</controllingFieldValue>
+                <valueName>Contact not authorized</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Relationship_Status_formula__c</fullName>
@@ -1166,25 +1131,27 @@ IF( ISPICKVAL(Relationship__c, &apos;Positive&apos;), IMAGE(&quot;/img/samples/l
         <fullName>Relationship__c</fullName>
         <externalId>false</externalId>
         <label>Relationship</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Positive</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Neutral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Detractor</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Positive</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Neutral</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Detractor</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>ReportsToId</fullName>
@@ -1211,21 +1178,23 @@ IF( ISPICKVAL(Relationship__c, &apos;Positive&apos;), IMAGE(&quot;/img/samples/l
         <description>Include contact in webinar events</description>
         <externalId>false</externalId>
         <label>Webinar Participant</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Health Plan</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Health Plan</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Employer</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>

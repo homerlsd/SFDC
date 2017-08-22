@@ -506,63 +506,65 @@ Service_Level__c = true, 1, 0)</formula>
         <fullName>Type__c</fullName>
         <externalId>false</externalId>
         <label>Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New Business Call</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Presentation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Finalist</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Demo</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Introduction Call</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Negotiations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Proactive Service Call</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Service Issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Quarterly Review</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contract</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Renewal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pricing Approval</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Business Call</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Presentation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Finalist</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Demo</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Introduction Call</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Negotiations</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Proactive Service Call</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Service Issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Quarterly Review</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Contract</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Renewal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pricing Approval</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <listViews>
         <fullName>MyActivities</fullName>

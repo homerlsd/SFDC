@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -73,13 +69,6 @@
     </fields>
     <fields>
         <fullName>Family</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>None</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>
@@ -187,48 +176,50 @@ INCLUDES(Product_Family__c,&apos;Connect - Feature Set&apos;)), &apos;Connect&ap
         <fullName>Product_Family__c</fullName>
         <externalId>false</externalId>
         <label>Product Family</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Engage</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Choice</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Connect</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Engage - Feature Set</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Choice - Feature Set</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Connect - Feature Set</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Consultation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Member Portal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Real Appeal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Engage</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Choice</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Connect</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Engage - Feature Set</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Choice - Feature Set</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Connect - Feature Set</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Consultation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Member Portal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Real Appeal</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -258,110 +249,143 @@ ISPICKVAL(Product_Type__c, &apos;Feature&apos;), 4, 100))))</formula>
         <fullName>Product_Sub_Type__c</fullName>
         <externalId>false</externalId>
         <label>Product Sub-Type</label>
-        <picklist>
-            <controllingField>Product_Type__c</controllingField>
-            <picklistValues>
-                <fullName>Base</fullName>
-                <default>false</default>
-                <controllingFieldValues>Package</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-                <controllingFieldValues>Package</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Premium</fullName>
-                <default>false</default>
-                <controllingFieldValues>Package</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tailored Outcome Rewards</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tailored Activity Rewards</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pre-Defined Outcomes</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pre-Defined Activity</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Upsell Feature</fullName>
-                <default>false</default>
-                <controllingFieldValues>Feature</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Standard Feature</fullName>
-                <default>false</default>
-                <controllingFieldValues>Feature</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>One Time Fee</fullName>
-                <default>false</default>
-                <controllingFieldValues>Add-On</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Member Portal</fullName>
-                <default>false</default>
-                <controllingFieldValues>Package</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Product_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Base</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Premium</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tailored Outcome Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tailored Activity Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pre-Defined Outcomes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pre-Defined Activity</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Upsell Feature</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Standard Feature</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>One Time Fee</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Member Portal</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Package</controllingFieldValue>
+                <valueName>Base</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Package</controllingFieldValue>
+                <valueName>Standard</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Package</controllingFieldValue>
+                <valueName>Premium</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Package</controllingFieldValue>
+                <valueName>Member Portal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feature</controllingFieldValue>
+                <valueName>Upsell Feature</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Feature</controllingFieldValue>
+                <valueName>Standard Feature</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>Tailored Outcome Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>Tailored Activity Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>Pre-Defined Outcomes</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>Pre-Defined Activity</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Add-On</controllingFieldValue>
+                <valueName>One Time Fee</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Product_Type__c</fullName>
         <externalId>false</externalId>
         <label>Product Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Package</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feature</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Add-On</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Implementation Fee</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Package</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Feature</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Add-On</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Implementation Fee</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>QuantityUnitOfMeasure</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Each</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
     </fields>
@@ -369,21 +393,23 @@ ISPICKVAL(Product_Type__c, &apos;Feature&apos;), 4, 100))))</formula>
         <fullName>Revenue_Recognition__c</fullName>
         <externalId>false</externalId>
         <label>Revenue Recognition</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Monthly</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Date Of</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Monthly</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Date Of</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Sales_Notes__c</fullName>

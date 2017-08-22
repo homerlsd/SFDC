@@ -82,16 +82,16 @@
     </types>
     <types>
         <members>*</members>
+        <members>Language</members>
+        <name>GlobalPicklist</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>Layout</name>
     </types>
     <types>
         <members>*</members>
         <name>StaticResource</name>
-    </types>
-    <types>
-        <members>*</members>
-        <members>Language</members>
-        <name>GlobalPicklist</name>
     </types>
     <version>38.0</version>
 </Package>

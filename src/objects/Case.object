@@ -33,10 +33,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -1009,98 +1005,100 @@ NOT(ISBLANK(AccountId))), Account.Name, Contact.Account.Name)</formula>
         <fullName>Additional_Information__c</fullName>
         <externalId>false</externalId>
         <label>Additional Information</label>
-        <picklist>
-            <picklistValues>
-                <fullName>HIA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>HRA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>HSA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>EPR</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>FRP</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>From Rally</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>From employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>From other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>From partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Mission</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Challenge</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Mission</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Challenge</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cannot reproduce</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New problem / No JIRA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Existing problem / JIRA updated</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provided instructions to report biometric screenings/claims</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provided syncing instructions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provided registration instructions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provided Touch ID instructions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HIA</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HRA</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HSA</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EPR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>FRP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>From Rally</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>From employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>From other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>From partner</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Private Mission</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Private Challenge</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public Mission</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public Challenge</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cannot reproduce</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>New problem / No JIRA</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Existing problem / JIRA updated</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provided instructions to report biometric screenings/claims</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provided syncing instructions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provided registration instructions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provided Touch ID instructions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Affiliation_Bucket_2__c</fullName>
@@ -1368,22 +1366,24 @@ ISBLANK(Contact.Affiliation__c), Affiliation__c, Contact.Affiliation__c)</formul
         <fullName>Application__c</fullName>
         <externalId>false</externalId>
         <label>Application</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Choice</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Choice Admin</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Choice</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Choice Admin</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>AssetId</fullName>
@@ -1417,50 +1417,52 @@ ISBLANK(Contact.Affiliation__c), Affiliation__c, Contact.Affiliation__c)</formul
         <fullName>Browser_Type__c</fullName>
         <externalId>false</externalId>
         <label>Browser Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Firefox</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Chrome</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Safari</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>IE (Unknown version)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>IE 9</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>IE 10</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>IE 11</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not relevant to call</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Firefox</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Chrome</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Safari</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IE (Unknown version)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IE 9</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IE 10</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>IE 11</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not relevant to call</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>BusinessHoursId</fullName>
@@ -1521,25 +1523,33 @@ ISBLANK(Contact.Affiliation__c), Affiliation__c, Contact.Affiliation__c)</formul
         <fullName>Call_Type__c</fullName>
         <externalId>false</externalId>
         <label>Call Type</label>
-        <picklist>
-            <controllingField>Origin</controllingField>
-            <picklistValues>
-                <fullName>Inbound</fullName>
-                <default>false</default>
-                <controllingFieldValues>Phone</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Outbound</fullName>
-                <default>false</default>
-                <controllingFieldValues>Phone</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Origin</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inbound</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Outbound</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <valueName>Inbound</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Phone</controllingFieldValue>
+                <valueName>Outbound</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Case_Age_In_Business_Hours1__c</fullName>
@@ -1870,43 +1880,45 @@ RecordType.DeveloperName = &apos;Choice&apos;, 1,0)</formula>
         <fullName>Client_Phase__c</fullName>
         <externalId>false</externalId>
         <label>Client Phase</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Pre-Sale</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Configuration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHC Testing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Client Testing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>OE</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Post-OE</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pre-Sale</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Configuration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHC Testing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Client Testing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>OE</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Post-OE</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>ClosedDate</fullName>
@@ -2294,23 +2306,25 @@ RecordType.DeveloperName = &apos;Engage&apos;, 1,0)</formula>
         <fullName>Environment__c</fullName>
         <externalId>false</externalId>
         <label>Environment</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Production</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Test</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Production</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Test</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Escalation_Comments__c</fullName>
@@ -2579,31 +2593,33 @@ NOT(ISBLANK(ContactId)), Contact.FirstName, First_Name__c)</formula>
         <fullName>Impacted_Audience__c</fullName>
         <externalId>false</externalId>
         <label>Impacted Audience</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Member Level</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Client Level</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Global UHC Level</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unknown/TBD</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Member Level</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Client Level</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Global UHC Level</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unknown/TBD</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Initial_Case_Closer__c</fullName>
@@ -2635,46 +2651,48 @@ NOT(ISBLANK(ContactId)), Contact.FirstName, First_Name__c)</formula>
         <fullName>Inquiry_Type__c</fullName>
         <externalId>false</externalId>
         <label>Inquiry Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Problem</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feedback</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Question</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Duplicate</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Urgent Care</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Saved Providers</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Common Services</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medical Accounts</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Problem</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Feedback</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Question</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Duplicate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Urgent Care</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Saved Providers</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Common Services</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Medical Accounts</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>IsClosedOnCreate</fullName>
@@ -2711,291 +2729,295 @@ NOT(ISBLANK(ContactId)), Contact.FirstName, First_Name__c)</formula>
         <fullName>Issue_Bug_Sub_Category__c</fullName>
         <externalId>false</externalId>
         <label>Diagnosis</label>
-        <picklist>
-            <picklistValues>
-                <fullName>HIA, HRA, HSA, FRP, EPR fulfillment issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Gift Card fulfillment issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Forgot password</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Can&apos;t log in</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Incorrect email address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Device or syncing issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Spouse issue - myuhc account swap</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Eligibilty issue / Wrong affiliation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Incorrect Coin balance</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Incorrect Mission check-in</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Biometrics missing/incorrect</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cannot proceed in health survey</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Legal/Privacy concerns</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Sweepstakes fulfillment issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Request to change username</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Broken email/link/image</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Website</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mobile</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bug</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feedback</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Login</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Registration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Password Reset</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enrollment Request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Identity Verification</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Benefits Question</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Request for Insurance Cards/Policy #</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cancellation/Alteration Request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Carrier Can&apos;t Confirm Coverage</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>HIA, HRA, HSA, FRP, EPR fulfillment issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Gift Card fulfillment issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Forgot password</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Can&apos;t log in</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Incorrect email address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Device or syncing issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Spouse issue - myuhc account swap</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Eligibilty issue / Wrong affiliation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Incorrect Coin balance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Incorrect Mission check-in</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Biometrics missing/incorrect</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cannot proceed in health survey</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Legal/Privacy concerns</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Sweepstakes fulfillment issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Request to change username</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Broken email/link/image</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mobile</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bug</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Feedback</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Login</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Registration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Password Reset</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enrollment Request</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Identity Verification</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Benefits Question</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Request for Insurance Cards/Policy #</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Cancellation/Alteration Request</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Carrier Can&apos;t Confirm Coverage</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Issue_Bug__c</fullName>
         <externalId>false</externalId>
         <label>Topic</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Challenges</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Coaching</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Community</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Survey</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Login</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Missions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mobile - Android</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mobile - iOS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Age/Profile</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Registration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rewards - Coins</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rewards - Incentives</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tracking Devices</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Choice</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rewards - Auctions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rewards - Donations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PHR/Biometrics</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Dashboard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reporting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bug - Tableau</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bug - Data</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Report not delivered</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Schedule change</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Custom request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ad Hoc fulfillment request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>General question/troubleshooting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Search</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Find Care</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Checklist</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Incorrect Coverages and Balances</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Insurance ID card</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provider Reviews</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Navigation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>General Usability</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Challenges</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Coaching</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Community</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Survey</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Login</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Missions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mobile - Android</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mobile - iOS</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Age/Profile</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Registration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rewards - Coins</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rewards - Incentives</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tracking Devices</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Choice</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rewards - Auctions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rewards - Donations</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PHR/Biometrics</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Dashboard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bug - Tableau</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bug - Data</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Report not delivered</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Schedule change</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Custom request</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ad Hoc fulfillment request</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>General question/troubleshooting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Search</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Find Care</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Checklist</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Incorrect Coverages and Balances</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Insurance ID card</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provider Reviews</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Navigation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>General Usability</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Issue_Management_Number__c</fullName>
@@ -3013,39 +3035,41 @@ NOT(ISBLANK(ContactId)), Contact.FirstName, First_Name__c)</formula>
         <fullName>Issue_Type__c</fullName>
         <externalId>false</externalId>
         <label>Issue Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>EDI/Feeds</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Configuration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Testing Defect</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>System Functionality</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tool Access</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>EDI/Feeds</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Configuration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Testing Defect</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>System Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tool Access</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Item_Description__c</fullName>
@@ -3211,30 +3235,32 @@ NOT(ISBLANK(ContactId)), Contact.LastName, Last_Name__c)</formula>
         <fullName>Live_Agent_Topic__c</fullName>
         <externalId>false</externalId>
         <label>Live Agent Topic</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Rewards</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Syncing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Registration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Syncing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Registration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Live_Agent_Transcript_Send_Email__c</fullName>
@@ -3476,34 +3502,36 @@ Affiliation_Formula__c = &apos;BASE_UHC_GRANGE_MUT_NO_REWARDS_NONE&apos;), true,
         <fullName>Options__c</fullName>
         <externalId>false</externalId>
         <label>Options</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Benefits eligibility questions (Medical Dental Vision H S A/HRA)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Benefits eligibility questions (Life and Disability)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rates questions/confirmations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Election confirmation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Request to add/remove a dependent</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Benefits eligibility questions (Medical Dental Vision H S A/HRA)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Benefits eligibility questions (Life and Disability)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rates questions/confirmations</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Election confirmation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Request to add/remove a dependent</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
@@ -3548,47 +3576,51 @@ Affiliation_Formula__c = &apos;BASE_UHC_GRANGE_MUT_NO_REWARDS_NONE&apos;), true,
         <externalId>false</externalId>
         <inlineHelpText>Origin from Optum Shared cases.</inlineHelpText>
         <label>Optum Origin</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Web Form - Client Support</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Integrated Case - CSM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Web Form - Client Support</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Integrated Case - CSM</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Optum_Routing__c</fullName>
         <externalId>false</externalId>
         <label>Optum Routing</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Consumer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reporting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Account Team</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consumer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Account Team</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Optum_shared_case__c</fullName>
@@ -3603,25 +3635,6 @@ Affiliation_Formula__c = &apos;BASE_UHC_GRANGE_MUT_NO_REWARDS_NONE&apos;), true,
     </fields>
     <fields>
         <fullName>Origin</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Email</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Phone</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Chat</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -3658,106 +3671,108 @@ NOT(ISBLANK(Original_Origin__c)), Original_Origin__c, TEXT(Origin))</formula>
         <fullName>Outcome__c</fullName>
         <externalId>false</externalId>
         <label>Outcome</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Sent password reset or walked through password reset</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Manually reset password</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Corrected or provided customer&apos;s email address</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Issued Coins</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>User education - website</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>User education - mobile</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Fixed - Unlink and relinked device</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Could not fix - Third-party app shows activity, but not reflecting on Rally</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Could not fix - Device will not connect to Rally</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Could not fix - Device is connected, but will not sync with Rally</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Escalated to Tier 2 - Broken email/link/image</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Escalated to Tier 2 - Bug</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Escalated to Tier 2 - Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Referred to Optum</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Referred to BCBSSC</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Referred to GWL</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other workaround</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Don&apos;t want to log in every time</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Confusion about app activity steps vs Rally Missions/Challenges</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unsupported device request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Instructions unclear</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Waiting on user</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Sent password reset or walked through password reset</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Manually reset password</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Corrected or provided customer&apos;s email address</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Issued Coins</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>User education - website</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>User education - mobile</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Fixed - Unlink and relinked device</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Could not fix - Third-party app shows activity, but not reflecting on Rally</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Could not fix - Device will not connect to Rally</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Could not fix - Device is connected, but will not sync with Rally</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Escalated to Tier 2 - Broken email/link/image</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Escalated to Tier 2 - Bug</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Escalated to Tier 2 - Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Referred to Optum</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Referred to BCBSSC</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Referred to GWL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other workaround</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Don&apos;t want to log in every time</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Confusion about app activity steps vs Rally Missions/Challenges</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unsupported device request</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Instructions unclear</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Waiting on user</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>OwnerId</fullName>
@@ -3826,35 +3841,37 @@ NOT(ISBLANK(Owner:User.Id)), Owner:User.Division, &apos;Queue Owned&apos;)</form
         <fullName>Partner3__c</fullName>
         <externalId>false</externalId>
         <label>Partner - Delete</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Optum</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>MWI</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>BCBS</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mercer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Alliance</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Optum</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>MWI</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>BCBS</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mercer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Alliance</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Partner_Formula__c</fullName>
@@ -3912,83 +3929,87 @@ CONTAINS(Contact.Affiliation__c, &apos;bcbssc&apos;)), &apos;BCBS South Carolina
         <fullName>Partner__c</fullName>
         <externalId>false</externalId>
         <label>Partner - Delete</label>
-        <picklist>
-            <picklistValues>
-                <fullName>BCBS South Carolina</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Excellus</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Great West Life</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Alliance Medical Plans</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Mercer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Military Wellness Initiative</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Health</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Marketplace</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Univera</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unknown</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>BCBS South Carolina</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Excellus</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Great West Life</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Alliance Medical Plans</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Mercer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Military Wellness Initiative</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optum</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Health</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Marketplace</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Univera</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Perceived_Customer_Satisfaction__c</fullName>
         <externalId>false</externalId>
         <label>Perceived Customer Satisfaction</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Satisfied</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Neutral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Dissatisfied</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Satisfied</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Neutral</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Dissatisfied</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Phone_Case__c</fullName>
@@ -4033,29 +4054,6 @@ NOT(ISBLANK(Call_ID__c))), 1,0)</formula>
     </fields>
     <fields>
         <fullName>Priority</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>High</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medium</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Low</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Urgent</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4292,59 +4290,6 @@ NOT(ISBLANK(ContactId)), Contact.Rally_User_Name__c, Rally_User_Name__c)</formul
     </fields>
     <fields>
         <fullName>Reason</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>User Education</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cannot Reproduce</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Referred to Optum</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Completed by Rally</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>User didn&apos;t attend training</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complex functionality</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Existing problem</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Instructions not clear</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New problem</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Duplicate</fullName>
-                <default>false</default>
-                <cssExposed>false</cssExposed>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4355,23 +4300,25 @@ NOT(ISBLANK(ContactId)), Contact.Rally_User_Name__c, Rally_User_Name__c)</formul
         <description>If the contact is flagged for review, the reason will populate here.</description>
         <externalId>false</externalId>
         <label>Reason for Review</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Inappropriate language</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contact not authorized</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Inappropriate language</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Contact not authorized</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Record_Type_Name__c</fullName>
@@ -4429,83 +4376,85 @@ ISPICKVAL(Status,&apos;Transferred to Optum&apos;), true, false))</formula>
         <fullName>Resolution__c</fullName>
         <externalId>false</externalId>
         <label>Resolution</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Educated and/or navigated user</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Acted on account using Rally tools to resolve</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Directed user to HR or employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to BCBSSC</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to MHTK</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to Optum</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to Excellus / Univera</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to UHC</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to Health Alliance</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to Mercer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred or directed to HR</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Advised user that Rally engineering resolved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Advised user that Optum engineering resolved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feedback accepted</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Used Rally tools to resolve</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred to Optum to be resolved</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Needed Rally Engineering to resolve</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Educated and/or navigated user</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Acted on account using Rally tools to resolve</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Directed user to HR or employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to BCBSSC</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to MHTK</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to Optum</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to Excellus / Univera</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to UHC</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to Health Alliance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to Mercer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred or directed to HR</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Advised user that Rally engineering resolved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Advised user that Optum engineering resolved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Feedback accepted</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Used Rally tools to resolve</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transferred to Optum to be resolved</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Needed Rally Engineering to resolve</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Retail_Value__c</fullName>
@@ -4547,39 +4496,41 @@ ISPICKVAL(Status,&apos;Transferred to Optum&apos;), true, false))</formula>
         <fullName>Root_Cause__c</fullName>
         <externalId>false</externalId>
         <label>Root Cause</label>
-        <picklist>
-            <picklistValues>
-                <fullName>As Designed</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bug</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Configuration Error</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Data Issue</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Human Error</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>As Designed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bug</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Configuration Error</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Data Issue</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Human Error</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Send_Live_Agent_Transcript__c</fullName>
@@ -4614,144 +4565,43 @@ CreatedById = &apos;005E0000006KjB0&apos;), true, false)</formula>
         <fullName>Source__c</fullName>
         <externalId>false</externalId>
         <label>Source</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Member</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHC IMO</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Group</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>EDI</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Life and Disability</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Member</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHC IMO</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Group</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>EDI</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Life and Disability</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Status</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>New</fullName>
-                <default>true</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending User</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending ERT (New)</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed - Resolved</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed - No Response</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending ERT (Assigned)</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending Client Team</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending Eng/Dev</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pending Optum</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum Replied</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Follow Up Needed</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Reply</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Optum</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transferred</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Assigned</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>In Process</fullName>
-                <default>false</default>
-                <closed>false</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Shipped</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lost by Shipper/Damaged in Transit</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Delivered - Lost/Stolen</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Incorrect Item</fullName>
-                <default>false</default>
-                <closed>true</closed>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -4833,28 +4683,33 @@ CreatedById = &apos;005E0000006KjB0&apos;), true, false)</formula>
         <fullName>Sub_Origin__c</fullName>
         <externalId>false</externalId>
         <label>Sub-Origin</label>
-        <picklist>
-            <controllingField>Origin</controllingField>
-            <picklistValues>
-                <fullName>Consumer Site</fullName>
-                <default>false</default>
-                <controllingFieldValues>Web</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHC Client Form</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Community Beta</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Origin</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Consumer Site</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHC Client Form</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Community Beta</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Web</controllingFieldValue>
+                <valueName>Consumer Site</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Subject</fullName>
@@ -5058,21 +4913,6 @@ CreatedById = &apos;005E0000006KjB0&apos;), true, false)</formula>
     </fields>
     <fields>
         <fullName>Type</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Problem</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feature Request</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Question</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -5093,60 +4933,64 @@ CreatedById = &apos;005E0000006KjB0&apos;), true, false)</formula>
         <externalId>false</externalId>
         <inlineHelpText>Was this a valid escalation from RSS to ERT?</inlineHelpText>
         <label>Valid Escalation?</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Not Sure</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Valid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Invalid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Sure</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Valid</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Invalid</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Vendor__c</fullName>
         <externalId>false</externalId>
         <label>Vendor</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Target</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Amazon</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>InComm</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>GiftCards.com</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Target</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Amazon</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>InComm</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>GiftCards.com</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Year_Closed__c</fullName>

@@ -45,10 +45,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -62,6 +58,10 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SmsHighlightAction</actionName>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -89,41 +89,43 @@
         <fullName>Areas_of_Interest__c</fullName>
         <externalId>false</externalId>
         <label>Areas of Interest</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Engagement/Wellness</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Transparency</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Population Management</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provider search tool</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>International Offering</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Open Enrollment Capabilities</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Benefit Admin Capabilities</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Engagement/Wellness</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Transparency</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Population Management</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provider search tool</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>International Offering</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Open Enrollment Capabilities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Benefit Admin Capabilities</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -245,53 +247,57 @@
         <fullName>Company_Size__c</fullName>
         <externalId>false</externalId>
         <label>Company Size</label>
-        <picklist>
-            <picklistValues>
-                <fullName>&lt;5,000</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>5,001 - 15,000</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>&gt;15,000</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>&lt;5,000</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>5,001 - 15,000</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>&gt;15,000</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Company_Type__c</fullName>
         <externalId>false</externalId>
         <label>Company Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Employer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Payer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Consultant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Employer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Payer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Consultant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>CurrencyIsoCode</fullName>
@@ -323,21 +329,23 @@
         <fullName>Eligibility__c</fullName>
         <externalId>false</externalId>
         <label>Eligibility</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Eligible</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ineligible</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Eligible</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Ineligible</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Email</fullName>
@@ -367,42 +375,44 @@
         <externalId>false</externalId>
         <inlineHelpText>Field to identify where a lead was generated from as it relates to Optum/UHC relationship.</inlineHelpText>
         <label>Generated From</label>
-        <picklist>
-            <picklistValues>
-                <fullName>UHC Internal Conference</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHC Sales meeting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHC SAE meeting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum Internal Conference</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum Sales meeting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum SAE meeting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External conferences</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>UHC Internal Conference</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHC Sales meeting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHC SAE meeting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optum Internal Conference</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optum Sales meeting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optum SAE meeting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>External conferences</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>HasOptedOutOfEmail</fullName>
@@ -428,57 +438,6 @@
     </fields>
     <fields>
         <fullName>Industry</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Behavioral Health</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Commercial Payer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Consulting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Government</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Healthcare</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medicaid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medicare</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medicare &amp; Medicaid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PBM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Technology</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Hospital System</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
@@ -487,79 +446,120 @@
         <fullName>Ineligible_Reason1__c</fullName>
         <externalId>false</externalId>
         <label>Ineligible Reason</label>
-        <picklist>
-            <controllingField>Status</controllingField>
-            <picklistValues>
-                <fullName>Academic/research inquiry</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Competitor inquiry</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Current client- employer group</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Current client- payer/provider</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Direct consumer inquiry</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Direct employer group</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Duplicate</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Fake info/invalid info</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Marketing Agency Inquiry</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not a decision maker</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not responsive to follow ups</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Small-Market Consultant</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Vendor Inquiry</fullName>
-                <default>false</default>
-                <controllingFieldValues>Ineligible</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Status</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Academic/research inquiry</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor inquiry</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Current client- employer group</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Current client- payer/provider</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Direct consumer inquiry</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Direct employer group</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Duplicate</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Fake info/invalid info</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Marketing Agency Inquiry</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not a decision maker</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not responsive to follow ups</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Small-Market Consultant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Vendor Inquiry</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Academic/research inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Competitor inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Current client- employer group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Current client- payer/provider</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Direct consumer inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Direct employer group</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Duplicate</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Fake info/invalid info</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Marketing Agency Inquiry</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Not a decision maker</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Not responsive to follow ups</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Small-Market Consultant</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Ineligible</controllingFieldValue>
+                <valueName>Vendor Inquiry</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Ineligible_Reason__c</fullName>
@@ -610,53 +610,6 @@ ISPICKVAL(Status, &apos;Ineligible&apos;), 1, 0)</formula>
     </fields>
     <fields>
         <fullName>LeadSource</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employee Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum direct</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHG</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trade Show</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Word of mouth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Picklist</type>
@@ -704,21 +657,6 @@ ISPICKVAL(Status, &apos;Ineligible&apos;), 1, 0)</formula>
     </fields>
     <fields>
         <fullName>Rating</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Hot</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Warm</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Cold</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>
@@ -761,29 +699,6 @@ CONTAINS(Short_Referral_String__c, &apos;utm_medium=organic&apos;), &apos;Organi
     </fields>
     <fields>
         <fullName>Status</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Open</fullName>
-                <default>true</default>
-                <converted>false</converted>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contacted</fullName>
-                <default>false</default>
-                <converted>false</converted>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Eligible</fullName>
-                <default>false</default>
-                <converted>true</converted>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ineligible</fullName>
-                <default>false</default>
-                <converted>false</converted>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Picklist</type>

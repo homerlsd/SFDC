@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -44,6 +40,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Sales_Opportunity_Lightning_Page</content>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -229,75 +226,113 @@
         <externalId>false</externalId>
         <inlineHelpText>Select one or more reasons for winning or losing an opportunity from list. Select other if none are applicable.</inlineHelpText>
         <label>Close Reason</label>
-        <picklist>
-            <controllingField>StageName</controllingField>
-            <picklistValues>
-                <fullName>Lost: Competitor</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Lost</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lost: Pricing</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Lost</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lost: Product Functionality</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Lost</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lost: Integration Capabilities</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Lost</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lost: Other</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Lost</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Pricing</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Product Functionality</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Integration Capabilities</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Competitor</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Multi-Product Offering</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: International Capabilities</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Won: Other</fullName>
-                <default>false</default>
-                <controllingFieldValues>Closed Won</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <controllingField>StageName</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lost: Competitor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lost: Pricing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lost: Product Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lost: Integration Capabilities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Lost: Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Pricing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Product Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Integration Capabilities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Competitor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Multi-Product Offering</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: International Capabilities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Won: Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Closed Lost</controllingFieldValue>
+                <valueName>Lost: Competitor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Lost</controllingFieldValue>
+                <valueName>Lost: Pricing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Lost</controllingFieldValue>
+                <valueName>Lost: Product Functionality</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Lost</controllingFieldValue>
+                <valueName>Lost: Integration Capabilities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Lost</controllingFieldValue>
+                <valueName>Lost: Other</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Pricing</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Product Functionality</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Integration Capabilities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Competitor</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Multi-Product Offering</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: International Capabilities</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Closed Won</controllingFieldValue>
+                <valueName>Won: Other</valueName>
+            </valueSettings>
+        </valueSet>
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
@@ -314,86 +349,88 @@
         <fullName>Competitors__c</fullName>
         <externalId>false</externalId>
         <label>Current Incumbent</label>
-        <picklist>
-            <picklistValues>
-                <fullName>None</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Redbrick</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Keas</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Vitality</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Virgin Health</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Shape up</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Welltok</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Change Health</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Connecture</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Benefit Focus</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Zenefits</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Castlight</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>ChangeHealth	Vitals</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Truven</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PolkitDoc</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>HealthSparq</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Bluebook Healthcare</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>None</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Redbrick</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Keas</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Vitality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Virgin Health</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Shape up</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Welltok</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Change Health</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Connecture</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Benefit Focus</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Zenefits</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Castlight</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ChangeHealth	Vitals</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Truven</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PolkitDoc</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HealthSparq</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Bluebook Healthcare</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -430,26 +467,28 @@
         <fullName>Covered_Lives_Type__c</fullName>
         <externalId>false</externalId>
         <label>Covered Lives Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Employees</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Members</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Patients</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Employees</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Members</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Patients</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Covered_Lives__c</fullName>
@@ -481,72 +520,76 @@
         <externalId>false</externalId>
         <inlineHelpText>Please select the event that led to this opportunity. If the event is not listed, please file a JIRA ticket to get it added to the picklist.</inlineHelpText>
         <label>Event Name</label>
-        <picklist>
-            <picklistValues>
-                <fullName>AHIP Austin 2017</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>ANI HFMA</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>HEAC Spring 2017</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Orlando 2017</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>AHIP Austin 2017</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>ANI HFMA</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>HEAC Spring 2017</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Orlando 2017</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Executive_Sponsor__c</fullName>
         <externalId>false</externalId>
         <label>Executive Sponsor</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Alex</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Anastasios</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>David Ko</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Frank</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Grant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rhett</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Shawn Mobley</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alex</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Anastasios</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>David Ko</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Frank</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Grant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rhett</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Shawn Mobley</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>ExpectedRevenue</fullName>
@@ -678,72 +721,78 @@ If(Membership_Term__c &gt;= 4, 12,0))+ One_Time_Fee_Year_4__c),0 ))</formula>
         <fullName>External_Sales_Category__c</fullName>
         <externalId>false</externalId>
         <label>External Sales Category</label>
-        <picklist>
-            <picklistValues>
-                <fullName>New</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Competitive Renewal</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Growth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitive Renewal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Growth</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>External_Sales_Channel__c</fullName>
         <externalId>false</externalId>
         <label>External Sales Channel</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Direct</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Indirect</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Direct</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Indirect</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Fee_Type__c</fullName>
         <externalId>false</externalId>
         <label>Fee Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>PMPM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PEPM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>OTHER</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PMPM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PEPM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>OTHER</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>First_Year_Revenue__c</fullName>
@@ -784,34 +833,36 @@ If(Membership_Term__c &gt;= 4, 12,0))+ One_Time_Fee_Year_4__c),0 ))</formula>
         <fullName>Implementation_Stage__c</fullName>
         <externalId>false</externalId>
         <label>Post Sales Status</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Implementation</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Customer Testing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pilot</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rollout Started</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rollout Complete</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Implementation</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Customer Testing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pilot</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rollout Started</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rollout Complete</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Include_in_Partner_Revenue_Query__c</fullName>
@@ -881,57 +932,14 @@ CloseDate &lt;= TODAY()+365))), true, false)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Language</valueSetName>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>LeadSource</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Advertisement</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employee Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optum direct</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHG</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>External Referral</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Relations</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Trade Show</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Web</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Word of mouth</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -943,93 +951,99 @@ CloseDate &lt;= TODAY()+365))), true, false)</formula>
         <externalId>false</externalId>
         <inlineHelpText>Select the level of effort required to win this opportunity. Default value is low.</inlineHelpText>
         <label>Level of Effort</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Low</fullName>
-                <default>true</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medium</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>High</fullName>
-                <default>false</default>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Low</fullName>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Medium</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>High</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Line_of_Business__c</fullName>
         <externalId>false</externalId>
         <label>Line of Business</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Commercial</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Life Insurance</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medicaid</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Medicare</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Commercial</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Life Insurance</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Medicaid</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Medicare</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Market_Segment__c</fullName>
         <externalId>false</externalId>
         <label>Market Segment</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Payers</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Provider</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Employers</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Integrated Delivery Network</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Government</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Payers</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Provider</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Employers</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Integrated Delivery Network</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Government</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Membership_Term__c</fullName>
@@ -1090,54 +1104,56 @@ CloseDate &lt;= TODAY()+365))), true, false)</formula>
         <externalId>false</externalId>
         <inlineHelpText>Select one or more obstacles that can hinder our chances of winning this opportunity.</inlineHelpText>
         <label>Obstacles</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Commitment</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pricing</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Consultant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Competitor Advantage</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>UHG relationship</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Product Functionality</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Challenges (Variety)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Integration Capabilities</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Language Barrier</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Commitment</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pricing</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Consultant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor Advantage</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>UHG relationship</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Product Functionality</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Challenges (Variety)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Integration Capabilities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Language Barrier</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>5</visibleLines>
     </fields>
     <fields>
@@ -1426,22 +1442,24 @@ CloseDate &lt;= TODAY()+365))), true, false)</formula>
         <fullName>Purchase_Type__c</fullName>
         <externalId>false</externalId>
         <label>Purchase Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Licensing Fee</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PMPM</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Licensing Fee</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PMPM</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Record_Type_Name__c</fullName>
@@ -1634,26 +1652,28 @@ CONTAINS(RecordType.Name,&apos;Approved&apos;), SUBSTITUTE(RecordType.Name, &apo
         <fullName>Rollout_Type__c</fullName>
         <externalId>false</externalId>
         <label>Rollout Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Pilot Only</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Phased</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pilot Only</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Phased</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Sales_Channel__c</fullName>
@@ -1683,155 +1703,6 @@ CONTAINS(RecordType.Name,&apos;Approved&apos;), SUBSTITUTE(RecordType.Name, &apo
     </fields>
     <fields>
         <fullName>StageName</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Suspect</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>0</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Lead</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>0</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Prospect</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>10</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Qualifying</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>15</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>RFP Stage</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>25</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Finalist</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>30</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Negotiation/Contracting/BAFO</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>90</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contract</fullName>
-                <default>false</default>
-                <description>Use this stage when you are working on contracting with Rally legal and client.</description>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>75</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Decline to Quote</fullName>
-                <default>false</default>
-                <closed>true</closed>
-                <forecastCategory>Omitted</forecastCategory>
-                <probability>0</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Client Rescinded</fullName>
-                <default>false</default>
-                <description>Use this closed stage to indicate when a client has decided to not move forward with their search for a new vendor.</description>
-                <closed>true</closed>
-                <forecastCategory>Omitted</forecastCategory>
-                <probability>0</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Propose</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>30</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Review</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>40</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>BAFO/Final Configuration</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>50</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Contract Negotiations</fullName>
-                <default>false</default>
-                <closed>false</closed>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>75</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed/Retained</fullName>
-                <default>false</default>
-                <closed>true</closed>
-                <forecastCategory>Closed</forecastCategory>
-                <probability>100</probability>
-                <won>true</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed Won</fullName>
-                <default>false</default>
-                <closed>true</closed>
-                <forecastCategory>Closed</forecastCategory>
-                <probability>100</probability>
-                <won>true</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed Lost</fullName>
-                <default>false</default>
-                <closed>true</closed>
-                <forecastCategory>Omitted</forecastCategory>
-                <probability>0</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Closed - Other</fullName>
-                <default>false</default>
-                <closed>true</closed>
-                <forecastCategory>Omitted</forecastCategory>
-                <probability>0</probability>
-                <won>true</won>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -1856,66 +1727,98 @@ CONTAINS(RecordType.Name,&apos;Approved&apos;), SUBSTITUTE(RecordType.Name, &apo
         <externalId>false</externalId>
         <inlineHelpText>If Stage is set to RFP Stage, Sub-Stage is required.</inlineHelpText>
         <label>Sub-Stage</label>
-        <picklist>
-            <controllingField>StageName</controllingField>
-            <picklistValues>
-                <fullName>Proactive Proposal</fullName>
-                <default>false</default>
-                <controllingFieldValues>RFP Stage</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>RFI</fullName>
-                <default>false</default>
-                <controllingFieldValues>RFP Stage</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>RFP</fullName>
-                <default>false</default>
-                <controllingFieldValues>RFP Stage</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Engaged by SAE</fullName>
-                <default>false</default>
-                <controllingFieldValues>Qualifying</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Renewal planning session completed</fullName>
-                <default>false</default>
-                <controllingFieldValues>Qualifying</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Share Rally Roadmap</fullName>
-                <default>false</default>
-                <controllingFieldValues>Propose</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>RFP Response</fullName>
-                <default>false</default>
-                <controllingFieldValues>Propose</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Demonstration</fullName>
-                <default>false</default>
-                <controllingFieldValues>Propose</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pricing Approved by Sales Ops</fullName>
-                <default>false</default>
-                <controllingFieldValues>Propose</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Proposal under review by Client</fullName>
-                <default>false</default>
-                <controllingFieldValues>Review</controllingFieldValues>
-            </picklistValues>
-            <restrictedPicklist>true</restrictedPicklist>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>StageName</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Proactive Proposal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>RFI</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>RFP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Engaged by SAE</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Renewal planning session completed</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Share Rally Roadmap</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>RFP Response</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Demonstration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pricing Approved by Sales Ops</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Proposal under review by Client</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Propose</controllingFieldValue>
+                <valueName>Share Rally Roadmap</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Propose</controllingFieldValue>
+                <valueName>RFP Response</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Propose</controllingFieldValue>
+                <valueName>Demonstration</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Propose</controllingFieldValue>
+                <valueName>Pricing Approved by Sales Ops</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Review</controllingFieldValue>
+                <valueName>Proposal under review by Client</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualifying</controllingFieldValue>
+                <valueName>Engaged by SAE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Qualifying</controllingFieldValue>
+                <valueName>Renewal planning session completed</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RFP Stage</controllingFieldValue>
+                <valueName>Proactive Proposal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RFP Stage</controllingFieldValue>
+                <valueName>RFI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>RFP Stage</controllingFieldValue>
+                <valueName>RFP</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Success_Metrics__c</fullName>
@@ -1990,17 +1893,6 @@ CONTAINS(RecordType.Name,&apos;Approved&apos;), SUBSTITUTE(RecordType.Name, &apo
     </fields>
     <fields>
         <fullName>Type</fullName>
-        <picklist>
-            <picklistValues>
-                <fullName>Existing Business</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>New Business</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>

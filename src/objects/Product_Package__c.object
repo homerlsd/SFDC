@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -44,6 +40,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
@@ -51,6 +48,7 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
@@ -58,61 +56,63 @@
         <fullName>Applicable_Account_Types__c</fullName>
         <externalId>false</externalId>
         <label>Applicable Account Types</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Analyst</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Competitor</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Customer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Integrator</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Investor</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Partner</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Press</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Prospect</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reseller</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Consultant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Payer</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Analyst</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Competitor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Customer</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Integrator</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Investor</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Press</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Prospect</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Reseller</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Consultant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Payer</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
@@ -155,62 +155,78 @@
         <fullName>Optional_Pricing__c</fullName>
         <externalId>false</externalId>
         <label>Optional Pricing</label>
-        <picklist>
-            <controllingField>Package_Options__c</controllingField>
-            <picklistValues>
-                <fullName>N/A</fullName>
-                <default>false</default>
-                <controllingFieldValues>Included</controllingFieldValues>
-                <controllingFieldValues>Optional</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Flat</fullName>
-                <default>false</default>
-                <controllingFieldValues>Included</controllingFieldValues>
-                <controllingFieldValues>Optional</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PMPM</fullName>
-                <default>false</default>
-                <controllingFieldValues>Included</controllingFieldValues>
-                <controllingFieldValues>Optional</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PEPM</fullName>
-                <default>false</default>
-                <controllingFieldValues>Included</controllingFieldValues>
-                <controllingFieldValues>Optional</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Package_Options__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Flat</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PMPM</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PEPM</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Included</controllingFieldValue>
+                <controllingFieldValue>Optional</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Included</controllingFieldValue>
+                <controllingFieldValue>Optional</controllingFieldValue>
+                <valueName>Flat</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Included</controllingFieldValue>
+                <controllingFieldValue>Optional</controllingFieldValue>
+                <valueName>PMPM</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Included</controllingFieldValue>
+                <controllingFieldValue>Optional</controllingFieldValue>
+                <valueName>PEPM</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Package_Options__c</fullName>
         <externalId>false</externalId>
         <label>Package Options</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Included</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Optional</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Not Available</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Included</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Optional</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Not Available</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Parent_Product__c</fullName>

@@ -21,10 +21,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>Follow</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -44,6 +40,7 @@
         <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
@@ -51,6 +48,7 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ReadWrite</externalSharingModel>
@@ -58,21 +56,23 @@
         <fullName>Analytics_Type__c</fullName>
         <externalId>false</externalId>
         <label>Analytics Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Search</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Click-through</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Search</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Click-through</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Article_ID__c</fullName>
@@ -135,21 +135,23 @@
         <fullName>Live_Agent_Click_Type__c</fullName>
         <externalId>false</externalId>
         <label>Live Agent Click Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Outside HOOP</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>No Agents Available</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Outside HOOP</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>No Agents Available</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Number_of_Results__c</fullName>

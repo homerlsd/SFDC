@@ -6,6 +6,7 @@
     <excludeButtons>Submit</excludeButtons>
     <feedLayout>
         <autocollapsePublisher>true</autocollapsePublisher>
+        <compactFeed>true</compactFeed>
         <feedFilterPosition>LeftFixed</feedFilterPosition>
         <feedFilters>
             <feedFilterType>AllUpdates</feedFilterType>
@@ -32,6 +33,7 @@
         </feedFilters>
         <fullWidthFeed>true</fullWidthFeed>
         <hideSidebar>true</hideSidebar>
+        <highlightExternalFeedItems>true</highlightExternalFeedItems>
         <rightComponents>
             <componentType>HelpAndToolLinks</componentType>
         </rightComponents>
@@ -47,6 +49,7 @@
         <rightComponents>
             <componentType>CustomButtons</componentType>
         </rightComponents>
+        <useInlineFiltersInConsole>true</useInlineFiltersInConsole>
     </feedLayout>
     <headers>PublicTagging</headers>
     <layoutSections>

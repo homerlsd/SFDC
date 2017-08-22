@@ -92,5 +92,5 @@
         <members>*</members>
         <name>GlobalPicklist</name>
     </types>
-    <version>37.0</version>
+    <version>34.0</version>
 </Package>

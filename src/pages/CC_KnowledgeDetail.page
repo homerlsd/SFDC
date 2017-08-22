@@ -1,0 +1,47 @@
+<apex:page controller="CC_KnowledgeDetailController" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+<head><title>Rally Support | {!Article.Title}</title></head>
+ <apex:composition template="{!$Site.Template}" >
+           <apex:define name="body">
+               <div id="desk-content">
+                <div class="container">
+                    <div class="row-fluid">
+                      <apex:form >
+                            <div id="desk-leftcol" class="span12">
+                                   <!-- Breadcrumb -->
+                                   <ul class="breadcrumb" id="breadcrumbs">
+                                        <li class="crumb"><apex:commandLink value="Home" action="{!NavigatesToHome}" > </apex:commandLink><span class="divider">/</span></li>
+                                        <li class="crumb">
+                                                    <apex:commandLink value="{!DataCategoryName}" action="{!NavigatesToKnowlegeByDataCat}" >
+                                                    </apex:commandLink>
+                                        <span class="divider">/</span></li>
+                                        <li class="active crumb" >{!Article.Title}</li>
+                                   </ul>
+                                   <div class="support-main">
+                                      <div class="support-head support-article row-fluid">
+                                              <h2>{!Article.Title}</h2>
+                                              <div class="meta-bar">
+                                                <span class="last-updated">
+                                                    Last Updated: {!LastPublishedDate}
+                                                </span>
+                                              </div>
+                                      </div>
+                                      <div class="support-body row-fluid">
+                                        <div class="span12">
+                                             <apex:outputField value="{!Article.RichTextSummary__c}"/>
+                                             <br/>
+                                             <apex:outputPanel rendered="{!article.Custom_Link_Text__c != null && article.Custom_Link_Text__c != ''}"><a target="_blank" href="{!gArticle.Custom_URL__c}"><b><u>{!article.Custom_Link_Text__c}</u></b></a></apex:outputPanel>
+                                        </div>
+                                        <hr/>
+                                      </div>
+                                   </div>
+                                </div>
+                                <!--<div id="desk-rightcol" class="span2">
+                               <c:CC_SupportContactUs />
+                            </div>-->
+                           </apex:form>
+                    </div>
+                </div>
+            </div>
+           </apex:define>
+         </apex:composition>
+</apex:page>

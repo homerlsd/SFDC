@@ -1,0 +1,125 @@
+<apex:component controller="ResourcePageController" access="global">
+   <apex:attribute assignTo="{!Resourcename}" description="name of Resource page req" type="String" name="Recname"/>
+   
+   
+   
+   <b><apex:outputText value="Resource Page Category"/></b>
+   <apex:dataTable value="{!resourcecategory}" var="rc" border="1" columns="4">
+     <apex:column >
+     <apex:facet name="header">Name</apex:facet>
+     <apex:outputText value="{!rc.Name}"/>
+     </apex:column>
+     <apex:column >
+     <apex:facet name="header">Category Title</apex:facet>
+     <apex:outputText value="{!rc.Category_Title__c}"/>
+     </apex:column>
+     <apex:column >
+     <apex:facet name="header">Link Title and URL</apex:facet>
+     <apex:outputText value="{!rc.Link_Title_and_URL__c}"/>
+     </apex:column>
+   </apex:dataTable>
+   
+   <br/>
+   <br/>
+   
+   
+   <b><apex:outputText value="Resource Page Promotion"/></b>
+   <apex:dataTable value="{!resourcepromotion}" var="rp" border="1" columns="22" >
+   
+     <apex:column >
+     <apex:facet name="header">Name</apex:facet>
+     <apex:outputText value="{!rp.Name}"/>
+     </apex:Column>
+     <apex:column >
+     <apex:facet name="header">Current Promo Headline</apex:facet>
+     <apex:outputText value="{!rp.Current_Promo_Headline__c}"/>
+     </apex:Column>
+     <apex:column >
+     <apex:facet name="header">Current Promo Body</apex:facet>
+     <apex:outputText value="{!rp.Current_Promo_Body__c}"/>
+     </apex:column>
+     <apex:column >
+     <apex:facet name="header">Promo Image URL</apex:facet>
+     <apex:outputText value="{!rp.Promo_Image_URL__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promo Link CTA Copy</apex:facet>
+     <apex:outputText value="{!rp.Promo_Link_CTA_Copy__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promo CTA Link</apex:facet>
+     <apex:outputText value="{!rp.Promo_CTA_Link__c}"/>
+     </apex:Column>
+     <apex:Column >
+     <apex:facet name="header">Promo Phone CTA Header</apex:facet>
+     <apex:outputText value="{!rp.Promo_Phone_CTA_Header__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promo Phone Number</apex:facet>
+     <apex:outputText value="{!rp.Promo_Phone_Number__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promo Phone Number 2</apex:facet>
+     <apex:outputText value="{!rp.Promo_Phone_Number_2__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promo Phone CTA Footer</apex:facet>
+     <apex:outputText value="{!rp.Promo_Phone_CTA_Footer__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promotion Start Date</apex:facet>
+     <apex:outputText value="{!rp.Promotion_Start_Date__c}"/>
+     </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Promotion End Date</apex:facet>
+      <apex:outputText value="{!rp.Promotion_End_Date__c}"/>
+      </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Tagging Logic</apex:facet>
+      <apex:outputText value="{!rp.Tagging_Logic__c}"/>
+       </apex:column>
+     <apex:Column > 
+     <apex:facet name="header">Tag#1</apex:facet>
+     <apex:outputText value="{!rp.Tag_1__c}"/>
+      </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Tag#2</apex:facet>
+     <apex:outputText value="{!rp.Tag_2__c}"/>
+      </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Tag#3</apex:facet>
+      <apex:outputText value="{!rp.Tag_3__c}"/>
+       </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Tag#4</apex:facet>
+     <apex:outputText value="{!rp.Tag_4__c}"/>
+      </apex:column>
+     <apex:Column >
+     <apex:facet name="header">Tag#5</apex:facet>
+      <apex:outputText value="{!rp.Tag_5__c}"/>
+       </apex:column>
+     <apex:column >
+     <apex:facet name="header">Featured promo Headline</apex:facet>
+     <apex:outputText value="{!rp.Featured_Promo_Headline__c}"/>
+      </apex:column>
+     <apex:column > 
+     <apex:facet name="header">Featured promo Body</apex:facet>     
+     <apex:outputText value="{!rp.Featured_Promo_Body__c}"/>
+       </apex:column>
+     <apex:column > 
+     <apex:facet name="header">Featured promo Abbreviated Body</apex:facet>
+     <apex:outputText value="{!rp.Featured_Promo_Abbreviated_Body__c}"/>
+      </apex:column>
+     <apex:column > 
+     <apex:facet name="header">Background Color</apex:facet>
+     <apex:outputText value="{!rp.Background_Color__c}"/>
+      </apex:column>
+     <apex:column >
+     <apex:facet name="header">Text Color</apex:facet>
+      <apex:outputText value="{!rp.Text_Color__c}"/>
+       </apex:column>
+     
+     
+   </apex:dataTable>
+  
+</apex:component>

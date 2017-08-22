@@ -1,0 +1,139 @@
+<apex:page showHeader="true" sidebar="true" controller="ManageKnowledgeController" tabStyle="Knowledge_Group__c">
+    <style type="text/css">
+        .container { width: 550px; }
+    </style>
+	<apex:form >
+            <div align="center"><h1 color="red"><apex:outputText value="{!custerror}" style="font-style:bold;color:red;"/></h1></div>  
+            <apex:pageBlock id="thePageBlock">
+            	<apex:pageBlockSection columns="1" title="Search for Category, Title or Summary keywords">
+	            	<apex:inputText value="{!querystring}" label=""/>
+	               	<apex:commandButton action="{!findCurrentKB}" style="btnImportant" value="Search" reRender="table"/>
+               	</apex:pageBlockSection>
+                <apex:pageblockSection columns="1" Title="{!IF(recent = true, 'Recent Knowledge Articles', 'Knowledge Articles')}">
+                    <div class="tab-pane active" id="find">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 text-center col-xs-12">
+                                <apex:actionRegion >
+                                    <apex:actionFunction name="findCurrentKBLetter" reRender="table" action="{!findCurrentKB}">
+                                        <apex:param name="letter" value=""/>
+                                    </apex:actionFunction>
+                                </apex:actionRegion>
+                                <a href="" onclick="findCurrentKBLetter('A')" style="cursor: pointer;">A</a> | 
+                                <a href="" onclick="findCurrentKBLetter('B')" style="cursor: pointer;">B</a> | 
+                                <a href="" onclick="findCurrentKBLetter('C')" style="cursor: pointer;">C</a> | 
+                                <a href="" onclick="findCurrentKBLetter('D')" style="cursor: pointer;">D</a> | 
+                                <a href="" onclick="findCurrentKBLetter('E')" style="cursor: pointer;">E</a> | 
+                                <a href="" onclick="findCurrentKBLetter('F')" style="cursor: pointer;">F</a> | 
+                                <a href="" onclick="findCurrentKBLetter('G')" style="cursor: pointer;">G</a> | 
+                                <a href="" onclick="findCurrentKBLetter('H')" style="cursor: pointer;">H</a> | 
+                                <a href="" onclick="findCurrentKBLetter('I')" style="cursor: pointer;">I</a> | 
+                                <a href="" onclick="findCurrentKBLetter('J')" style="cursor: pointer;">J</a> | 
+                                <a href="" onclick="findCurrentKBLetter('K')" style="cursor: pointer;">K</a> | 
+                                <a href="" onclick="findCurrentKBLetter('L')" style="cursor: pointer;">L</a> | 
+                                <a href="" onclick="findCurrentKBLetter('M')" style="cursor: pointer;">M</a> | 
+                                <a href="" onclick="findCurrentKBLetter('N')" style="cursor: pointer;">N</a> | 
+                                <a href="" onclick="findCurrentKBLetter('O')" style="cursor: pointer;">O</a> | 
+                                <a href="" onclick="findCurrentKBLetter('P')" style="cursor: pointer;">P</a> | 
+                                <a href="" onclick="findCurrentKBLetter('Q')" style="cursor: pointer;">Q</a> |
+                                <a href="" onclick="findCurrentKBLetter('R')" style="cursor: pointer;">R</a> | 
+                                <a href="" onclick="findCurrentKBLetter('S')" style="cursor: pointer;">S</a> | 
+                                <a href="" onclick="findCurrentKBLetter('T')" style="cursor: pointer;">T</a> | 
+                                <a href="" onclick="findCurrentKBLetter('U')" style="cursor: pointer;">U</a> | 
+                                <a href="" onclick="findCurrentKBLetter('V')" style="cursor: pointer;">V</a> | 
+                                <a href="" onclick="findCurrentKBLetter('W')" style="cursor: pointer;">W</a> | 
+                                <a href="" onclick="findCurrentKBLetter('X')" style="cursor: pointer;">X</a> | 
+                                <a href="" onclick="findCurrentKBLetter('Y')" style="cursor: pointer;">Y</a> | 
+                                <a href="" onclick="findCurrentKBLetter('Z')" style="cursor: pointer;">Z</a> |
+                                <a href="" onclick="findCurrentKBLetter('#')" style="cursor: pointer;">#</a> 
+                            </div>
+                        </div> 
+                    </div>                  
+                    <apex:pageBlockTable value="{!currentKB}" rows="10" var="a" id="table" rendered="{!currentKB != null}">
+	                    <apex:column headerValue="Active on Group Knowledge Base">
+	                        <apex:inputCheckbox value="{!a.Active}"/>
+	                    </apex:column>
+	                    <apex:column headerValue="Knowledge Article Name">
+	                        <apex:outputField value="{!a.articleversion.title}"/>
+	                    </apex:column> 
+	                    <apex:column headerValue="Summary">
+                            <div class="container">
+                                <apex:outputLabel escape="false" value="{!a.articleversion.RichTextSummary__c}" />   
+                            </div>
+	                    </apex:column>   
+                        <apex:column headerValue="Custom Link">
+                            <apex:outputText rendered="{!a.customlink != null && a.customlink != ''}" value="{!a.customlink}"/>   
+                        </apex:column>              
+                	</apex:pageBlockTable>
+                </apex:pageblockSection>
+                <apex:pageblockSection columns="1" Title="Add new Knowledge Article">
+            		<div class="tab-pane active" id="find">
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1 text-center col-xs-12">
+                                <apex:actionRegion >
+                                    <apex:actionFunction name="chooseFirstLetter" reRender="articlepicklist" action="{!chooseFirstLetter}">
+                                        <apex:param name="letter" value=""/>
+                                    </apex:actionFunction>
+                                </apex:actionRegion>
+                                <a href="" onclick="chooseFirstLetter('A')" style="cursor: pointer;">A</a> | 
+                                <a href="" onclick="chooseFirstLetter('B')" style="cursor: pointer;">B</a> | 
+                                <a href="" onclick="chooseFirstLetter('C')" style="cursor: pointer;">C</a> | 
+                                <a href="" onclick="chooseFirstLetter('D')" style="cursor: pointer;">D</a> | 
+                                <a href="" onclick="chooseFirstLetter('E')" style="cursor: pointer;">E</a> | 
+                                <a href="" onclick="chooseFirstLetter('F')" style="cursor: pointer;">F</a> | 
+                                <a href="" onclick="chooseFirstLetter('G')" style="cursor: pointer;">G</a> | 
+                                <a href="" onclick="chooseFirstLetter('H')" style="cursor: pointer;">H</a> | 
+                                <a href="" onclick="chooseFirstLetter('I')" style="cursor: pointer;">I</a> | 
+                                <a href="" onclick="chooseFirstLetter('J')" style="cursor: pointer;">J</a> | 
+                                <a href="" onclick="chooseFirstLetter('K')" style="cursor: pointer;">K</a> | 
+                                <a href="" onclick="chooseFirstLetter('L')" style="cursor: pointer;">L</a> | 
+                                <a href="" onclick="chooseFirstLetter('M')" style="cursor: pointer;">M</a> | 
+                                <a href="" onclick="chooseFirstLetter('N')" style="cursor: pointer;">N</a> | 
+                                <a href="" onclick="chooseFirstLetter('O')" style="cursor: pointer;">O</a> | 
+                                <a href="" onclick="chooseFirstLetter('P')" style="cursor: pointer;">P</a> | 
+                                <a href="" onclick="chooseFirstLetter('Q')" style="cursor: pointer;">Q</a> |
+                                <a href="" onclick="chooseFirstLetter('R')" style="cursor: pointer;">R</a> | 
+                                <a href="" onclick="chooseFirstLetter('S')" style="cursor: pointer;">S</a> | 
+                                <a href="" onclick="chooseFirstLetter('T')" style="cursor: pointer;">T</a> | 
+                                <a href="" onclick="chooseFirstLetter('U')" style="cursor: pointer;">U</a> | 
+                                <a href="" onclick="chooseFirstLetter('V')" style="cursor: pointer;">V</a> | 
+                                <a href="" onclick="chooseFirstLetter('W')" style="cursor: pointer;">W</a> | 
+                                <a href="" onclick="chooseFirstLetter('X')" style="cursor: pointer;">X</a> | 
+                                <a href="" onclick="chooseFirstLetter('Y')" style="cursor: pointer;">Y</a> | 
+                                <a href="" onclick="chooseFirstLetter('Z')" style="cursor: pointer;">Z</a> |
+                                <a href="" onclick="chooseFirstLetter('#')" style="cursor: pointer;">#</a> 
+                            </div>
+                        </div> 
+                    </div> 					
+					<apex:pageBlockTable value="{!newGroupArticles}" var="b" id="newTable">  
+	                    <apex:column headerValue="All Available Articles">
+	                        <apex:SelectList size="1" id="articlepicklist" value="{!b.selectedArticleLine}">
+	                            <apex:SelectOptions value="{!allArticles}"/>
+	                            <apex:actionSupport event="onchange" rerender="newTable" status="newTable"/>
+	                        </apex:SelectList>
+                        <apex:actionStatus startText="updating..." id="newTable"/>
+	                    </apex:column>  
+	                    <apex:column rendered="{!b.selectedArticleline != 'Please Select Article...'}" width="33%" headerValue="Details">
+	                        <apex:outputText style="width: 500px; height: 100px" value="{!detailmap[b.selectedArticleline].RichTextSummary__c}"/>
+	                    </apex:column>
+                        <apex:column width="33%" rendered="{!b.selectedArticleline != 'Please Select Article...'}" headerValue="Custom Link (where applicable)">
+                            <apex:inputText required="true" rendered="{!detailmap[b.selectedArticleline].Custom_Link_Text__c != null}" style="width: 500px; height: 20px" value="{!b.customUrl}"/>
+                        </apex:column>
+	                </apex:pageBlockTable>
+	            </apex:pageBlockSection>    
+                <apex:pageblockButtons location="bottom">
+                    <div style="text-align:left;margin-left:30px;font-weight:bold;">
+                        <apex:commandLink value="Add New Article" action="{!addnewGA}" rerender="newTable,error" />
+                        &nbsp; | &nbsp;
+                        <apex:commandLink value="Remove Last Article" action="{!removelastGA}" rerender="newTable,error"  />     
+                    </div>
+                    <br/>     
+					<div style="text-align:left;margin-left:100px;">
+                    	<apex:commandButton value="Save FAQ" styleClass="btnImportant" action="{!saveNewStuff}"/>
+                    </div>
+                </apex:pageblockButtons>  
+            </apex:pageBlock>
+            <apex:pageBlock >
+                
+            </apex:pageBlock>
+        </apex:form>
+</apex:page>

@@ -1,0 +1,99 @@
+<apex:page showHeader="true" sidebar="true" tabStyle="CreateCaseHome__tab" controller="LA_Authenticated">
+	<head>
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+	<apex:includeScript value="/support/console/28.0/integration.js"/>
+    <script type="text/javascript">
+      
+        //The callback function that closeTab will call once it's got the ID for its tab
+        /*var callCloseTab= function callCloseTab(result) {
+            sforce.console.closeTab(result.id);
+        }
+        
+        function closeTab() {
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+
+        var openSubtab = function openSubtab(result) {
+	        //Now that we have the primary tab ID, we can open a new subtab in it
+	        var primaryTabId = result.id;
+	        
+        };
+
+        var openSubTab2 = function openSubTab2(result1){
+	        var primaryTabId = result.id;
+	        var callid = "{!c.id}";
+
+        	sforce.console.openSubtab(primaryTabId , '/'+callid, true, 
+	            	'Unaunthenticated and Closed', null, openSuccess, 'salesforceSubtab');
+        }
+
+        var launchPage = function(authed) {
+          alert(authed);
+          //First find the ID of the primary tab to put the new subtab in
+          var primaryTabId = sforce.console.getEnclosingPrimaryTabId();
+          
+          var callid = "{!c.id}";
+          
+          alert(primaryTabId);
+
+          if(authed == 'true'){
+	        sforce.console.openSubtab(primaryTabId , '/apex/CreateCasev2?existing=true&Case_ID='+callid, true, 
+	            'New Case', null, openSuccess, 'salesforceSubtab');
+          }
+          else{
+          	sforce.console.openSubtab(primaryTabId , '/'+callid, true, 
+	            'Unaunthenticated and Closed', null, openSuccess, 'salesforceSubtab');
+          }
+        }
+
+        var openSuccess = function openSuccess(result) {
+            //Report whether opening the new tab was successful
+        };
+
+    </script>
+	</head>
+
+	<apex:form >
+		<center>
+			<apex:outputPanel rendered="{! !showError}">
+				<apex:outputPanel id="errorPanel" >    
+					<apex:outputPanel rendered="{!showAuthError != ''}">    
+	                 	<div class="alert alert-error">
+	                     	<div class="center">
+	                         	<p style="color:red;">{!showAuthError}</p>
+	                     	</div>
+	                	</div>
+	            	</apex:outputPanel>
+	            </apex:outputPanel>
+				<apex:pageBlock title="Case Authentication for Live Chat">
+					<apex:outputLabel for="selecty" value="Chat User Authenticated? "/>
+					<apex:selectList value="{!selectedAuth}" multiselect="false" size="1" styleClass="default xl" >
+					    <apex:actionSupport event="onchange" action="{!showUnauthFields}" reRender="UnauthFields"/>
+					    <apex:selectOptions value="{!AuthValues}"/>
+					    <apex:actionStatus startText="updating..." id="parents">
+					        <apex:facet name="start" >
+					            <apex:image url="/img/loading.gif" height="20" width="20" />                     
+					        </apex:facet>
+					    </apex:actionStatus>
+					</apex:selectList>
+					<br/>
+					<apex:outputPanel id="UnauthFields">
+						<apex:outputPanel rendered="{!showUnauths}">
+							<br/>
+							<apex:outputLabel for="comms" value="Close Case Comments: "/>
+							<br/>
+							<apex:inputTextarea rows="10" cols="50" id="comms" value="{!cc.CommentBody}"/>
+						</apex:outputPanel>
+					</apex:outputPanel>
+					<br/>
+					<apex:commandButton action="{!saveAnd}" value="Save and Continue" reRender="errorPanel" />
+				</apex:pageBlock>
+			</apex:outputPanel>
+			<apex:outputPanel rendered="{!showError}">
+				NO CASE FOUND
+			</apex:outputPanel>
+		</center>
+	</apex:form>
+</apex:page>

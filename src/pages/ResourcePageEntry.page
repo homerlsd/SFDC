@@ -1,0 +1,375 @@
+<apex:page controller="ResourcePageEntryController" cache="false" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+<style type="text/css">
+    .waitingSearchDiv{
+        opacity:0.8;
+        background-color:#ccc;
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        z-index:1000;
+    }
+    h2{
+        padding: 0px !important;
+        margin: 0px;
+    }
+    .line_break {
+        width:1000px;
+        height: 5px;
+        float: left;
+        color: black;
+        //padding-top: 3px;
+        background-color: rgba(255,255,255,.5);
+        border: none;
+        border-bottom: 3px solid black;
+    }
+    table.exceptionText td {
+     font-style:italic;
+     font-size:16px;
+     font-weight:bold;
+     text-align:center;
+     color:red;
+    }
+    hr {
+        visibility: visible !important;
+        border: 0;
+        clear:both;
+        display:block !important;
+        width: 96%;                
+        background-color:#000000;
+        height: 1px;
+    }
+</style>
+<head><title>Rally Engage</title>
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+<script type="text/javascript">
+     j$ = jQuery.noConflict();
+
+     j$(function() {
+         // date picker
+         j$( ".dateClass" ).datepicker();
+     });
+
+      function show (toBlock){
+        setDisplay(toBlock, 'block');
+      }
+      function setDisplay (target, str) {
+        document.getElementById(target).style.display = str;
+      }
+
+      function countChar(val,max,field,num) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field+num;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function countChar1(val,max,field) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function bindEvents() {
+          j$( ".dateClass" ).datepicker();
+      }
+
+      j$(document).ready(function(){
+            bindEvents();
+        });
+
+</script>
+</head>
+    <apex:composition template="ImplementationExternalTemplate" >
+        <apex:define name="styles">
+        <style type="text/css">
+        </style>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form id="theForm">
+                <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <div id="desk-leftcol" class="span9">
+                                <div id="desk-support-index" class="no-qna">
+                                    <div id="desk-support-kb-content">
+                                        <div id="desk-kb-index">
+                                            <apex:Messages layout="table" styleClass="exceptionText" />
+                                            <apex:outputPanel id="thePanel">
+                                                <apex:outputPanel rendered="{! !showSuccess}">
+                                                    <h2 style="padding-"><b><apex:outputText value="{!pageTitle}"/></b></h2>
+                                                    <apex:outputText value="{!header}" escape="false"/>
+                                                    <br/>
+                                                    <br/>
+                                                    <!-------------------///////////Resource Page FIELDS/////////------------------------>
+                                                    <apex:repeat var="f" value="{!objFields}">
+                                                        
+                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+                                                          <label><b>{!f.Label}</b>
+                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!IF(f.fieldpath = 'Client_Logo_ID__c',true,false)}">
+                                                          <label><b>{!$Label.RequirementForm_ClientLogoInstructions}</b>
+                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+                                                        </apex:outputPanel>
+
+                                                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                            <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                            <br/>
+                                                            <br/>
+                                                          </apex:outputPanel>
+
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar1(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}')" value="{!resource[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}"></div>
+                                                          </apex:inputfield>
+
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar1(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}')" style="width:550px;" value="{!resource[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}"></div>
+                                                          </apex:inputfield>
+                                                        
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!resource[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                                                          </apex:inputField>
+
+                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!resource[f]}"/>
+
+                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                                                            <apex:inputFile value="{!att.body}" 
+                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                                                          </apex:outputPanel>
+                                                          <br/>
+                                                    </apex:repeat>
+                                                    <!-------------------///////////Resource Page FIELDS END/////////------------------------>
+                                                    <hr/>
+                                                    <!-------------------///////////Resource PROMO FIELDS/////////------------------------>
+                                                    <apex:variable value="{!0}" var="index"/>
+                                                    <apex:repeat value="{!currentPromos}" var="cPromo">
+                                                    <apex:variable var="index" value="{!index+1}"/>
+                                                    <h2><b><apex:outputText value="{!cPromo.pagePromo.Current_Promo_Type__c} Current Promotion" /></b></h2>
+                                                        <apex:repeat var="f" value="{!childFields_current}">
+                                                        
+                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+                                                          <label><b>{!index}. {!f.Label}</b>
+                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!IF(f.fieldpath = 'Client_Logo_ID__c',true,false)}">
+                                                          <label><b>{!$Label.RequirementForm_ClientLogoInstructions}</b>
+                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+                                                        </apex:outputPanel>
+                                                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                            <apex:outputPanel rendered="{!impl.Partner__r.name == 'Optum' || (impl.Partner__r.name != 'Optum' && f.fieldpath != 'Tag_1__c')}">
+                                                            <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel rendered="{!AND(impl.Partner__r.name != 'Optum',f.fieldpath == 'Tag_1__c')}">
+                                                            <apex:outputText value="{!$Label.ResourcePageEntry_NonOptumLabel}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                            </apex:outputPanel>
+                                                            <br/>
+                                                            <br/>
+                                                          </apex:outputPanel>
+
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index}')" value="{!cPromo.pagePromo[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}{!index}"></div>
+                                                          </apex:inputfield>
+
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index}')" style="width:550px;" value="{!cPromo.pagePromo[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}{!index}"></div>
+                                                          </apex:inputfield>
+                                                        
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!cPromo.pagePromo[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                                                          </apex:inputField>
+
+                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!cPromo.pagePromo[f]}"/>
+
+                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                                                            <apex:inputFile value="{!att.body}" 
+                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                                                          </apex:outputPanel>
+                                                          <br/>
+                                                        </apex:repeat>
+                                                        <br/>
+                                                        <b>{!$Label.ROF_ConfigDetails}</b>
+                                                        <br/>
+                                                        {!index}. {!$Label.ROF_ConfigDetails1}
+                                                        <div style="margin: auto; margin-top: 2em;">
+                                                            <c:MultiselectPicklist leftLabel="Available Affiliations"
+                                                            leftOptions="{!cPromo.allAffils}"
+                                                            rightLabel="Selected Affiliations"
+                                                            rightOptions="{!cPromo.selectedAffils}"
+                                                            size="14"
+                                                            width="250px"/>
+                                                        </div>
+                                                        <br/>
+                                                        <br/>
+                                                    </apex:repeat>
+                                                    <hr/>
+                                                    <br/>
+                                                    <br/>
+                                                    <apex:outputPanel id="features">
+                                                    <apex:actionRegion >
+	                                                    <apex:variable value="{!0}" var="index1"/>
+	                                                    <apex:repeat value="{!featuredPromos}" var="fPromo">
+	                                                    <apex:variable var="index1" value="{!index1+1}"/>
+	                                                        <h2><b><apex:outputText value="Featured Promotion {!index1}" /></b></h2><apex:repeat var="f" value="{!childFields_featured}">
+	                                                        
+	                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!index1}. {!f.Label}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath = 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!$Label.RequirementForm_ClientLogoInstructions}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+
+	                                                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                              <apex:outputPanel rendered="{!impl.Partner__r.name == 'Optum' || (impl.Partner__r.name != 'Optum' && f.fieldpath != 'Tag_1__c')}">
+                                                              <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                              </apex:outputPanel>
+                                                              <apex:outputPanel rendered="{!AND(impl.Partner__r.name != 'Optum',f.fieldpath == 'Tag_1__c')}">
+                                                              <apex:outputText value="{!$Label.ResourcePageEntry_NonOptumLabel}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                              </apex:outputPanel>
+                                                              <br/>
+                                                              <br/>
+                                                            </apex:outputPanel>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" value="{!fPromo.pagePromo[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index1}"></div>
+	                                                          </apex:inputfield>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" style="width:550px;" value="{!fPromo.pagePromo[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index1}"></div>
+	                                                          </apex:inputfield>
+	                                                        
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!fPromo.pagePromo[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+	                                                          </apex:inputField>
+
+	                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!fPromo.pagePromo[f]}"/>
+
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+	                                                            <apex:inputFile value="{!att.body}" 
+	                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+	                                                          </apex:outputPanel>
+	                                                          {!fPromo.pagePromo}
+	                                                          <br/>
+	                                                        </apex:repeat>
+	                                                        <br/>
+	                                                        <b>{!$Label.ROF_ConfigDetails}</b>
+	                                                        <br/>
+	                                                        {!index1}. {!$Label.ROF_ConfigDetails1}
+	                                                        <div style="margin: auto; margin-top: 2em;">
+	                                                            <c:MultiselectPicklist leftLabel="Available Affiliations"
+	                                                            leftOptions="{!fPromo.allAffils}"
+	                                                            rightLabel="Selected Affiliations"
+	                                                            rightOptions="{!fPromo.selectedAffils}"
+	                                                            size="14"
+	                                                            width="250px"/>
+	                                                        </div>
+	                                                        <br/>
+	                                                        <br/>
+	                                                    </apex:repeat>
+                                                    
+                                                    <br/>
+
+                                                    <!--<div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+	                                                      <apex:commandButton style="width:150px" onclick="show('el_loading');" value="Add New Featured Promo" >
+	                                                      <apex:actionSupport event="onclick" action="{!addFeaturedPromo}" reRender="theForm" />
+	                                                      </apex:commandButton>
+                                                      <br/>
+                                                    </div>-->
+                                                    </apex:actionRegion>
+	                                                </apex:outputPanel>
+                                                    <hr/>
+                                                    <h2><b><apex:outputText value="Promotion Categories" /></b></h2>
+                                                    <apex:outputPanel id="cats">
+	                                                    <apex:variable value="{!0}" var="index2"/>
+	                                                    <apex:repeat value="{!categories}" var="cat">
+	                                                    <apex:variable var="index2" value="{!index2+1}"/>
+	                                                        <apex:repeat var="f" value="{!categoryFields}">
+	                                                        
+	                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!index2}. {!f.Label}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath = 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!$Label.RequirementForm_ClientLogoInstructions}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+
+	                                                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+	                                                            <apex:outputText rendered="{!f.fieldpath != 'Link_Title_and_URL__c'}" value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                              <apex:outputText rendered="{!f.fieldpath = 'Link_Title_and_URL__c'}" value="{!descriptionMap[f.fieldpath]}" escape="true" style="padding-top:1em;margin-bottom:2em;"/>
+	                                                            <br/>
+	                                                            <br/>
+	                                                          </apex:outputPanel>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index2}')" value="{!cat[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index2}"></div>
+	                                                          </apex:inputfield>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index2}')" style="width:550px;" value="{!cat[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index2}"></div>
+	                                                          </apex:inputfield>
+	                                                        
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!cat[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+	                                                          </apex:inputField>
+
+	                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!cat[f]}"/>
+
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+	                                                            <apex:inputFile value="{!att.body}" 
+	                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+	                                                          </apex:outputPanel>
+	                                                          <br/>
+	                                                        </apex:repeat>
+	                                                    </apex:repeat>
+	                                                </apex:outputPanel>
+                                                        
+                                                    <div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                                                      <apex:commandButton style="width:100px" onclick="show('el_loading');" action="{!submitResults}" status="actStatusId" value="Submit" >
+                                                      </apex:commandButton>
+                                                      <br/>
+                                                    </div>
+                                                   
+                                                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;display:none;">
+                                                        <div class="waitingHolder" style="top: 74.2px; width: 91px;margin:0 auto;   ">
+                                                            <img class="waitingImage" src="/img/loading.gif"     title="Please Wait..." />
+                                                            <span class="waitingDescription">Saving...</span>
+                                                         </div>
+                                                    </div>
+                                                     
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!showSuccess}">
+                                                    <apex:outputText style="text-align: center; font-weight: bold;" escape="false" value="{!$Label.RequirementForm_successmessage}"/>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </apex:form>
+        </apex:define>
+    </apex:composition> 
+</apex:page>

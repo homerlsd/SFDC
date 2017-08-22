@@ -1,0 +1,475 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" docType="html-5.0" applyHTMLTag="false">
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Rally Support Live Chat Connection Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+        <!-- <link href="{!URLFOR($Resource.RLC_Bootstrap, 'rlc custom bootstrap3/css/bootstrap.css')}" rel="stylesheet"/> -->
+        <!-- CSS -->
+        <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap.css')}" rel="stylesheet"/>
+        <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap-theme.css')}" rel="stylesheet"/>
+        
+        <!-- JS -->
+        <apex:includeScript value="{!URLFOR($Resource.RLC_Bootstrap, 'js/bootstrap.js')}"/>
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+     
+     
+        <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/deployment.js"></script>
+     
+        <style type="text/css">
+        
+  
+  
+    html {
+        width: 100%;        
+        min-width:320px;
+        height: 100%;   
+    }
+       
+    body {  
+        overflow-y: auto;  
+        overflow-x: hidden;
+        
+        width: 100%; 
+        height: 100%;
+        min-width:320px;
+
+        background-color: #ffffff;
+        color: #4d4d4d;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight:300;
+        font-size: 14pt; 
+        line-height:22pt;  
+
+        margin-left: auto; 
+        margin-right: auto;        
+        margin-top: auto; 
+        margin-bottom: auto; 
+
+        padding-top: auto;     
+        padding-bottom: 100px; 
+        padding-left: auto; 
+        padding-right: auto;                 
+                        
+               
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    
+
+    .rallyChat_Header{    
+    
+        display: block;        
+        position: fixed;
+        
+        top: 0px;
+        left: 0px;
+        right: 0px;    
+       
+        height:80px;
+        min-height: 80px;
+        max-height: 80px;
+        width: 100%;
+        min-width:320px;            
+    
+        background-color: #f26c32;
+        border: 1px solid #f26c32;
+
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        
+        padding-top: 10px;      
+        padding-bottom: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+        
+        white-space: normal;
+        text-align: left; 
+        
+        z-index: 1;                     
+    }
+
+
+    
+    #header_chatIcon{ 
+            
+        margin-left: 20px;
+        margin-right: auto;      
+        margin-top: 20px; 
+        margin-bottom: 20px;
+        
+        z-index: 2;
+    }
+
+
+    /*   font-size:24pt; */
+    .rallyChat_HeaderTitle{ 
+    
+        margin-left: 5px; 
+        margin-right: auto;       
+        margin-top: 20px;
+        margin-bottom: 20px;
+       
+        color:#ffffff;
+        font-family: "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+        font-size: 24pt;
+        font-size: 6vmin;
+        font-weight:300;    
+
+        white-space: normal;
+        text-align: left; 
+          
+        z-index: 2;  
+    }
+  
+
+    #rc_endChatButton{       
+        margin-left: auto;
+        margin-right: 10px;       
+        margin-top: 20px;
+        margin-bottom: auto;
+        
+        z-index: 2;     
+    }        
+
+        
+        
+        
+  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */       
+  
+  
+            .prechatBlock{
+            
+                display: block;        
+                position: fixed;
+                
+                top: 81px;
+                left: 0px;
+                right: 0px;
+                bottom:0px;                  
+          
+              
+                height: 100%;
+                  
+                width: 100%;                 
+                min-width:320px;
+                                
+
+                background-color: transparent;
+
+                
+                margin-left: 0px;
+                margin-right: 0px;       
+                margin-top: 0px;
+                margin-bottom: 0px;
+        
+                padding-top: 0px;     
+                padding-bottom: 20px;
+                padding-left: 0px;
+                padding-right: 0px;                 
+                
+            }
+  
+  
+            .rc_ChatContainer{
+            
+                overflow-y: auto;  
+                overflow-x: hidden;
+                
+                height: 100%;
+                  
+                width: 100%;                 
+                min-width:320px;                
+                
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-weight:300;
+                
+                color: #4d4d4d;
+                font-size: 14pt;  
+                
+                margin-left: 0px;
+                margin-right: 0px;       
+                margin-top: 0px;
+                margin-bottom: 90px;
+        
+                padding-top: 10px;     
+                padding-bottom: 90px;
+                padding-left: 10px;
+                padding-right: 10px;                   
+            }
+            
+            .rc_ChatCenter{
+
+                height: 100%;
+                  
+                width: 100%;                 
+                min-width:320px;                
+                
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-weight:300;
+                
+                color: #4d4d4d;
+                font-size: 14pt;  
+                
+                margin-left: auto;
+                margin-right: auto;      
+                margin-top: auto;
+                margin-bottom: auto;
+        
+                padding-top: 20%;     
+                padding-bottom: auto;
+                padding-left: auto; 
+                padding-right: auto;                   
+            }            
+            
+            .rc_title{
+            
+                color:#4d4d4d;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 16pt;
+                font-weight:300;
+                white-space: normal;
+                text-align: left; 
+                
+                margin-top: 30px;
+                margin-bottom: 20px;
+                margin-left: 0px;
+                margin-right: 0px;
+                
+                padding-top: auto;      
+                padding-bottom: auto;
+                padding-left: auto;
+                padding-right: auto;           
+            }            
+            
+            
+   
+           #rc_cancelChatButton{
+            
+                height:40px;
+                width:auto;
+                
+                background: #e5e5e5;
+                background-image: -webkit-linear-gradient(top, #e5e5e5, #e5e5e5);
+                background-image: -moz-linear-gradient(top, #e5e5e5, #e5e5e5);
+                background-image: -ms-linear-gradient(top, #e5e5e5, #e5e5e5);
+                background-image: -o-linear-gradient(top, #e5e5e5, #e5e5e5);
+                background-image: linear-gradient(to bottom, #e5e5e5, #e5e5e5);
+            
+                border: solid #cccccc 1px;
+                -webkit-border-radius: 3;
+                -moz-border-radius: 3;
+                border-radius: 3px;
+            
+            
+                font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+                color: #4d4d4d;
+                font-size: 14pt;
+                font-weight: bold;
+                text-decoration: none;
+            
+                opacity: 1.0;
+                
+                padding-top: 10px;
+                padding-bottom: 40px;
+                padding-left: auto;
+                padding-right: auto;   
+                                 
+                margin-left: 25px;
+                margin-right: auto;    
+                margin-top: 30px;
+                margin-bottom: 30px; 
+                           
+            }
+            
+            button:focus.rallyChat-grey{
+                border: solid #cccccc 1px;
+                -webkit-border-radius: 3;
+                -moz-border-radius: 3;
+                border-radius: 3px;                         
+            }   
+            
+            
+           
+            
+            
+            
+            
+            
+        </style>
+    </head>
+    
+    <body>
+    
+        <script type='text/javascript'>
+            (function(){
+                function handlePageLoad(){
+                    var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+                    document.getElementById('prechatForm').setAttribute('action',
+                    decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
+                }
+                if (window.addEventListener){
+                    window.addEventListener('load', handlePageLoad, false);
+                }else{ 
+                    window.attachEvent('onload', handlePageLoad, false);
+                }
+   
+                setWinDim();   
+   
+            })();
+            
+
+
+        </script>
+
+    
+        <!-- Banner -->
+            <div id="headerContainer" class="rallyChat_Header"> 
+                
+                    <apex:image url="{!URLFOR($Resource.HeaderIcon_60x60px)}" width="60" height="60" id="header_chatIcon"/> 
+                
+                
+                    <span id="header_title" class="rallyChat_HeaderTitle">Rally Support Live Chat</span>      
+                  
+            </div>
+ 
+ <liveAgent:clientchat id="liveAgent_clientchat"> 
+
+        <!-- Content -->        
+        <div class="container-fluid prechatBlock">    
+        
+            <div class="container center-block rc_ChatContainer"> 
+               <div class="rc_ChatCenter">
+                   <div class="center-block text-center">
+                      <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100" id="rc_alertBubbleIcon"/>  
+                   </div> 
+                    <br/>                   
+                   <div class="center-block text-center">
+                        <span class="rc_title text-center">
+                         We're sorry we can't chat now. We are available to chat from <b>7am MT - 7pm MT</b>
+                        </span>
+                    </div>
+                    <br/>
+                    <div class="center-block text-center">
+                        <liveAgent:clientChatCancelButton id="rc_cancelChatButton"  label="Cancel"  />
+                    </div>                
+                </div>
+            </div>         
+        </div> <!-- Page Container -->   
+    
+        <div style="display:none">
+            <liveAgent:clientChatAlertMessage > </liveAgent:clientChatAlertMessage>
+            <liveAgent:clientChatStatusMessage > </liveAgent:clientChatStatusMessage>    
+            <liveAgent:clientChatLog ></liveAgent:clientChatLog>
+            <liveAgent:clientChatInput > </liveAgent:clientChatInput>
+        </div>
+</liveAgent:clientchat>     
+            
+            
+        <!-- Set the visitor's name for the agent in the Console to first and last name provided by the customer -->
+        <script type="text/javascript">
+        
+        
+        
+
+            function setName() {
+                document.getElementById("prechat_field_name").value = document.getElementById("firstName").value;
+                document.getElementById("prechat_topic").value = document.getElementById("topic").value;
+            }
+        
+
+            
+                   
+            function checkCompleted(){
+                var missingInfo = '';
+                $("#beginChatButton").prop( "disabled", true );
+                var checkComp = 'true';
+                
+                  if( $("#firstName").val().length == 0 || $("#firstName").val() == "First name"){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " firstName ,";
+                  }
+                  if( $("#lastName").val().length == 0 || $("#lastName").val() == "Last name"){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " lastName ,";
+                  }
+                  if( $("#rallyUsername").val().length == 0 || $("#rallyUsername").val() == "Rally Username"){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " rallyUsername ,";
+                  } 
+                  
+                  if( $("#dateOfBirth").val().length == 0 || $("#dateOfBirth").val() == "Date of birth"){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " dateOfBirth ,";
+                  }
+                  
+                  if( $("#email").val().length == 0 || $("#email").val() == "Email"){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " email ,";
+                  }
+                  if($("#assistanceRequestedResponse").val() == "Briefly describe the issue or problem you are experiencing."){
+                      checkComp = 'false';
+                      missingInfo = missingInfo + ' ' + " assistanceRequestedResponse ,";
+                  }
+            
+                if(checkComp == 'true'){
+                    $("#beginChatButton").prop( "disabled", false );
+                }
+            }       
+     
+     
+
+                        
+            
+            function setWinDim(){    
+  
+            
+                var totHg = document.body.clientHeight;
+                var totWh = document.body.clientWidth;
+                //excluding scrollbars
+                var innerHg = window.innerHeight;
+                var innerWh = window.innerWidth;
+                
+                var defHg = 1200;
+                var defWh = 800;
+                
+                if(totHg > defHg ){
+                    defHg = totHg -1;
+                    if(innerHg > defHg ){
+                       defHg =innerHg -1;
+                    }           
+                }
+                if(totHg > defWh ){
+                    defWh = totWh -1;
+                    if(innerWh > defWh ){
+                      defWh = innerWh -1;
+                    }           
+                }
+                
+                window.resizeTo(defWh,defHg);
+            }    
+            
+            
+        checkCompleted();
+        
+        </script>  
+    
+    
+    
+    
+    </body>    
+</html>    
+</apex:page>

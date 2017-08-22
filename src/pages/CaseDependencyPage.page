@@ -1,0 +1,61 @@
+<apex:page standardController="Case" extensions="CaseDependencyComponentController" >
+    <apex:form >
+    <apex:includeScript value="/support/console/33.0/integration.js"/>
+       <script type="text/javascript">
+
+        function RefreshPrimaryTabById() {
+            sforce.console.getFocusedPrimaryTabId(showTabId);
+        }
+        
+        var showTabId = function showTabId(result) 
+        {
+            var tabId = result.id;
+            sforce.console.refreshPrimaryTabById(tabId , true, refreshSuccess);
+        };
+
+        var refreshSuccess = function refreshSuccess(result) 
+        {
+            //Report whether refreshing the primary tab was successful
+            if (result.success == true) 
+            {
+                alert('Save Successful!');
+            } 
+            else 
+            {
+                alert('Save Unsuccessful');
+            }
+        };
+      </script>
+        <apex:pageBlock mode="detail" id="pageBlock">
+            <!-- Output error/warning messages here -->
+            <apex:pageMessages />
+            <!-- Only show table if there are records returned -->
+            <apex:pageBlockSection columns="1">
+                <apex:SelectList size="1" id="dependentList1" value="{!c.Step_1__c}" >
+                    <apex:SelectOptions value="{!step1options}"/>
+                    <apex:actionSupport event="onchange" action="{!setSelectedStep1}" rerender="pageBlock"/>
+                </apex:SelectList>
+                <apex:SelectList disabled="{!requiredStep < 2 || disableStep2 == true}" size="1" id="dependentList2" value="{!c.Step_2__c}" >
+                    <apex:SelectOptions value="{!step2options}"/>
+                    <apex:actionSupport event="onchange" action="{!setSelectedStep2}" rerender="pageBlock"/>
+                </apex:SelectList>
+                <apex:SelectList disabled="{!requiredStep < 3 || disableStep3 == true}" size="1" id="dependentList3" value="{!c.Step_3__c}" >
+                    <apex:SelectOptions value="{!step3options}"/>
+                    <apex:actionSupport event="onchange" action="{!setSelectedStep3}" rerender="pageBlock"/>
+                </apex:SelectList>
+                <apex:SelectList disabled="{!requiredStep < 4 || disableStep4 == true}" size="1" id="dependentList4" value="{!c.Step_4__c}" >
+                    <apex:SelectOptions value="{!step4options}"/>
+                    <apex:actionSupport event="onchange" action="{!setSelectedStep4}" rerender="pageBlock"/>
+                </apex:SelectList>
+                <apex:SelectList disabled="{!requiredStep < 5 || disableStep5 == true}" size="1" id="dependentList5" value="{!c.Step_5__c}" >
+                    <apex:SelectOptions value="{!step5options}"/>
+                    <apex:actionSupport event="onchange" action="{!setSelectedStep5}" rerender="pageBlock"/>
+                </apex:SelectList>
+                <apex:SelectList disabled="{!requiredStep < 6 || disableStep6 == true}" size="1" id="dependentList6" value="{!c.Step_6__c}" >
+                    <apex:SelectOptions value="{!step6options}"/>
+                </apex:SelectList>
+            </apex:pageBlockSection>
+            <center><apex:commandlink styleClass="btn" oncomplete="RefreshPrimaryTabById();" rerender="pageBlock" action="{!saveCase}" value="Save"/></center>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

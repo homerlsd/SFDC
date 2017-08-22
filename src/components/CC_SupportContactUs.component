@@ -1,0 +1,6 @@
+<apex:component controller="CC_SupportHeaderController">
+	<h2>Contact Us</h2>
+    <ul>
+    	<li><a href="{!$Site.BaseUrl}/case/{!DataCategoryGroupName}" class="email-us">Contact Us</a></li>
+    </ul>
+</apex:component>

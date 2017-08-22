@@ -1,0 +1,91 @@
+<apex:page controller="CC_KnowledgeSearchController" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+ <head><title>Rally Support | {!DataCategoryName}</title></head>
+ <apex:composition template="{!$Site.Template}" >
+       <apex:define name="body">
+           <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                       <apex:form >
+                            <!--left col -->
+                            <div id="desk-leftcol" class="span12">
+                                <!-- Breadcrumb -->
+                                <ul class="breadcrumb" id="breadcrumbs">
+                                        <li class="crumb"><apex:commandLink value="Home" action="{!NavigatesToHome}" > </apex:commandLink><span class="divider">/</span></li>
+                                        <li class="crumb"> <apex:outputText value="{!DataCategoryName}" rendered="{!DataCategoryName != null}"> </apex:outputText>
+                                            <span class="divider">/</span>
+                                        </li>
+                                </ul>
+                
+                               <!--Search Results-->
+                               <div id="support-topic-page">
+                                    <!--Header -->
+                                    <div class="support-head row-fluid">
+                                        <h2><apex:outputText value="{!DataCategoryName}" rendered="{!DataCategoryName != null}"> </apex:outputText></h2>
+                                    </div>
+                                    <!--Body-->
+                                    <apex:outputPanel id="resultsPanel">
+                                    <div class="support-topic-body">
+                                        <apex:repeat value="{!ListOfKnowledge}" var="k">
+                                             <div class="desk-snippit-article row-fluid">
+                                                 <div class="span12">
+                                                    <h3>
+                                                        <apex:commandLink value="{!k.kv.Title}" action="{!NavigatesToDetail}"> 
+                                                                       <apex:param name="KnowledgeId" value="{!k.kv.Id}" assignTo="{!TargetKnowledgeId}"/>
+                                                        </apex:commandLink>
+                                                  
+                                                         <small class="meta muted">{!k.PublishedDate}</small>
+                                                    </h3>
+                                                    <p>{!k.ShortSummary}</p>
+                                                 </div>
+                                             </div>
+                                        </apex:repeat>
+                                        <!-- pagenation -->
+                                        <div id="pagination">
+                                                <div id="paginate_block">
+                                                <br/>
+                                                    <div id="results_string"></div>
+                                                <br/>
+                                                <div class="pagination">
+                                                <span class="previous_page">
+                                                        <apex:commandLink value="<<" action="{!PrevSet}" rerender="resultsPanel" rendered="{!hasPrevSet==true}"></apex:commandLink>
+                                                        <apex:outputText value="<<" rendered="{!hasPrevSet==false}"></apex:outputText>
+                                                </span>
+                                                <apex:repeat value="{!PageNum}" var="p">
+                                                    <!--Selected-->
+                                                    <apex:outputPanel rendered="{!SpecifiedPageNumber==p}">
+                                                    <em class="current">
+                                                            <apex:commandLink value="{!p}" action="{!GoToPage}" rerender="resultsPanel">
+                                                                <apex:param name="param" assignTo="{!SpecifiedPageNumber}" value="{!p}" />
+                                                            </apex:commandLink>
+                                                    </em>
+                                                    </apex:outputPanel>
+                                                    <!--Not Selected-->
+                                                    <apex:outputPanel rendered="{!SpecifiedPageNumber!=p}">
+                                                                        <apex:commandLink value="{!p}" action="{!GoToPage}" rerender="resultsPanel">
+                                                                            <apex:param name="param" assignTo="{!SpecifiedPageNumber}" value="{!p}" />
+                                                                        </apex:commandLink>
+                                                    </apex:outputPanel>
+                                                </apex:repeat>
+                                                <span class="next_page">
+                                                        <apex:commandLink value=">>" rendered="{!hasNextSet==true}" action="{!NextSet}" rerender="resultsPanel"></apex:commandLink>
+                                                        <apex:outputText value=">>" rendered="{!hasNextSet==false}"></apex:outputText>
+                                                </span>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    </apex:outputPanel>
+                                </div>
+                            </div>
+                            <!-- Sidebar -->
+                            <!--<div class="span2" id="desk-rightcol" >
+                             <c:CC_SupportContactUs />
+                            
+                            </div>-->
+                       </apex:form>
+                    </div>
+               </div>
+           </div>
+       </apex:define>
+     </apex:composition>
+</apex:page>

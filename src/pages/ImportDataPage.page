@@ -1,0 +1,39 @@
+<apex:page controller="ImportDataFromCSV">
+ <apex:form >
+
+        <apex:pagemessages />
+        
+        <apex:outputPanel rendered="{!objbln}" id="objselidid">
+          <apex:pageBlock title="Step 1:">
+          <b><apex:outputLabel value="Upload the list of {!affMapping.Affiliation_Logic_Source__c}s:"/></b>
+              <apex:pageBlockSection columns="4"> 
+                    <apex:inputFile value="{!csvFileBody}"  filename="{!csvAsString}"/>
+                    <apex:commandButton styleClass="btn newButton" value="Import File" action="{!importCSVFile}"/>
+              </apex:pageBlockSection>
+          </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!resultbln}" id="resultid">
+        <apex:pageBlock title="Step 2:">
+           
+              <b>Upload Successful!</b>
+              <br/>
+              Indentifier Type:<apex:outputField value="{!affMapping.Affiliation_Logic_Source__c}" /><br/>
+              Identifiers: 
+              <br/>
+              <apex:outputField value="{!affMapping.Identifier_Values__c}" /><br/>
+              
+              <apex:pageBlockButtons location="both">
+                <apex:commandLink styleClass="btn btn newButton" value="Return to Implementation" action="{!gotoRecord}">
+                  <apex:param value="{!affMapping.Client_Affiliation__r.Implementation__c}" name="g"/>
+                </apex:commandLink>
+                <apex:commandLink styleClass="btn btn newButton" value="Return to Affiliation" action="{!gotoRecord}">
+                  <apex:param value="{!affMapping.Client_Affiliation__c}" name="g"/>
+                </apex:commandLink>
+              </apex:pageBlockButtons>
+
+     </apex:pageBlock>
+     </apex:outputPanel>
+
+   </apex:form>
+</apex:page>

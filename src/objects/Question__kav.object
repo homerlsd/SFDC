@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleTypeChannelDisplay>
+        <articleTypeTemplates>
+            <channel>App</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Prm</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Csp</channel>
+            <template>Tab</template>
+        </articleTypeTemplates>
+        <articleTypeTemplates>
+            <channel>Pkb</channel>
+            <template>Toc</template>
+        </articleTypeTemplates>
+    </articleTypeChannelDisplay>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>For Rally Support Customer Community</description>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <fields>
+        <fullName>Alex_Update__c</fullName>
+        <externalId>false</externalId>
+        <label>Alex Update</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Assess Your Health</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Biometric Screening and Onsite Events</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Coaching</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact Us</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Earn Rewards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Earn Rewards - Coins and Sweepstakes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Financial Well-being Tool</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>General</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Survey</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Well-being Rewards Eligibility</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Healthy Actions - Complete a Preventative Cancer Screen</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HWB Rewards - General</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>My Information</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Coins and Auctions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Coins and Donations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Mobile App</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rewards Eligibility</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Take Action</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tracking Earnings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>WB Rewards – General</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Well-being Rewards Eligibility</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wellness Funds For Your Medical Reimbursement Account (MRA)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Channel__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Channel</label>
+        <referenceTo>Sales_Channel__c</referenceTo>
+        <relationshipLabel>Frequent Asked Questions</relationshipLabel>
+        <relationshipName>Questions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Custom_Link_Text__c</fullName>
+        <description>Text to display over any custom/client specific URL pertinent to this article.  Text will display the same for all Articles, however the URL will be client specific.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Text to display over any custom/client specific URL pertinent to this article.  Text will display the same for all Articles, however the URL will be client specific.</inlineHelpText>
+        <label>Custom Link Text</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Name</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Columbia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DPSG Non-Union</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DPSG Non-Union Spouses</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DPSG no rewards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DPSG Union</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Easy Movers 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Easy Movers 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Erie Default</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Erie Prem Employee Gift</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Erie Prem Opt Out</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Erie Prem Spouse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Alliance Base</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Alliance Medicare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Alliance Premium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mercer Base</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nextera Base</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nextera HRA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nextera HSA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern Default</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern Employee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern Employee 1-Child</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern Employee Family</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern Employee Spouse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Norfolk Southern EmployeeSpouseFamily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum-360 HIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum-360 HSA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum-360 No Rewards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum Test Users</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum Test Users B</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ProductionTest</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Basic Support</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Employees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally-Test-User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simply Engaged NONUNET</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simply Engaged Plus NONUNET</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simply Engaged Plus UNET</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simply Engaged UNET</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target Non UHC HRA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target No Rewards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target No UHC e-Gift</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target No UHC-HRA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target No UHC-HSA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target UHC Child eHRA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target UHC Child HRA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target UHC Child HSA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHG All</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHG HIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHG HSA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC HIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC Major Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC OIP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC Self-Funded</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBSSC National Alliance FL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Small Business No Rewards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Small Business Prime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Small Business Non Prime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Small Business Non Prime Heritage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Small Business Non Prime Sierra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Plus Small Business Prime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Plus Small Biz Non Prime</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Plus Small Biz Non Prime Heritage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SE Plus Small Biz Non Prime Sierra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_Rally_Support__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(INCLUDES(Group_Name__c, &quot;Rally_Support&quot;), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>If Rally Support</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Common_Question__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Common Question</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Default_Question__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Default Question</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Keywords__c</fullName>
+        <externalId>false</externalId>
+        <label>Keywords</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Publish_Date_Future__c</fullName>
+        <description>If the article is scheduled for Publication, this field holds that value until the Article is published.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the article is scheduled for Publication, this field holds that value until the Article is published.</inlineHelpText>
+        <label>Publish Date (Future)</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RichTextSummary__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>120000</length>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Specific_Group_Client__c</fullName>
+        <description>The Group Name of the group/client this article applies to specifically.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Group Name of the group/client this article applies to specifically.</inlineHelpText>
+        <label>Specific Group/Client</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Question</label>
+    <pluralLabel>Questions</pluralLabel>
+</CustomObject>

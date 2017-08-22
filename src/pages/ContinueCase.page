@@ -1,0 +1,49 @@
+<apex:page showHeader="false" sidebar="false" extensions="ContinueCaseController" standardController="Case">
+
+   <apex:includeScript value="/support/console/28.0/integration.js"/>
+   <script type="text/javascript">
+      
+        //The callback function that closeTab will call once it's got the ID for its tab
+        var callCloseTab= function callCloseTab(result) {
+            sforce.console.closeTab(result.id);
+        }
+        
+        function closeTab() {
+            sforce.console.getEnclosingTabId(callCloseTab);
+        }
+
+        var openSubtab = function openSubtab(result) {
+          //Now that we have the primary tab ID, we can open a new subtab in it
+          var primaryTabId = result.id;
+          sforce.console.openSubtab(primaryTabId , '/apex/LA_Authenticated?id='+callid, true, 
+            'New Authentication', null, openSuccess, 'salesforceSubtab');
+          closeTab();
+        };
+
+        function openUpSubtab() {
+          //First find the ID of the primary tab to put the new subtab in
+          sforce.console.getEnclosingPrimaryTabId(openSubtab);
+        }
+
+        // window.onload = function(){
+        var callid = "{!case.id}";
+        var origin = "{!$CurrentPage.parameters.origin}";
+
+        if(origin == 'Chat'){
+          openUpSubtab();
+        }
+        else{
+          //Open a new primary tab with the salesforce.com home page in it
+          sforce.console.openPrimaryTab(null, '/apex/CreateCasev2?existing=true&Case_ID='+callid, true, 
+              'New Case', openSuccess, 'salesforceTab');
+          closeTab();
+        }
+         
+        
+        var openSuccess = function openSuccess(result) {
+            //Report whether opening the new tab was successful
+        };
+
+  </script>
+
+</apex:page>

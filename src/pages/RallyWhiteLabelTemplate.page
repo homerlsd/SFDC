@@ -1,0 +1,56 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+<html lang="en"> 
+  <head>
+
+    <link rel="icon" sizes="152x152" href="{!URLFOR($Resource.CC_SupportAssets, 'image/rallyfavicon.ico')}" />
+    <title>Rally Support | Community</title>
+   
+    <!--main css-
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'css/supportmain.css')}"/>
+   
+    <!--bootstrap css--
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'lib/bootstrap/css/bootstrap.grid.min.css')}"/>
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'lib/font-awesome/css/font-awesome.css')}"/>
+    
+    <!--desk css--
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'css/v5.1.css')}"/>
+    -->
+    
+  </head>
+  <style type="text/css">
+  label{
+    display: inline !important;
+    font-size: 12px !important;
+  }
+  .qListClass{
+    font-size: 16px !important;
+  }
+  .headerClass{
+    font-size: 24px !important;
+  }
+  .rowFormat{
+    margin-top: .25em;
+  }
+  </style>
+  <body>
+    <div class="wrapper">
+    <div class="content">
+    
+    <apex:insert name="header">
+      <img src="{!$Resource.Rallywhite}" Hspace="100" Vspace="10"/>
+      <div style="width:100%; height:1px; background:#eee;"></div>
+    </apex:insert>
+
+    <!--body-->
+    <div id="content">
+      <apex:insert name="body">
+       </apex:insert>
+    </div>
+    </div>
+    </div>
+    
+    
+  </body>
+</html>
+</apex:page>

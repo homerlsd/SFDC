@@ -1,0 +1,4 @@
+<apex:page standardController="Milestone1_Project__c" extensions="DeepCloneCtrl" action="{!deepClone}">
+    <apex:messages />
+    <p>Cloning...............</p>
+</apex:page>

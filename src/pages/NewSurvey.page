@@ -1,0 +1,313 @@
+<apex:page standardcontroller="Survey__c" extensions="NewSurvey" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript">
+           var j$ = jQuery.noConflict();
+           var count = 0;
+           var surveyName = '{!surveyName}';
+
+          function update_value(chk_bx){
+            if(surveyName == 'Rally Donations'){
+              if(chk_bx.checked == true){
+                count++;
+                if(count > 4){
+                  alert('You cannot select more than 4 choices!');
+                  chk_bx.checked = false;
+                  count--;
+                }
+              }
+              else{
+                count--;
+              }
+            }
+          }
+        </script>
+        <style type="text/css">
+          .radioinput input[type="radio"]{float:left; margin: 0px;}
+          .radioinput tr td{width: 55px;}
+          .txtinput input{margin-left: 2px:}
+          .radioinput label{display:block; margin-left: 10px;}
+          .radioinput_effort input[type="radio"]{float:left; margin: 0px;}
+          .radioinput_effort tr td{width: 200px;}
+          .radioinput_effort label{display:block; margin-left: 15px;margin-top: .5em;}
+          .radioinput_row label{display: block; border: 2px solid #A3AFB7;}
+
+          .uhcButton{
+            width: 166.86px !important;
+            height: 42px !important;
+            background-color: #196ECF !important;
+            border: 1px solid #196ECF !important;
+            font-family: Arial, Helvetica, sans-serif;
+            color:#FFFFFF;
+            font-size: 14px;
+            text-align: center;
+          }
+          .invisionfontsize{
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            }
+            .headerClass{
+                width: 455px;
+                height: 43px;
+                font-family: "Helvetica Neue";
+                font-size: 36px;
+                font-weight: 300;
+                text-align: center;
+                line-height: 43px;
+                color: #262626;
+            }
+            .headerContent{
+                padding-top: 51.37px !important;
+                padding-bottom: 42.2px !important;
+
+            }
+           .qListClass{
+                width: 840px;
+                min-height: 22px;
+                height: auto;
+                font-family: "Helvetica Neue";
+                font-size: 18px;
+                line-height: 21px;
+                color: #2D2D39;
+                margin: 0 auto !important;
+                padding: 0px !important;
+           }
+           .qHeaderClass{
+                width: 840px;
+                min-height: 42px;
+                height: auto;
+                font-family: "Helvetica Neue";
+                font-size: 18px;
+                line-height: 21px;
+                color: #2D2D39;
+                margin: 0 auto !important;
+                padding: 0px !important;
+                padding-bottom: 5px;
+           }
+           .qRadioClass{
+                font-family: "Helvetica Neue";
+                font-size: 16px;
+                color: #2D2D39;
+                line-height: 12px;
+                width: 860px !important;
+                padding: 0px !important;
+                margin: 0 auto !important;
+                margin-top: 0px;
+           }
+           .questionAligner{
+                align-items: left;
+           }
+        </style>
+       <head><title>Rally Support | Community</title></head>
+       <apex:composition template="{!templateName}" >
+         <apex:define name="styles">
+         <style type="text/css">
+           label{
+            display: inline;
+           }
+         </style>
+       </apex:define>
+         <apex:define name="body">
+             <div id="desk-content">
+                  <div class="container">
+                      <div class="row-fluid">
+                          <div id="desk-leftcol" class="{!IF(isUHC==true,'span12','span9')}">
+                              <div id="desk-support-index" class="no-qna">                                      
+                                                
+                                                <apex:outputPanel id="thePanel" styleclass="{!IF(isUHC==true,'invisionfontsize','')}" >
+                                                  <center>
+                                                  <apex:outputpanel id="errorform" rendered="{!OR(showAlreadyTakenError,showRequiredError,showBadURLError)}">
+                                                    <h3 style="color:red; margin: auto; margin-bottom:1.5em;">
+                                                      <apex:outputPanel id="pageTopMsg">
+                                                        <apex:pageMessage severity="info" summary="{!$Label.NewSurveyPage_RequiredFIeld}" rendered="{!showRequiredError}" escape="false"/>
+                                                        <apex:pageMessage severity="info" summary="{!$Label.NewSurveyPage_ALreadyTakenSurvey}" rendered="{!showAlreadyTakenError}" escape="false"/>
+                                                         <apex:pageMessage severity="info" summary="{!$Label.NewSurveyPage_BadUrlError}" rendered="{!showBadURLError}" escape="false"/>
+                                                      </apex:outputPanel>
+                                                    </h3>
+                                                  </apex:outputpanel>
+                                                  </center>
+                                                  <apex:form rendered="{! !thankYouRendered && !showBadURLError}" >
+                                                      <div id="qList" >
+                                                          <apex:outputPanel rendered="{!isUHC}">
+                                                              <div class="headerContent">
+                                                                  <apex:outputPanel styleClass="headerClass" rendered="{!isUHC}">
+                                                                    <center>
+                                                                        {!$Label.NewSurvey_UHCHeader}
+                                                                    </center>
+                                                                  </apex:outputPanel>
+                                                              </div>
+                                                          </apex:outputPanel>
+                                                          <apex:repeat value="{!allQuestions}" var="qPreview" id="aQPreview">
+                                                  
+                                                          <div class="questionAligner" id="{!qPreview.id}">
+                                                                <div id="headerQ1">
+                                                                    <apex:outputPanel rendered="{!isUHC}">
+                                                                        <apex:outputPanel rendered="{!qPreview.header != null && qPreview.header != ''}">
+                                                                            <div class="qHeaderClass">
+                                                                                <apex:outputText escape="false" value="{!qPreview.header}"/>
+                                                                            </div>
+                                                                            <br/>
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <div class="qListClass" >
+                                                                              <apex:outputText escape="false" value="{!qPreview.question}" />
+                                                                              <apex:outputPanel rendered="{! !qPreview.required}" style="font-style:italic;">
+                                                                                  ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                                              </apex:outputPanel>
+                                                                        </div>
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputPanel rendered="{! !isUHC}">
+                                                                        <apex:outputPanel rendered="{!qPreview.header != null && qPreview.header != ''}">
+                                                                            <div class="qListClass">
+                                                                                <apex:outputText escape="false" value="{!qPreview.header}"/>
+                                                                            </div>
+                                                                        </apex:outputPanel>
+                                                                          <h3 class="{!IF(isUHC==true,'qListClass','')}" >
+                                                                              <apex:outputText escape="false" value="{!qPreview.question}" />
+                                                                              <apex:outputPanel rendered="{!qPreview.required && !isUHC}" styleClass="requiredText" style="color:red;">
+                                                                                  ({!$Label.LABS_SF_Required})
+                                                                              </apex:outputPanel>
+                                                                              <apex:outputPanel rendered="{! !qPreview.required}" style="font-style:italic;font-weight: bold">
+                                                                                  ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                                              </apex:outputPanel>
+                                                                          </h3>
+                                                                    </apex:outputPanel>
+                                                                </div>
+                                                                <div class="{!IF(isUHC==true,'qRadioClass','')}" >
+                                                                  <div id="radio"> 
+                                                                    <apex:selectRadio layout="pageDirection" rendered="{!qPreview.renderSelectRadio}" value="{!qPreview.selectedOption}" >
+                                                                      <apex:selectOptions value="{!qPreview.singleOptions}"/>
+                                                                    </apex:selectRadio>
+                                                                  </div>
+                                                                  <div id="checkbox" >           
+                                                                    <apex:selectCheckboxes onchange="update_value(this);" layout="pageDirection" rendered="{!qPreview.renderSelectCheckboxes}" value="{!qPreview.selectedOptions}" >
+                                                                      <apex:selectOptions id="multiCheck" value="{!qPreview.multiOptions}"/>
+                                                                    </apex:selectCheckboxes> 
+                                                                  </div>
+                                                                  <div id="text" style="margin: auto; margin-top: 1em; margin-bottom: .5em;"> 
+                                                                     <apex:inputTextArea styleclass="txtinput" cols="{!IF(isUHC,100,50)}" rows="10" rendered="{!qPreview.renderFreeText}" value="{!qPreview.choices}"/>  
+                                                                  </div>
+                                                                  <div id="row" style="margin: auto; margin-top: 1em; margin-bottom: .5em;">
+                                                                    <apex:outputPanel rendered="{!qPreview.questionType == 'Single Select--Horizontal' && CONTAINS(qPreview.choices,'Strongly')}">
+                                                                      <apex:selectRadio styleClass="radioinput_effort" rendered="{!qPreview.renderSelectRow}" value="{!qPreview.selectedOption}">
+                                                                        <apex:selectOptions value="{!qPreview.rowOptions}"/><br/>
+                                                                      </apex:selectRadio>
+                                                                    </apex:outputPanel>
+                                                                    <apex:outputPanel rendered="{!qPreview.questionType == 'Single Select--Horizontal' && !CONTAINS(qPreview.choices,'Strongly')}">
+                                                                      <apex:selectRadio styleClass="radioinput" rendered="{!qPreview.renderSelectRow}" value="{!qPreview.selectedOption}">
+                                                                        <apex:selectOptions value="{!qPreview.rowOptions}"/><br/>
+                                                                      </apex:selectRadio>
+                                                                    </apex:outputPanel>
+                                                                  </div>  
+                                                                </div>   
+                                                            
+                                                          </div>  <!-- qPreview.id -->
+                                                          <br/>
+                                                          </apex:repeat>
+                                                          
+                                                          <apex:outputPanel rendered="{!surveyID == $Label.NewSurvey_CSRSurveyID}">
+                                                            <!--<apex:inputCheckbox value="{!showExtraSurvey}" label=""   >
+                                                            <apex:actionSupport event="onclick" action="{!showExtraQs}" status="stat" reRender="extraPanel"/>
+                                                            <apex:actionStatus stopText="" id="stat"> 
+                                                              <apex:facet name="start">       
+                                                                <apex:outputPanel rendered="{! !showExtraSurvey}">
+                                                                Loading...       
+                                                                </apex:outputPanel>
+                                                              </apex:facet>
+                                                            </apex:actionStatus>
+                                                            </apex:inputCheckbox>
+                                                            <apex:outputText style="font-size:1.4em;"  value=" I would like to provide even more feedback to help improve the Rally experience!"/>
+                                                            <br/>
+                                                            <apex:outputPanel style="font-style:italic;font-weight:bold;">
+                                                                ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                            </apex:outputPanel>-->
+                                                          </apex:outputPanel>
+
+                                                          <apex:outputPanel id="extraPanel">
+                                                          <br/>
+                                                          <br/>
+                                                          <br/>
+                                                          <br/>
+                                                            <apex:outputPanel rendered="{!showExtraSurvey}">
+                                                              <apex:repeat value="{!subQuestions}" var="subPreview" id="subPreview">
+                                                      
+                                                              <div id="{!subPreview.id}" >
+                                                                <div id="headerQ">
+                                                                  <h3 >
+                                                                      {!subPreview.question}
+                                                                      <apex:outputPanel rendered="{!subPreview.required}" styleClass="requiredText" style="color:red;">
+                                                                          ({!$Label.LABS_SF_Required})
+                                                                      </apex:outputPanel>
+                                                                      <apex:outputPanel rendered="{! !subPreview.required}" style="font-style:italic;font-weight:bold;">
+                                                                          ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                                      </apex:outputPanel>
+                                                                  </h3>
+                                                                </div>
+                                                                <div>
+                                                                  <div id="radio" style="margin: auto; margin-top: 1em; margin-bottom: 1em;"> 
+                                                                    <apex:selectRadio layout="pageDirection" styleClass="radioinput" rendered="{!subPreview.renderSelectRadio}" value="{!subPreview.selectedOption}" >
+                                                                      <apex:selectOptions value="{!subPreview.singleOptions}"/>
+                                                                    </apex:selectRadio>
+                                                                  </div>
+                                                                  <div id="checkbox" >           
+                                                                    <apex:selectCheckboxes onchange="update_value(this);" layout="pageDirection" rendered="{!subPreview.renderSelectCheckboxes}" value="{!subPreview.selectedOptions}" >
+                                                                      <apex:selectOptions id="multiCheck" value="{!subPreview.multiOptions}"/>
+                                                                    </apex:selectCheckboxes> 
+                                                                  </div>
+                                                                  <div id="text" style="margin: auto; margin-top: 1em; margin-bottom: 1em;"> 
+                                                                     <apex:inputTextArea cols="50" rows="10" rendered="{!subPreview.renderFreeText}" value="{!subPreview.choices}"/>  
+                                                                  </div>
+                                                                  <div id="row" class="span9">
+                                                                    <apex:selectRadio styleClass="radioinput" rendered="{!subPreview.renderSelectRow}" value="{!subPreview.selectedOption}">
+                                                                      <apex:selectOptions value="{!subPreview.rowOptions}"/>
+                                                                    </apex:selectRadio>
+                                                                  </div>  
+                                                                </div>   
+                                                        
+                                                            </div>  <!-- qPreview.id -->
+                                                            <br/>
+                                                            </apex:repeat>
+                                                          </apex:outputPanel>
+                                                        </apex:outputPanel>
+                                                      </div>
+                                                      <center>
+                                                        <div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                                                        <apex:outputPanel rendered="{! !isUHC}">
+                                                          <apex:commandButton action="{!submitResults}" value="{!$Label.LABS_SF_SubmitSurvey}" onclick="this.onclick=function(){return false;}" rerender="thePanel" />
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!isUHC}">
+                                                          <apex:commandButton action="{!submitResults}" value="{!$Label.LABS_SF_SubmitSurvey}" styleClass="uhcButton" onclick="this.onclick=function(){return false;}" rerender="thePanel" />
+                                                        </apex:outputPanel>
+                                                        </div>
+                                                      </center>
+                                                  </apex:form>
+                                                  <apex:form rendered="{!thankYouRendered}">
+                                                    <center>
+                                                        <apex:outputPanel rendered="{! !isUHC}" >
+                                                            <apex:outputText value="{!surveyThankYouText}"  escape="false"  />
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!isUHC}" >
+                                                            <h2><apex:outputText value="{!surveyThankYouText}"  escape="false"/></h2>
+                                                            <br/>
+                                                            <apex:image url="{!$Resource.UHC_ChoiceImage}" width="707" height="397"/>
+                                                        </apex:outputPanel>
+                                                    </center>
+                                                  </apex:form>
+                                                </apex:outputPanel>
+                                          
+                              </div>
+                          </div>
+                          <apex:outputPanel rendered="{! !isUHC}">
+                            <div id="desk-rightcol" class="span2">
+                                 <c:CC_SupportContactUs />
+                                
+                            </div>
+                          </apex:outputPanel>
+                      </div>
+                  </div>
+             </div>
+             
+         </apex:define>
+       </apex:composition>
+  </apex:page>

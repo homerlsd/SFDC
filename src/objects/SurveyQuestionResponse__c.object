@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Brady_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( 
+
+OR( 
+NPS_Score_Field__c = 10, 
+NPS_Score_Field__c = 9,
+NPS_Score_Field__c = 8,
+NPS_Score_Field__c = 7
+), 1, 
+
+IF( 
+
+OR( 
+NPS_Score_Field__c = 0, 
+NPS_Score_Field__c = 1, 
+NPS_Score_Field__c = 2, 
+NPS_Score_Field__c = 3, 
+NPS_Score_Field__c = 4 
+), -1, 0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Brady Formula</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer_Effort_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+Response__c = &apos;Strongly Disagree&apos;, 1, 
+
+IF(
+Response__c = &apos;Slightly Disagree&apos;, 2,
+
+IF(
+Response__c = &apos;Disagree&apos;, 3,
+
+IF(
+Response__c = &apos;Neither Disagree or Agree&apos;, 4,
+
+IF(
+Response__c = &apos;Somewhat Agree&apos;, 5,
+
+IF(
+Response__c = &apos;Agree&apos;, 6,
+
+If(
+Response__c = &apos;Strongly Agree&apos;, 7, 0)))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Effort Formula</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Detractor__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+OR(
+Value(Response__c) = 0,
+Value(Response__c) = 1,
+Value(Response__c) = 2,
+Value(Response__c) = 3,
+Value(Response__c) = 4,
+Value(Response__c) = 5,
+Value(Response__c) = 6), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Detractor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_Comments__c</fullName>
+        <externalId>false</externalId>
+        <formula>NOT(ISBLANK(Response__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Has Comments</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Agent_Question__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(CONTAINS(Survey_Question__r.Name, &apos;If you owned your own customer service company, how likely would&apos;), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Agent Question</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NPS_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+OR(
+Value(Response__c) = 10,
+Value(Response__c) = 9
+), 1, 
+
+IF(
+
+OR(
+Value(Response__c) = 0,
+Value(Response__c) = 1,
+Value(Response__c) = 2,
+Value(Response__c) = 3,
+Value(Response__c) = 4,
+Value(Response__c) = 5,
+Value(Response__c) = 6
+), -1, 0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NPS Formula</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NPS_Score_Field__c</fullName>
+        <externalId>false</externalId>
+        <formula>Value(Response__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NPS Score Field</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Protractor__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+OR(
+Value(Response__c) = 10,
+Value(Response__c) = 9), true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Protractor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Response_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>VALUE(Response__c)</formula>
+        <label>Response Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Response__c</fullName>
+        <externalId>false</externalId>
+        <label>Response</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SurveyTaker__c</fullName>
+        <externalId>false</externalId>
+        <label>SurveyTaker</label>
+        <referenceTo>SurveyTaker__c</referenceTo>
+        <relationshipName>Survey_Question_Answers</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Survey_Question__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey Question</label>
+        <referenceTo>Survey_Question__c</referenceTo>
+        <relationshipName>Survey_Question_Answers</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Text_Response__c</fullName>
+        <externalId>false</externalId>
+        <label>Text Response</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>of_Time_Question_was_Responded_to__c</fullName>
+        <defaultValue>1</defaultValue>
+        <externalId>false</externalId>
+        <label># of Time Question was Responded to</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Survey Question Response</label>
+    <nameField>
+        <displayFormat>Response-{0000000}</displayFormat>
+        <label>Response ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Survey Question Responses</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

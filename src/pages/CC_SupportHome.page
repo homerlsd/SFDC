@@ -1,0 +1,91 @@
+<apex:page controller="CC_SupportHomeController" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+     <head>
+   <style >
+    .centered-text {
+        text-align:center;
+    }  
+    .topicContainer {
+        text-align: center;
+        float: none;
+    }     
+    .desk-topic li, 
+    .desk-qna li { 
+      list-style-position: inside !important;
+    }
+    .common-questions ul li {
+     text-align: center !important;
+    }
+   </style>
+   <title>Rally Support | Community</title></head>
+     <apex:composition template="{!$Site.Template}" >
+       <apex:define name="body">
+           <div id="desk-content">
+                <div class="container">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div id="desk-support-index" class="no-qna">
+                                <div id="desk-support-kb-content">
+                                    <div id="desk-kb-index">
+                                     
+                                            
+                                                <apex:form >
+                                                       <div id="row-fluid nomargin-bottom">
+                                                       <!-- Common Questions-->
+                                                           <div class="common-questions">
+                                                                <h3>Common Questions</h3>
+                                                                <ul class="styled centered-text">
+                                                                    <apex:repeat value="{!CommonQuestions}" var="CQ">
+                                                                         <li>
+                                                                          <apex:commandLink value="{!CQ.Title}" action="{!NavigatesToDetail}"> 
+                                                                                           <apex:param name="KnowledgeId" value="{!CQ.Id}" assignTo="{!TargetKnowledgeId}"/>
+                                                                           </apex:commandLink>
+                                                                         </li>
+                                                                    </apex:repeat>
+                                                                </ul>
+                                                                <div style="clear: both;"></div>
+                                                           </div>
+                                                       </div>
+                                                       <div class="text-center">
+                                                         <h2 class="desk-index-subheader span12 centered-text">Browse by Topic</h2>
+                                                         <div class="topicContainer row-fluid">
+                                                                  <apex:repeat value="{!BrowseByTopics}" var="BT">
+                                                                          <div class="desk-topic">
+                                                                              <h3 class="text-left">
+                                                                                  <apex:commandLink value=" {!BT.CategoryName}" action="{!NavigatesToKnowlegeByDataCat}" style="text-align:left">
+                                                                                          <apex:param name="DCGroupName" value="{!BT.CategoryName}" assignTo="{!TargetDataCategoryName}" />
+                                                                                  </apex:commandLink>
+                                                                              </h3>
+                                                                              <ul class="">
+                                                                                  <apex:repeat value="{!BT.FirstFiveQuestions}" var="Q">
+                                                                                   <li>
+                                                                                      <apex:commandLink value="{!Q.Title}" action="{!NavigatesToDetail}" > 
+                                                                                             <apex:param name="KnowledgeId" value="{!Q.Id}" assignTo="{!TargetKnowledgeId}" />
+                                                                                      </apex:commandLink>
+                                                                                  </li>
+                                                                                  </apex:repeat>
+                                                                               </ul>
+                                                                              <apex:commandLink action="{!NavigatesToKnowlegeByDataCat}"  styleClass="btn btn-small desk-topic-view-all" value="View All {!BT.QuestionsSize} Articles" rendered="{!BT.QuestionsSize >5}">
+                                                                                      <apex:param name="DCGroupName" value="{!BT.CategoryName}" assignTo="{!TargetDataCategoryName}" />
+                                                                              </apex:commandLink>
+                                                                          </div>
+                                                                  </apex:repeat>
+                                                          </div>
+                                                        </div>
+                                                       
+                                                </apex:form>
+                                            
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div id="desk-rightcol" class="span3">
+                             <c:CC_SupportContactUs />
+                            
+                        </div>-->
+                    </div>
+                </div>
+           </div>
+       </apex:define>
+     </apex:composition>
+</apex:page>

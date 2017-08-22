@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Add</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>DisplayUrl</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>ExternalDataSourceId</fullName>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>External_Only_Product__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>External Only Product</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Family_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( 
+
+INCLUDES( Product_Family__c , &quot;Member Portal&quot;), &apos;Member Portal&apos;, NULL) + &apos;;&apos; +
+
+IF(
+OR( 
+INCLUDES( Product_Family__c , &quot;Engage&quot;), 
+INCLUDES( Product_Family__c , &quot;Engage - Feature Set&quot;)), &quot;Engage&quot;, NULL) + &apos;;&apos; + 
+
+IF( 
+OR( 
+INCLUDES( Product_Family__c , &quot;Choice&quot;), 
+INCLUDES( Product_Family__c , &quot;Choice - Feature Set&quot;)), &quot;Choice&quot;, NULL) + &apos;;&apos; + 
+
+IF( 
+OR( 
+INCLUDES( Product_Family__c , &quot;Connect&quot;), 
+INCLUDES( Product_Family__c , &quot;Connect - Feature Set&quot;)), &quot;Connect&quot;, NULL) + &apos;;&apos; +
+
+IF( 
+OR( 
+INCLUDES( Product_Family__c , &quot;Real Appeal&quot;)), &quot;Real Appeal&quot;, NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Family Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Optum_Product_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>Optum Product ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <referenceTo>Partner__c</referenceTo>
+        <relationshipLabel>Products</relationshipLabel>
+        <relationshipName>Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Product_Family_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+OR(
+INCLUDES(Product_Family__c,&apos;Engage&apos;), 
+INCLUDES(Product_Family__c,&apos;Engage - Feature Set&apos;)), &apos;Engage&apos;,
+IF(
+OR(
+INCLUDES(Product_Family__c,&apos;Choice&apos;), 
+INCLUDES(Product_Family__c,&apos;Choice - Feature Set&apos;)), &apos;Choice&apos;,
+IF(
+OR(
+INCLUDES(Product_Family__c,&apos;Connect&apos;), 
+INCLUDES(Product_Family__c,&apos;Connect - Feature Set&apos;)), &apos;Connect&apos;, &apos;N/A&apos;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Family Formula</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Family__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Family</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Engage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Choice</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Connect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Engage - Feature Set</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Choice - Feature Set</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Connect - Feature Set</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consultation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Member Portal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Real Appeal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Product_Order__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+ISPICKVAL(Product_Type__c, &apos;Package&apos;), 1,
+
+IF(
+ISPICKVAL(Product_Type__c, &apos;Implementation Fee&apos;), 2,
+
+IF(
+ISPICKVAL(Product_Type__c, &apos;Add-On&apos;), 3,
+
+IF(
+ISPICKVAL(Product_Type__c, &apos;Feature&apos;), 4, 100))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Sub_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Sub-Type</label>
+        <picklist>
+            <controllingField>Product_Type__c</controllingField>
+            <picklistValues>
+                <fullName>Base</fullName>
+                <default>false</default>
+                <controllingFieldValues>Package</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Standard</fullName>
+                <default>false</default>
+                <controllingFieldValues>Package</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Premium</fullName>
+                <default>false</default>
+                <controllingFieldValues>Package</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tailored Outcome Rewards</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tailored Activity Rewards</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Defined Outcomes</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pre-Defined Activity</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Upsell Feature</fullName>
+                <default>false</default>
+                <controllingFieldValues>Feature</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Standard Feature</fullName>
+                <default>false</default>
+                <controllingFieldValues>Feature</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>One Time Fee</fullName>
+                <default>false</default>
+                <controllingFieldValues>Add-On</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Member Portal</fullName>
+                <default>false</default>
+                <controllingFieldValues>Package</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Package</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Feature</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Add-On</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Implementation Fee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>QuantityUnitOfMeasure</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Each</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Revenue_Recognition__c</fullName>
+        <externalId>false</externalId>
+        <label>Revenue Recognition</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Date Of</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Temp_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Temp ID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <listViews>
+        <fullName>AllProducts</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All Products</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>PRODUCT2.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.DESCRIPTION</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PRODUCT2.FAMILY</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.DESCRIPTION</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PRODUCT2.FAMILY</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.CUSTOMER_PRODUCT_ID</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.DESCRIPTION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.FAMILY</searchResultsAdditionalFields>
+    </searchLayouts>
+    <webLinks>
+        <fullName>Mass_Delete</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/9.0/connection.js&quot;)}
+
+var records = {!GETRECORDIDS(  $ObjectType.Product2 )};
+
+if (records[0] == null) {
+alert(&quot;Please select at least one record.&quot;) }
+else {
+
+var errors = [];
+var result = sforce.connection.deleteIds(records);
+if (result &amp;&amp; result.length){
+var numFailed = 0;
+var numSucceeded = 0;
+for (var i = 0; i &lt; result.length; i++){
+var res = result[i];
+if (res &amp;&amp; res.success == &apos;true&apos;){
+numSucceeded++;
+} else {
+var es = res.getArray(&quot;errors&quot;);
+if (es.length &gt; 0) {
+errors.push(es[0].message);
+}
+numFailed++;
+}
+}
+if (numFailed &gt; 0){
+alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;));
+} else {
+alert(&quot;Number of records deleted: &quot; + numSucceeded);
+}
+}
+window.location.reload();
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Edit</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassEditProduct</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Update</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Update</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassUpdateProduct2</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

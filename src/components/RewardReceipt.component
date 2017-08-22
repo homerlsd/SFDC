@@ -1,0 +1,48 @@
+<apex:component controller="RewardReceiptController" access="global">
+<apex:attribute assignTo="{!rewardPlanid}" description="Id of implementation" type="String" name="rpdID"/>
+<apex:attribute assignTo="{!fieldSetName}" description="Name of Fieldset for RPD" type="String" name="fsname"/>
+
+ Hello ,<br/>
+
+The reward plan record has been submitted and the details are:
+
+<table border="1" >
+<apex:repeat var="f" value="{!pPlanFields}">
+  <tr>
+    <td>
+      <label><b>{!f.Label}</b></label>
+    </td> 
+    <td>
+      <apex:outputText value="{!objpPlan[f]}" />
+    </td>
+  </tr>
+</apex:repeat>
+</table>
+
+<br/>
+
+<b>Configuration Details:</b><br/>
+
+
+<apex:dataTable border="1" id="table" var="act" value="{!ActivityDetails}">
+    <apex:column headerValue="Activity Name" value="{!act.Name}" />
+    <apex:repeat var="f1" value="{!pActivityFields}">
+        <apex:column headerValue="{!f1.label}">
+            <apex:outputText value="{!act[f1]}" />
+        </apex:column>
+    </apex:repeat>
+</apex:dataTable>
+
+<!--<table border="1">
+<apex:repeat value="{!ActivityDetails}" var="act" >
+	<apex:repeat value="{!pActivityFields}" var="f1"> 
+	  <tr>
+	  	<th>
+	  		<td><label><b>{!f1.Label}</b></label></td></th>
+	  		<td><apex:outputText
+	  </tr>
+	</apex:repeat>
+</apex:repeat>
+</table>-->
+
+</apex:component>

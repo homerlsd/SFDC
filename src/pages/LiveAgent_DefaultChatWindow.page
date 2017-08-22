@@ -1,0 +1,368 @@
+<apex:page showHeader="false" sidebar="false"  title="Rally Support" controller="LiveAgent_DefaultChatWindowController"  standardStylesheets="false" docType="html-5.0" applyHTMLTag="false">
+<html lang="en">
+    <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Rally Support</title>
+            <link rel="icon" sizes="152x152" href="{!URLFOR($Resource.CC_SupportAssets, 'image/rallyfavicon.ico')}" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        
+    
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+        <!-- <link href="{!URLFOR($Resource.RLC_Bootstrap, 'rlc custom bootstrap3/css/bootstrap.css')}" rel="stylesheet"/> -->
+        <!-- CSS -->
+        <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap.css')}" rel="stylesheet"/>
+        <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap-theme.css')}" rel="stylesheet"/>
+        
+        <!-- JS -->
+        <apex:includeScript value="{!URLFOR($Resource.RLC_Bootstrap, 'js/bootstrap.js')}"/>
+        
+        
+        <!-- Change the domain name to the correct one for your org. -->
+         <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/deployment.js"></script>
+        
+        <!-- Standard LiveAgent resources, automatically loaded. This is provided for an easy reference -->
+        <!-- <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/js/38.0/chasitor.js"></script> -->        
+        <!-- <link class="user"  href="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/css/vf.css" rel="stylesheet"/> -->
+        
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        
+        <link href="{!URLFOR($Resource.RLC_Styles)}" rel="stylesheet"/>     
+    
+
+    
+         </head>
+         
+         
+         <body>
+            
+            
+                
+            <div id="pageBodyDiv" class="container-fluid rc_chat">                
+                <liveAgent:clientchat id="liveAgent_clientchat">  
+            
+            
+                      <!-- Banner -->
+                      <div id="rc_HeaderContainer" class="rc_HeaderContainer"> 
+                        <div id="rc_chatIconContainer" class="rc_chatIconContainer" >
+                            <apex:image url="{!URLFOR($Resource.HeaderIcon_60x60px)}" width="60" height="60" id="rc_chatIcon"/>
+                        </div> 
+                        <div id="rc_headerTextContainer" class="rc_headerTextContainer" >
+                            <span id="rc_headerText" class="rc_headerText">{!$Label.LA_ChatWindowHeaderText}</span>
+                        </div>
+                        <div id="rc_EndChatBtnContainer" class="rc_EndChatBtnContainer" >
+                            <liveAgent:clientChatEndButton id="rc_endChatButton"  label="End Chat"/>
+                        </div>                        
+                      </div>          
+                                
+                                    
+                    <!-- Content -->   
+                    <div id="rc_chatBlock" class="container-fluid rc_chatBlock" >        
+                        <div id="rc_chatWindow" class="container center-block rc_chatWindow" >  
+                         
+                         
+                                    <!-- Waiting To Connect -->
+                                    <div id="rc_waitingMessageWindow" class="rc_waitingMessageWindow" >
+                                        <div id="rc_waitingMessageImageContainer" class="rc_waitingMessageImageContainer row text-center center-block" >
+                                            <apex:image id="rc_waitingMessageIcon"  url="{!URLFOR($Resource.ConnectingBubble_Animation_100x100px)}" width="100" height="100"/>
+                                        </div>    
+                                        <div id="rc_waitingMessageTextContainer" class="row center-block" >
+                                            <p id="rc_waitingMessageText"  class="rc_waitingMessageText text-center">
+                                                <apex:outputText value="{!$Label.LA_DisplayMessage_Connecting}"  escape="false" />
+                                                <!-- One second while we connect you with a Rally support specialist.-->
+                                            </p>
+                                        </div>
+                                        <!-- <liveAgent:clientChatQueuePosition /> -->
+                                        <div class="center-block text-center">
+                                            <liveAgent:clientChatCancelButton id="rc_cancelChatButton"  label="{!$Label.LA_ButtonText_CancelChat}"  />
+                                        </div>
+                                    </div>
+               
+               
+                                   <!-- Session Ended -->
+                                   <div id="rc_chatSessionEnded" class="container center-block rc_chatSessionEnded" >
+                                   <br/>
+                                       <div class="center-block text-center">
+                                          <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100" id="rc_alertBubbleIcon"/>  
+                                       </div>                     
+                                       <div class="center-block text-center">
+                                           <p>
+                                              <apex:outputText value="{!$Label.LA_DisplayMessage_SessionEnded}"  escape="false" />
+                                               <!-- Your chat session has ended. -->
+                                           </p>
+                                       </div>    
+                                       
+                                       <div class="center-block text-center">
+                                           <button id="rc_closeChatWindow" class="btn btn-default rallyChat-grey" onclick="SfdcApp.LiveAgent.Chasitor.endChat()">{!$Label.LA_ButtonText_CloseChat}</button>
+                                           <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                           <!-- <button id="rc_retryChat" class="btn btn-success rallyChat-green" onclick="liveagent.startChat({!$Label.LA_Config_ChatButtonId});" >{!$Label.LA_ButtonText_RetryChat}</button> -->
+                                       </div> 
+                                       <br/>                                    
+                                   </div>           
+                                        
+                                        
+                                        
+                                   <!-- Connection Issue -->     
+                                   <div id="rc_connectionIssue" class="container center-block rc_connectionIssue" >
+                                       <div class="center-block text-center">
+                                          <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100" id="rc_alertBubbleIconCI"/>  
+                                       </div>                     
+                                       <div class="center-block text-center">
+                                           <p>                              
+                                               <apex:outputText value="{!$Label.LA_DisplayMessage_ErrorNotProcessed}"  escape="false" />
+                                               <!-- 
+                                               Oh no. Your chat request wasn&#39;t processed.<br/>
+                                               Let&#39;s try this again.
+                                               -->   
+                                           </p>
+                                           <liveAgent:clientChatAlertMessage id="rc_clientChatAlertMessage"  />
+                                           <liveAgent:clientChatStatusMessage id="rc_clientChatStatusMessage"  />
+                                       </div>   
+                                       <div class="center-block text-center">
+                                           <button id="rc_closeChatWindowCI" class="btn btn-default rallyChat-grey" onclick="SfdcApp.LiveAgent.Chasitor.endChat()">{!$Label.LA_ButtonText_CloseChat}</button>  
+                                           <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                           <!-- <button id="rc_retryChatCI" class="btn btn-success rallyChat-green" onclick="liveagent.startChat({!$Label.LA_Config_ChatButtonId});" >{!$Label.LA_ButtonText_RetryChat}</button> -->                           
+                                       </div>       
+                                   </div>                             
+            
+                                    <!-- Timeout Warning -->     
+                                    <div id="rc_connectionTimeoutWarning" class="container center-block rc_connectionTimeoutWarning" >
+                                       <div class="center-block text-center">
+                                          <apex:image id="rc_connectionTimeoutWarningIcon"  url="{!URLFOR($Resource.ConnectingBubble_Animation_100x100px)}" width="100" height="100"/>
+                                       </div>                     
+                                       <div class="center-block text-center"> 
+                                            <!-- TimeOut Alert -->                  
+                                            <liveAgent:clientChatLogAlertMessage id="liveAgentClientChatLogAlertMessage" 
+                                                rendered="true" 
+                                                autoResizeElementId="rc_liveAgentClientChatLog" 
+                                                respondToChatLabel="{!$Label.LA_DisplayMessage_WindowHeaderTimeOutWarning}"   
+                                                respondWithinTimeLabel="<p>{!$Label.LA_DisplayMessage_TimeOutWarning}</p>" >  
+                                            </liveAgent:clientChatLogAlertMessage>
+                                            <!-- respondWithinTimeLabel="<p><apex:outputText value="{!$Label.LA_DisplayMessage_TimeOutWarning}"  escape="false" /></p>"  -->
+                                        </div>        
+                                    </div>       
+                                     
+                                     
+                                     
+                                     
+                                    <div id="rc_surveyThankYou" class="rc_surveyThankYou" >
+                                       <div>
+                                          <apex:image id="rc_surveyThankyouIcon"  url="{!URLFOR($Resource.SurveyIcon_100x100px)}" width="100" height="100"/>
+                                       </div>                     
+                                       <div> 
+                                           <p>
+                                             <apex:outputText value="{!$Label.LA_DisplayMessage_SurveyThankYou}"  escape="false" /> 
+                                              <!-- 
+                                                  Thanks for participating in our quick survey!
+                                                   <br/>
+                                                   Your feedback has been received.
+                                               -->
+                                           </p>
+                                        </div>        
+                                    </div>                       
+                                        
+                        
+                                    <div id="rc_chatLogContainer" class="rc_chatLogContainer">  
+                  
+                                         <!-- agentTypingLabel="{!userNameString} is typing a message ..."   -->
+                                        <liveAgent:clientChatLog id="rc_liveAgentClientChatLog" agentTypingLabel=" "
+                                                                                                chatEndedByVisitorIdleTimeoutLabel="{!$Label.LA_Chat_Timed_Out}"
+                                                                                                chatEndedByAgentLabel="{!$Label.LA_DisplayMessage_SessionEnded}"
+                                                                                                chatEndedByVisitorLabel="{!$Label.LA_DisplayMessage_SessionEnded}"  
+                                          />
+                                    </div>   
+                                     
+                             
+                        </div> <!-- id: rc_chatWindow -->
+                    </div> <!-- id: rc_chatBlock -->            
+                                
+                        
+                    <!-- Text Input Window -->
+                    <div id="rc_chatInputWindow" class="rc_chatInputWindow center-block">                                            
+                        <liveagent:clientChatInput />                    
+                        <liveAgent:clientChatSendButton label="{!$Label.LA_ButtonText_SendMessage}"/>  
+                    </div> 
+              
+              
+             
+                
+                </liveAgent:clientchat>
+            </div>   
+                   
+       
+       
+        <script type='text/javascript'>
+
+        $('input').attr('autocomplete','off');
+
+        var agentTypingString = '';
+
+        liveagent.addEventListener(liveagent.chasitor.Events.CHAT_ESTABLISHED, newagent);
+        liveagent.addEventListener(liveagent.chasitor.Events.AGENT_CHAT_TRANSFERRED,newagent);
+                
+        function newagent() {         
+          var newagentId;
+          var details = liveagent.chasitor.getDetails();          
+          for(var key in details) { 
+            console.log(key);          
+            if (key == 'agent'){          
+              newagentId = details[key].userId;
+            }
+          }
+          if (newagentId != null ){       
+            Visualforce.remoting.Manager.invokeAction(
+              '{!$RemoteAction.LiveAgent_DefaultChatWindowController.getAgentName}', 
+              newagentId, 
+              function(result, event){
+                  if (event.status) {   
+                    console.log(result);
+                    document.getElementById('#liveAgentChatLogTyping').value = result;
+                    //AGENT_TYPING
+                  } else if (event.type === 'exception') {                        
+                          console.log(event.message);
+                  } else {
+                      console.log(event.message);
+                  }
+              }
+           );     
+          }
+        }
+
+       //Place Holder Text for Chat Input
+           var placeHolderForChat = "{!$Label.LA_Chat_Input_Window_Placeholder_Text}";
+           $("#liveAgentChatInput").attr("placeholder", placeHolderForChat); 
+           function checkMessagePlaceHolderText(){
+                if(!$('#liveAgentChatInput').val()) { 
+                    $('#liveAgentChatInput').attr("placeholder", placeHolderForChat);
+                }
+            }
+    
+
+        //Auto Scrolling in Chat Window
+            var scrolled = false;
+            function updateScroll(elementId){
+                if(!scrolled){
+                    var e1 = document.getElementById('liveAgentChatLogText');
+                    var e2 = document.getElementById('liveAgentChatLog');
+                    var e3 = document.getElementById('liveAgentChatLogText');
+                    e1.scrollTop = e1.scrollHeight;
+                    e2.scrollTop = e2.scrollHeight;
+                    e3.scrollTop = e3.scrollHeight;
+                }else{
+                    scrolled = false;
+                }
+            }
+            
+            
+            //pause scroll from one cycle if the user has manually scrolled
+            $("#rc_chatLogContainer").on('scroll', function(){
+                scrolled=true;
+            });   
+            $("#liveAgentChatLog").on('scroll', function(){
+                scrolled=true;
+            });           
+            $("#liveAgentChatLogText").on('scroll', function(){
+                scrolled=true;
+            });          
+     
+                    
+                
+            //once a every 2 seconds repoll for scroll
+            setInterval("updateScroll",2000);    
+    
+            var agentTimeStampClass = 'rc_agentTimeStamp';
+            var clientTimeStampClass = 'rc_clientTimeStamp';
+            var classIns;
+            
+            container = document.getElementById ("liveAgentChatLogText");
+            container.addEventListener('DOMNodeInserted', function(event) {
+               // alert("event.target.nodeName : " + event.target.nodeName);
+              if(event.target.nodeName == 'SPAN' 
+              && (event.target.className == 'operator' || event.target.className == 'client')){
+                if(event.target.className == 'operator'){
+                  classIns = agentTimeStampClass;
+                }else if(event.target.className == 'client'){
+                  classIns = clientTimeStampClass;
+                }
+               insertTimeStamp(event.target,classIns); 
+              }
+            });
+    
+            function insertTimeStamp(elem,classIns){
+            
+              var timeStamp = formattedTimeStamp();   
+              var timeStampTag = document.createElement("span");
+              timeStampTag.innerHTML = timeStamp;
+              timeStampTag.setAttribute("class", classIns);
+            
+              var spanTag = document.createElement("span");
+              spanTag.appendChild(timeStampTag);
+            
+              elem.appendChild(spanTag, elem.firstChild);
+            }             
+            
+            
+            function formattedTimeStamp() {
+              var date = new Date();
+              var hours = date.getHours();
+              var minutes = date.getMinutes();
+              var ampm = hours >= 12 ? 'pm' : 'am';
+              hours = hours % 12;
+              hours = hours ? hours : 12; // the hour '0' should be '12'
+              minutes = minutes < 10 ? '0'+minutes : minutes;
+              var strTime = hours + ':' + minutes + ' ' + ampm;
+              //return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+              return strTime;
+            }    
+        
+        
+        
+            function setWinDim(width,height){    
+  
+                var totHg = document.body.clientHeight;
+                var totWh = document.body.clientWidth;
+                //excluding scrollbars
+                var innerHg = window.innerHeight;
+                var innerWh = window.innerWidth;
+                
+                var defHg = (isNaN(height*1))? 1200 : height*1;
+                var defWh = (isNaN(width*1))? 800 : width*1;
+                
+                if(totHg > defHg ){
+                    defHg = totHg -1;
+                    if(innerHg > defHg ){
+                       defHg =innerHg -1;
+                    }           
+                }
+                if(totHg > defWh ){
+                    defWh = totWh -1;
+                    if(innerWh > defWh ){
+                      defWh = innerWh -1;
+                    }           
+                }
+                
+                window.resizeTo(defWh,defHg);
+            }    
+
+            $(document).ready(function(){ 
+                var resizeWidth = "{!$Label.LA_WindowResizeWidth}";
+                var resizeHeight = "{!$Label.LA_WindowResizeHeight}";            
+                setWinDim(resizeWidth,resizeHeight); 
+                checkMessagePlaceHolderText();
+            });  
+            
+
+        
+      </script>
+    </body>
+  </html>
+  
+</apex:page>

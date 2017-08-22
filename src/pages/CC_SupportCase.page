@@ -1,0 +1,278 @@
+<apex:page controller="CC_SupportCaseController" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+     <head><title>Rally Support | Community</title>
+     <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+
+<apex:outputPanel id="scriptBlock">
+ <script>
+             j$ = jQuery.noConflict();
+             j$(function() {
+                     // date picker
+                     j$( ".dateexperienced" ).datepicker();
+                     j$( ".dateofbirth" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            yearRange: "-100:-15"
+                      });
+             });
+
+              function get_browser_info(){
+                var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
+                if(/trident/i.test(M[1])){
+                    tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
+                    return {name:'IE',version:(tem[1]||'')};
+                    }   
+                if(M[1]==='Chrome'){
+                    tem=ua.match(/\bOPR\/(\d+)/)
+                    if(tem!=null)   {return {name:'Opera', version:tem[1]};}
+                    }   
+                M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+                if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+                return {
+                  name: M[0],
+                  version: M[1]
+                };
+             }
+
+            window.onload = function(){
+              var browser=get_browser_info();
+              var bName = browser.name;
+              if(bName == "MSIE"){
+                bName = "IE " + browser.version;
+              }
+              document.getElementById('j_id0:j_id7:j_id15:hdnField').value = bName;
+            }
+
+</script>
+  </apex:outputPanel>
+  <style type="text/css">
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: #47A8F5; /* Red */
+        color: white;
+        margin-bottom: 15px;
+        font-size: 16px;
+        display:inline-block;
+    }
+
+    /* The close button */
+    .closebtn {
+        margin-left: 5px;
+        margin-right: 15px;
+        color: white;
+        font-weight: bold;
+        float: left;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
+    }
+  </style>
+     </head>
+     <apex:composition template="{!$Site.Template}" >
+       <apex:define name="body">
+           <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <apex:form >
+                              <apex:inputHidden id="hdnField" value="{!bType}" />
+                                <div id="desk-leftcol" class="span9">
+                                 <!-- Breadcrumb -->
+                                   <ul class="breadcrumb" id="breadcrumbs">
+                                        <li class="crumb"><apex:commandLink immediate="true" value="Home" action="{!NavigatesToHome}" > </apex:commandLink><span class="divider">/</span></li>
+                                        <li class="active crumb">Contact Us</li>
+                                   </ul>
+                                   <div id="support-main">
+                                          <!--<center>
+                                            <div class="alert">
+                                              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                              <apex:outputText value="{!$Label.CC_SupportCase_Message1}" escape="false"/>
+                                            </div>
+                                            <br/>
+                                            <br/>
+                                          </center>-->
+                                          <div class="support-head row-fluid">
+                                            <div class="span6">
+                                              <h2><i class="icon-envelope"></i> Contact Us</h2>
+                                                <apex:pageMessages ></apex:pageMessages>
+                                              <div class="form form-email">
+                                                    
+                                                <apex:outputPanel id="thankyou">
+
+                                                    <apex:outputPanel rendered="{!CaseSubmittedMessage!=null}" >
+                                                     <div style="height:100px;">
+                                                        <h3>{!CaseSubmittedMessage}</h3>
+                                                     </div>   
+                                                    </apex:outputPanel>
+                
+                                                    <apex:outputPanel rendered="{!CaseSubmittedMessage==null}">
+
+                                                    　　<div class="">
+                                                            <apex:outputPanel rendered="{!chanName == 'Engage'}">
+                                                              <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CC_Support_Case_Fields_ENGAGE}">
+                                                                  
+                                                                  <apex:outputPanel rendered="{!IF(f.label != 'Company' || (f.label = 'Company' && kGroup.Partner_Lookup__r.name != $Label.CC_SupportCase_UKGovtPartnerName), true, false)}">
+                                                                  <label>{!f.Label} <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span class="muted"> (required)</span></apex:outputPanel></label>
+                                                                  </apex:outputPanel>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" value="{!newCase[f]}" style="height:75px;width:300px" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                  <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateofbirth" rendered="{!AND(OR(f.type='date',f.type='datetime'), f.label == 'Date of Birth')}" value="{!DateOfBirthString}"/>
+                                                                  
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject' && f.label != 'Company', true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.label = 'Company' && kGroup.Partner_Lookup__r.name != $Label.CC_SupportCase_UKGovtPartnerName, true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                   <apex:inputfield styleClass="input-block-level" style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+                                                                   <br/>
+                                                              </apex:repeat>
+
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel rendered="{!chanName == 'Choice'}">
+                                                              <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CC_Support_Case_Fields_CHOICE}">
+                                                                  <label>{!f.Label} <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span class="muted"> (required)</span></apex:outputPanel></label>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" value="{!newCase[f]}" style="height:75px;width:300px" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                  <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateofbirth" rendered="{!AND(OR(f.type='date',f.type='datetime'), f.label == 'Date of Birth')}" value="{!DateOfBirthString}"/>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject', true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                   <apex:inputfield styleClass="input-block-level" style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+                                                                   <br/>
+                                                              </apex:repeat>
+                                                            </apex:outputPanel>
+                                                            <!--First Name-->
+                                                            <!--<label for="firstName">First Name <span class="muted">(required)</span></label>
+                                                            <apex:inputField id="firstName" styleClass="input-block-level" html-maxlength="100" value="{!NewCase.First_Name__c}"></apex:inputField>
+                                                            <br/>
+                                                            <apex:outputLabel rendered="{!FirstNameRequired!=null}" value="{!FirstNameRequired}" styleClass="invalid"></apex:outputLabel>
+                                                            
+                                                             <
+                                                            <label for="lastName">Last Name <span class="muted">(required)</span></label>
+                                                            <apex:inputField id="lastName" styleClass="input-block-level" html-maxlength="100" value="{!NewCase.Last_Name__c}"></apex:inputField>
+                                                            <br/>
+                                                            <apex:outputLabel rendered="{!LastNameRequired!=null}" value="{!LastNameRequired}" styleClass="invalid"></apex:outputLabel>
+                                                            
+                                                            <label for="birth_date">Date of Birth <span class="muted">(required)</span></label>
+                                                            <apex:inputText value="{!DateOfBirthString}" styleClass="dateofbirth"></apex:inputText> 
+                                                            <br/><br/>
+                                                            <apex:outputLabel rendered="{!DateOfBirthRequired!=null}" value="{!DateOfBirthRequired}" styleClass="invalid"></apex:outputLabel>
+                                                            
+                                                            <label for="email">Email <span class="muted">(required)</span></label>
+                                                            <apex:inputField id="email" styleClass="input-block-level" html-maxlength="100" value="{!NewCase.Email__c}"></apex:inputField>
+                                                            <br/>
+                                                            <apex:outputLabel rendered="{!EmailRequired!=null}" value="{!EmailRequired}" styleClass="invalid"></apex:outputLabel>
+                                                            
+                                                            <apex:outputPanel rendered="{!chanName != NULL && chanName == 'Engage'}">
+                                                              <label for="rallyUserName">Rally User Name </label>
+                                                              <apex:inputField id="rallyUserName" styleClass="input-block-level" html-maxlength="100" value="{!NewCase.Rally_User_Name__c}"></apex:inputField>
+                                                            </apex:outputPanel>
+                                                            
+                                                            <label for="company">Company <span class="muted">(required)</span></label>
+                                                            <apex:inputField id="company" styleClass="input-block-level" html-maxlength="100" value="{!NewCase.Company__c}"></apex:inputField>
+                                                            <br/>
+                                                            <apex:outputLabel rendered="{!CompanyRequired!=null}" value="{!CompanyRequired}" styleClass="invalid"></apex:outputLabel>
+                                                            
+                                                            <!--<label for="interaction_topic">Topic <span class="muted">(required)</span></label>
+                                                            
+                                                            <apex:actionRegion >
+                                                                
+                                                            <apex:selectList value="{!NewCase.Type}" multiselect="false" size="1" styleClass="default xl" onchange="pickListValueChange();" >
+                                                                    <apex:selectOptions value="{!TopicValues}"/>
+                                                            </apex:selectList>
+                                                            <apex:outputLabel rendered="{!TopicRequired!=null}" value="{!TopicRequired}" styleClass="invalid"></apex:outputLabel>
+
+                                                            <apex:outputPanel id="issueBugAndDate">
+                                                            <apex:outputPanel rendered="{!NewCase.Type=='Problem'}" >
+                                        
+                                                                <label for="interaction_issue">Issue/Bug <span class="muted">(required)</span></label>
+                                                                <apex:selectList value="{!NewCase.Issue_Bug__c}" multiselect="false" size="1" styleClass="default xl" >
+                                                                    <apex:selectOptions value="{!IssueBugValues}"/>
+                                                                </apex:selectList>
+                                                                <apex:outputLabel rendered="{!IssueBugRequired!=null}" value="{!IssueBugRequired}" styleClass="invalid"></apex:outputLabel>
+
+                                                                <label for="interaction_date">Date Experienced <span class="muted">(required)</span></label>
+                                                                <apex:inputText value="{!DateExperiencedString}" styleClass="dateexperienced"></apex:inputText> 
+                                                                <apex:outputLabel rendered="{!DateExperiencedRequired!=null}" value="{!DateExperiencedRequired}" styleClass="invalid"></apex:outputLabel>
+                                                                <script>
+                                                                    j$( '.dateexperienced' ).datepicker();
+                                                                </script>
+
+                                                             </apex:outputPanel>
+                                                             </apex:outputPanel>
+                                                             <apex:actionFunction action="{!Rerender}" name="pickListValueChange" rerender="issueBugAndDate" > </apex:actionFunction>
+                                                             <!--apex:actionFunction action="{!CreateCase}" name="createCase"  > </apex:actionFunction
+                                                            </apex:actionRegion>
+                                                            
+                                                                
+                                                                <label for="email_subject">Subject <span class="muted">(required)</span></label>
+                                                                <apex:inputField id="email_subject" styleClass="input-block-level subject" html-maxlength="100" value="{!NewCase.Subject}"></apex:inputField>
+                                                                <br/>
+                                                                <apex:outputLabel rendered="{!SubjectRequired!=null}" value="{!SubjectRequired}" styleClass="invalid"></apex:outputLabel>
+                                                                
+                                                                <label for="email_body">Message <span class="muted">(required)</span></label>
+                                                                <apex:inputTextarea value="{!NewCase.Description}" id="email_body" styleClass="input-block-level" rows="6" cols="6"  ></apex:inputTextarea>
+                                                                <apex:outputLabel rendered="{!MessageRequired!=null}" value="{!MessageRequired}" styleClass="invalid"></apex:outputLabel>-->
+                                                            
+                                                            <label for="case_attache">File Attachment</label>
+                                                            <apex:inputFile value="{!att.body}" 
+                                                                    filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg" />
+                                                                                                                        
+                                                                
+                                                                <hr/>
+                                                                
+                                                                <apex:commandButton id="submitButton" value="Submit" action="{!CreateCase}" styleClass="btn btn-primary btn-large" > </apex:commandButton>
+
+                                                                      <br/>  <br/>  <br/>                                                              
+                                                                    <!-- reCAPTCHA verification 
+                                                                         Source: https://developers.google.com/recaptcha/docs/display -->
+                                                                    
+                                                                    <apex:outputLabel rendered="{!reCAPTCHAMessage!=null}" value="{!reCAPTCHAMessage}" styleClass="invalid"></apex:outputLabel>
+                                                                    <script type="text/javascript"
+                                                                        src="https://www.google.com/recaptcha/api/challenge?k={!publicKey}">
+                                                                    </script>
+                                                                    <noscript>
+                                                                        <iframe src="https://www.google.com/recaptcha/api/noscript?k={!publicKey}"
+                                                                        height="300" width="500" frameborder="0"></iframe><br/>
+                                                                        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                                                        <input type="hidden" name="recaptcha_response_field"
+                                                                            value="manual_challenge"/>
+                                                                        <input type="hidden" name="ForceOrWerally"
+                                                                            value="{!pageDomain}"/>    
+                                                                    </noscript>
+                                                                    <!-- end reCAPTCHA verification -->
+                                                            </div>
+                                                        
+                                                            
+                                                        </apex:outputPanel>
+                                                        
+                                                </apex:outputPanel>
+
+                                                
+
+                                              </div>
+                                              
+                                            </div>
+                                            <div class="span6 hidden-phone">
+        
+              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div id="desk-rightcol" class="span2"></div>-->
+                           </apex:form>
+                       </div>
+                    </div>
+            </div>
+       </apex:define>
+     </apex:composition>
+</apex:page>

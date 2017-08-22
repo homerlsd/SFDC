@@ -1,0 +1,134 @@
+<apex:page controller="ParentCaseActionController" tabStyle="Case" showHeader="true">
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>
+    <style>
+        .requiredInput .requiredBlock, .requiredBlock {background-color: white;}
+        .custompubblock div {
+            padding-bottom: 10px;}
+        .custompublabel {width:54px;}
+        .labelClass{
+            font-weight: bold;
+        }
+        table{
+            width: 100%;
+        }       
+    </style>
+<div>
+    <apex:form id="theForm">
+    <apex:sectionHeader title="Parent Case Search" subtitle="Child Case: {!child.CaseNumber} "/>
+        <apex:outputPanel id="out" >
+            <apex:pageBlock title="Available Parent Cases" >
+                <apex:outputPanel >
+                    <div >
+                        <table>
+                            <tr>
+                                <td >
+                                <apex:outputLabel styleClass="labelClass" value="Select from Available Tier 2 Cases: ">
+                                    <apex:selectList value="{!selectedParent}" multiselect="false" size="1" styleClass="default xl" >
+                                        <apex:selectOptions value="{!ParentCases}"/>
+                                        <apex:actionSupport event="onchange" action="{!showDetails}" rerender="out" status="complaintstatus"/>
+                                        <apex:actionStatus startText="updating..." id="parents">
+                                            <apex:facet name="start" >
+                                                <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                            </apex:facet>
+                                        </apex:actionStatus>
+                                    </apex:selectList>
+                                </apex:outputLabel>
+                                </td>
+                                <td >
+                                <div >
+                                    <apex:outputLabel styleClass="labelClass" value="Select from Available Client Cases: ">
+                                        <apex:selectList value="{!selectedClient}" multiselect="false" size="1" styleClass="default xl" >
+                                            <apex:selectOptions value="{!ClientCases}"/>
+                                            <apex:actionSupport event="onchange" action="{!showClientDetails}" rerender="out" status="complaintstatus"/>
+                                            <apex:actionStatus startText="updating..." id="clients">
+                                                <apex:facet name="start" >
+                                                    <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                                </apex:facet>
+                                            </apex:actionStatus>
+                                        </apex:selectList>
+                                    </apex:outputLabel>
+                                </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </apex:outputPanel>
+                <apex:outputPanel id="detail" rendered="{!parentC.id != null}">
+                    <br/>
+                    <apex:pageBlockSection columns="1" title="Parent Case Details">
+                        <apex:pageBlockTable var="par" value="{!parentC}">
+                                <apex:column headerValue="Contact Name">
+                                    <apex:outputText value="{!par.Contact_Name__c}" />
+                                </apex:column>
+                                <apex:column headerValue="JIRA #">
+                                    <apex:outputText value="{!par.JIRA__c}" />
+                                </apex:column>
+                                <apex:column headerValue="status">
+                                    <apex:outputText value="{!par.status}" />
+                                </apex:column>
+                                <apex:column headerValue="Subject">
+                                    <apex:outputText value="{!par.subject}" />
+                                </apex:column>
+                                <apex:column headerValue="Link to this Parent Case">
+                                        <apex:commandLink action="{!linkParentCase}" value="Link to Parent Case" status="linkstatus" reRender="theForm"/>
+                                        <apex:actionStatus startText="linking..." id="linkstatus">
+                                            <apex:facet name="start" >
+                                                <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                            </apex:facet>
+                                        </apex:actionStatus>
+                                </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+            </apex:pageBlock>
+            <apex:pageBlock title="Create New Parent Case">
+                <apex:outputPanel id="CaseOptions">
+                    <apex:outputLabel styleClass="labelClass" value="Select New Case Type: ">
+                        <apex:selectList value="{!selectedRtype}" multiselect="false" size="1" styleClass="default xl" >
+                            <apex:selectOptions value="{!Rtypes}"/>
+                            <apex:actionSupport event="onchange" action="{!showNewCase}" rerender="newCasePanel" status="complaintstatus"/>
+                            <apex:actionStatus startText="updating..." id="parents">
+                                <apex:facet name="start" >
+                                    <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </apex:selectList>
+                    </apex:outputLabel>
+                </apex:outputPanel>
+                <br/>
+                <br/>                    
+                <apex:outputPanel id="newCasePanel" style="overflow:auto;">
+                    <apex:outputPanel rendered="{!caseType == 'Tier 2'}" id="Tier2Panel">
+                        <apex:pageBlockSection title="New Tier 2 Case" columns="2">
+                            <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CSR_CreateCase_CaseFields_Tier2}">
+                                    <apex:inputField value="{!theCase[f]}" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+                            </apex:repeat>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!caseType == 'Client Support'}" id="CSPanel">
+                        <apex:pageBlockSection showHeader="true" title="New Client Support Case" columns="2">
+                            <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.ParentCasePage_CaseFields_ClientSupport}">
+                                    <apex:inputField value="{!theCase[f]}" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+                            </apex:repeat>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                        <center>
+                            <apex:outputPanel rendered="{!caseType != null && caseType != ''}" id="buttonPanel" >
+                                <apex:commandButton action="{!save}" value="Save and Link Parent Case" reRender="out"
+                                    style="padding:5px 10px;
+                                    font-size:13px; font-weight:bold; line-height:
+                                    18px;border-color:#096EB3;"
+                                    id="addcaseButton"/>&nbsp;
+                                    <apex:commandButton action="{!Cancel}" value="Cancel"
+                                    style="padding:5px 10px;
+                                    font-size:13px; font-weight:bold; line-height:
+                                    18px;border-color:#096EB3;"
+                                    id="cancelcaseButton"/>
+                            </apex:outputPanel>
+                        </center>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</div>
+</apex:page>

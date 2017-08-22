@@ -1,0 +1,98 @@
+<apex:page showHeader="true" sidebar="true" Controller="RallyIntegratedcontroller">
+<style>
+
+    div.hideCurrDate span.dateInput span.dateFormat{
+       display:none;
+    }
+
+</style>
+
+<script>
+  function SelectPhno(CTAtypeId, ProductnameId, PhoneId){
+   var CTA = document.getElementById(CTAtypeId).value;
+   var prdname = document.getElementById(ProductnameId).innerHTML;
+   if(CTA == 'Phone - Default' && prdname.includes('Wellness Coaching')){ 
+         document.getElementById(PhoneId).value = '(800) 478-1057';
+    }
+    if(CTA == 'Phone - Default' && prdname == 'Quit4Life'){   
+        document.getElementById(PhoneId).value = '(866) 784-8454';
+    }
+    if(CTA == 'Phone - Default' && prdname == 'Quit Power'){   
+        document.getElementById(PhoneId).value = '(877) 784-8797';
+    }
+    if(CTA == 'Phone - Default' && prdname == 'Healthy Weight'){   
+        document.getElementById(PhoneId).value = '(866) 458-4998';
+    }
+    if(CTA == 'Phone - Default' && prdname == 'Healthy Back'){   
+        document.getElementById(PhoneId).value = '(866) 559-2225';
+    }
+    if(CTA == 'Phone - Default' && prdname == 'Maternity Support Program'){   
+        document.getElementById(PhoneId).value = '(877) 201-5328';
+    }    
+    if(CTA == 'Phone - Default' && prdname == 'Healthy Pregnancy Program'){   
+        document.getElementById(PhoneId).value = '(888) 246-7389';
+    }
+   }
+  </script>
+
+<apex:form >
+    <b><apex:Messages layout="table" styleClass="exceptionText" /></b>
+        <apex:outputPanel id="thePanel">
+        <apex:outputPanel rendered="{! !showSuccess}">
+        <apex:pageBlock >
+                <apex:pageBlockTable value="{!lstprodwrapper}" var="prd">
+                    <apex:column headerValue="Yes/No">
+                        <apex:inputField value="{!prd.prodint.Yes_No__c}">
+                        <apex:actionSupport event="onchange" rerender="colid,opid,rapid,qtid"/>
+                        </apex:inputField>
+                    </apex:column>
+                   <apex:column headerValue="Product Name" >
+                     <apex:outputField id="nameid" value="{!prd.prodint.Product_Name__c}"  /><br/><br/>
+                     <apex:outputPanel rendered="{!IF((prd.prodint.Product_Name__c == 'Optum Biometric Services' || prd.prodint.Product_Name__c == 'Optum Biometric Services - Onsite Screenings (buy-up)' || prd.prodint.Product_Name__c == 'Third Party Biometrics Vendor' || prd.prodint.Product_Name__c == 'Third Party Biometrics Vendor - Onsite Screenings'), True, False)}" id="startdateid">
+                        <b>Start Date:</b><div class="hideCurrDate">
+                        <apex:inputField value="{!prd.prodint.Start_Date__c}"/>
+                        </div>
+                     </apex:outputPanel>
+                      <apex:outputPanel rendered="{!descriptionMap[prd.prodint.Product_Name__c] != 'N/A'}">
+                      <br/>
+                     <apex:outputText value="{!descriptionMap[prd.prodint.Product_Name__c]}" style="color:grey; font-size: 10px; padding-top: 2px;"/>
+                     </apex:outputPanel>
+                    </apex:column>
+                    <apex:column headerValue="CTA" >
+                    <apex:selectList id="CTAid" size="1" value="{!prd.SelectedValue}"  onmouseout="SelectPhno('{!$Component.CTAid}', '{!$Component.nameid}','{!$Component.Phid}')" >
+                        <apex:selectOptions value="{!prd.lstopt}" />
+                    </apex:selectList>
+                    <apex:outputPanel rendered="{!IF(prd.bln1 == True, True, False)}">
+                        <apex:selectList size="1" value="{!prd.Selectedvendor}">
+                        <apex:selectOptions value="{!prd.lstvendor}" />
+                    </apex:selectList>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!IF(prd.bln2 == True, True, False)}">
+                        <apex:inputField value="{!prd.prodint.Vendor__c}"/>
+                    </apex:outputPanel>
+                    </apex:column>
+                    <apex:column headerValue="Phone # / URL" id="Phcolid">
+                        <apex:inputText value="{!prd.prodint.Phone_Number_URL__c}" id="Phid"/>
+                    </apex:column>
+                    <apex:column headerValue="Notes" id="colid">
+                        <apex:inputField value="{!prd.prodint.Notes__c}"/><br/><br/>
+                        <apex:outputPanel rendered="{!IF(prd.prodint.Product_Name__c == 'Optum Biometric Services' && prd.prodint.Yes_No__c == 'Yes', True, False)}" id="opid">
+                            <b>Biometric Affiliations:</b><br/><apex:outputField value="{!prd.prodint.Implementation__r.Biometric_Affiliations__c}"/>
+                        </apex:outputPanel>
+                         <apex:outputPanel rendered="{!IF(prd.prodint.Product_Name__c == 'Real Appeal' && prd.prodint.Yes_No__c == 'Yes', True, False)}" id="rapid">
+                            <b>Real Appeal Affiliations:</b><br/><apex:outputField value="{!prd.prodint.Implementation__r.Real_Appeal_Affiliations__c}"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!IF(prd.prodint.Product_Name__c == 'Quit4Life' && prd.prodint.Yes_No__c == 'Yes', True, False)}" id="qtid">
+                            <b>Quit for Life Affiliations:</b><br/><apex:outputField value="{!prd.prodint.Implementation__r.Quit_for_Life_Affiliations__c}"/>
+                        </apex:outputPanel>
+                    </apex:column>
+                </apex:pageBlockTable> 
+            <apex:pageBlockButtons >
+                    <apex:commandButton value="Save" action="{!Save}"/>
+                    <apex:commandButton value="Cancel" action="{!Cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    </apex:outputPanel>
+</apex:form>               
+</apex:page>

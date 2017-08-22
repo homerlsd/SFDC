@@ -1,0 +1,379 @@
+<apex:page standardcontroller="Survey__c" extensions="LA_NewSurveyController" action="{!setCaseChatKey}" title="Rally Support" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+
+    <apex:composition template="LA_ChatTemplate">
+    <apex:define name="content">
+    
+            
+    <link href="{!URLFOR($Resource.RLC_SurveyStyles)}" rel="stylesheet"/>
+    <script type="text/javascript">        
+        var j$ = jQuery.noConflict();
+    </script>         
+    
+    
+    <script>
+        function closeWindow(){
+            window.close();
+            defaultchatwindow.close();
+        }
+        
+        function scrollTop(){
+            window.scrollTo(0, 0);
+        }
+                
+    </script>          
+
+    <!-- Content --> 
+    <div id="rc_chatBlock" class="container-fluid center-block rc_chatBlock_SV"> 
+        <div id="rc_chatWindow" class="container center-block rc_chatWindow_SV">       
+        
+
+       
+            <div id="desk-content">
+              <div class="container">
+
+        
+                            <apex:outputPanel id="thePanel" >
+
+        
+                              <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+        
+                                <apex:form rendered="{! !thankYouRendered && !showBadURLError && !showNoAgentAvailable && !showClientTimeout }" html-autocomplete="off">
+                                    
+                                    <div id="rc_survey_container" class="container center-block rc_survey_container"> 
+                                        <br/>
+                                            <div class="container center-block">
+                                                    
+                                                                    
+                                              <div id="qList" style="rc_container">
+                    
+                                                    <apex:repeat value="{!allQuestions}" var="qPreview" id="aQPreview">
+                                                      <div id="{!qPreview.id}" >
+                                                        <div id="headerQ1">
+                                                          <h3>
+                                                            {!qPreview.question}
+                                                            <apex:outputPanel rendered="{!qPreview.required}" styleClass="requiredText" style="color:red;">
+                                                                ({!$Label.LABS_SF_Required})
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel rendered="{! !qPreview.required}" style="font-style:italic;font-weight:bold;">
+                                                                ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                            </apex:outputPanel>
+                                                          </h3>
+                                                        </div>
+                                                        <div>
+                                                          <div id="radio" > 
+                                                            <apex:selectRadio layout="pageDirection" rendered="{!qPreview.renderSelectRadio}" value="{!qPreview.selectedOption}"  html-autocomplete="off" >
+                                                              <apex:selectOptions value="{!qPreview.singleOptions}"/>
+                                                            </apex:selectRadio>
+                                                          </div>
+                                                          <div id="checkbox" >           
+                                                            <apex:selectCheckboxes layout="pageDirection" rendered="{!qPreview.renderSelectCheckboxes}" value="{!qPreview.selectedOptions}"  html-autocomplete="off">
+                                                              <apex:selectOptions id="multiCheck" value="{!qPreview.multiOptions}"/>
+                                                            </apex:selectCheckboxes> 
+                                                          </div>
+                                                          <div id="text" style="margin: auto; margin-top: 1em; margin-bottom: 2em;"> 
+                                                             <apex:inputTextArea cols="50" rows="10" rendered="{!qPreview.renderFreeText}" value="{!qPreview.choices}"  html-autocomplete="off"/>  
+                                                          </div>
+                                                          <div id="row" style="margin: auto; margin-top: 1em; margin-bottom: 2em;">
+                                                            <apex:selectRadio rendered="{!qPreview.renderSelectRow}" value="{!qPreview.selectedOption}"  html-autocomplete="off" style="">
+                                                              <apex:selectOptions value="{!qPreview.rowOptions}"/>
+                                                            </apex:selectRadio>
+                                                          </div>  
+                                                        </div>             
+                                                      </div>  <!-- qPreview.id -->
+                                                    <br/>
+                                                    </apex:repeat>
+                                                  
+                        
+                                                    <apex:outputPanel rendered="{!surveyID == $Label.NewSurvey_CSRSurveyID}">
+                                                      <!--<apex:inputCheckbox value="{!showExtraSurvey}" label=""   >
+                                                      <apex:actionSupport event="onclick" action="{!showExtraQs}" status="stat" reRender="extraPanel"/>
+                                                      <apex:actionStatus stopText="" id="stat"> 
+                                                        <apex:facet name="start">       
+                                                          <apex:outputPanel rendered="{! !showExtraSurvey}">
+                                                          Loading...       
+                                                          </apex:outputPanel>
+                                                        </apex:facet>
+                                                      </apex:actionStatus>
+                                                      </apex:inputCheckbox>
+                                                      <apex:outputText style="font-size:1.4em;"  value=" I would like to provide even more feedback to help improve the Rally experience!"/>
+                                                      <br/>
+                                                      <apex:outputPanel style="font-style:italic;font-weight:bold;">
+                                                          ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                      </apex:outputPanel>-->
+                                                    </apex:outputPanel>
+                    
+                                                    <apex:outputPanel id="extraPanel">
+                                                          <apex:outputPanel rendered="{!showExtraSurvey}">
+                                                      
+                                                              <apex:repeat value="{!subQuestions}" var="subPreview" id="subPreview">
+                            
+                                                                <div id="{!subPreview.id}" >
+                                                                  <div id="headerQ">
+                                                                    <h3 >
+                                                                      {!subPreview.question}
+                                                                      <apex:outputPanel rendered="{!subPreview.required}" styleClass="requiredText" style="color:red;">
+                                                                          ({!$Label.LABS_SF_Required})
+                                                                      </apex:outputPanel>
+                                                                      <apex:outputPanel rendered="{!subPreview.required}" style="font-style:italic;font-weight:bold;">
+                                                                          ({!$Label.NewSurvey_SurveyQuestionOptional})
+                                                                      </apex:outputPanel>
+                                                                    </h3>
+                                                                  </div>
+                                                                  <div>
+                                                                    <div id="radio" > 
+                                                                      <apex:selectRadio layout="pageDirection" rendered="{!subPreview.renderSelectRadio}" value="{!subPreview.selectedOption}"  html-autocomplete="off"  style="text-align:left">
+                                                                        <apex:selectOptions value="{!subPreview.singleOptions}" />
+                                                                      </apex:selectRadio>
+                                                                      <apex:outputPanel layout="block" rendered="{!subPreview.singleOptions.size == 11}">
+                                                                        show something
+                                                                      </apex:outputPanel>
+                                                                    </div>
+                                                                    <div id="checkbox" >           
+                                                                      <apex:selectCheckboxes onchange="update_value(this);" layout="pageDirection" rendered="{!subPreview.renderSelectCheckboxes}" value="{!subPreview.selectedOptions}"  html-autocomplete="off"  style="text-align:left">
+                                                                        <apex:selectOptions id="multiCheck" value="{!subPreview.multiOptions}"  />
+                                                                      </apex:selectCheckboxes> 
+                                                                    </div>
+                                                                    <div id="text" style="margin: auto; margin-top: 1em; margin-bottom: 2em;"> 
+                                                                      <apex:inputTextArea cols="50" rows="10" rendered="{!subPreview.renderFreeText}" value="{!subPreview.choices}"  html-autocomplete="off"/>  
+                                                                    </div>
+                                                                    <div id="row" style="margin: auto; margin-top: 1em; margin-bottom: 2em;">
+                                                                      <apex:selectRadio rendered="{!subPreview.renderSelectRow}" value="{!subPreview.selectedOption}"  html-autocomplete="off"  style="text-align:left">
+                                                                        <apex:selectOptions value="{!subPreview.rowOptions}"  />
+                                                                      </apex:selectRadio>
+                                                                       <apex:outputPanel layout="block" rendered="{!subPreview.rowOptions.size == 11}">
+                                                                        show something else
+                                                                      </apex:outputPanel>
+                                                                    </div>  
+                                                                  </div>   
+                                                                </div>  <!-- qPreview.id -->
+                                                                <br/>
+                                                            </apex:repeat>
+                                                            <br/>
+                                                          </apex:outputPanel>                   
+                                                    </apex:outputPanel>
+                    
+                                
+                                              <center>
+                                                <div>
+                                                       <center>
+                                                           <apex:outputpanel id="errorformMissingFields" rendered="{!showRequiredError}">
+                                                              <apex:pageMessage severity="info" summary="{!$Label.NewSurveyPage_RequiredFIeld}" rendered="{!showRequiredError}" escape="false" />  
+                                                           </apex:outputpanel>
+                                                       </center>
+                                                      <div class="row" style="margin-left:0px;padding-left:0px;text-align:left;" > 
+                                                              <button id="rc_closeChatWindow" class="btn rallyChat-grey" onclick="closeWindow()">{!$Label.LA_ButtonText_CloseChat}</button>
+                       
+                                                              <!-- <apex:commandButton action="{!submitResults}" 
+                                                                  value="{!$Label.LABS_SF_SubmitSurvey}" 
+                                                                  onclick="this.onclick=function(){return false;}" 
+                                                                  rerender="thePanel" 
+                                                                  id="submitButton" 
+                                                                  styleClass="rc_GreenBtn" 
+                                                                  style="max-height:40px;width: auto;background: #49c57e;background-image: -webkit-linear-gradient(top, #49c57e, #49c57e);background-image: -moz-linear-gradient(top, #49c57e, #49c57e);background-image: -ms-linear-gradient(top, #49c57e, #2980b9);background-image: -o-linear-gradient(top, #49c57e, #49c57e);background-image: linear-gradient(to bottom, #49c57e, #49c57e);border: solid #3fab6d 1px;-webkit-border-radius: 3;-moz-border-radius: 3;border-radius: 3px;font-family: 'Helvetica Neue Bold', Helvetica, Arial, sans-serif;color: #ffffff;font-size: 14pt;font-weight: 300;text-decoration: none;opacity: 1.0;margin-left: 25px;margin-right: auto;margin-top: 30px;margin-bottom: 30px;padding-top: 10px;padding-bottom: 40px;padding-left: auto;padding-right: auto;"  
+                                                              /> -->
+
+                                                              <input type="button" 
+                                                                     value="{!$Label.LABS_SF_SubmitSurvey}" 
+                                                                     onclick="submitSurvey();" 
+                                                                     id="submitButton"
+                                                                     styleClass="rc_GreenBtn"
+                                                                     style="max-height:40px;width: auto;background: #49c57e;background-image: -webkit-linear-gradient(top, #49c57e, #49c57e);background-image: -moz-linear-gradient(top, #49c57e, #49c57e);background-image: -ms-linear-gradient(top, #49c57e, #2980b9);background-image: -o-linear-gradient(top, #49c57e, #49c57e);background-image: linear-gradient(to bottom, #49c57e, #49c57e);border: solid #3fab6d 1px;-webkit-border-radius: 3;-moz-border-radius: 3;border-radius: 3px;font-family: 'Helvetica Neue Bold', Helvetica, Arial, sans-serif;color: #ffffff;font-size: 14pt;font-weight: 300;text-decoration: none;opacity: 1.0;margin-left: 25px;margin-right: auto;margin-top: 30px;margin-bottom: 30px;padding-top: 10px;padding-bottom: 40px;padding-left: auto;padding-right: auto;" />
+                                                              
+                                                              <apex:actionFunction name="submitSurvey" 
+                                                                                   action="{!submitResults}" 
+                                                                                   rerender="thePanel,thankYouPanel" />
+
+                                                      </div>   
+                                                </div>
+                                              </center>
+                                              <br/>  
+
+                                            </div>  <!-- qList -->    
+
+                                            </div> 
+                                        <br/>
+                                    </div>              
+            
+            
+            
+                                </apex:form>
+        
+        
+                           
+                                <!-- Show thankyou message  -->
+                                <apex:outputpanel rendered="{!thankYouRendered}"  style="background-color: #f2f2f2;" id="thankYouPanel">
+                                    <div class="rc_errorMsgChatBlock" >
+                                        <br/>
+                                            <div class="container center-block text-center rc_errorMsgContainer"> 
+                                                <br/>
+                                                    <div class="container center-block text-center">   
+                                                        <div >
+                                                            <apex:image id="rc_surveyThankyouIcon"  url="{!URLFOR($Resource.SurveyIcon_100x100px)}" width="100" height="100"/>
+                                                        </div> 
+                                                        <br/>
+                                                        <p style="text-align: center;">
+                                                            <apex:outputText value="{!surveyThankYouText}"  escape="false"  />
+                                                        </p>
+                                                        <br/>
+                                                        <div >
+                                                            <button class="btn rallyChat-grey" style="margin:0px;width:100px;" onclick="closeWindow()" >{!$Label.LA_ButtonText_CloseChat}</button>
+                                                            <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                                            <!-- <button id="rc_retryChat" class="btn btn-success" onclick="liveagent.startChat(liveAgent_buttonId);" >{!$Label.LA_ButtonText_RetryChat}</button> -->   
+                                                        </div> 
+                                                    </div>
+                                                <br/>
+                                            </div>
+                                        <br/>
+                                    </div>                      
+                                </apex:outputpanel> <!--  Show thankyou message  -->
+                                
+            
+        
+                            </apex:outputPanel> <!-- thePanel -->
+                
+        
+        
+                              <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+            
+            
+                    <!-- #############################################################################  -->
+                    <!-- Apex Error Message Display Styled to Match the Live Agent Message Replication  -->
+                    
+                                <!-- Apex Page Message Error .... showAlreadyTakenErrorL -->
+                                <apex:outputpanel id="showAlreadyTakenError" rendered="{!showAlreadyTakenError}"  style="background-color: #f2f2f2;">
+                                    <div class="rc_errorMsgChatBlock" >
+                                        <br/>
+                                            <div class="container center-block text-center rc_errorMsgContainer"> 
+                                                <br/>
+                                                    <div class="container center-block text-center">   
+                                                        <div >
+                                                            <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100"/>
+                                                        </div> 
+                                                        <br/>
+                                                        <p style="text-align: center;">
+                                                            <apex:pageMessage severity="info" summary="{!$Label.NewSurveyPage_ALreadyTakenSurvey}" rendered="{!showAlreadyTakenError}" escape="false" />
+                                                        </p>
+                                                        <br/>
+                                                        <div >
+                                                            <button  class="btn rallyChat-grey" onclick="closeWindow()" style="margin:0px;width:100px;" >{!$Label.LA_ButtonText_CloseChat}</button>
+                                                            <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                                            <!-- <button id="rc_retryChat" class="btn btn-success" onclick="liveagent.startChat(liveAgent_buttonId);" >{!$Label.LA_ButtonText_RetryChat}</button> -->   
+                                                        </div> 
+                                                    </div>
+                                                <br/>
+                                            </div>
+                                        <br/>
+                                    </div>                      
+                                </apex:outputpanel> 
+                                
+                                
+                                
+                                
+                                <!-- Apex Page Message Error .... showAlreadyTakenErrorL -->
+                                <apex:outputpanel id="showBadURLError" rendered="{!showBadURLError}"  style="background-color: #f2f2f2;">
+                                    <div class="rc_errorMsgChatBlock" >
+                                        <br/>
+                                            <div class="container center-block text-center rc_errorMsgContainer"> 
+                                                <br/>
+                                                    <div class="container center-block text-center">   
+                                                        <div >
+                                                            <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100"/>
+                                                        </div> 
+                                                        <br/>
+                                                        <p style="text-align: center;">
+                                                            <apex:pageMessage severity="info" summary="{!$Label.NewLA_SurveyPage_GenericError}" rendered="{!showBadURLError}" escape="false" />
+                                                        </p>
+                                                        <br/>
+                                                        <div >
+                                                            <button  class="btn rallyChat-grey" onclick="closeWindow()" style="margin:0px;width:100px;" >{!$Label.LA_ButtonText_CloseChat}</button>
+                                                            <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                                            <!-- <button id="rc_retryChat" class="btn btn-success" onclick="liveagent.startChat(liveAgent_buttonId);" >{!$Label.LA_ButtonText_RetryChat}</button> -->   
+                                                        </div> 
+                                                    </div>
+                                                <br/>
+                                            </div>
+                                        <br/>
+                                    </div>                      
+                                </apex:outputpanel>  
+                                  
+                       <!-- #############################################################################  -->     
+            
+            
+                       <!-- #############################################################################  -->
+                       <!-- Live Agent Message Relpication -->
+                        
+                                        
+                                <!-- Show error message that no agent is available when a chatKey is not passed through the URL -->
+                                <apex:outputpanel id="noAgentAvailable" rendered="{!showNoAgentAvailable}"  style="background-color: #f2f2f2;">
+                                    <div class="rc_errorMsgChatBlock" >
+                                        <br/>
+                                            <div class="container center-block text-center rc_errorMsgContainer"> 
+                                                <br/>
+                                                    <div class="container center-block text-center">   
+                                                        <div >
+                                                            <apex:image id="rc_connectionIssueIcon"  url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100"/>
+                                                        </div> 
+                                                        <br/>
+                                                        <p style="text-align: center;">
+                                                            <apex:outputText value="{!$Label.LA_Chat_Unavailable}"  escape="false"  />
+                                                        </p>
+                                                        <br/>
+                                                        <div >
+                                                            <button  class="btn rallyChat-grey" onclick="closeWindow()" style="margin:0px;width:100px;" >{!$Label.LA_ButtonText_CloseChat}</button>
+                                                            <!-- the parameter is the live agent button id associated with the chat to restart -->
+                                                            <!-- <button id="rc_retryChat" class="btn btn-success" onclick="liveagent.startChat(liveAgent_buttonId);" >{!$Label.LA_ButtonText_RetryChat}</button> -->   
+                                                        </div> 
+                                                    </div>
+                                                <br/>
+                                            </div>
+                                        <br/>
+                                    </div>                      
+                                </apex:outputpanel> <!--  /END Show No Agent Available -->
+                                
+                        
+                        
+                        
+                                                                
+                                <!-- Show error message that the client has timed out -->
+                                <apex:outputpanel id="clientTimeout" rendered="{!showClientTimeout}" style="background-color: #f2f2f2;">
+                                    <div class="rc_errorMsgChatBlock" >
+                                        <br/>
+                                            <div class="container center-block text-center rc_errorMsgContainer"> 
+                                                 <br/>
+                                                    <div>
+                                                        <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100" id="rc_alertBubbleIcon"/> 
+                                                    </div> 
+                                                    <br/>
+                                                    <p style="text-align: center;">
+                                                         <apex:outputText value="{!$Label.LA_Chat_Timed_Out}"  escape="false"  /> 
+                                                    </p>
+                                                    <br/>
+                                                    <div>
+                                                         <button id="rc_closeChatWindow" class="btn rallyChat-grey"  style="margin:0px;width:100px;" onclick="closeWindow()">{!$Label.LA_ButtonText_CloseChat}</button>
+                                                    </div>
+                                                 <br/>      
+                                            </div>
+                                        <br/>
+                                    </div>    
+                                </apex:outputpanel> <!--  /END Show Client Timeout -->     
+                        
+                         <!-- #############################################################################  -->
+        
+        
+                
+              </div> <!--container -->
+            </div> <!--desk-content -->
+        
+        
+
+        
+          </div> <!-- rc_surveyContainer -->
+        </div> <!-- rc_surveyBlock -->   
+            
+    
+            
+   </apex:define>    
+</apex:composition> 
+
+</apex:page>

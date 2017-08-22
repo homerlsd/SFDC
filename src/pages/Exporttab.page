@@ -1,0 +1,135 @@
+<apex:page standardController="Milestone1_Project__c" extensions="ExportClass" contentType="txt/xml#{!nameFile}.xls" cache="true" action="{!Export}">
+<apex:outputText value="{!xlsHeader}"/>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Styles>
+ <Style ss:ID="s1">
+ <Alignment/>
+ <Borders/>
+ <Font ss:Bold="1"/>
+ <Interior/>
+ <NumberFormat/>
+ <Protection/>
+ </Style>
+ </Styles>
+ <Worksheet ss:Name="Implementation">
+ <Table x:FullColumns="1" x:FullRows="1">
+ <Column ss:Width="170"/>
+
+ <!--<Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >Project status</Data></Cell>
+</Row>
+<br/>
+
+ 
+<apex:repeat var="ps" value="{!ProjectstatusFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!ps.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[ps]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ 
+<Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >Client Overview</Data></Cell>
+</Row>-->
+
+ <apex:repeat var="co" value="{!ClientoverviewFields}">
+<Row>
+<Cell ss:StyleID="s1"><Data ss:Type="String" >{!co.Label}</Data></Cell>
+<Cell><Data ss:Type="String">
+<apex:outputText rendered="{!IF((co.type =='date' || co.type =='datetime'), true, false)}" value="{0, date, MM'/'dd'/'yyyy}">
+    <apex:param value="{!imp[co]}" /> 
+</apex:outputText>
+ <apex:outputText rendered="{!IF((co.type !='date' && co.type !='datetime'), true, false)}" value="{!imp[co]}"/>
+</Data></Cell>
+</Row>
+</apex:repeat>
+
+ 
+ 
+<!--<Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >Client Implementation Stakeholders</Data></Cell>
+</Row>
+
+ <apex:repeat var="cis" value="{!ClientImplementationStakeholderfields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!cis.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[cis]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ 
+<Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >Registration Configuration Details</Data></Cell>
+</Row>
+
+<apex:repeat var="rcf" value="{!SSOConfigurationDetailsFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!rcf.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[rcf]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ <apex:repeat var="cbd" value="{!ClientBrandingDetailsFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!cbd.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[cbd]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ <apex:repeat var="hsd" value="{!HealthSurveyDetailsFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!hsd.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[hsd]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ 
+ <apex:repeat var="sdf" value="{!SupportDetailsFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!sdf.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[sdf]}</Data></Cell>
+ </Row>
+ </apex:repeat>
+
+ 
+ <apex:repeat var="sdf" value="{!RewardsandIncentivesConfigurationDetailFields}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!sdf.Label}</Data></Cell>
+ <Cell><Data ss:Type="String">{!imp[sdf]}</Data></Cell>
+ </Row>
+ </apex:repeat>-->
+
+ 
+ 
+ </Table>
+ </Worksheet>
+
+<apex:repeat value="{!ChildObjList}" var="a" >
+ <Worksheet ss:Name="{!a.objectlabel}">
+ <Table x:FullColumns="1" x:FullRows="1">
+ <Column ss:Width="170"/>
+
+
+ <apex:repeat var="lbl" value="{!a.Listfieldset}">
+ <Row>
+ <Cell ss:StyleID="s1"><Data ss:Type="String" >{!lbl.label}</Data></Cell>
+ <apex:repeat value="{!a.lstobj}" var="impchild">
+ <Cell><Data ss:Type="String">
+ <apex:outputText rendered="{!IF((lbl.type =='date' || lbl.type =='datetime'), true, false)}" value="{0, date, MM'/'dd'/'yyyy}">
+    <apex:param value="{!impchild[lbl]}" /> 
+</apex:outputText>
+ <apex:outputText rendered="{!IF((lbl.type !='date' && lbl.type !='datetime'), true, false)}" value="{!impchild[lbl]}"/>
+ </Data></Cell>
+ </apex:repeat>
+ </Row>
+ </apex:repeat>
+ </Table>
+ </Worksheet>
+ </apex:Repeat>
+</Workbook>
+</apex:page>

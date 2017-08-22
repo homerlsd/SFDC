@@ -1,0 +1,64 @@
+<!--<apex:page sidebar="false" title="Article List">
+<style>
+td{
+vertical-align : top;
+text-align: left;
+}
+</style>
+<apex:form >
+<apex:pageBlock title="Article List" >
+<apex:panelGrid width="100%">
+<table width="99%">
+<tr>
+<th width="33%">Title</th>
+<th width="33%">Article Type</th>
+<th width="33%">Summary</th>
+</tr>
+</table>
+<knowledge:articleList articleVar="article" hasMoreVar="false" pageSize="10">
+<table width="99%">
+<tr>
+<td width="33%">
+<apex:outputLink target="_blank" value="{!URLFOR($Action.KnowledgeArticle.View,
+article.id,['popup' = 'true'])}">{!article.title}</apex:outputLink>
+</td>
+<td width="33%"><apex:outputText >{!article.articleTypeLabel}</apex:outputText></td>
+<td width="33%"><apex:outputText >{!article.abstract}</apex:outputText></td>
+</tr>
+</table>
+</knowledge:articleList>
+</apex:panelGrid>
+</apex:pageBlock>
+</apex:form>
+</apex:page>-->
+<apex:page sidebar="false" showHeader="false" docType="html-5.0" controller="TestPageController">
+{!urlStuff}
+<!--<apex:includeScript value="{!$Resource.modernizr}"/>
+<script>
+function doTheGeoThang() {
+if (Modernizr.geolocation){
+navigator.geolocation.getCurrentPosition(
+function(position) {
+findMe(position.coords.latitude,position.coords.longitude);
+}
+);
+} else {
+alert ("Your browser isn't hit. Upgrade man!");
+}
+}
+</script>
+<h3>HTML 5's Geolocation API</h3>
+<apex:form >
+<span style="cursor: pointer;"
+onclick="doTheGeoThang()">Click Me - let me find you!</span>
+<br/><br/>
+<apex:actionFunction name="findMe" action="{!iFoundYou}" rerender="jsvalues">
+<apex:param name="lat" value="" assignTo="{!valueLat}"/>
+<apex:param name="long" value="" assignTo="{!valueLong}" />
+</apex:actionFunction>
+<apex:outputPanel id="jsvalues">
+<apex:outputText value="Value lat: {!valueLat}" /><br/>
+<apex:outputText value="Value long: {!valueLong}" /><br />
+</apex:outputPanel>
+</apex:form>-->
+</apex:page>

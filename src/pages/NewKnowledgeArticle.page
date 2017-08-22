@@ -1,0 +1,130 @@
+<apex:page controller="KnowledgeManagementController" tabStyle="Question__kav" sidebar="false" title="Knowledge Search">
+	<head>
+		<style type="text/css">
+			td{
+			vertical-align : top;
+			text-align: left;
+			}
+			.myClass { 
+			width: 10px; 
+			}
+		</style>
+		<apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+     	<apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+    	<apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+		<apex:outputPanel id="scriptBlock">
+		 	<script>
+		         j$ = jQuery.noConflict();
+		         j$(function() {
+	                 // date picker
+	                 j$( ".publishDate" ).datepicker();
+		         });
+			</script>
+	 	</apex:outputPanel>
+	</head>	
+	<div id="labs_container">   
+	<div id="fade" class="black_overlay"></div>
+	<apex:form >
+		<apex:panelGrid columns="2" >
+			<apex:panelGroup >
+				<apex:pageBlock id="smallBlock">
+					<br/>
+					<center>
+						<apex:commandButton value="New Article" action="{!createNewArticle}"/>	
+					</center>
+					<br/>
+					<apex:pageBlockSection rendered="{!title != 'New Article'}" title="Article Properties" columns="1">
+						<apex:outputText label="Article Number" value="{!artnumber}"/>
+						<apex:outputField value="{!art.publishstatus}"/>
+						<apex:outputField value="{!art.articletype}"/>
+						<apex:outputField value="{!art.createdBy.name}"/>
+						<apex:outputField value="{!art.lastmodifiedby.name}"/>
+					</apex:pageBlockSection>
+				</apex:pageBlock>
+			</apex:panelGroup>
+			<apex:outputPanel id="bigPanel">
+				<!--Creating new Article Block-->
+				<apex:panelGroup >
+					<apex:messages />
+					<apex:panelGroup id="theNewPanel" >
+						<apex:pageBlock title="{!title}" >
+							<center>
+								<apex:panelGrid columns="3">
+									<apex:outputPanel rendered="{!art.publishstatus == ''}">
+										<apex:commandButton action="{!save}" value="Save"/>
+									</apex:outputPanel>
+									<apex:outputPanel rendered="{!origPubDate == '' && (art.publishstatus == 'Draft' || art.publishstatus == 'Archived')}">
+										<apex:commandButton action="{!save}" value="Save"/>
+										<apex:commandButton action="{!saveandPub}" value="Save and Publish"/>
+									</apex:outputPanel>
+									<apex:outputPanel rendered="{!art.publishstatus == 'Online'}">
+										<apex:commandButton action="{!unPublish}" value="Unpublish"/>
+										<apex:commandButton action="{!editPublished}" value="Edit Published Article"/>
+									</apex:outputPanel>
+									<apex:outputPanel rendered="{!art.publishstatus == 'Draft' && origPubDate != ''}">
+										<apex:commandButton action="{!unPublish}" value="Unschedule"/>
+										<apex:commandButton action="{!editPublished}" value="Edit Scheduled Article"/>
+									</apex:outputPanel>
+								</apex:panelGrid>
+							</center>
+							<br/>
+							<apex:outputPanel rendered="{!art.publishstatus != 'Online'}">
+								<apex:pageBlockSection columns="1" title="Basic Info">
+									<apex:inputField style="width: 800px;" value="{!art.title}"/>
+									<apex:inputField style="width: 800px;" value="{!art.urlName}"/>
+									<apex:inputField style="width: 800px; height: 50px;" value="{!art.summary}"/>
+								</apex:pageBlockSection>
+								<apex:pageBlockSection columns="1" title="Details and Description">
+									<apex:inputField value="{!art.RichTextSummary__c}"/>
+									<apex:inputField value="{!art.Is_Common_Question__c}"/>
+									<apex:inputField value="{!art.Is_Default_Question__c}"/>
+									<apex:inputField value="{!art.Category__c}"/>
+	                                <apex:inputText label="Date to Publish (if blank will be published immediately):" value="{!publishDate}" styleClass="publishDate"/>
+	                                <script>
+	                                    j$( '.publishDate' ).datepicker();
+	                                </script>	
+								</apex:pageBlockSection>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!art.publishstatus == 'Online'}">
+								<apex:pageBlockSection columns="1" title="Basic Info">
+									<apex:outputText style="width: 800px;" value="{!art.title}"/>
+									<apex:outputText style="width: 800px;" value="{!art.urlName}"/>
+									<apex:outputText style="width: 800px; height: 50px;" value="{!art.summary}"/>
+								</apex:pageBlockSection>
+								<apex:pageBlockSection columns="1" title="Details and Description">
+									<div class="container">
+										<apex:inputTextArea cols="130" rows="20" disabled="true" readOnly="true" value="{!art.RichTextSummary__c}"/>
+										<apex:inputCheckbox disabled="true" value="{!art.Is_Common_Question__c}"/>
+										<apex:inputCheckbox disabled="true" value="{!art.Is_Default_Question__c}"/>
+										<apex:outputText value="{!art.Category__c}"/>
+		                                <apex:outputText label="Date to Publish (if blank will be published immediately):" value="{!publishDate}" />
+		                            </div>
+								</apex:pageBlockSection>
+							</apex:outputPanel>
+							<center>
+							<apex:panelGrid columns="3">
+								<apex:outputPanel rendered="{!art.publishstatus == ''}">
+									<apex:commandButton action="{!save}" value="Save"/>
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!origPubDate == '' && (art.publishstatus == 'Draft' || art.publishstatus == 'Archived')}">
+									<apex:commandButton action="{!save}" value="Save"/>
+									<apex:commandButton action="{!saveandPub}" value="Save and Publish"/>
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!art.publishstatus == 'Online'}">
+									<apex:commandButton action="{!unPublish}" value="Unpublish"/>
+									<apex:commandButton action="{!editPublished}" value="Edit Published Article"/>
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!art.publishstatus == 'Draft' && origPubDate != ''}">
+									<apex:commandButton action="{!unPublish}" value="Unschedule"/>
+									<apex:commandButton action="{!editPublished}" value="Edit Scheduled Article"/>
+								</apex:outputPanel>
+							</apex:panelGrid>
+						</center>
+						</apex:pageBlock>
+					</apex:panelGroup>
+				</apex:panelGroup>
+			</apex:outputPanel>
+		</apex:panelGrid>
+		</apex:form>
+		 </div>
+</apex:page>

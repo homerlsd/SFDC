@@ -1,0 +1,558 @@
+<apex:page standardController="Opportunity" tabstyle="Aggregate_Revenue_Projection__c" sidebar="false" extensions="opportunityProductEntryExtension" action="{!priceBookCheck}" >
+
+    <apex:sectionHeader Title="Manage {!$ObjectType.Product2.LabelPlural}" subtitle="{!opportunity.Name}"/>
+    <head>
+        <style>
+            .search{
+                font-size:14pt;
+                margin-right: 20px;    
+            }
+            .fyi{
+                color:red;
+                font-style:italic;
+            }
+            .label{
+                margin-right:10px;
+                font-weight:bold;
+            }
+            #expando{
+                clear:left;
+                overflow: auto;
+            }
+            .customPopup {
+                background-color: white;
+                border-style: solid;
+                border-width: 2px;
+                left: 25%;
+                padding: 10px;
+                position: absolute;
+                z-index: 9999;
+                /* These are the 3 css properties you will need to tweak so the pop 
+                                        up displays in the center of the screen. First set the width. Then set 
+                                        margin-left to negative half of what the width is. You can also add 
+                                        the height property for a fixed size pop up.*/
+                width: 750px;
+                top: auto;
+            }
+
+            .disabledTextBox {
+                background-color: grey;
+                border: 1px solid;
+                color: black;
+                cursor: default;
+                width: 90px;
+                display: table;
+                padding: 2px 1px;
+                text-align:right;
+            }   
+
+            .closeButton {
+                float: right;
+            }
+            .activeTab {background-color: #236FBD; color:white; background-image:none;font-size:1.25em;}
+            .inactiveTab { background-color: lightgrey; color:black; background-image:none;font-size:1.25em;}
+        </style>
+        
+        <script type='text/javascript'>
+        
+            // This script assists the search bar functionality
+            // It will execute a search only after the user has stopped typing for more than 1 second
+            // To raise the time between when the user stops typing and the search, edit the following variable:
+            
+            var waitTime = 1;
+            
+        
+            var countDown = waitTime+1;
+            var started = false;
+            
+            function resetTimer(){
+            
+                countDown=waitTime+1;
+                
+                if(started==false){
+                    started=true;
+                    runCountDown();
+                }
+            }
+            
+            function runCountDown(){
+            
+                countDown--;
+                
+                if(countDown<=0){
+                    fetchResults();
+                    started=false;
+                }
+                else{
+                    window.setTimeout(runCountDown,1000);
+                }
+            }
+
+            function switchMenu(obj,obj1,obj2) 
+            {
+                var el = document.getElementById(obj);                                       
+                if ( el.style.display != 'none' ) {
+                el.style.display = 'none';
+                }
+                else {
+                el.style.display = '';
+                }
+                var e2 = document.getElementById(obj1);                                       
+                if ( e2.style.display != 'none' ) {
+                e2.style.display = 'none';
+                }
+                else {
+                e2.style.display = '';
+                }
+                 var e3 = document.getElementById(obj2);                                       
+                if ( e2.style.display != 'none' ) {
+                e3.style.display = 'none';
+                }
+                else {
+                e3.style.display = '';
+                }
+
+            }
+
+        </script>
+    </head>
+  
+    <apex:form id="theForm">
+        <apex:outputPanel id="popup">
+            <apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" layout="block" rendered="{!displayPopup}">
+                 <apex:commandButton value="X" title="Close the popup" action="{!closePopup}" styleClass="closeButton" rerender="popup" immediate="true"/>
+                 <apex:pageBlock title="Product Added Successfully!">
+                    <apex:outputPanel styleClass="search">
+                       Available Add-Ons and Upsell Features: 
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                    <apex:outputPanel id="searchResults1">
+                    
+                        <apex:pageBlockTable rendered="{!hasPackage}" value="{!addOns}" var="aa">
+                        
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Name.Label}" value="{!aa.Product2.Name}" />
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Family.Label}" value="{!aa.Product2.Family}"/>
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Description.Label}" value="{!aa.Product2.Description}"/>
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Sales_Notes__c.Label}" value="{!aa.Product2.Sales_Notes__c}"/>
+                            
+                            <apex:column >
+                                <!-- command button in a column... neato -->
+                                <apex:commandButton value="Select" action="{!addToShoppingCart}" status="status4" reRender="popup,tabPanel,selected1,theFeatures,selected,searchResults,searchResults1,searchResults1" immediate="true">
+                                    <!-- again we use apex:param to be able to tell the controller which row we are working with -->
+                                    <apex:param value="{!aa.Id}" assignTo="{!toSelect}" name="toSelect"/>
+                                    <apex:actionStatus startText="Loading...   " id="status4" >
+                                        <apex:facet name="start" >
+                                            <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                        </apex:facet>
+                                    </apex:actionStatus>  
+                                </apex:commandButton>
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+
+                        <apex:outputText rendered="{! !hasPackage}">
+                            Select a Package to see available upsell products.
+                        </apex:outputText>
+                        
+                        <!-- We put up a warning if results exceed 100 rows -->
+                        <apex:outputPanel styleClass="fyi" rendered="{!overLimit}">
+                            <br/>
+                            Your search returned over 100 results, use a more specific search string if you do not see the desired {!$ObjectType.Product2.Label}.
+                            <br/>
+                        </apex:outputPanel>
+                        
+                    </apex:outputPanel>
+                
+                </apex:pageBlock>    
+                 <!--<apex:commandButton value="Ok" action="{!redirectPopup}" styleClass="closeButton" rerender="popup">-->
+            </apex:outputPanel>
+        </apex:outputPanel>
+
+        <apex:outputPanel id="bigErrorPanel">
+            <center>
+            <apex:messages style="color:red"/>
+            
+            <apex:outputPanel id="errorPanel" rendered="{!showError}">    
+                 <div class="alert alert-error">
+                     <div class="center">
+                         <h1 style="color:red;">Warning:</h1>
+                         <p style="color:red;">{!errorMessage}</p>
+                             <apex:commandButton action="{!clearError}" styleClass="btn btn-default" reRender="popup,tabPanel,selected1,theFeatures,errorPanel,bigErrorPanel" value="Ok"/>
+                     </div>
+                 </div>
+            </apex:outputPanel>
+            </center>
+        </apex:outputPanel>
+        <apex:tabPanel id="tabPanel" switchType="client" value="{!selectedTab}" tabClass="activeTab" inactiveTabClass="inactiveTab">
+            <apex:tab label="Current Opportunity Snapshot" name="name1" id="tabOne">
+                <apex:outputLabel styleClass="label">PriceBook: </apex:outputLabel>
+                <apex:outputText value="{!theBook.Name}"/>&nbsp;
+                <apex:commandLink action="{!changePricebook}" value="change" immediate="true"/>
+                <br/>
+                <!-- not everyone is using multi-currency, so this section may or may not show -->
+                <apex:outputPanel rendered="{!multipleCurrencies}">
+                    <apex:outputLabel styleClass="label">Currency: </apex:outputLabel>
+                    <apex:outputText value="{!chosenCurrency}"/>
+                    <br/>
+                </apex:outputPanel>
+                <br/>
+                
+    <!-- this is the upper table... a.k.a. the "Shopping Cart"-->
+
+                <!-- notice we use a lot of $ObjectType merge fields... I did that because if you have changed the labels of fields or objects it will reflect your own lingo -->
+                <apex:pageBlock title="Selected Packages" id="selected">
+                    <div id="expando">
+                        <apex:outputPanel rendered="{!currentpackage.size > 0}">
+                            <apex:pageblocksection columns="2">
+                                <apex:outputText value="{!currentPackage[0].PriceBookEntry.Product2.Name}"/>
+                                <apex:outputLabel for="purchaseType" value="Select Purchase Type: ">
+                                    <apex:SelectList size="1" id="purchaseType" value="{!purchaseType}" >
+                                        <apex:SelectOptions value="{!purchaseOptions}"/>
+                                        <apex:actionSupport event="onchange" action="{!setupPurchaseOptions}" rerender="selected"/>
+                                   </apex:SelectList>
+                                </apex:outputLabel>
+                            </apex:pageBlocksection>
+                        </apex:outputPanel>
+                        <br/>
+                        <apex:outputPanel rendered="{!purchaseType != null && purchaseType != ''}" layout="block" >
+                                <apex:variable value="{!0}" var="rowNum"/>
+                            <apex:pageblockTable value="{!currentpackage}" var="s">
+                                <apex:column >
+                                    <apex:variable var="rowNum" value="{!rowNum+1}"/>
+                                    <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c != 'Implementation Fee' && s.Opportunity_Product_Type__c != 'Feature'}">
+                                        <apex:commandLink value="Remove" action="{!removeFromShoppingCart}" reRender="popup,tabPanel,selected1,theFeatures,selected,searchResults,searchResults1,errorPanel,bigErrorPanel" immediate="true">
+                                            <!-- this param is how we send an argument to the controller, so it knows which row we clicked 'remove' on -->
+                                            <apex:param value="{!s.PriceBookEntryId}" assignTo="{!toUnselect}" name="toUnselect"/>
+                                        </apex:commandLink>
+                                    </apex:outputPanel>
+                                </apex:column>
+                                
+                                <apex:column headerValue="{!$ObjectType.Product2.LabelPlural}" >
+                                    <apex:outputText rendered="{!purchaseType != 'Licensing Fee'}" value="{!s.PriceBookEntry.Product2.Name}"/>
+                                    <apex:outputText rendered="{!purchaseType == 'Licensing Fee'}" value="{!s.PriceBookEntry.Product2.Name + ' - Year ' + TEXT(rowNum)}"/>
+                                </apex:column>
+                                
+                                <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.Quantity.Label}">
+                                    <apex:outputPanel rendered="{!s.Pricebookentry.Product2.Product_Type__c == 'Package'}">
+                                        <div class="requiredInput">
+                                            <div class="requiredBlock"></div>
+                                                <apex:inputText value="{!TotalBaseQuantity}" style="width:70px" required="true" onkeyup="refreshTotals();"/>
+                                        </div>    
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!s.Pricebookentry.Product2.Product_Type__c != 'Package'}">
+                                        <apex:inputField value="{!s.Quantity}" style="width:70px"/>
+                                    </apex:outputPanel>
+                                </apex:column>
+                                
+                                <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.UnitPrice.Label}">
+                                    <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c != 'Feature'}">
+                                        <apex:inputField value="{!s.UnitPrice}" style="width:70px" required="true" onkeyup="refreshTotals();"/>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c == 'Feature'}">
+                                        <apex:outputField value="{!s.UnitPrice}" style="width:70px"/>
+                                    </apex:outputPanel>
+                                </apex:column>
+                                
+                                <apex:column headerValue="Effective Date: Required for Licensing Fee Packages">
+                                    <apex:outputPanel rendered="{!purchaseType == 'Licensing Fee'}">
+                                        <apex:inputField value="{!s.Effective_Date__c}"/>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!purchaseType != 'Licensing Fee'}">
+                                        N/A
+                                    </apex:outputPanel>
+                                </apex:column>
+
+                                <apex:column headerValue="Product Description" value="{!s.Pricebookentry.Product2.description}">
+                                </apex:column>
+                            </apex:pageblockTable>
+                        </apex:outputPanel>
+                    </div>
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton action="{!onSave}" value="Save" style="String">
+                            <apex:actionStatus startText="Loading...   " id="status1" >
+                                <apex:facet name="start" >
+                                    <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                </apex:facet>
+                            </apex:actionStatus>  
+                        </apex:commandButton>
+                        <apex:commandButton action="{!onCancel}" value="Back to Opportunity" immediate="true">
+                            <apex:actionStatus startText="Loading...   " id="status2" >
+                                <apex:facet name="start" >
+                                    <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                </apex:facet>
+                            </apex:actionStatus>  
+                        </apex:commandButton>
+                    </apex:pageBlockButtons>
+                
+                </apex:pageBlock>
+                <apex:outputPanel rendered="{!currentaddons.size > 0}">
+                    <apex:pageBlock title="Selected Add-Ons" id="selected1">
+                        <div id="expando">
+                            <apex:outputPanel rendered="{!currentaddons.size > 0}" layout="block" >
+                                <apex:pageblockTable value="{!currentaddons}" var="s">
+                                
+                                    <apex:column >
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c != 'Implementation Fee' && (s.Opportunity_Product_Type__c != 'Feature' || s.Opportunity_Product_Sub_Type__c == 'Upsell Feature')}">
+                                            <apex:commandLink value="Remove" action="{!removeFromShoppingCart}" reRender="popup,tabPanel,selected1,theFeatures,selected,searchResults,searchResults1,errorPanel,bigErrorPanel" immediate="true">
+                                                <!-- this param is how we send an argument to the controller, so it knows which row we clicked 'remove' on -->
+                                                <apex:param value="{!s.PriceBookEntryId}" assignTo="{!toUnselect}" name="toUnselect"/>
+                                            </apex:commandLink>
+                                        </apex:outputPanel>
+                                    </apex:column>
+                                    
+                                    <apex:column headerValue="{!$ObjectType.Product2.LabelPlural}" value="{!s.PriceBookEntry.Product2.Name}"/>
+                                    
+                                    <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.Quantity.Label}">
+                                        <apex:outputPanel rendered="{!s.Pricebookentry.Product2.Product_Type__c == 'Package'}">
+                                            <div class="requiredInput">
+                                                <div class="requiredBlock"></div>
+                                                    <apex:inputText value="{!TotalBaseQuantity}" style="width:70px" required="true" onkeyup="refreshTotals();"/>
+                                            </div>    
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Pricebookentry.Product2.Product_Type__c != 'Package'}">
+                                            <apex:inputField value="{!s.Quantity}" style="width:70px"/>
+                                        </apex:outputPanel>
+                                    </apex:column>
+                                    
+                                    <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.UnitPrice.Label}">
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c != 'Feature' || s.Opportunity_Product_Sub_Type__c == 'Upsell Feature'}">
+                                            <apex:inputField value="{!s.UnitPrice}" style="width:70px" required="true" onkeyup="refreshTotals();"/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Type__c == 'Feature' && s.Opportunity_Product_Sub_Type__c != 'Upsell Feature'}">
+                                            <apex:outputField value="{!s.UnitPrice}" style="width:70px"/>
+                                        </apex:outputPanel>
+                                    </apex:column>
+
+                                    <apex:column headerValue="Effective Date: Required for One Time Fee">
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c == 'One Time Fee'}">
+                                            <apex:facet name="header"></apex:facet>
+                                            <apex:inputField value="{!s.Effective_Date__c}" required="false"/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c != 'One Time Fee'}">
+                                            N/A
+                                        </apex:outputPanel>
+                                    </apex:column>
+
+                                    <apex:column headerValue="Product Sub-Type">
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c != 'One Time Fee'}">
+                                        <apex:facet name="header"></apex:facet>
+                                        <apex:inputField value="{!s.Opportunity_Product_Sub_Type__c}" />
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c == 'One Time Fee'}">
+                                            N/A
+                                        </apex:outputPanel>
+                                    </apex:column>
+
+                                    <apex:column headerValue="Reward Options">
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c != 'One Time Fee'}">
+                                        <apex:facet name="header"></apex:facet>
+                                        <apex:inputfield value="{!s.Reward_Options__c}" required="true"/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c == 'One Time Fee'}">
+                                            N/A
+                                        </apex:outputPanel>
+                                    </apex:column>
+
+                                    <apex:column headerValue="Explanation for One Time Fee">
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c == 'One Time Fee'}">
+                                            <apex:inputfield value="{!s.Description}"/>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel rendered="{!s.Opportunity_Product_Sub_Type__c != 'One Time Fee'}">
+                                            N/A
+                                        </apex:outputPanel>
+                                    </apex:column>
+
+                                    <apex:column headerValue="Product Description">
+                                        <apex:outputPanel >
+                                        <apex:facet name="header"></apex:facet>
+                                        <apex:outputText value="{!s.Pricebookentry.Product2.description}"/>
+                                        </apex:outputPanel>
+                                    </apex:column>
+                                </apex:pageblockTable>
+                            </apex:outputPanel>
+                        </div>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+                <!--<apex:outputPanel id="theFeatures">
+                    <apex:pageBlock rendered="{!IF(AND(NOT(ISNULL(features)),features.size > 0), true, false)}" title="Package Features">
+                        <apex:pageBlockSection showHeader="true" title="Expand/Collapse" collapsible="true" columns="1">
+                            <apex:pageBlockTable value="{!Features}" var="f">
+                                <apex:column headerValue="Selected">
+                                    <apex:inputCheckbox value="{!f.selected}"/>
+                                </apex:column>
+                                <apex:column headerValue="Feature">
+                                    <apex:outputText value="{!f.name}"/>
+                                </apex:column>
+                                <apex:column headerValue="Description">
+                                    <apex:outputText value="{!f.descrip}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockButtons location="bottom">
+                            <apex:commandButton action="{!onSave}" value="Save" style="String">
+                                <apex:actionStatus startText="Loading...   " id="status1" >
+                                    <apex:facet name="start" >
+                                        <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                    </apex:facet>
+                                </apex:actionStatus>  
+                            </apex:commandButton>
+                            <apex:commandButton action="{!onCancel}" value="Back to Opportunity" immediate="true">
+                                <apex:actionStatus startText="Loading...   " id="status2" >
+                                    <apex:facet name="start" >
+                                        <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                    </apex:facet>
+                                </apex:actionStatus>  
+                            </apex:commandButton>
+                        </apex:pageBlockButtons>
+                    </apex:pageBlock>
+                </apex:outputPanel>-->
+            </apex:tab>
+
+    
+<!-- this is the lower table: search bar and search results -->
+            <apex:tab label="Available Product Options" name="name2" id="tabTwo">
+                <apex:pageBlock >
+                    <apex:outputPanel styleClass="search">
+                        Search for Products:
+                    </apex:outputPanel>
+
+                    <apex:actionRegion renderRegionOnly="false" immediate="true">
+                    
+                        <apex:actionFunction name="fetchResults" action="{!updateAvailableList}" reRender="popup,tabPanel,selected1,theFeatures,searchResults" status="searchStatus"/>
+                        
+                        <!-- here we invoke the scripting to get out fancy 'no button' search bar to work -->
+                        <apex:inputText value="{!searchString}" onkeydown="if(event.keyCode==13){this.blur();}else{resetTimer();}" style="width:300px"/>
+                        &nbsp;&nbsp;
+                        <i>
+                            <!-- actionStatus component makes it easy to let the user know when a search is underway -->
+                            <apex:actionStatus id="searchStatus" startText="searching..." stopText=" "/>
+                        </i>
+                        
+                    </apex:actionRegion>
+
+                </apex:pageBlock>
+        
+                <apex:pageBlock >
+                    <apex:outputPanel styleClass="search">
+                       Available Packages:
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                    <apex:outputPanel id="searchResults">
+                    
+                        <apex:pageBlockTable value="{!Packages}" var="a">
+                            <apex:column >
+                               <apex:facet name="header">                                        
+                                     Package Details                                                                                  
+                                </apex:facet>
+                                <apex:outputpanel id="plusimage">
+                                      <apex:image url="{!$Resource.Plus_Image}" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.minusimage}','{!$Component.plusimage}')" title="Expand - Package Details"/> 
+                                </apex:outputpanel>
+                                <apex:outputpanel id="minusimage" style="display:none;">
+                                      <apex:image url="{!$Resource.Minus_Image}" onclick="switchMenu('{!$Component.inlinetablesec}','{!$Component.plusimage}','{!$Component.minusimage}')" title="Collapse - Package Details"/>
+                                </apex:outputpanel>
+
+                                <apex:outputpanel id="inlinetablesec" style="display:none;">
+                                                            <apex:variable value="{!0}" var="rowNum"/>
+                                                            <apex:repeat var="count" value="{!ppMap[a.Product2ID]}">
+                                                                <apex:variable var="rowNum" value="{!rowNum+1}"/>
+                                                            </apex:repeat>
+                                    <apex:pageblocktable value="{!ppMap[a.Product2ID]}" var="prod" >
+                                        <apex:column headerValue="Name">
+                                               <apex:outputtext value="{!prod.name}"/>
+                                         </apex:column>
+                                         <apex:column headerValue="Description">
+                                               <apex:outputtext value="{!prod.descrip}"/>
+                                         </apex:column>                          
+                                    </apex:pageblocktable>
+                               </apex:outputpanel>     
+                            </apex:column>
+                        
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Name.Label}" value="{!a.Product2.Name}" />
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Family.Label}" value="{!a.Product2.Family}"/>
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Description.Label}" value="{!a.Product2.Description}"/>
+                            
+                            <apex:column >
+                                <!-- command button in a column... neato -->
+                                <apex:commandButton value="Select" action="{!addPackToShoppingCart}" status="status3" reRender="popup,tabPanel,selected1,theFeatures,selected,searchResults,searchResults1" immediate="true">
+                                    <!-- again we use apex:param to be able to tell the controller which row we are working with -->
+                                    <apex:param value="{!a.Id}" assignTo="{!toSelect}" name="toSelect"/>
+                                    <apex:actionStatus startText="Loading...   " id="status3" >
+                                        <apex:facet name="start" >
+                                            <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                        </apex:facet>
+                                    </apex:actionStatus>  
+                                </apex:commandButton>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                        
+                        <!-- We put up a warning if results exceed 100 rows -->
+                        <apex:outputPanel styleClass="fyi" rendered="{!overLimit}">
+                            <br/>
+                            Your search returned over 100 results, use a more specific search string if you do not see the desired {!$ObjectType.Product2.Label}.
+                            <br/>
+                        </apex:outputPanel>
+                        
+                    </apex:outputPanel>
+                
+                </apex:pageBlock>
+
+                <apex:pageBlock >
+                    <apex:outputPanel styleClass="search">
+                       Available Add-Ons and Upsell Features: 
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                    <apex:outputPanel id="searchResults1">
+                    
+                        <apex:pageBlockTable rendered="{!hasPackage}" value="{!addOns}" var="aa">
+                        
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Name.Label}" value="{!aa.Product2.Name}" />
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Family.Label}" value="{!aa.Product2.Family}"/>
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Description.Label}" value="{!aa.Product2.Description}"/>
+                            
+                            <apex:column headerValue="{!$ObjectType.Product2.Fields.Sales_Notes__c.Label}" value="{!aa.Product2.Sales_Notes__c}"/>
+                            
+                            <apex:column >
+                                <!-- command button in a column... neato -->
+                                <apex:commandButton value="Select" action="{!addToShoppingCart}" status="status4" reRender="popup,tabPanel,selected1,theFeatures,selected,searchResults,searchResults1,searchResults1" immediate="true">
+                                    <!-- again we use apex:param to be able to tell the controller which row we are working with -->
+                                    <apex:param value="{!aa.Id}" assignTo="{!toSelect}" name="toSelect"/>
+                                    <apex:actionStatus startText="Loading...   " id="status4" >
+                                        <apex:facet name="start" >
+                                            <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                        </apex:facet>
+                                    </apex:actionStatus>  
+                                </apex:commandButton>
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+
+                        <apex:outputText rendered="{! !hasPackage}">
+                            Select a Package to see available upsell products.
+                        </apex:outputText>
+                        
+                        <!-- We put up a warning if results exceed 100 rows -->
+                        <apex:outputPanel styleClass="fyi" rendered="{!overLimit}">
+                            <br/>
+                            Your search returned over 100 results, use a more specific search string if you do not see the desired {!$ObjectType.Product2.Label}.
+                            <br/>
+                        </apex:outputPanel>
+                        
+                    </apex:outputPanel>
+                
+                </apex:pageBlock>
+            </apex:tab>
+
+        </apex:tabPanel>
+    </apex:form>
+
+</apex:page>

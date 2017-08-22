@@ -83,12 +83,12 @@
     <types>
         <members>*</members>
         <members>Language</members>
-        <name>GlobalValueSet</name>
+        <name>GlobalPicklist</name>
     </types>
     <types>
         <members>*</members>
         <members>Language</members>
-        <name>GlobalPicklist</name>
+        <name>GlobalValueSet</name>
     </types>
     <types>
         <members>*</members>

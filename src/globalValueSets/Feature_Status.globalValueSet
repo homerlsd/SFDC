@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>On Deck</fullName>
+        <default>true</default>
+    </customValue>
+    <customValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Complete - Bluesteel / In Progress - Production</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Complete - Production</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Final Requirements Received</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Configuration in Progress - Bluesteel</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Ready for UAT - Bluesteel</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>UAT Complete - Bluesteel</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Configuration in Progress - Production</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Configuration Complete - Production</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Launch Complete</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+    </customValue>
+    <masterLabel>Feature Status</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

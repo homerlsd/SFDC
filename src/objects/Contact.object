@@ -1,0 +1,1882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnablePartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EnableSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Merge</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewContact</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>RequestUpdate</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewCustomerPortal</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewPartnerPortalUser</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ViewSelfService</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>QuickStartLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>QuickStartLayout</fullName>
+        <fields>Name</fields>
+        <fields>Title</fields>
+        <fields>AccountId</fields>
+        <fields>Phone</fields>
+        <fields>Email</fields>
+        <fields>MobilePhone</fields>
+        <fields>OwnerId</fields>
+        <label>Quick Start Layout</label>
+    </compactLayouts>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fieldSets>
+        <fullName>CSRContactInformation</fullName>
+        <description>CSR_CreateCaseController</description>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_User_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CSRContactInformation</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>CSRCreateContactFields</fullName>
+        <description>CSR_CreateCase - used for adding/removing required fields during case sign up without an existing contact.</description>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_User_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Date_of_Birth__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_lookup__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Affiliation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CSRCreateContactFields</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>CSR_CreateCase_ContactFields_CHOICE</fullName>
+        <description>CSR_CreateCase - used for adding/removing required fields during case sign up without an existing contact.</description>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Date_of_Birth__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <label>CSR_CreateCase_ContactFields_CHOICE</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>CSR_CreateCase_ContactFields_CONNECT</fullName>
+        <description>CreateCasev2</description>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_UID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_User_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Date_of_Birth__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_lookup__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Fax</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CSR_CreateCase_ContactFields_CONNECT</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>CSR_CreateCase_ContactFields_ENGAGE</fullName>
+        <description>CSR Create Case</description>
+        <displayedFields>
+            <field>FirstName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastName</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Email</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Phone</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_User_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Rally_UID__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Date_of_Birth__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Partner_lookup__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Affiliation__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>AccountId</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>true</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Fax</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CSR_CreateCase_ContactFields_ENGAGE</label>
+    </fieldSets>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_RecordType__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Account RecordType</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Affiliation__c</fullName>
+        <externalId>false</externalId>
+        <label>Affiliation</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AssistantName</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>AssistantPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Birthdate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Client_Delivery_Survey_Sent_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Delivery Survey Sent Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Client_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Found in the Affiliation details in Rally Central</inlineHelpText>
+        <label>Client ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__CES__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Contact Email Status</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__MAR__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mailing Address Record Type</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__MAS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mailing Address Status</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__MAV__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mailing Address Vacancy</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__MRDI__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mailing Residential Delivery Indicator</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__MTZ__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mailing Timezone</label>
+        <length>48</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__OAR__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Address Record Type</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__OAS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Address Status</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__OAV__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Address Vacancy</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__ORDI__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Residential Delivery Indicator</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__OTZ__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Timezone</label>
+        <length>48</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_History_Overview__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact History Overview</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Contact_Owner_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>Owner.UserRole.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contact Owner Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Count__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Created_By_Role__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.UserRole.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Created By Role</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Date_Of_Birth_Text__c</fullName>
+        <description>Text field to hold the date of birth sent over from the LiveAgent pre-chat form. Necessary because of a salesforce bug with handling dates through the LiveAgent API</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Text field to hold the date of birth sent over from the LiveAgent pre-chat form.</inlineHelpText>
+        <label>Date Of Birth (Text Field)</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_of_Birth__c</fullName>
+        <externalId>false</externalId>
+        <label>Date of Birth</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Department</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>DoNotCall</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Fire_Client_Survey__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Fire Client Survey</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Flag_for_Review__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this box if a chat user is inappropriate or not authorized, and needs to be evaluated by security. If approved by security, the users IP address may be blocked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this box if a chat user is inappropriate and needs to be evaluated by security.</inlineHelpText>
+        <label>Flag for Review</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfEmail</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfFax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>HomePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Implementation_Contact__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Implementation Contact</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Jigsaw</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>LastCURequestDate</fullName>
+    </fields>
+    <fields>
+        <fullName>LastCUUpdateDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Last_No_Reply_Sent__c</fullName>
+        <externalId>false</externalId>
+        <label>Last No Reply Sent</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Last_Support_Survey_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Support Survey Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum direct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>MailingAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Member_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Member ID as found in Rally Central User Manager under Partner User ID</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Member ID as found in Rally Central User Manager under Partner User ID</inlineHelpText>
+        <label>Member ID</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>MobilePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Newsletters__c</fullName>
+        <description>Used to track which newsletters the contact receives from Marketing.</description>
+        <externalId>false</externalId>
+        <label>Newsletters</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Health with Benefits</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>OtherAddress</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OtherPhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Match__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( 
+
+ISBLANK(Affiliation__c), &apos;N/A&apos;,
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;uhc&apos;), 
+CONTAINS(Affiliation__c, &apos;optum&apos;)), 
+Partner_lookup__r.Name == &apos;Optum&apos;), &apos;Match&apos;, 
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Optum&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND( 
+CONTAINS(Affiliation__c, &apos;bcbs&apos;), 
+Partner_lookup__r.Name == &apos;BCBS South Carolina&apos;), &apos;Match&apos;,
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;BCBS South Carolina&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND( 
+CONTAINS(Affiliation__c, &apos;excellus&apos;), 
+Partner_lookup__r.Name == &apos;Excellus&apos;), &apos;Match&apos;, 
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Excellus&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND( 
+CONTAINS(Affiliation__c, &apos;univera&apos;), 
+Partner_lookup__r.Name == &apos;Univera&apos;), &apos;Match&apos;, 
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Univera&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND( 
+CONTAINS(Affiliation__c, &apos;mercer&apos;), 
+Partner_lookup__r.Name == &apos;Mercer&apos;), &apos;Match&apos;, 
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Mercer&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND( 
+CONTAINS(Affiliation__c, &apos;rally&apos;), 
+Partner_lookup__r.Name == &apos;Rally Health&apos;), &apos;Match&apos;, 
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Rally Health&apos;), &apos;N/A&apos;, 
+
+IF(
+
+AND( 
+CONTAINS(Affiliation__c, &apos;great_west_life&apos;), 
+Partner_lookup__r.Name == &apos;Great West Life&apos;), &apos;Match&apos;,
+
+IF( 
+
+AND( 
+
+OR( 
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Great West Life&apos;), &apos;N/A&apos;, 
+
+IF( 
+
+AND(
+
+OR( 
+CONTAINS(Affiliation__c, &apos;none&apos;), 
+CONTAINS(Affiliation__c, &apos;None&apos;),
+CONTAINS(Affiliation__c, &apos;NONE&apos;),
+CONTAINS(Affiliation__c, &apos;unknown&apos;), 
+CONTAINS(Affiliation__c, &apos;Unknown&apos;),
+CONTAINS(Affiliation__c, &apos;UNKNOWN&apos;)),
+Partner_lookup__r.Name == &apos;Unknown&apos;), &apos;Match&apos;,
+
+&apos;Mismatch&apos;)
+)))))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partner Match</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner__c</fullName>
+        <externalId>false</externalId>
+        <label>Partner Picklist</label>
+        <picklist>
+            <picklistValues>
+                <fullName>All Savers</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BCBS South Carolina</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Excellus</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Great West Life</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health Alliance Medical Plans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mercer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Military Wellness Initiative</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Health</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rally Marketplace</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Univera</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Partner_lookup__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Partner</label>
+        <referenceTo>Partner__c</referenceTo>
+        <relationshipLabel>Contacts</relationshipLabel>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PersonId__c</fullName>
+        <externalId>false</externalId>
+        <label>PersonId</label>
+        <length>15</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Query_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE( 
+SUBSTITUTE(Phone, &quot;(&quot;, &quot;&quot;), &quot;)&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), &quot;-&quot;, &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Query Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rally_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <externalId>true</externalId>
+        <label>Rally ID</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Rally_UID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Rally UID</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Rally_User_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Rally User Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reason_for_Review__c</fullName>
+        <description>If chat user is flagged for review, the agent will be prompted to select a reason.</description>
+        <externalId>false</externalId>
+        <label>Reason for Review</label>
+        <picklist>
+            <controllingField>Flag_for_Review__c</controllingField>
+            <picklistValues>
+                <fullName>Inappropriate language</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact not authorized</fullName>
+                <default>false</default>
+                <controllingFieldValues>checked</controllingFieldValues>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Relationship_Status_formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( ISPICKVAL(Relationship__c, &apos;Positive&apos;), IMAGE(&quot;/img/samples/light_green.gif&quot;, &quot;green&quot;),
+IF( ISPICKVAL(Relationship__c, &apos;Detractor&apos;), IMAGE(&quot;/img/samples/light_red.gif&quot;, &quot;red&quot;),
+IF( ISPICKVAL(Relationship__c, &apos;Positive&apos;), IMAGE(&quot;/img/samples/light_yellow.gif&quot;, &quot;red&quot;),&apos;&apos;
+)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relationship Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationship__c</fullName>
+        <externalId>false</externalId>
+        <label>Relationship</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Positive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Detractor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ReportsToId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Thought_Leadership__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Thought Leadership</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Webinar_Participant__c</fullName>
+        <description>Include contact in webinar events</description>
+        <externalId>false</externalId>
+        <label>Webinar Participant</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Health Plan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>assistant_email__c</fullName>
+        <externalId>false</externalId>
+        <label>assistant email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>other_e_mail__c</fullName>
+        <externalId>false</externalId>
+        <label>other e-mail</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>AllContacts</fullName>
+        <columns>CONTACT.FIRST_NAME</columns>
+        <columns>CONTACT.LAST_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Contacts</label>
+    </listViews>
+    <listViews>
+        <fullName>BirthdaysThisMonth</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>CONTACT.BIRTHDATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.BIRTHDATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <label>Birthdays This Month</label>
+    </listViews>
+    <listViews>
+        <fullName>Contacts_for_Client_Delivery_Survey</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Fire_Client_Survey__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>startsWith</operation>
+            <value>Mayo Clinic</value>
+        </filters>
+        <filters>
+            <field>Implementation_Contact__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Contacts for Client Delivery Survey</label>
+        <sharedTo>
+            <role>Implementation_Manager</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>NewThisWeek</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>New This Week</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>FULL_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CONTACT.PHONE1</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Rally_UID__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE1</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE3</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE4</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE5</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.PHONE6</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.PHONE1</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.EMAIL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CONTACT.ADDRESS2_CITY</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account_RecordType__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>GoogleMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://maps.google.com/maps?f=q&amp;hl=en&amp;q={!Contact_MailingStreet}+{!Contact_MailingCity}+{!Contact_MailingState}&amp;om=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleSearch</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Search</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://www.google.com/search?q={!Contact_FirstName} {!Contact_LastName}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Delete</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/9.0/connection.js&quot;)}
+
+var records = {!GETRECORDIDS(   $ObjectType.Contact )};
+
+if (records[0] == null) {
+alert(&quot;Please select at least one record.&quot;) }
+else {
+
+var errors = [];
+var result = sforce.connection.deleteIds(records);
+if (result &amp;&amp; result.length){
+var numFailed = 0;
+var numSucceeded = 0;
+for (var i = 0; i &lt; result.length; i++){
+var res = result[i];
+if (res &amp;&amp; res.success == &apos;true&apos;){
+numSucceeded++;
+} else {
+var es = res.getArray(&quot;errors&quot;);
+if (es.length &gt; 0) {
+errors.push(es[0].message);
+}
+numFailed++;
+}
+}
+if (numFailed &gt; 0){
+alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;));
+} else {
+alert(&quot;Number of records deleted: &quot; + numSucceeded);
+}
+}
+window.location.reload();
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Edit</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassEditContact</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Update</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Update</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassUpdateContact</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>SendGmail</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Send Gmail</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://mail.google.com/mail?view=cm&amp;tf=0&amp;to={!Contact_Email}&lt;{!Contact_LastName}, {!Contact_FirstName}&gt;&amp;tf=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>YahooMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Yahoo! Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://maps.yahoo.com/py/maps.py?cn={!Contact_MailingCountry}&amp;csz={!Contact_MailingCity}+{!Contact_MailingState}+{!Contact_MailingPostalCode}+&amp;addr={!Contact_MailingAddress}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>YahooWeather</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Yahoo! Weather</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://weather.yahoo.com/search/weather2?p={!Contact_MailingPostalCode}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Add_to_Campaign</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add to Campaign</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var leadCount=0; 
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+//alert(checkedId1.length);
+if(checkedId1!=null &amp;&amp; checkedId1.length==18){
+    checkedId1=checkedId1.substring(0,15);
+}
+checkedIds+=&quot;&amp;ids=&quot;+checkedId1; 
+leadCount++; 
+}); 
+if(leadCount&lt;1){ 
+alert(&quot;Please select at least one row&quot;); 
+}else{ 
+var ret1=escape(&apos;../apex/zaapit__Add_To_Campaign_Completed?isdtp=vw&amp;s=&apos;);
+
+var win1=window.open(&quot;/ui/campaign/MassAddCMFromListingWizard?ent=contact&amp;retURL=&quot;+ret1+&quot;0&amp;wizardRetUrl=&quot;+ret1+&quot;1&amp;macmflw_idSourceType=List&amp;macmflw_memberType=Contact&quot;+checkedIds+&quot;&amp;isdtp=vw&quot;,&quot;Add to Campaign&quot;, &quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;);
+
+var timer = setInterval(function() { 
+if(win1.closed) { 
+clearInterval(timer); 
+jumpToClk(currPageCls,600); 
+} 
+}, 1000); 
+
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Auto_Mark</fullName>
+        <availability>online</availability>
+        <description>for dedup manager</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Auto Mark</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>if(licenseStatus!=&apos;Active&apos;){
+alert(&quot;This is a premium feature – contact sales@zaapit.com to activate!&quot;);
+return;
+}
+var ix=1;$(&quot;.list .dataRow&quot;).each(function(){ 
+if(!$(this).hasClass(&quot;tcx&quot;+ix)){ 
+ix=1-ix; 
+}else{ 
+$(this).find(&quot;.lcbXRow&quot;).click(); 
+} 
+});</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Emails</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Emails</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var leadCount=0; 
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+//alert(checkedId1.length); 
+if(checkedId1!=null &amp;&amp; checkedId1.length==18){ 
+//checkedId1=checkedId1.substring(0,15); 
+} 
+checkedIds+=&quot;,&quot;+checkedId1; 
+leadCount++; 
+}); 
+if(leadCount&lt;1){ 
+alert(&quot;Please select at least one row&quot;); 
+}else{ 
+
+
+function appendTags(){
+    $(&apos;#dialog-mass-email&apos;).remove();
+       
+        $(&apos;body&apos;).append(
+            &apos;&lt;div id=&quot;dialog-mass-email&quot; title=&quot;Mass Emails&quot;&gt;&apos; + 
+                &apos;&lt;div &gt;&apos; + 
+              
+                    &apos;&lt;div style=&quot;margin:10px;font-weight:bold;&quot;&gt;1) Select an email template:&lt;/div&gt; &apos; +
+                    &apos;&apos; + 
+                    &apos;&lt;div id=&quot;email-template&quot; style=&quot;max-height:250px;overflow:auto;;width:100%;&quot;&gt; &lt;div class=&quot;bbt1Loading&quot;&gt;&lt;/div&gt;&lt;/div&gt;&apos; +
+
+            &apos;&lt;/div&gt;&apos;+
+                &apos;&lt;div style=&quot;margin:10px;font-weight:bold;&quot;&gt;2) Processing Options:&apos;+
+&apos;&lt;/div&gt;&apos;+
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;bccME&quot; id=&quot;bccME&quot; checked/&gt; BCC me on one message&lt;br&gt;&apos; +
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;storeActME&quot; id=&quot;storeActME&quot; checked/&gt; Store an Activity for each message&lt;br&gt;&apos; +
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;useSignatureME&quot; id=&quot;useSignatureME&quot;/&gt; Use my signature&lt;br&gt;&apos; +
+//&apos;Mass Email Name &lt;input type=&quot;text&quot; name=&quot;descriptionME&quot; id=&quot;descriptionME&quot; /&gt;&apos; +
+
+
+                &apos;&apos; +
+                &apos;&apos;  
+
+        ); 
+    
+}
+
+function createPopupWindow(){
+
+        $( &quot;#dialog-mass-email&quot; ).dialog({
+            resizable: false,
+            width: (isSF1()?($(&quot;body&quot;).width()-10):400),
+            height:500,
+            //modal: true,                
+            buttons: {
+                &quot;Send Emails&quot;: 
+                    function() {
+                        sendMail();
+                    },
+                
+                Cancel: 
+                    function() {
+                        jQuery( this ).dialog( &quot;close&quot; );
+                    }
+            }
+        });
+
+}
+
+function messagePopupWindow(message){
+        $( &quot;#dialog-mass-email&quot; ).html(message).dialog({
+            resizable: false,
+            width: 400,
+            height:250,
+            //modal: true,                
+            buttons: {
+                
+                Close: 
+                    function() {
+                        $( this ).dialog( &quot;close&quot; );
+                    }
+            },close:function(){
+                $(&quot;.lcbX input:checked&quot;).click();
+            }
+        });
+}
+
+function fetchEmailTemplates(){
+
+ var queryZZZ=&quot;SELECT Id,Name FROM EmailTemplate order by name asc&quot;;
+     Visualforce.remoting.Manager.invokeAction(
+                remoteQueryAjax2,
+                queryZZZ, 
+                function(result, event){
+
+                    if (event.status &amp;&amp; result!=null) {
+					
+					    var innerHtml = &apos;&apos;;
+						var records=result;
+                        for(var i=0; i&lt;records.length; i++)
+                            innerHtml += 
+                                &apos;&lt;div class=&quot;maxwith350s&quot; onmouseover=&quot;fixTitlex1(this);&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;emailTemp&quot; value=&quot;&apos; + records[i].Id + &apos;&quot;/&gt; &lt;a href=&quot;/&apos; + records[i].Id + &apos;&quot; target=&quot;_blank&quot;&gt;Preview&apos; + 
+                                    
+                                &apos;&lt;/a&gt; &apos; + 
+                                    records[i].Name +
+                                &apos;&lt;/div&gt;&apos;;
+
+                        $(&apos;#email-template&apos;).html(innerHtml);
+					 } else if (event.type === &apos;exception&apos;) {
+                        if(event.message!=null &amp;&amp; ((event.message+&quot;&quot;).indexOf(&quot;Logged in&quot;)&gt;-1 || (event.message+&quot;&quot;).indexOf(&quot;Refresh page&quot;)&gt;-1)){
+                            self.location=self.location;
+                        }else if(event.message!=null &amp;&amp; (event.message+&quot;&quot;).indexOf(&quot;Unable to connect&quot;)==-1){
+                            if($(&quot;body:visible&quot;).size()&gt;0)alert(&quot;An error has occurred: &quot;+event.message);
+                        }
+                    } else {
+                        //self.location=self.location;
+                        // $(&quot;#&quot;+filterIdSpan+&quot; .availVals&quot;).html(&quot;&quot;);
+                        //alert(1);
+                    }
+                    
+                }, 
+                {escape: true,buffer:true,timeout: 90000}
+            );
+   }
+
+function sendMail(){
+   var checkedIdsX=&quot;&quot;;
+  $(&quot;.lcbX input:checked&quot;).each(function(){ 
+      checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+
+      checkedIdsX+=&quot;,&quot;+checkedId1; 
+   }); 
+    var contactIds = checkedIdsX.substring(1).split(&quot;,&quot;);
+    var templateId = $(&quot;input[name=&apos;emailTemp&apos;]:checked&quot;).val();
+    //alert(templateId );
+    if( contactIds.length&gt;0 &amp;&amp; templateId!=&apos;&apos;){
+
+	   Visualforce.remoting.Manager.invokeAction(
+                remotesendMassEmails,
+                contactIds.join(&quot;,&quot;), 
+				templateId,
+				$(&quot;#storeActME&quot;).prop(&quot;checked&quot;),//saveAsActivity
+				$(&quot;#bccME&quot;).prop(&quot;checked&quot;),//bccSender
+				$(&quot;#useSignatureME&quot;).prop(&quot;checked&quot;),//useSignature
+				null,//replyTo&apos;noreply@salesforce.com&apos;
+                function(result, event){
+	
+					if (event.status &amp;&amp; result!=null) {
+						
+						if((result+&quot;&quot;)==&quot;OK&quot;){
+							 messagePopupWindow(&apos;&lt;br&gt;&lt;span class=&quot;ui-icon ui-icon-check&quot; style=&quot;float:left;margin-right:10px;display:inline-block;&quot;&gt;&lt;/span&gt;&lt;b&gt;Your email(s) have been submitted for processing.&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Mass-Mailer result will be sent to you via email.&apos;);
+
+						}else{
+							messagePopupWindow(&apos;Your email(s) were not submitted due to an Error:&lt;br&gt;&apos;+result);
+						}
+		
+		} else if (event.type === &apos;exception&apos;) {
+                        if(event.message!=null &amp;&amp; ((event.message+&quot;&quot;).indexOf(&quot;Logged in&quot;)&gt;-1 || (event.message+&quot;&quot;).indexOf(&quot;Refresh page&quot;)&gt;-1)){
+                            self.location=self.location;
+                        }else if(event.message!=null &amp;&amp; (event.message+&quot;&quot;).indexOf(&quot;Unable to connect&quot;)==-1){
+                            if($(&quot;body:visible&quot;).size()&gt;0)alert(&quot;An error has occurred: &quot;+event.message);
+                        }
+                    } else {
+                        //self.location=self.location;
+                        // $(&quot;#&quot;+filterIdSpan+&quot; .availVals&quot;).html(&quot;&quot;);
+                        //alert(1);
+                    }
+                    
+                }, 
+                {escape: true,buffer:true,timeout: 90000}
+            );
+			
+    }
+}
+
+appendTags();
+fetchEmailTemplates();
+createPopupWindow();
+/*
+var ret1=escape(&quot;/apex/jscloswin&quot;);//&apos;../apex/zaapit__Add_To_Campaign_Completed?isdtp=vw&amp;s=&apos;); 
+
+var win1=window.open(&quot;/ui/massmail/MassMailStageManager?currentStage=0&amp;mm_template_id=&amp;mm_type=Contact&amp;setupid=MassMailFilter&amp;setupid=MassMailFilter&amp;visited_0=1&amp;visited_1=1&amp;wizardRetUrl=&quot;+ret1+&quot;&amp;goNext=+Next+&amp;msl_selectAll=false&amp;recipient_limit=&quot;+(leadCount)+&quot;&amp;msl_totalRowCount=&quot;+(leadCount)+&quot;&amp;isdtp=vw&amp;selectedIds=&quot;+escape(checkedIds)+&quot;&quot;,&quot;Mass Emails&quot;, &quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;); 
+*/
+/* 
+var timer = setInterval(function() { 
+if(win1.closed) { 
+clearInterval(timer); 
+$(&quot;.seatchInptFZP&quot;).keyup(); 
+} 
+}, 1000); 
+*/ 
+
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Emails2</fullName>
+        <availability>online</availability>
+        <description>emails via outlook</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Emails via Outlook</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var emails=&quot;&quot;;
+var emailSearch=0;
+$(&quot;.lcbX input:checked&quot;).each(function(){
+  emailSearch=1;
+  var email=$.trim($(this).parents(&quot;tr:first&quot;).find(&quot;td.email&quot;).text());
+  if(email!=&quot;&quot;){
+    emails+=&quot;;&quot;+email;
+  }
+});
+
+if(emails==&quot;&quot; &amp;&amp; emailSearch==0){
+ alert(&quot;Please select at least one row&quot;); 
+}else if(emails==&quot;&quot; &amp;&amp; emailSearch==1){
+ alert(&quot;Please add the email-column to the layout&quot;); 
+
+}else{
+emails=emails.substring(1);
+top.location=&quot;mailto:&quot;+escape(emails);
+$(&quot;button:contains(&apos;Create Tasks&apos;)&quot;).click();
+}
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Merge</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Merge</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>massMergeX(&quot;Contact&quot;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Merge_Contacts1</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Merge Contacts</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;;
+var checkedId1=&quot;&quot;;
+var contOrg=&quot;&quot;;
+var acc1=&quot;&quot;;
+var contactCount=0;
+$(&quot;.lcbX input:checked&quot;).each(function(){
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;);
+contOrg=contOrg+&quot;,.RID&quot;+checkedId1;
+if(checkedId1!=null &amp;&amp; checkedId1.length&gt;15){
+  checkedId1=checkedId1.substring(0,15);
+}
+checkedIds+=&quot;&amp;cid=&quot;+checkedId1;
+contactCount++;
+});
+if(contactCount&gt;3){
+alert(&quot;Please select up to 3 Contacts to merge!&quot;);
+}else if(contactCount&lt;2){
+alert(&quot;Please select at least 2 Contacts to merge!&quot;);
+}else{
+var href1= &quot;&quot;; 
+$(contOrg.substring(1)).each(function(){
+  var fndA=$(this).parents(&quot;tr:first&quot;).find(&quot;.oSt_accountid&quot;).find(&quot;a[id*=&apos;lookup&apos;]:first&quot;);
+  if(fndA.size()&gt;0){
+    try{
+       //alert(fndA.attr(&quot;id&quot;));
+       href1 = (fndA.attr(&quot;id&quot;)+&quot;&quot;).substring(6,21);
+    }catch(e1){}
+  }
+});
+//alert(href1 + &quot; &quot;+contOrg);
+if(href1!=null &amp;&amp; href1!=&quot;&quot;){
+acc1=href1;
+//acc1=(href1!=null &amp;&amp; href1!=&quot;undefined&quot;?href1.split(&quot;.com/&quot;)[1]:&quot;&quot;); //href1.split(&quot;.com/&quot;)[1];
+var win1=window.open(&quot;/merge/conmergewizard.jsp?buttonPressed=0&quot;+checkedIds+&quot;&amp;currentStage=0&amp;goNext=Next&amp;id=&quot;+acc1+&quot;&amp;retURL=%2Fapex%2Fzaapit__Merge_Completed&amp;srch=&amp;visited_0=1&amp;isdtp=vw&quot; ,&quot;Merge_Contacts&quot;,&quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;);
+win1.focus();
+
+var timer = setInterval(function() {
+if(win1.closed) {
+clearInterval(timer);
+//$(&quot;.seatchInptFZP&quot;).keyup();
+jumpToClk(currPageCls,600);
+
+}
+}, 1000);
+}else{/*account not found*/
+  alert(&quot;Please assign one of the selected contacts to an account before merging the contacts!&quot;);
+
+}
+}
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__zp_actions</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>ZP Actions</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!requireScript($Label.zaapit__zp_action_link)}</url>
+    </webLinks>
+</CustomObject>

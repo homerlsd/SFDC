@@ -1,0 +1,31 @@
+<apex:page controller="UploadLogoController">
+<apex:sectionHeader title="Client Logo" subtitle=""/>
+ 
+  <apex:form enctype="multipart/form-data">
+    <apex:pageMessages />
+    <apex:pageBlock title="New Logo Upload" >
+ 
+      <apex:pageBlockButtons >
+        <apex:commandButton action="{!upload}" value="Save"/>
+        <apex:commandButton action="{!Cancel}" value="Cancel"/>
+      </apex:pageBlockButtons>
+ 
+      <apex:pageBlockSection showHeader="false" columns="1" id="block1">
+ 
+        <apex:pageBlockSectionItem >
+        
+            <apex:outputLabel value="Please browse from your local files and upload an image for this Client."/>
+            <apex:outputText value="The client logo must be less than 5MB in size."/>
+        
+        </apex:pageBlockSectionItem>
+               
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="Browse..." for="file"/>
+          <apex:inputFile value="{!attch.body}" filename="{!attch.name}" id="file"/>
+        </apex:pageBlockSectionItem>
+  
+      </apex:pageBlockSection>
+       
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,477 @@
+<apex:page showHeader="false" sidebar="false"  title="Rally Support"  standardStylesheets="false" docType="html-5.0" applyHTMLTag="false">
+   
+    <apex:composition template="LA_ChatTemplate">
+    <apex:define name="content">
+
+        <script type='text/javascript' src='https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/js/32.0/prechat.js'></script>
+    
+        <script type='text/javascript'>
+        
+
+            (function(){
+                function handlePageLoad(){
+                    var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+                    document.getElementById('prechatForm').setAttribute('action',
+                    decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
+                }
+                if (window.addEventListener){
+                    window.addEventListener('load', handlePageLoad, false);
+                }else{ 
+                    window.attachEvent('onload', handlePageLoad, false);
+                } 
+            })();
+            
+
+            var detailCallback = function (details){
+                for (var i = 0; i < details.customDetails.length; i++) {
+                    if(details.customDetails[i].label == 'knowledgeGroup'){
+                        alert(details.customDetails[i].value);
+                        console.log(details.customDetails[i].value);
+                    }
+                }
+            };
+
+            liveagent.details.preChatInit('https://rf.la2-c2cs-phx.salesforceliveagent.com/chat','detailCallback');
+      
+        </script>
+    
+ 
+                <!-- Content --> 
+                <div id="rc_chatBlock" class="container center-block rc_chatBlock"> 
+                    <div id="rc_chatWindow" class="container center-block rc_chatWindow">
+                        
+                        <form  id="prechatForm" data-toggle="validator" class="form-horizontal prechatForm" method="post" autocomplete="off">
+                            
+                
+                            <div id="inputBlockNarrow" class="container center-block rc_InputBlock">
+                            
+                                <div class="rc_prechatFormTitleBlock">
+                                    <p class="rc_prechatFormTitle">{!$Label.LA_FormLabel_PreChatFormTitle}</p>
+                                    <p class="rc_prechatFormSubTitle">{!$Label.LA_Required_Fields_Message}</p>
+                                </div>
+                                
+                                <!-- First Name && Last Name -->
+                                <div class="form-group rc_InputGroup">
+                                        <!-- First Name input-->
+                                        <div class="col-xs-12 col-sm-6 col-md-6 rc_InputRow">
+                                            <label class="sr-only sr-only-focusable" for="liveagent.prechat:ContactFirstName">{!$Label.LA_PlaceholderText_FirstName}</label>  
+                                            <input id="firstName" type="text" name='liveagent.prechat:ContactFirstName' placeholder="{!$Label.LA_PlaceholderText_FirstName}" class="form-control input-md rc_input" autocomplete="off"/>
+                                            <span class="help-block"></span>  
+                                        </div>
+                                        <!-- Last Name input-->
+                                        <div class="col-xs-12 col-sm-6 col-md-6 rc_InputRow">
+                                            <label class="sr-only sr-only-focusable" for="liveagent.prechat:ContactLastName">{!$Label.LA_PlaceholderText_LastName}</label>  
+                                            <input id="lastName" type="text"  placeholder="{!$Label.LA_PlaceholderText_LastName}" name='liveagent.prechat:ContactLastName' class="form-control input-md rc_input" autocomplete="off"/>
+                                            <span class="help-block"></span>  
+                                        </div> 
+                                </div>
+                            
+                            
+                                <!-- Rally Username && Date Of Birth -->
+                                <div class="form-group rc_InputGroup">
+                                        <!-- Rally Username Input-->        
+                                        <div class="col-xs-12 col-sm-6 col-md-6 rc_InputRow">
+                                            <label class="sr-only sr-only-focusable" for="liveagent.prechat:ContactRallyUsername">{!$Label.LA_PlaceholderText_RallyUsername}</label>  
+                                            <input id="rallyUsername" type="text"  name='liveagent.prechat:ContactRallyUsername' placeholder="{!$Label.LA_PlaceholderText_RallyUsername}" class="form-control input-md rc_input" />
+                                            <span class="help-block"></span>  
+                                        </div> 
+                                        <!-- DoB input-->
+                                        <div class="col-xs-12 col-sm-6 col-md-6 rc_InputRow">
+                                            <label class="sr-only sr-only-focusable" for="liveagent.prechat:ContactDateOfBirth">{!$Label.LA_PlaceholderText_DOB}</label>                    
+                                            <input id="dateOfBirth" type="text" name='dobInput'  placeholder="{!$Label.LA_PlaceholderText_DOB}" class="form-control input-md rc_input"  onchange="checkDOB()" autocomplete="off"/>
+                                            <span class="help-block"></span>  
+                                        </div>
+                                </div>
+                            
+                            
+                            
+                                <!-- Email -->
+                                <div class="form-group rc_InputGroup">
+                                        <!-- Email input-->
+                                        <div class="col-xs-12 col-sm-6 col-md-6 rc_InputRow">
+                                            <label class="sr-only sr-only-focusable" for="liveagent.prechat:ContactEmail">{!$Label.LA_PlaceholderText_Email}</label>  
+                                            <input id="email" type="email" name='liveagent.prechat:ContactEmail' placeholder="{!$Label.LA_PlaceholderText_Email}" class="form-control input-md rc_input" autocomplete="off"/>
+                                            <span class="help-block"></span>  
+                                        </div>
+                                        <div class="col-xs-6 col-sm-12 col-md-6 rc_InputRow">
+                                            <!-- -->
+                                        </div>
+                                </div>
+                
+                
+                            </div><!-- id=id="inputBlockNarrow" class="container center-block" -->
+                               
+                             
+
+                            <div id="inputBlockWide" class="container center-block rc_InputBlock">
+                
+                                <!-- Support Topic Selection -->
+                                <div class="form-group rc_InputGroup">
+                                  <div class="col-xs-12 col-sm-12 col-md-12 rc_InputRow">  
+                                      <label  for="liveagent.prechat:caseTopic" class="rc_inputLabel">{!$Label.LA_FormLabel_TopicSelection}</label> 
+                                        <select id="supportTopic" name="liveagent.prechat:caseTopic" class="form-control rc_input"  autocomplete="off">
+                                        <option value="" class="rallyChat_Placeholder">{!$Label.LA_PlaceholderText_TopicSelection}</option>
+                                      </select>
+                                  </div>
+                                </div>
+                
+                
+                                <div class="form-group rc_InputGroup">
+                                    <!-- How Can We Assist You Input -->
+                                    <div class="col-xs-12 col-sm-12 col-md-12 rc_InputRow">
+                                        <label for="assistanceRequestedResponse" class="rc_inputLabel">{!$Label.LA_FormLabel_AssistanceRequested}</label>
+                                        <textarea class="form-control rc_input" id="assistanceRequestedResponse" name="liveagent.prechat:caseDescription"  placeholder="{!$Label.LA_PlaceholderText_AssistanceRequested}" onfocus="valueCheck();" autocomplete="off"></textarea> 
+                                    </div>    
+                                </div>
+                
+                            </div><!-- id="inputBlockWide" class="container center-block" -->
+                                
+                
+                            <br/>
+                               
+                
+                            <div id="buttonBlock" class="container center-block rc_InputBlock">
+                                <!-- BUTTONS -->
+                                <div class="form-group rc_InputGroup"> 
+                                    <div class="col-xs-12 col-sm-12 col-md-12 rc_InputRow">
+                                            <button id="cancelButton" name="cancelButton" class="btn btn-default rallyChat-grey" onclick="window.close()">{!$Label.LA_ButtonText_CancelChat}</button>        
+                                            <button  type='submit' id="beginChatButton" name="beginChatButton" class="btn btn-success rallyChat-green" onclick="setName()">{!$Label.LA_ButtonText_BeginChat}</button>
+                                    </div>
+                                </div>
+                            </div> <!-- id="buttonBlock" class="container center-block" -->   
+                            
+                
+                            
+                            <!-- Hidden fields used to set additional custom details -->
+                                <input type="hidden" name="liveagent.prechat:AccountId" value="{!$Label.LA_Case_AccountId}" autocomplete="off"/>
+         
+                                <input type="hidden" name="liveagent.prechat:CaseStatus" value="New" autocomplete="off"/>                   
+                                <input type="hidden" name="liveagent.prechat:CaseOrigin" value="Chat" autocomplete="off"/>
+                        
+                                <!-- This example will set the Case Record Type to a specific value for the record type configured on the org. Lookup the case record type's id on your org and set it here -->
+                                <input type="hidden" name="liveagent.prechat:CaseRecordType" value="{!$Label.LA_Case_RecordType}" autocomplete="off"/>
+                                
+                                
+                                <input type="hidden" name="liveagent.prechat:caseTopic" id="prechat_topic" autocomplete="off"/>  
+        
+                                <!-- Used to set the visitor's name for the agent in the Console -->
+                                <input type="hidden" name="liveagent.prechat.name" id="prechat_field_name" autocomplete="off"/>
+                            
+                                <!-- map: Use the data from prechat form to map it to the Salesforce record's fields -->
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map:Contact" value="FirstName,ContactFirstName;LastName,ContactLastName;Email,ContactEmail;Phone,ContactPhone;AccountId,AccountId;Rally_User_Name__c,ContactRallyUsername;Date_Of_Birth_Text__c,ContactDateOfBirth" autocomplete="off"/>
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="AccountId,AccountId;Subject,caseTopic;Status,CaseStatus;Origin,CaseOrigin;RecordTypeId,CaseRecordType;Issue_Bug__c,caseTopic;Description,caseDescription;Knowledge_Group__c,knowledgeGroup" autocomplete="off"/>
+                            
+                        <!-- doFind, doCreate and isExactMatch example for a Contact: 
+                            Find a contact whose Email exactly matches the value provided by the customer in the form 
+                            If there's no match, then create a Contact record and set it's First Name, Last Name, Email, and Phone to the values provided by the customer -->
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map.doFind:Contact" value="Email,true"   autocomplete="off"/>
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map.isExactMatch:Contact" value="Email,true"   autocomplete="off"/>
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Contact" value="FirstName,true;LastName,true;Email,true;Phone,true;AccountId,true;Rally_User_Name__c,true;Date_Of_Birth_Text__c,true" autocomplete="off"/>
+                                
+                                
+                                <!-- doCreate example for a Case: create a case to attach to the chat, set the Case Subject to the value provided by the customer and set the case's Status and Origin fields -->
+                                <input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="AccountId,true;Subject,true;Status,true;Origin,true;RecordTypeId,true;Issue_Bug__c,true;Description,true;Knowledge_Group__c,true" autocomplete="off"/>
+                            
+                                <!-- linkToEntity: Set the record Contact record, found/created above, as the Contact on the Case that's created --> 
+                                <input type="hidden" name="liveagent.prechat.findorcreate.linkToEntity:Contact" value="Case,ContactId" autocomplete="off"/>
+                                <input type="hidden" name="liveagent.prechat.findorcreate.linkToEntity:Account" value="Case,AccountId" autocomplete="off"/>                        
+                            
+                                <!-- showOnCreate: Open the Contact and Case records as sub-tabs to the chat for the agent in the Console -->
+                                <input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" autocomplete="off"/>
+                                
+                            
+                                <!-- saveToTranscript: Associates the records found / created, i.e. Contact and Case, to the Live Chat Transcript record. --> 
+                                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Contact" value="ContactId" autocomplete="off"/>
+                                <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="CaseId" autocomplete="off"/>
+                            
+                                <!-- displayToAgent: Hides the case record type from the agent -->
+                                <input type="hidden" name="liveagent.prechat.findorcreate.displayToAgent:CaseRecordType" value="false" autocomplete="off"/>
+                            
+                                <!-- searchKnowledge: Searches knowledge article based on the text, this assumes that Knowledge is setup -->
+                                <input type="hidden" name="liveagent.prechat.knowledgeSearch:caseTopic" value="true" autocomplete="off"/>
+                                
+                               
+                            <!-- Transport field for DateOfBirth -->
+                                <input type="hidden" id="liveagentContactDateOfBirth" name="liveagent.prechat:ContactDateOfBirth" autocomplete="off"/>   
+                        
+                        </form>  
+                
+                    </div> <!-- id="rc_chatWindow" class="container center-block rc_chatWindow" -->                       
+                </div> <!-- id="rc_chatBlock" class="container center-block rc_chatBlock" --> 
+                
+            
+                    
+                    
+                <!-- Set the visitor's name for the agent in the Console to first and last name provided by the customer -->
+                <script type="text/javascript">
+                
+                    var checkComp = 'true';
+                
+        
+                    function setName() {
+                        document.getElementById("prechat_field_name").value = document.getElementById("firstName").value;
+                        document.getElementById("prechat_topic").value = document.getElementById("topic").value;
+                        
+                        valueCheck();
+                    }
+                
+  
+                    function getTopicOptions() {
+                     var supportTopicAPI_FieldName = '{!$Label.LA_SupportTopicAPI_FieldName}';
+                        Visualforce.remoting.Manager.invokeAction(
+                            '{!$RemoteAction.LA_ChatController.getTopicPickValues}', 
+                             supportTopicAPI_FieldName, 
+                                function(result, event){
+                                    if (event.status) {
+                                       var selEl = document.getElementById('supportTopic');
+                                       var opts = result.split(";");
+                                       for(x=0; x<opts.length;x++){
+                                            if(opts[x].length >=1){
+                                                var selectOpt = document.createElement("option");
+                                                var selectOpt = document.createElement("option");
+                                                selectOpt.text = opts[x];
+                                                selectOpt.value = opts[x];
+                                                selEl.appendChild(selectOpt); 
+                                            }                                                       
+                                       }
+                                    } else if (event.type === 'exception') {
+                                        
+                                    } else {
+                                       
+                                    }
+                                }, 
+                            {escape: true}
+                        );
+                    }            
+                           
+                           
+                        
+                    function checkDOB(){
+                         if( $("#dateOfBirth").val().length == 0 || $("#dateOfBirth").val() == "Date of birth"){
+                             return false; 
+                          }else{
+                             return formatDOB();
+                          }
+                    }
+                    
+                    
+                    function formatDOB(){
+                        var valDate = $("#dateOfBirth").val();
+                        var dayP = 0;
+                        var monthP = 0;
+                        var yearP = 0;   
+                        var dateString = '';  
+                        var dateFormat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{2,4}$/; 
+                        var dateFormat3 = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+                        var dateFormat4 = /^\d{1,2}\-\d{1,2}\-\d{2,4}$/;
+                        var dateFormat5 = /^\d{1,2}\.\d{1,2}\.\d{2,4}$/;
+                        
+                        var exit = 1;
+                        if(valDate.match(dateFormat)){
+                            exit = 0;
+                        }                       
+                        if(valDate.match(dateFormat3)){
+                            exit = 0;
+                        }                        
+                        if(valDate.match(dateFormat4)){
+                            exit = 0;
+                        }                        
+                        if(valDate.match(dateFormat5)){
+                            exit = 0;
+                        }                                                                                
+                        
+                        if(exit == 1){
+                            returnMessage = 'Date format was invalid! Please use format mm/dd/yyyy';
+                            $("#dateOfBirth").val(dateString);
+                            return false;        
+                        }
+
+                        var seperator1 = valDate.split('/');
+                        var seperator2 = valDate.split('-');
+                        var seperator3 = valDate.split('.');
+                        var splitdate;
+                                
+                            if(seperator1.length > 1 ) {
+                                splitdate = valDate.split('/');
+                            } else if (seperator2.length > 1 ) {
+                                splitdate = valDate.split('-');
+                            } else if (seperator3.length > 1 ) {
+                                splitdate = valDate.split('.');
+                            }else{
+                                returnMessage = 'Date format was invalid! Please use format mm/dd/yyyy';
+                                $("#dateOfBirth").val(dateString);
+                                return false;
+                            }
+                        
+                          var mm = parseInt(splitdate[0]);  
+                          var dd = parseInt(splitdate[1]);
+                          var yy = parseInt(splitdate[2]);
+                          
+                          var ListofDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+                            //Check the Year
+                            if(yy > 99 && yy < 1000){
+                                returnMessage = 'Invalid Date! You used a date which does not exist in the known calender.';
+                                $("#dateOfBirth").val(dateString);
+                                return false;               
+                            }       
+                            
+                            //string corrected year
+                            if(yy <=99){
+                                yearP = '19' + yy;
+                            }else{
+                                yearP = yy;
+                            }
+
+                            //Check the Month
+                            if(mm < 0 || mm > 12 || mm == null){
+                                  returnMessage = 'Invalid Date! You used a date which does not exist in the known calender.';
+                                  $("#dateOfBirth").val(dateString);
+                                  return false;     
+                            }
+                            
+                            //string corrected month
+                            if(mm <= 9){
+                                monthP = '0' + mm;
+                            }else{
+                                monthP = mm;
+                            }
+                        
+                            //Check the day
+                            if ( mm >= 1 ) {
+                                if ( dd > ListofDays[mm - 1] ) {
+                                    returnMessage = 'Invalid Date! You used a date which does not exist in the known calender.';
+                                    $("#dateOfBirth").val(dateString);
+                                    return false;
+                                }
+                            }
+                        
+                            if ( mm == 2 ) {
+                                var lyear = false;
+                                if((!(yy % 4) && yy % 100) || !(yy % 400) ){
+                                  lyear = true;
+                                }
+                                
+                                if((lyear == false) && (dd >= 29)) {
+                                  returnMessage = 'Invalid Date! You used Feb 29th for an invalid leap year';
+                                  $("#dateOfBirth").val(dateString);
+                                  return false;
+                                }
+                                
+                                if((lyear == true) && (dd > 29)) {
+                                  returnMessage = 'Invalid Date! You used a date greater than Feb 29th in a valid leap year';
+                                  $("#dateOfBirth").val(dateString);
+                                  return false;
+                                }
+                            }
+                            
+                            //string corrected day
+                            if(dd <= 9){
+                                dayP = '0' + dd;
+                            }else{
+                                dayP = dd;
+                            }
+                         
+                            var dateString = monthP+'/'+dayP+'/'+yearP ;
+                            returnMessage =  dateString;
+      
+                            $("#dateOfBirth").val(dateString);
+                        
+                                                       
+                            //SFDC Date conversion and population
+                                //normal sfdc format
+                                    var dateVal = new Date(yy,mm,dd,0,0,0);
+                                    var sfdcDateString = toSFDate(dateVal);                           
+                                    //$("#liveagentContactDateOfBirth").val(sfdcDateString);
+                           
+                               //alternate requested format 
+                                   var sfDateString = yearP+'-'+monthP+'-'+dayP;
+                                   $("#liveagentContactDateOfBirth").val(sfDateString);
+
+                               //alternate requested format2 
+                                   var sfDateString = monthP+'-'+dayP+'-'+yearP;
+                                   // $("#liveagentContactDateOfBirth").val(sfDateString);
+                                   
+                            return true;             
+                                        
+                    }
+
+                    function toSFDate(dateObj){
+                        // string format is YYYY-MM-DDThh:mm:ssZ           
+                        var dateStr = dateObj.getFullYear()+'-'+pad2(dateObj.getMonth()+1)+'-'+pad2(dateObj.getDate()) +'T'+pad2(dateObj.getHours())+':'+pad2(dateObj.getMinutes())+':'+pad2(dateObj.getSeconds())+'Z';
+                        return dateStr;
+                    }
+                    function pad2(number) {      
+                         return (number < 10 ? '0' : '') + number       
+                    }                          
+                      
+                      
+                      
+                    
+                                           
+                    function checkCompleted(){
+                        var missingInfo = '';
+                        checkComp = 'true';
+                        $("#beginChatButton").prop( "disabled", true );
+                        
+                          if( $("#firstName").val() == null ||  $("#firstName").val().length == 0 || $("#firstName").val() == "First name"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " firstName ,";
+                          }
+                          if( $("#lastName").val() == null ||   $("#lastName").val().length == 0 || $("#lastName").val() == "Last name"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " lastName ,";
+                          }
+                          if( $("#rallyUsername").val() == null ||   $("#rallyUsername").val().length == 0 || $("#rallyUsername").val() == "Rally Username"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " rallyUsername ,";
+                          } 
+                          if($("#supportTopicoption:selected").text() == "{!$Label.LA_FormLabel_TopicSelection}"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " topic ,";
+                          }                           
+                          
+                          if( $("#dateOfBirth").val() == null ||   $("#dateOfBirth").val().length == 0 || $("#dateOfBirth").val() == "Date of birth"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " dateOfBirth ,";
+                          }else{
+
+                          }
+                          
+                          if( $("#email").val() == null ||   $("#email").val().length == 0 || $("#email").val() == "Email"){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " email ,";
+                          }
+                          if($("#assistanceRequestedResponse").val() == "Briefly describe the issue or problem you are experiencing."){
+                              checkComp = 'false';
+                              missingInfo = missingInfo + ' ' + " assistanceRequestedResponse ,";
+                          }
+                    
+                        if(checkComp == 'true'){
+                            $("#beginChatButton").prop( "disabled", false );
+                        }
+                    }   
+                       
+                    function valueCheck(){
+                        checkCompleted();
+                        if(checkComp == 'true'){
+                            $("#beginChatButton").prop( "disabled", false );
+                        }else{
+                            $("#beginChatButton").prop( "disabled", true );
+                        }                    
+                    }   
+                       
+                        
+                getTopicOptions();   
+                checkCompleted();
+                
+                </script>  
+            
+            
+
+   </apex:define>    
+</apex:composition>    
+
+
+    
+</apex:page>

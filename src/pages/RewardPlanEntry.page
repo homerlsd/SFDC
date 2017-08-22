@@ -1,0 +1,256 @@
+<apex:page controller="RewardPlanEntryController" cache="false" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+<style type="text/css">
+    .waitingSearchDiv{
+        opacity:0.8;
+        background-color:#ccc;
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        z-index:1000;
+    }
+    h2{
+        padding: 0px !important;
+        margin: 0px;
+    }
+    .line_break {
+        width:1000px;
+        height: 5px;
+        float: left;
+        color: black;
+        //padding-top: 3px;
+        background-color: rgba(255,255,255,.5);
+        border: none;
+        border-bottom: 3px solid black;
+    }
+    table.exceptionText td {
+     font-style:italic;
+     font-size:16px;
+     font-weight:bold;
+     text-align:center;
+     color:red;
+    }
+    hr {
+        visibility: visible !important;
+        border: 0;
+        clear:both;
+        display:block !important;
+        width: 96%;                
+        background-color:#000000;
+        height: 1px;
+    }
+</style>
+<head><title>Rally Engage</title>
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+<script type="text/javascript">
+     j$ = jQuery.noConflict();
+
+     j$(function() {
+         // date picker
+         j$( ".dateClass" ).datepicker();
+     });
+
+      function show (toBlock){
+        setDisplay(toBlock, 'block');
+      }
+      function setDisplay (target, str) {
+        document.getElementById(target).style.display = str;
+      }
+
+      function countChar(val,max,field,num) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field+num;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function countChar1(val,max,field) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function bindEvents() {
+          j$( ".dateClass" ).datepicker();
+      }
+
+      j$(document).ready(function(){
+            bindEvents();
+        });
+
+</script>
+</head>
+    <apex:composition template="ImplementationExternalTemplate" >
+        <apex:define name="styles">
+        <style type="text/css">
+        </style>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form id="theForm">
+                <apex:pageMessages />
+                <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <div id="desk-leftcol" class="span9">
+                                <div id="desk-support-index" class="no-qna">
+                                    <div id="desk-support-kb-content">
+                                        <div id="desk-kb-index">
+                                            <apex:Messages layout="table" styleClass="exceptionText" />
+                                            <apex:outputPanel id="thePanel">
+                                                <apex:outputPanel rendered="{! !showSuccess}">
+                                                    <h2 style="padding-"><b><apex:outputText value="{!pageTitle}"/></b></h2>
+                                                    <!-------------------///////////Reward Plan Design FIELDS/////////------------------------>
+                                                    <apex:repeat var="f" value="{!designFields}">
+                                                        
+                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+                                                          <label><b>{!f.Label}</b>
+                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+                                                        </apex:outputPanel>
+
+                                                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                            <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                            <br/>
+                                                            <br/>
+                                                          </apex:outputPanel>
+ 
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" value="{!rPlan[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}"></div>
+                                                          </apex:inputfield>
+
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar1(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}')" style="width:550px;" value="{!rPlan[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                          <div id="char{!f.fieldpath}"></div>
+                                                          </apex:inputfield>
+                                                        
+                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!rPlan[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                                                          </apex:inputField>
+
+                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!rPlan[f]}"/>
+
+                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                                                            <apex:inputFile value="{!att.body}" 
+                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                                                          </apex:outputPanel>
+                                                          <br/>
+                                                    </apex:repeat>
+                                                    <!-------------------///////////Reward Plan Design FIELDS END/////////------------------------>
+                                                    <hr/>
+                                                    <!-------------------///////////REWARD ACTIVITY FIELDS/////////------------------------>
+                                                      <h2><b><apex:outputText value="Reward Design " /></b></h2>
+                                                      <br/>
+	                                                    <apex:variable value="{!0}" var="index"/>
+	                                                    <apex:repeat value="{!newActivities}" var="act">
+	                                                    <apex:variable var="index" value="{!index+1}"/>
+	                                                    <h3><b><apex:outputText value="{!index}. Reward Activity " /></b></h3>
+                                                      <apex:outputText escape="false" value="{!$Label.RewardPlanEntry_RewardDesignInfo}"/>
+                                                      <br/>
+                                                      <br/>
+	                                                    		<label><b>{!index}. Activity ID</b><span style="color:red;" class="muted"> (required)</span></label>
+                                                          <br/>
+                                                          <apex:outputText escape="false" value="{!$Label.RewardPlanEntry_ActivityIDInfo}"/>
+                                                          <br/>
+                                                          <br/>
+	                                                        <apex:selectList value="{!act.rpActivity.Activity_ID__c}" multiselect="false" size="1" styleClass="default xl" >
+	                                                                <apex:selectOptions value="{!activityIds}"/>
+	                                                        </apex:selectList>
+	                                                        <br/>
+	                                                        <br/>
+	                                                        <apex:repeat var="f" value="{!actFields}">
+	                                                        
+	                                                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath != 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!index}. {!f.Label}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+	                                                        <apex:outputPanel rendered="{!IF(f.fieldpath = 'Client_Logo_ID__c',true,false)}">
+	                                                          <label><b>{!$Label.RequirementForm_ClientLogoInstructions}</b>
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span style="color:red;" class="muted"> (required)</span></apex:outputPanel></label>
+	                                                        </apex:outputPanel>
+	                                                        <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+	                                                          <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+	                                                        </apex:outputPanel>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index}')" value="{!act.rpActivity[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index}"></div>
+	                                                          </apex:inputfield>
+
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index}')" style="width:550px;" value="{!act.rpActivity[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+	                                                          <div id="char{!f.fieldpath}{!index}"></div>
+	                                                          </apex:inputfield>
+	                                                        
+	                                                          <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!act.rpActivity[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+	                                                          </apex:inputField>
+
+	                                                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!act.rpActivity[f]}"/>
+
+	                                                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+	                                                            <apex:inputFile value="{!att.body}" 
+	                                                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+	                                                          </apex:outputPanel>
+	                                                        </apex:repeat>
+	                           															<br/>
+	                           															<label><b>{!index}. Sub-Activity IDs</b></label>
+	                           															<apex:repeat value="{!act.subIDs}" var="sub">
+		                                                        <apex:selectList value="{!sub.Activity_ID__c}" multiselect="false" size="1" styleClass="default xl" >
+		                                                                <apex:selectOptions value="{!subActivityIds}"/>
+		                                                        </apex:selectList>
+	                                                        </apex:repeat>
+	                                                        <br/>
+	                                                    </apex:repeat>
+
+	                                                    <center>
+			                                                    <div style="font-weight:bold;">
+			                                                        <apex:commandLink value="Add Standard ID" action="{!addActivityID}" rerender="theForm" />
+			                                                        &nbsp; | &nbsp;
+			                                                        <apex:commandLink value="Remove Standard ID" action="{!removeActivity_ID}" rerender="theForm"  />
+			                                                    </div>
+			                                                </center>
+                                     
+                                                    <div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                                                      <apex:outputText escape="false" value="{!$Label.RewardPlanEntry_SubmitInfo}"/>
+                                                      <br/>
+                                                      <br/> 
+                                                      <apex:commandButton style="width:100px" onclick="show('el_loading');" action="{!submitResults}" status="actStatusId" value="Submit" >
+                                                      </apex:commandButton>
+                                                      <br/>
+                                                    </div>
+                                                   
+                                                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;display:none;">
+                                                        <div class="waitingHolder" style="top: 74.2px; width: 91px;margin:0 auto;   ">
+                                                            <img class="waitingImage" src="/img/loading.gif"     title="Please Wait..." />
+                                                            <span class="waitingDescription">Saving...</span>
+                                                         </div>
+                                                    </div>
+                                                     
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!showSuccess}">
+                                                    <apex:outputText style="text-align: center; font-weight: bold;" escape="false" value="{!$Label.RequirementForm_successmessage}"/>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </apex:form>
+        </apex:define>
+    </apex:composition> 
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page controller="ManageRewardActivitiesController">
+    <apex:form >
+        <apex:pageBlock title="Activity IDs">
+            <c:MultiselectPicklist leftLabel="Available Activities"
+                leftOptions="{!allPlanIDs}"
+                rightLabel="Selected Activities"
+                rightOptions="{!selectedPlanIDs}"
+                size="14"
+                width="250px"/>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputText >{!message}</apex:outputText>
+</apex:page>

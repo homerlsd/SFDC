@@ -1,0 +1,153 @@
+<apex:component controller="WhiteLabelHeaderController" >
+<style>
+#desk-header 
+.form-actions {
+    background-color: transparent;
+    text-align: center;
+    margin-top: 5px;
+}
+.button-spacing{
+    margin-top: 40px;
+    padding-top: 10px;
+}
+.deskContainer {
+    background-size: 100% 60%;    
+}
+</style>
+        <!--Header Bar-->
+        <div id="desk-header">
+        <!--<div class="mobile-hat">
+            <a href="#desk-mobile-menu" id="desk-mobile-menu-toggle" class="btn visible-phone"><i ></i></a>
+            <a href="#desk-mobile-search" id="desk-mobile-search-toggle" class="btn visible-phone pull-right"><i class="icon-search"></i></a>
+          </div>
+        <div id="desk-mobile-search" class="visible-phone">
+                <div class="container">
+                  <div class="menu-item">
+                    <form action="{!$Site.BaseUrl}/results/" method="get" id="support-search-ornot" class="support-search-small-ornot">
+                         <input id="groupName2" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+                         <input id="q2" name="SearchString" type="text" value="" class="ui-autocomplete-input-ornot" placeholder="Enter a search term here."/>
+                         <br/>
+                         <div class="button-spacing">
+                           <div class="form-actions">
+                                <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"> Search</button>
+                           </div>
+                          </div>
+                      <!--<div>
+                        <input id="q2" name="SearchString" type="text" value="" class="ui-autocomplete-input-ornot" placeholder="Enter a search term here."/>
+                        <div style="clear: both;"></div>
+                       <input id="groupName2" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+                       <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            <div id="desk-mobile-header" class="visible-phone">
+                    <div class="container">
+                      <div class="row">
+                        <div class="span12">
+                          <ul id="desk-support-mobile-header-nav">
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->
+            <div class="container">
+                <div class="row logo-section">
+                      <div class="header-container">
+                        <h1 class="page-header"><a href="http://www.werally.com"><img alt="werally" src="{!URLFOR($Resource.CC_SupportAssets, 'image/rally_small_white.png')}"></img></a></h1>
+                      </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Search Bar-->
+        <!--<div id="deskContainer">
+	        <div id="desk-search" style="height:50%;" >
+	            <div class="container">
+	                <div class="row">
+	                    <div class="help-center">
+	                                        <span class="help">Rally Health Support</span>
+	                    </div>
+	                    <!--<form id="support-search" action="{!$Site.BaseUrl}/results/" method="get" class="navbar-form navbar-left" role="search">
+	                      <input type="text"  id="q" name="SearchString" maxlength="100" value="" placeholder="Have a Question?  Ask or enter a search term here." 
+	                      class="searchInput input-xlarge ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></input>
+	                      <input id="groupName" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+	                      <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+	                   </form>
+	                    <apex:form id="support-search" styleClass="support-search-big">
+	                        <div class="span8">
+	                            <apex:inputText id="q" value="{!SearchString}" styleClass="searchInput input-xlarge ui-autocomplete-input" html-placeholder="Have a Question? Ask or enter a search term here." ></apex:inputText>
+	                            <apex:commandButton  action="{!Search}" styleClass="support-search-submit icon-search icon-large" rerender=""></apex:commandButton>
+	                            <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+	                        </div>    
+	                    </apex:form
+	                </div>
+	            </div>
+	        </div>
+	    </div>-->
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+
+        /*! jQuery Placeholder Plugin - v0.7.0 - 2012-12-03
+        * http://andrew-jones.com/jquery-placeholder-plugin
+        * Copyright (c) 2012 Andrew Jones; Licensed MIT */
+        (function(a){"use strict",a.extend({placeholder:{settings:{focusClass:"placeholderFocus",activeClass:"placeholder",overrideSupport:!1,preventRefreshIssues:!0}}}),a.support.placeholder="placeholder"in document.createElement("input"),a.fn.plVal=a.fn.val,a.fn.val=function(b){if(typeof b=="undefined")return a.fn.plVal.call(this);var c=a(this[0]),d=c.plVal(),e=a(this).plVal(b);return c.hasClass(a.placeholder.settings.activeClass)&&d===c.attr("placeholder")?(c.removeClass(a.placeholder.settings.activeClass),e):c.hasClass(a.placeholder.settings.activeClass)&&c.plVal()===c.attr("placeholder")?"":a.fn.plVal.call(this,b)},a(window).bind("beforeunload.placeholder",function(){var b=a("input."+a.placeholder.settings.activeClass);b.length>0&&b.val("").attr("autocomplete","off")}),a.fn.placeholder=function(b){return b=a.extend({},a.placeholder.settings,b),!b.overrideSupport&&a.support.placeholder?this:this.each(function(){var c=a(this);if(!c.is("[placeholder]"))return;if(c.is(":password"))return;b.preventRefreshIssues&&c.attr("autocomplete","off"),c.bind("focus.placeholder",function(){var c=a(this);this.value===c.attr("placeholder")&&c.hasClass(b.activeClass)&&c.val("").removeClass(b.activeClass).addClass(b.focusClass)}),c.bind("blur.placeholder",function(){var c=a(this);c.removeClass(b.focusClass),this.value===""&&c.val(c.attr("placeholder")).addClass(b.activeClass)}),c.triggerHandler("blur"),c.parents("form").submit(function(){c.triggerHandler("focus.placeholder")})})}})(jQuery);
+          
+        $(function() {
+          
+          $(":input[placeholder]").placeholder();
+
+          // Mobile Menu toggle
+          $('#desk-mobile-menu-toggle').click(function() {
+            $('body').toggleClass('desk-mobile-menu');
+            return false;
+          });
+          
+          // Mobile Menu toggle
+          $('#desk-mobile-search-toggle').click(function() {
+            $('body').toggleClass('desk-mobile-search');
+            return false;
+          });
+          
+          // Parse Language Dropdown
+          if($('#a-content-select').length) {
+            $('#desk-lang-dropdown a.btn').html($('#a-content-select option[value=' + $('#a-content-select').val() + ']').text() + ' <i class="icon-caret-down"></i>');
+            $('#a-content-select').change(function() {
+              $('#desk-lang-dropdown a.btn').html($('#a-content-select option[value=' + $('#a-content-select').val() + ']').text() + ' <i class="icon-caret-down"></i>');
+            });
+
+            $('#desk-mobile-lang-list').append( $('#a-content-select').clone(true).removeAttr('id') );
+
+          } else {
+            $('#desk-lang-dropdown').remove();
+          }
+          
+          $("#desk-mobile-lang-list select").change(function() {
+            $('#a-content-select').val($("#desk-mobile-lang-list select").val()).change();
+          });
+          
+        });
+
+        /*$("input").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                $("form").submit();
+            }
+        });*/
+        </script>
+        <script type="text/javascript">
+          
+          $(document).ready(function() {
+          
+          
+          var images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg'];
+          
+          $('#desk-search').css({'background-image': 'url({!$Site.BaseUrl}/resource/1415999565000/CC_SupportAssets/image/' + images[Math.floor(Math.random() * images.length)] + ')'});
+          
+          });
+          
+          
+          
+        </script>
+</apex:component>

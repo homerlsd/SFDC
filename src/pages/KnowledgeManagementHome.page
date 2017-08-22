@@ -1,0 +1,110 @@
+<apex:page controller="KnowledgeManagementController" tabStyle="Question__kav" sidebar="false" title="Knowledge Search">
+	<style>
+	td{
+	vertical-align : top;
+	text-align: left;
+	}
+	</style>
+	<apex:form >
+		<apex:panelGrid columns="2" >
+			<apex:panelGroup >
+				<apex:pageBlock id="smallBlock">
+					<apex:pageBlockSection columns="1">
+						<apex:commandButton value="New Article" action="{!createNewArticle}"/>
+					</apex:pageBlockSection>
+				</apex:pageBlock>
+			</apex:panelGroup>
+			<apex:outputPanel id="bigPanel">
+				<apex:panelGroup rendered="{! !creatingArticle}">	
+					<apex:messages />
+					<apex:panelGroup id="theSearchResults" >
+						<apex:pageBlock title="Search Results" >
+		                        <div class="row" >
+	                                <apex:actionRegion >
+	                                    <apex:actionFunction name="chooseFirstLetter" reRender="kbDetails,theButtons" action="{!chooseFirstLetter}">
+	                                        <apex:param name="letter" value=""/>
+	                                    </apex:actionFunction>
+	                                </apex:actionRegion>
+	                                <a href="" onclick="chooseFirstLetter('A')" style="cursor: pointer;">A</a> | 
+	                                <a href="" onclick="chooseFirstLetter('B')" style="cursor: pointer;">B</a> | 
+	                                <a href="" onclick="chooseFirstLetter('C')" style="cursor: pointer;">C</a> | 
+	                                <a href="" onclick="chooseFirstLetter('D')" style="cursor: pointer;">D</a> | 
+	                                <a href="" onclick="chooseFirstLetter('E')" style="cursor: pointer;">E</a> | 
+	                                <a href="" onclick="chooseFirstLetter('F')" style="cursor: pointer;">F</a> | 
+	                                <a href="" onclick="chooseFirstLetter('G')" style="cursor: pointer;">G</a> | 
+	                                <a href="" onclick="chooseFirstLetter('H')" style="cursor: pointer;">H</a> | 
+	                                <a href="" onclick="chooseFirstLetter('I')" style="cursor: pointer;">I</a> | 
+	                                <a href="" onclick="chooseFirstLetter('J')" style="cursor: pointer;">J</a> | 
+	                                <a href="" onclick="chooseFirstLetter('K')" style="cursor: pointer;">K</a> | 
+	                                <a href="" onclick="chooseFirstLetter('L')" style="cursor: pointer;">L</a> | 
+	                                <a href="" onclick="chooseFirstLetter('M')" style="cursor: pointer;">M</a> | 
+	                                <a href="" onclick="chooseFirstLetter('N')" style="cursor: pointer;">N</a> | 
+	                                <a href="" onclick="chooseFirstLetter('O')" style="cursor: pointer;">O</a> | 
+	                                <a href="" onclick="chooseFirstLetter('P')" style="cursor: pointer;">P</a> | 
+	                                <a href="" onclick="chooseFirstLetter('Q')" style="cursor: pointer;">Q</a> |
+	                                <a href="" onclick="chooseFirstLetter('R')" style="cursor: pointer;">R</a> | 
+	                                <a href="" onclick="chooseFirstLetter('S')" style="cursor: pointer;">S</a> | 
+	                                <a href="" onclick="chooseFirstLetter('T')" style="cursor: pointer;">T</a> | 
+	                                <a href="" onclick="chooseFirstLetter('U')" style="cursor: pointer;">U</a> | 
+	                                <a href="" onclick="chooseFirstLetter('V')" style="cursor: pointer;">V</a> | 
+	                                <a href="" onclick="chooseFirstLetter('W')" style="cursor: pointer;">W</a> | 
+	                                <a href="" onclick="chooseFirstLetter('X')" style="cursor: pointer;">X</a> | 
+	                                <a href="" onclick="chooseFirstLetter('Y')" style="cursor: pointer;">Y</a> | 
+	                                <a href="" onclick="chooseFirstLetter('Z')" style="cursor: pointer;">Z</a> |
+	                                <a href="" onclick="chooseFirstLetter('#')" style="cursor: pointer;">#</a> 
+		                        </div> 
+		                        <br/>
+		                        <div class="row" style="width:1100px;">
+			                        <apex:outputPanel id="detailPanel">
+				                        <apex:tabPanel switchType="client" selectedTab="tabdetails" id="kbDetails">
+				                        	<apex:tab label="Published Articles" name="KB1Details" id="tabdetails1">
+												<apex:dataTable cellpadding="4px" value="{!allArticles}" var="b" id="articleTable">  
+								                    <apex:column width="33%" headerValue="Title">
+								                        <apex:outputLink target="_blank" value="{!URLFOR($Page.NewKnowledgeArticle)}?id={!b.id}">{!b.title}</apex:outputLink> 
+								                    </apex:column>                
+								                    <apex:column width="33%" headerValue="Category">
+								                        <apex:outputText value="{!b.Category__c}"/>
+								                    </apex:column>
+								                    <apex:column width="33%" headerValue="Summary">
+								                        <apex:outputText value="{!b.summary}"/>
+								                    </apex:column>
+								                </apex:dataTable>
+									        </apex:tab>
+									        <apex:tab label="Draft Articles" name="KB2Details" id="tabdetails2">
+												<apex:dataTable cellpadding="4px" value="{!allDraftArticles}" var="b" id="articleTable_D">  
+								                    <apex:column width="33%" headerValue="Title">
+								                        <apex:outputLink target="_blank" value="{!URLFOR($Page.NewKnowledgeArticle)}?id={!b.id}">{!b.title}</apex:outputLink> 
+								                    </apex:column>                
+								                    <apex:column width="33%" headerValue="Category">
+								                        <apex:outputText value="{!b.Category__c}"/>
+								                    </apex:column>
+								                    <apex:column width="33%" headerValue="Summary">
+								                        <apex:outputText value="{!b.summary}"/>
+								                    </apex:column>
+								                    <apex:column >
+								                    	{!nxt}/{!prev}
+								                    </apex:column>
+								                </apex:dataTable>
+								            </apex:tab>
+								        </apex:tabPanel>
+							        </apex:outputPanel>	
+							        <apex:pageblockButtons >
+								        <apex:outputPanel id="theButtons">
+											<apex:commandButton value="First Page" rerender="detailPanel" action="{!FirstPage}" disabled="{!hasPrev}"/>
+											<apex:commandButton value="Previous" rerender="detailPanel" action="{!previous}" disabled="{!hasPrev}"/>
+											<apex:commandButton value="Next" rerender="detailPanel" action="{!next}" disabled="{!hasNxt}"/>
+											<apex:commandButton value="Last Page" rerender="detailPanel" action="{!LastPage}" disabled="{!hasNxt}"/>
+										</apex:outputPanel>
+									</apex:pageblockButtons>
+								</div>
+						</apex:pageBlock>
+					</apex:panelGroup>
+				</apex:panelGroup>
+			</apex:outputPanel>
+		</apex:panelGrid>
+		
+		<!--<apex:actionFunction action="{!refreshSearchResult}" name="refreshSearchResult"
+		rerender="theSearchResults" >
+		</apex:actionFunction>-->
+	</apex:form>
+</apex:page>

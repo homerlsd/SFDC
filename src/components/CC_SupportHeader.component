@@ -1,0 +1,524 @@
+<apex:component controller="CC_SupportHeaderController" allowDML="true">
+
+<script type='text/javascript' src='https://c.la2-c2-phx.salesforceliveagent.com/content/g/js/38.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la2-c2-phx.salesforceliveagent.com/chat', '572440000008dXG', '00DE0000000Hosc');
+</script>
+
+<script type="text/javascript">
+
+function popup_nousers(){
+  $(".modalDialog").css({"opacity":"1","pointer-events":"auto"});
+  //window.open('https://support.werally.com/customer/Test_NoAgents','No Agents Available', '_blank');
+  }
+
+
+  function closeModal(){
+     $(".modalDialog").css({"opacity":"0","pointer-events":"none"});
+  };
+
+
+if (!window._laq) { window._laq = []; }
+var inBH = '{!inBusinessHrs}';
+
+if(inBH == 'true'){
+  window._laq.push(function(){liveagent.showWhenOnline('573440000008fsz', document.getElementById('liveagent_button_online_573440000008fsz'));
+  liveagent.showWhenOffline('573440000008fsz', document.getElementById('liveagent_button_offline_573440000008fsz'));
+  });
+}
+else{
+  window._laq.push(function(){liveagent.showWhenOnline('573440000008ft0', document.getElementById('liveagent_button_online_573440000008ft0'));
+  liveagent.showWhenOffline('573440000008ft0', document.getElementById('liveagent_button_offline_573440000008ft0'));
+  });
+}
+function ImageOver(myimage)
+{ 
+  if(myimage == true) {
+      var element = document.getElementsByClassName('imgchatcl');
+      element[0].src='https://support.werally.com/customer/resource/1479861214000/ActiveChat';
+  }
+} 
+function resetImage(myimage){
+    
+    if(myimage == true) {
+        var element = document.getElementsByClassName('imgchatcl');
+        element[0].src='https://support.werally.com/customer/resource/1481040974000/ChatAvailable';
+    }
+}
+</script>
+
+<style>
+   
+
+    .rc_modal {    
+        max-height: calc(100% - 100px);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);       
+        border:  1px outset #666666;
+        border-radius: 5px 5px 5px 5px;
+        -moz-border-radius: 5px 5px 5px 5px;
+        -webkit-border-radius: 5px 6px 5px 5px;      
+        box-shadow: 2px 2px 1px #666666;
+        overflow-y:auto;
+    }
+    
+    .rc_ModalHeader{
+        height:80px; 
+        width:100%; 
+        background-color: #f26c32; 
+        margin:0px;
+        padding:0px;
+    }    
+    
+    
+    .rc_headerText{ 
+        color:#ffffff;
+        font-family: "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+        font-size: 24pt;
+        font-size: 4vmin;
+        font-weight:300;    
+
+        white-space: normal;
+        text-align: left; 
+        vertical-align: middle;
+        margin-left: 0px;
+        margin-right: 0px;      
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        padding-top: 20px;      
+        padding-bottom: auto;  
+        padding-left:0px;  
+        padding-right: auto; 
+
+        z-index: 2;               
+    } 
+
+    .rc_DisplayMessage{
+            box-sizing: border-box;
+            text-align:center;
+            white-space: normal;
+             
+            color:#4d4d4d;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            font-size: 18pt;
+            font-size: 3vmin;
+            
+            margin-left: 5px;
+            margin-right: 5px;       
+            margin-top: 5px; 
+            margin-bottom: 5px;        
+    }
+
+    .rc_button_grey{
+        max-height:40px;
+        width:auto;
+
+        background: #e5e5e5;
+        background-image: -webkit-linear-gradient(top, #e5e5e5, #e5e5e5);
+        background-image: -moz-linear-gradient(top, #e5e5e5, #e5e5e5);
+        background-image: -ms-linear-gradient(top, #e5e5e5, #e5e5e5);
+        background-image: -o-linear-gradient(top, #e5e5e5, #e5e5e5);
+        background-image: linear-gradient(to bottom, #e5e5e5, #e5e5e5);
+
+        border: solid #cccccc 1px;
+        -webkit-border-radius: 3;
+        -moz-border-radius: 3;
+        border-radius: 3px;
+
+
+        font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+        color: #4d4d4d;
+        font-size: 14pt;
+        font-weight: 300;
+        text-decoration: none;
+
+        opacity: 1.0;
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+        padding-right: 25px;   
+                         
+        margin-left: 25px;
+        margin-right: auto;    
+        margin-top: 30px;
+        margin-bottom: 30px;               
+    }
+
+    button:focus.rc_button_grey{
+        font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+        color: #f26c32;
+        font-size: 14pt;
+        font-weight: 300;
+        text-decoration: none;
+        border: solid #cccccc 1px;
+        -webkit-border-radius: 3;
+        -moz-border-radius: 3;
+        border-radius: 3px;                         
+    }   
+    button:hover.rc_button_grey{
+        font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+        color: #f26c32;
+        font-size: 14pt;
+        font-weight: 300;
+        text-decoration: none;
+        border: solid #cccccc 1px;
+        -webkit-border-radius: 3;
+        -moz-border-radius: 3;
+        border-radius: 3px;                         
+    }   
+
+    button:active.rc_button_grey{ 
+        font-family: "Helvetica Neue Bold", Helvetica, Arial, sans-serif;
+        color: #f26c32;
+        font-size: 14pt;
+        font-weight: 300;
+        text-decoration: none;
+        border: solid #cccccc 1px;
+        -webkit-border-radius: 3;
+        -moz-border-radius: 3;
+        border-radius: 3px;                 
+    }
+
+
+
+
+.rc_ChatCenter{
+    margin-top:15%;
+    border: 2px solid; 
+    border-radius: 5px;
+    width: 60%; 
+    margin-left:40% ;
+}
+
+
+
+.modalDialog {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(242,242,242,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: auto;
+}
+.modalDialog:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.modalDialog > div {
+ 
+  background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+ 
+.rcontain {
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+    height: 60px !important!
+}
+
+.form-actions {
+    background-color: transparent;
+    text-align: center;
+    margin-top: 5px;
+}
+.button-spacing{
+    margin-top: 40px;
+    padding-top: 10px;
+}
+.lnclass {
+    float:right !important;
+    border-left: 1px solid #1a1a1a; 
+    border-right: 1px solid #1a1a1a;
+    width: 140px;
+    margin-right: 15%;
+    height:60px;
+}
+.logoclass{
+  padding-left: 200px !important;
+  padding-top: 18px;
+  width : 140px;
+}
+@media only screen and (max-width: 767px) {
+.lnclass {
+    border-left: 1px solid #1a1a1a; 
+    border-right: 1px solid #1a1a1a;
+    width: 140px;
+    height:60px;
+    margin-right: 2%;
+}
+.logoclass{
+  padding-left: 0px !important;
+  padding-top: 10px !important;
+  width : 140px;
+  margin-left: 2%;
+}
+.visible-phone {
+    padding-left: 0px !important;
+}
+.row.logo-section {
+    margin: 0px 0;
+}
+h1.page-header {
+    margin-left:2%;
+}
+.rc_ChatCenter{
+margin-top:20%;
+border: 2px solid; 
+border-radius: 5px;
+width: 40%; 
+margin-left:20% ;
+height: 40%;
+}
+}
+
+  
+</style>
+        <!--Header Bar-->
+      <apex:form >
+        <div id="desk-header">
+        <div class="mobile-hat">
+            <a href="#desk-mobile-menu" id="desk-mobile-menu-toggle" class="btn visible-phone"><i ></i></a>
+            <a href="#desk-mobile-search" id="desk-mobile-search-toggle" class="btn visible-phone pull-right"><i class="icon-search"></i></a>
+        </div>
+        <div id="desk-mobile-search" class="visible-phone">
+                <div style="container">
+                  <div class="menu-item">
+                    <form action="{!$Site.BaseUrl}/results/" method="get" id="support-search-ornot" class="support-search-small-ornot">
+                         <input id="groupName2" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+                         <input id="q2" name="SearchString" type="text" value="" class="ui-autocomplete-input-ornot" placeholder="Enter a search term here."/>
+                         <br/>
+                         <div class="button-spacing">
+                           <div class="form-actions">
+                                <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"> Search</button>
+                           </div>
+                          </div>
+                      <!--<div>
+                        <input id="q2" name="SearchString" type="text" value="" class="ui-autocomplete-input-ornot" placeholder="Enter a search term here."/>
+                        <div style="clear: both;"></div>
+                       <input id="groupName2" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+                       <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+                      </div>-->
+                    </form>
+                  </div>
+                </div>
+              </div>
+            <div id="desk-mobile-header" class="visible-phone">
+                    <div class="container">
+                      <div class="row">
+                        <div class="span12">
+                          <ul id="desk-support-mobile-header-nav">
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        <apex:outputPanel rendered="{!showLiveAgent}">
+            <div class="rcontain">
+                <div class="row logo-section">
+                      <div class="header-container">
+                        <h1 class="page-header"><a href="http://www.werally.com"><img alt="werally" src="{!URLFOR($Resource.CC_SupportAssets, 'image/rally_small_white.png')}"  class="logoclass"></img></a></h1>
+                      </div >
+                       
+                              
+                                  <apex:outputPanel rendered="{!inBusinessHrs}">
+                                  <div class="lnclass" >
+                                  
+                                  <img id="liveagent_button_online_573440000008fsz" onmouseover="ImageOver({!inBusinessHrs})" onmouseout="resetImage({!inBusinessHrs})" onclick="liveagent.startChat('573440000008fsz')" src="https://support.werally.com/customer/resource/1481040974000/ChatAvailable"  class="imgchatcl" style="display:none;" />
+
+                                  <img id="liveagent_button_offline_573440000008fsz" style="display:none; border: 0px none; " onclick="createClickThrough_ab();popup_nousers();" src="https://support.werally.com/customer/resource/1479860720000/ChatUnavailable" />   
+                                 
+                                  </div>                               
+                                  
+
+                                  </apex:outputPanel>
+                                  <apex:outputPanel rendered="{!!inBusinessHrs}">
+                                  <div class="lnclass">
+                                  <img id="iveagent_button_online_573440000008ft0" style="border: 0px none; " onclick="createClickThrough_OH();popup_nousers();" src="https://support.werally.com/customer/resource/1479860720000/ChatUnavailable" />
+                                  </div>
+                                  </apex:outputPanel>
+                              
+                          
+                      
+                      </div>
+                   </div>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{! !showLiveAgent}">
+                <div class="container">
+                  <div class="rowlogo-section">
+                      <div class="header-container">
+                        <h1 class="page-header"><a href="http://www.werally.com"><img alt="werally" src="{!URLFOR($Resource.CC_SupportAssets, 'image/rally_small_white.png')}"></img></a></h1>
+                      </div>
+                    </div>
+                  </div>  
+            </apex:outputpanel>       
+            </div>
+         
+        <!--Search Bar-->
+        <div id="desk-search" class="hidden-phone">
+            <div class="container">
+                <div class="row">
+                    <div class="help-center">
+                                        <span class="help">Rally Health Support</span>
+                    </div>
+                    <form id="support-search" action="{!$Site.BaseUrl}/results/" method="get" class="navbar-form navbar-left" role="search">
+                      <input type="text"  id="q" name="SearchString" maxlength="100" value="" placeholder="Have a Question?  Ask or enter a search term here." 
+                      class="searchInput input-xlarge ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"></input>
+                      <input id="groupName" name="DataCategoryGroupName" type="text" value="{!DataCategoryGroupName}" class="hidden" />
+                      <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+                   </form>
+                    <!--apex:form id="support-search" styleClass="support-search-big">
+                        <div class="span8">
+                            <apex:inputText id="q" value="{!SearchString}" styleClass="searchInput input-xlarge ui-autocomplete-input" html-placeholder="Have a Question? Ask or enter a search term here." ></apex:inputText>
+                            <apex:commandButton  action="{!Search}" styleClass="support-search-submit icon-search icon-large" rerender=""></apex:commandButton>
+                            <button type="submit" class="icon-search icon-large" id="support-search-submit" value="Search"></button>
+                        </div>    
+                    </apex:form-->
+                </div>
+            </div>
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+
+        /*! jQuery Placeholder Plugin - v0.7.0 - 2012-12-03
+        * http://andrew-jones.com/jquery-placeholder-plugin
+        * Copyright (c) 2012 Andrew Jones; Licensed MIT */
+        (function(a){"use strict",a.extend({placeholder:{settings:{focusClass:"placeholderFocus",activeClass:"placeholder",overrideSupport:!1,preventRefreshIssues:!0}}}),a.support.placeholder="placeholder"in document.createElement("input"),a.fn.plVal=a.fn.val,a.fn.val=function(b){if(typeof b=="undefined")return a.fn.plVal.call(this);var c=a(this[0]),d=c.plVal(),e=a(this).plVal(b);return c.hasClass(a.placeholder.settings.activeClass)&&d===c.attr("placeholder")?(c.removeClass(a.placeholder.settings.activeClass),e):c.hasClass(a.placeholder.settings.activeClass)&&c.plVal()===c.attr("placeholder")?"":a.fn.plVal.call(this,b)},a(window).bind("beforeunload.placeholder",function(){var b=a("input."+a.placeholder.settings.activeClass);b.length>0&&b.val("").attr("autocomplete","off")}),a.fn.placeholder=function(b){return b=a.extend({},a.placeholder.settings,b),!b.overrideSupport&&a.support.placeholder?this:this.each(function(){var c=a(this);if(!c.is("[placeholder]"))return;if(c.is(":password"))return;b.preventRefreshIssues&&c.attr("autocomplete","off"),c.bind("focus.placeholder",function(){var c=a(this);this.value===c.attr("placeholder")&&c.hasClass(b.activeClass)&&c.val("").removeClass(b.activeClass).addClass(b.focusClass)}),c.bind("blur.placeholder",function(){var c=a(this);c.removeClass(b.focusClass),this.value===""&&c.val(c.attr("placeholder")).addClass(b.activeClass)}),c.triggerHandler("blur"),c.parents("form").submit(function(){c.triggerHandler("focus.placeholder")})})}})(jQuery);
+          
+        $(function() {
+          
+          $(":input[placeholder]").placeholder();
+
+          // Mobile Menu toggle
+          $('#desk-mobile-menu-toggle').click(function() {
+            $('body').toggleClass('desk-mobile-menu');
+            return false;
+          });
+          
+          // Mobile Menu toggle
+          $('#desk-mobile-search-toggle').click(function() {
+            $('body').toggleClass('desk-mobile-search');
+            return false;
+          });
+          
+          // Parse Language Dropdown
+          if($('#a-content-select').length) {
+            $('#desk-lang-dropdown a.btn').html($('#a-content-select option[value=' + $('#a-content-select').val() + ']').text() + ' <i class="icon-caret-down"></i>');
+            $('#a-content-select').change(function() {
+              $('#desk-lang-dropdown a.btn').html($('#a-content-select option[value=' + $('#a-content-select').val() + ']').text() + ' <i class="icon-caret-down"></i>');
+            });
+
+            $('#desk-mobile-lang-list').append( $('#a-content-select').clone(true).removeAttr('id') );
+
+          } else {
+            $('#desk-lang-dropdown').remove();
+          }
+          
+          $("#desk-mobile-lang-list select").change(function() {
+            $('#a-content-select').val($("#desk-mobile-lang-list select").val()).change();
+          });
+          
+        });
+
+        /*$("input").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                $("form").submit();
+            }
+        });*/
+        </script>
+        <script type="text/javascript">
+          
+          
+          
+          $(document).ready(function() {
+
+          $(".modalDialog").css({"opacity":"0","pointer-events":"none"});
+          
+          
+          var images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg'];
+          
+          $('#desk-search').css({'background-image': 'url({!$Site.BaseUrl}/resource/1415999565000/CC_SupportAssets/image/' + images[Math.floor(Math.random() * images.length)] + ')'});
+          
+          
+          });
+          
+          
+        </script>
+
+        <apex:actionFunction action="{!createClickThrough_agentsBusy}" name="createClickThrough_ab" oncomplete="popup_nousers();" reRender=""/>
+        <apex:actionFunction action="{!createClickThrough_outOfHoop}" name="createClickThrough_OH" reRender=""/>
+        <div id="openModal" class="modalDialog">
+
+            <div class="rc_modal" >
+            
+              <div  style="height:100%; width:100%; background-color: #f2f2f2; text-align:center; padding:0px;">
+                        
+                        <div class="rc_ModalHeader" > 
+                            <div style="display:inline-block;float:left;margin:0px;padding-top:10px;width:80px;height:80px;" >
+                                <apex:image url="{!URLFOR($Resource.HeaderIcon_60x60px)}" width="60" height="60" id="header_chatIcon"/> 
+                            </div>
+                            
+                            <div id="header_title" class="rc_headerText">{!$Label.LA_ChatWindowHeaderText}</div>
+                            
+                        </div> 
+                        <br/>
+                        <div style="background-color: #f2f2f2;"> 
+                             <div class="center-block text-center" style="text-align: center; padding: 20px;">
+                                <apex:image url="{!URLFOR($Resource.AlertBubbleIcon_100x100px)}" width="100" height="100" id="rc_alertBubbleIcon"/>  
+                            </div> 
+                              <br/>                   
+                            <div class="center-block text-center" style="text-align: center;padding: 20px;">
+                                  <span class="rc_DisplayMessage text-center">
+                                   <apex:outputText rendered="{!inBusinessHrs}" escape="false" value="{!$Label.CC_SupportHeader_NoLiveAgents}"/>
+                                   <apex:outputText rendered="{! !inBusinessHrs}" escape="false" value="{!$Label.CC_SupportHeader_OutofHOOP}"/>
+                                  </span>
+                            </div>
+                            <br/>
+                            <div class="center-block text-center" style="text-align: center;padding: 20px;">
+                                <button id="rc_cancelChatButton" class="rc_button_grey" onclick="closeModal();" label="Cancel" >Close</button>
+                            </div> 
+                       </div> 
+                       <br/> 
+                  </div>
+              </div>  
+        </div>
+      </apex:form>
+      
+</apex:component>

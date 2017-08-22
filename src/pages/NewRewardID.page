@@ -1,0 +1,369 @@
+<apex:page cache="false" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" controller="NewRewardIDController">
+        <script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"/>
+    <style type="text/css">
+        .twitter-typeahead {
+          width:100%;
+        }
+        .tt-search-box,
+        .tt-query,
+        .tt-hint {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-txtbox {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-search-box:focus {
+          border: 2px solid #0097cf;
+        }
+
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-dropdown-menu {
+          width: 100%;
+          margin-top: 5px;
+          padding: 8px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          font-size: inherit;
+          line-height: 1.5em;
+        }
+
+        .tt-suggestion.tt-cursor {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
+        }
+        .tablestuff2 thead {
+             display: table-header-group;
+        }
+        .tdSpecial {
+            padding: 15px;
+            text-align: left;
+        }
+        .table{
+            width: 100%;
+        }
+        hr {
+            visibility: visible !important;
+            border: 0;
+            clear:both;
+            display:block !important;
+            width: 96%;                
+            background-color:#000000;
+            height: 1px;
+        }
+        table.exceptionText td {
+         font-style:italic;
+         font-size:16px;
+         font-weight:bold;
+         text-align:center;
+         color:red;
+        }
+    </style>
+    <script >
+        //Create a new variable j$ just to avoid any conflicts with other libraries which may be using $.
+        var j$ = jQuery.noConflict();
+
+        j$(function() {
+             // date picker
+             j$( ".dateClass" ).datepicker();
+         });
+
+          function show (toBlock){
+            setDisplay(toBlock, 'block');
+          }
+          function setDisplay (target, str) {
+            document.getElementById(target).style.display = str;
+          }
+
+          function countChar(val,max,field,num) {
+            if(max > 0){
+              var len = val.value.length;
+              if (len > max) {
+                val.value = val.value.substring(0, max);
+              } else {
+                var tempstring = '#char'+field+num;
+                $(tempstring).text('Remaining Characters: '+ (max - len));
+              }
+            }
+          };
+
+          function countChar1(val,max,field) {
+            if(max > 0){
+              var len = val.value.length;
+              if (len > max) {
+                val.value = val.value.substring(0, max);
+              } else {
+                var tempstring = '#char'+field;
+                $(tempstring).text('Remaining Characters: '+ (max - len));
+              }
+            }
+          };
+
+        //Capture the list of countries in a Array.
+        window.RewardActivities = new Array();
+        <apex:repeat value="{!Activity_IDNames}" var="arrayItem">
+        RewardActivities.push('{!arrayItem}');
+        </apex:repeat>
+
+        j$(document).ready(function(){
+            j$(".tt-search-box").autocomplete({
+                source : RewardActivities
+            });
+        });
+
+        function bindEvents() {
+            j$(".tt-search-box").autocomplete({
+                source : RewardActivities
+            });
+        }
+
+        j$(document).ready(function(){
+            bindEvents();
+        });
+
+        
+    </script>
+    <apex:composition template="ImplementationExternalTemplate" >
+    <apex:define name="styles">
+    <style type="text/css">
+    </style>
+    </apex:define>
+    <apex:define name="body">
+        <apex:form id="theForm">
+            <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <div id="desk-leftcol" class="span12">
+                                <div id="desk-support-index" class="no-qna">
+                                    <div id="desk-support-kb-content">
+                                        <div id="desk-kb-index">
+                                            <apex:Messages layout="table" styleClass="exceptionText" />
+                                                <apex:pageBlock id="actIDBlock">
+                                                <apex:outputPanel id="actIDBlockPanel">
+                                                    <div class="tablestuff2 table">
+                                                    <table id="EquipmentTable" style="width:100%;width: auto;">
+                                                        <colgroup>
+                                                            <col style="width: 30%" />
+                                                            <col style="width: 20%" />
+                                                            <col style="width: 20%" />
+                                                            <col style="width: 20%" />
+                                                            <col style="width: 20%" />
+                                                        </colgroup>
+                                                        <thead>
+                        
+                                                                <th ><apex:outputPanel >Reward ID</apex:outputPanel></th>
+                                                                <th ><apex:outputPanel >Reward Name</apex:outputPanel></th>
+                                                                <th ><apex:outputPanel >Reward Actvity Type</apex:outputPanel></th>
+                                                                <th >Rewad Sub-Activities</th>
+                                                                <th ><apex:outputPanel >Comments</apex:outputPanel></th>
+                                                            
+                                                        </thead>
+                                                        <tbody >
+                                                            <apex:variable value="{!-1}" var="index"/>
+                                                            <apex:repeat value="{!Activity_IDWrapperList}" var="a" id="affilTable" > 
+                                                                <tr id="EquipmentRow">
+                                                                    <td >
+                                                                        <apex:variable var="index" value="{!index+1}"/>
+                                                                        <apex:facet name="header">Activity ID</apex:facet>
+                                                                        <apex:inputText style="width: 250px;" value="{!a.activityID.name}" styleClass="tt-search-box" /> 
+                                                                        &nbsp;
+                                                                        <b><apex:commandLink value="Select ID" action="{!findActID}" oncomplete="String" rerender="actIDBlock,error" >
+                                                                            <!--<apex:param value="{!a.activityID.name}" name="actID"/>-->
+                                                                            <apex:param value="{!index}" name="g"/>
+                                                                        </apex:commandLink></b>
+                                                                   </td> 
+                                                                   <td> 
+                                                                        <apex:outputField value="{!a.activityID.Activity_Name__c}" styleClass="tt-txtbox" />
+                                                                   </td> 
+                                                                   <td> 
+                                                                        <apex:inputField value="{!a.activityID.Reward_Activity_Type__c}" />
+                                                                   </td>
+                                                                    <td >
+                                                                        <apex:inputField id="suba" value="{!a.activityID.Main_Activity_ID_Sub_Activities__c}"/>
+                                                                    </td>
+                                                                    <td>
+                                                                        <apex:outputLabel for="comm">Comments</apex:outputLabel>
+                                                                        <apex:inputField id="comm" style="width: 100px;" value="{!a.activityID.Comments__c}"/>
+                                                                    </td>
+                                                               </tr>
+                                                           </apex:repeat>
+                                                        </tbody>
+                                                    </table>
+                                                    </div>
+                                                </apex:outputPanel> 
+                                                <center>
+                                                    <div style="font-weight:bold;">
+                                                        <apex:commandLink value="Add Standard ID" action="{!addActivity_IDRow}" oncomplete="bindEvents();" rerender="actIDBlock,error" />
+                                                        &nbsp; | &nbsp;
+                                                        <apex:commandLink value="Remove Standard ID" action="{!removeActivity_ID}" rerender="actIDBlock,error"  />
+                                                    </div>
+                                                </center>
+                                                <br/>
+                                                <hr/>
+                                                </apex:pageBlock>
+                                                <apex:pageBlock >
+                                                        <apex:outputPanel id="custom">
+                                                        <apex:variable value="{!0}" var="index1"/>
+                                                        <apex:repeat value="{!cust_IDWrapperList}" var="fPromo">
+                                                            <apex:variable var="index1" value="{!index1+1}"/>
+                                                                <h4><b>Custom Activity ID {!index1}</b></h4>
+                                                                <br/>
+                                                                <br/>   
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <apex:repeat var="f" value="{!customID_Fields}">                                                            
+                                                                            <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                                                                              <label><b>{!f.Label}</b>
+                                                                              <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}" ><span style="color:red;" class="muted"> *</span></apex:outputPanel></label>
+                                                                              <br/>
+                                                                       
+                                                                              <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                                                <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                                                <br/>
+                                                                                <br/>
+                                                                              </apex:outputPanel>
+
+                                                                              <apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" value="{!fPromo.activityID[f]}" style="height:75px;width:420px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                                              <div id="char{!f.fieldpath}{!index1}"></div>
+                                                                              </apex:inputfield>
+
+                                                                              <apex:inputfield rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" style="width:420px;" value="{!fPromo.activityID[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                                              <div id="char{!f.fieldpath}{!index1}"></div>
+                                                                              </apex:inputfield>
+                                                                            
+                                                                              <apex:inputfield rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!fPromo.activityID[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                                                                              </apex:inputField>
+
+                                                                              <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!fPromo.activityID[f]}"/>
+
+                                                                              <!--<apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                                                                                <apex:inputFile value="{!att.body}" 
+                                                                                    filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                                                                              </apex:outputPanel>-->
+                                                                              <br/>
+                                                                            </apex:repeat>
+                                                                        </td>
+                                                                        <td style="vertical-align:top">
+                                                                            <apex:repeat var="f" value="{!customID_Fields1}">                                                           
+                                                                            <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                                                                              <label><b>{!f.Label}</b>
+                                                                              <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}" ><span style="color:red;" class="muted"> *</span></apex:outputPanel></label>
+                                                                              <br/>
+                                                                       
+                                                                              <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                                                                                <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                                                                                <br/>
+                                                                                <br/>
+                                                                              </apex:outputPanel>
+
+                                                                              <apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" value="{!fPromo.activityID[f]}" style="height:75px;width:420px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                                              <div id="char{!f.fieldpath}{!index1}"></div>
+                                                                              </apex:inputfield>
+
+                                                                              <apex:inputfield rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" style="width:420px;" value="{!fPromo.activityID[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                                                                              <div id="char{!f.fieldpath}{!index1}"></div>
+                                                                              </apex:inputfield>
+                                                                            
+                                                                              <apex:inputfield rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!fPromo.activityID[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                                                                              </apex:inputField>
+
+                                                                              <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!fPromo.activityID[f]}"/>
+
+                                                                              <!--<apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                                                                                <apex:inputFile value="{!att.body}" 
+                                                                                    filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                                                                              </apex:outputPanel>-->
+                                                                              <br/>
+                                                                            </apex:repeat>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </apex:repeat>
+                                                            <br/>
+
+                                                            <center>
+                                                                <div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                                                                    <apex:commandButton style="width:200px" action="{!addCust_IDRow}" reRender="custom"  value="Add New Custom ID +" >
+                                                                    </apex:commandButton>
+                                                                    <apex:outputPanel rendered="{!cust_IDWrapperList != null && cust_IDWrapperList.size > 0}">
+                                                                             &nbsp;<apex:commandButton value="Remove New Custom ID -" onclick=" return removeCQ();" />
+                                                                    </apex:outputPanel>
+                                                                    <br/>
+                                                                </div>
+                                                            </center>
+                                                            <br/>
+                                                            <br/>
+                                                            <center>
+                                                                <apex:commandButton value="Save Activity ID Records" style="btn" action="{!saveactivityIDs}" />
+                                                                <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;display:none;">
+                                                                    <div class="waitingHolder" style="top: 74.2px; width: 91px;margin:0 auto;   ">
+                                                                        <img class="waitingImage" src="/img/loading.gif"     title="Please Wait..." />
+                                                                        <span class="waitingDescription">Saving...</span>
+                                                                    </div>
+                                                                </div>
+                                                            </center>
+                                                        </apex:outputPanel>
+                                                </apex:pageBlock>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <apex:actionFunction name="removeCQfunction" action="{!addCust_IDRow}" reRender="custom" immediate="true"/>
+        </apex:form>
+    </apex:define>
+    </apex:composition>
+</apex:page>

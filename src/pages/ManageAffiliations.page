@@ -1,0 +1,265 @@
+<apex:page sidebar="false" controller="ManageAffiationController">
+        <!--<script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css"/>-->
+    <!--<head>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.css" rel="stylesheet" />
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   </head>-
+   <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" />
+        <apex:styleSheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/smoothness/jquery-ui.css" />
+    <style type="text/css">
+        .twitter-typeahead {
+          width:100%;
+        }
+        .tt-search-box,
+        .tt-query,
+        .tt-hint {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-txtbox {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-search-box:focus {
+          border: 2px solid #0097cf;
+        }
+
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-dropdown-menu {
+          width: 100%;
+          margin-top: 5px;
+          padding: 8px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          font-size: inherit;
+          line-height: 1.5em;
+        }
+
+        .tt-suggestion.tt-cursor {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
+        }
+        .tablestuff2 thead {
+             display: table-header-group;
+        }
+        .tdSpecial {
+            padding: 15px;
+            text-align: left;
+        }
+        .table{
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        //Create a new variable j$ just to avoid any conflicts with other libraries which may be using $.
+        var j$ = jQuery.noConflict();
+        var implid="{!$CurrentPage.parameters.id}";
+
+
+        function callAutoComplete() {
+                j$('[id$=searchBox]').autocomplete({
+                    minLength: 2,
+                    source: function(request, response) {
+                                queryTerm = request.term;
+                                ManageAffiationController.getAffiliation(request.term,implid, function(result, event){
+                                    if(event.type == 'exception') {
+                                          alert(event.message);
+                                    } else {
+                                         movieObjects = result;
+                                         response(movieObjects);
+                                    }
+                                });
+                           },
+                    focus: function( event, ui ) {
+                            console.log(event);
+                            console.log(ui);
+                            j$('[id$=searchBox]').val( ui.item.Name );
+                            return false;
+                            },
+                    select: function( event, ui ) {
+                                console.log(event);
+                                console.log(ui);
+                                j$('[id$=searchBox]').val( ui.item.Name );
+                                j$('[id$=searchRecordId]').val( ui.item.Id );
+                                return false;
+                            },
+                 })
+                 .data( "autocomplete" )._renderItem = function( ul, item ) {
+
+                  var entry = "<a>" + item.Name;
+                   
+                    entry = entry + "</a>";
+                    entry = entry.replace(queryTerm, "<b>" + queryTerm + "</b>");
+                    
+                    return j$( "<li></li>" )
+                        .data( "item.autocomplete", item )
+
+                        .append( entry )
+                        .appendTo( ul );
+                };
+            }
+
+            function callMethod() {
+                var a = j$('[id$=searchBox]');
+                var t = j$('[id$=searchBox]')[0].value;
+                var x = j$('[id$=searchRecordId]')[0].value;
+                methodOneInJavascript(t,x);
+            }
+        
+    </script>
+    <apex:form id="theForm">
+     <apex:actionFunction action="{!saveAffils}" name="methodOneInJavascript" rerender="links">
+                <apex:param name="firstParam" assignTo="{!searchTerm}" value=""/>
+                <apex:param name="secondParam" assignTo="{!selectedRecordId}" value=""/>
+            </apex:actionFunction>
+           
+        <apex:pageMessages />
+        <apex:pageBlock title="Manage Affiliations for {!impl.Account__r.name}" id="thePageBlock">
+        <apex:outputPanel id="affilBlock">
+            <div class="tablestuff2 table">
+            <apex:variable value="{!-1}" var="index"/>
+            <apex:pageBlockTable style="width:100%" value="{!affiliationWrapperList}" var="a" id="affilTable" > 
+            <apex:column width="10%" >
+                <apex:facet name="header">Affiliation Type</apex:facet>
+                <apex:inputField value="{!a.affil.Affiliation_Type__c}"/>
+            </apex:column>
+            <apex:column rendered="{!impl.Initial_Approval_Date__c != null}" width="10%" >
+                <apex:facet name="header">Post Approval Change Reason</apex:facet>
+                <apex:inputText value="{!a.postAppChange}"/>
+            </apex:column>
+            <apex:column width="20%">
+                <apex:variable var="index" value="{!index+1}"/>
+                    <apex:facet name="header">Affiliation String</apex:facet>
+                    <apex:inputText id="searchBox" value="{!a.affil.name}" styleClass="tt-txtbox" onkeyup="callAutoComplete()"/>
+                    <apex:inputHidden id="searchRecordId" value="{!selectedRecordId}" />
+            </apex:column>
+            <apex:column width="15%" rendered="{!showSegmentPanel == true}">
+                <apex:facet name="header">Package Type</apex:facet>
+                <apex:inputField value="{!a.affil.Package_Type__c}" />
+            </apex:column>
+             <apex:column width="15%" rendered="{!showSegmentPanel == false}">
+                <apex:facet name="header">Affiliation Friendly Name (if applicable)</apex:facet>
+                <apex:inputField value="{!a.affil.Affiliation_String__c}" styleClass="tt-txtbox" />
+            </apex:column>
+            <apex:column width="15%" >
+                <apex:facet name="header">Affiliation Roles</apex:facet>
+                <apex:inputField value="{!a.affil.Affiliation_Roles__c}"/>
+            </apex:column>
+            <apex:column width="24%" >
+                <apex:facet name="header">Segmentation IDs</apex:facet>
+                <apex:outputPanel id="segBlock">
+                    <table >
+                    <thead>
+                        
+                            <th ><apex:outputPanel rendered="{!showSegmentPanel == true}">Segmentation Prefix</apex:outputPanel></th>
+                            <th ><apex:outputPanel rendered="{!showSegmentPanel == true}">  Segmentation Suffix</apex:outputPanel></th>
+                            <th ><apex:outputPanel rendered="{!showSegmentPanel == true}">Segmentation ID</apex:outputPanel></th>
+                        
+                    </thead>
+                        <tbody >
+                            <apex:repeat value="{!a.segmentList}" var="seg">
+                                <tr>
+                                    <td >
+                                    <apex:outputPanel rendered="{!showSegmentPanel == true}">
+                                        <apex:inputText value="{!seg.segID.Segmentation_Prefix__c}"/>
+                                    </apex:outputPanel>
+                                    </td>
+                                    <td >   
+                                        <apex:inputField value="{!seg.segID.Name}"/>
+                                    </td>
+                                    <td >
+                                    <apex:outputPanel rendered="{!showSegmentPanel == true}">
+                                        <apex:inputText value="{!seg.segID.Segmentation_Suffix__c}"/>
+                                    </apex:outputPanel>
+                                    </td>
+                                </tr>       
+                            </apex:repeat>
+                        </tbody>
+                        <br/>
+                        <br/>
+                        <tfoot>
+                            <tr >
+                                <td></td>
+                                <td>
+                                     <apex:outputPanel style="padding-left: 1cm;">
+                                        <apex:commandLink value="Add" action="{!addSegmentIDRow}" oncomplete="String" rerender="segBlock,error" >
+                                            <apex:param value="{!ROUND(index,0)}" name="g"/>
+                                        </apex:commandLink> 
+                                        | &nbsp; 
+                                        <apex:commandLink value="Remove" action="{!removeSegmentIDRow}" rerender="segBlock,error" >
+                                            <apex:param value="{!ROUND(index,0)}" name="g"/>
+                                        </apex:commandLink> 
+                                    </apex:outputPanel> 
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </apex:outputPanel> 
+            </apex:column>
+            </apex:pageBlockTable>
+            </div>
+        </apex:outputPanel> 
+        <apex:pageblockButtons location="bottom">
+            <div style="text-align:left;margin-left:30px;font-weight:bold;">
+                <apex:commandLink value="Add Affiliation" action="{!addAffiliationRow}" rerender="affilBlock,error" />
+                &nbsp; | &nbsp;
+                <apex:commandLink value="Remove Affiliation" action="{!removeAffiliation}" rerender="affilBlock,error"  />
+                <br/>
+                <br/>
+                &nbsp;&nbsp;<apex:commandButton value="Save Affiliation Records" style="btn" onclick="callMethod()" reRender="theForm" />
+            </div>
+        </apex:pageblockButtons>  
+        </apex:pageBlock>
+    </apex:form>-->
+</apex:page>

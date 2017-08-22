@@ -1,0 +1,28 @@
+<apex:page standardController="opportunity" extensions="MultiOpptyEditController" showHeader="true" sidebar="true">
+    <apex:form >
+        <apex:sectionHeader title="{!oppy.Record_Type_Name__c}" subtitle="{!oppy.name}" />
+        <apex:pageBlock title="Products">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!save}"  value="Save and Return to Opportunity"/>
+                <apex:commandButton action="{!cancel}" value="Return to Opportunity"/>
+            </apex:pageBlockButtons>
+            <apex:outputPanel id="theOLIPanel">
+                <apex:pageblocktable rendered="{!hasProducts}" value="{!oppy.opportunityLineItems}" var="prod" title="MypageblocktableTitle">
+                    <apex:column headerValue="Product Name">
+                        <apex:outputField value="{!prod.pricebookentry.product2.name}"/>
+                    </apex:column>
+                    <apex:column headerValue="Quantity">
+                        <apex:inputField value="{!prod.quantity}"/>
+                    </apex:column>
+                    <apex:column headerValue="Sale Price">
+                        <apex:inputField value="{!prod.unitprice}"/>
+                    </apex:column>
+                    <apex:column headerValue="Implementation Fee">
+                        <apex:inputField value="{!prod.Implementation_Fee__c}"/>
+                    </apex:column>
+                </apex:pageblocktable>
+                <apex:outputText style="align:center;" rendered="{! !hasProducts}" value="{!messg}"/>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

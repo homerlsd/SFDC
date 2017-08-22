@@ -1,0 +1,215 @@
+<apex:page controller="CustomSurveyEntryController" standardStylesheets="false" docType="html-5.0" >
+<style type="text/css">
+    .waitingSearchDiv{
+        opacity:0.8;
+        background-color:#ccc;
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        z-index:1000;
+    }
+    h2{
+        padding: 0px !important;
+        margin: 0px;
+    }
+    .line_break {
+        width:1000px;
+        height: 5px;
+        float: left;
+        color: black;
+        //padding-top: 3px;
+        background-color: rgba(255,255,255,.5);
+        border: none;
+        border-bottom: 3px solid black;
+    }
+    table.exceptionText td {
+     font-style:italic;
+     font-size:16px;
+     font-weight:bold;
+     text-align:center;
+     color:red;
+     padding-bottom: 10px;
+    }
+    hr {
+        visibility: visible !important;
+        border: 0;
+        clear:both;
+        display:block !important;
+        width: 96%;                
+        background-color:#000000;
+        height: 1px;
+    }
+    .odd { 
+	    background-color: #E8E8E8 !important;
+	    line-height: 20px !important;
+	}
+	.even {
+	    line-height: 20px !important;
+	}
+</style>
+<head><title>Rally Engage</title>
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+<script type="text/javascript">
+     j$ = jQuery.noConflict();
+
+     j$(function() {
+         // date picker
+         j$( ".dateClass" ).datepicker();
+     });
+
+      function show (toBlock){
+        setDisplay(toBlock, 'block');
+      }
+      function setDisplay (target, str) {
+        document.getElementById(target).style.display = str;
+      }
+
+      function removeCQ(cancel) {
+			removeCQfunction();
+            return false;
+        }
+
+      function countChar(val,max,field,num) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field+num;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function countChar1(val,max,field) {
+        if(max > 0){
+          var len = val.value.length;
+          if (len > max) {
+            val.value = val.value.substring(0, max);
+          } else {
+            var tempstring = '#char'+field;
+            $(tempstring).text('Remaining Characters: '+ (max - len));
+          }
+        }
+      };
+
+      function bindEvents() {
+          j$( ".dateClass" ).datepicker();
+      }
+
+      j$(document).ready(function(){
+            bindEvents();
+        });
+
+</script>
+</head>
+   
+	<apex:form id="theForm">
+	    <apex:Messages layout="table" styleClass="exceptionText" />
+	    <apex:outputPanel id="thePanel">
+	        <apex:outputPanel rendered="{! !showSuccess}">
+	            <!--<h2 style="padding-"><b><apex:outputText value="{!pageTitle}"/></b></h2>-->
+	            <br/>
+	            <br/>
+	            <apex:outputText value="{!header}" escape="false"/>
+	            <br/>
+	            <br/>
+	            <!-------------------///////////CUSTOM SURVEY FIELDS/////////------------------------>
+	            <apex:outputPanel >
+	                <apex:pageblock >
+	                    <apex:pageBlockTable styleClass="even,odd" var="f" value="{!questions}">
+	                        <apex:column headerValue="Select Catalog Question">
+	                        	<apex:inputField value="{!f.quest.Selected__c}" />
+	                        </apex:column>
+	                        <apex:column headerValue="Question">
+	                        	<div style="width:90%;">
+	                        		<apex:outputText value="{!f.question_string}" />
+	                        	</div>
+	                        </apex:column>
+	                        <apex:column headerValue="Answers">
+	                        	<apex:outputText escape="false" value="{!f.answers}" />
+	                        </apex:column>
+	                    </apex:pageBlockTable>
+	                </apex:pageBlock>
+	            </apex:outputPanel>
+	            <!-------------------///////////CUSTOM SURVEY FIELDS END/////////------------------------>
+	            <!-------------------///////////CUSTOM SURVEY QS FIELDS/////////------------------------>
+	            <apex:pageBlock >
+	            <apex:outputPanel id="custom">
+                    <apex:variable value="{!0}" var="index1"/>
+                    <apex:repeat value="{!questions_custom}" var="fPromo">
+                    <apex:variable var="index1" value="{!index1+1}"/>
+                        <h2><b>Custom Question {!index1}</b></h2>
+                        <br/>
+                        <br/>	
+                        <apex:repeat var="f" value="{!QuestionFields_Clientdefined}">	                                                        
+                        <apex:outputText rendered="{!headerMap[f.fieldpath] != 'N/A'}" value="{!headerMap[f.fieldpath]}" escape="false" />
+
+                          <label><b>{!f.Label}</b>
+                          <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}" ><span style="color:red;" class="muted"> *</span></apex:outputPanel></label>
+                          <br/>
+                   
+                          <apex:outputPanel rendered="{!descriptionMap[f.fieldpath] != 'N/A'}">
+                            <apex:outputText value="{!descriptionMap[f.fieldpath]}" escape="false" style="padding-top:1em;margin-bottom:2em;"/>
+                            <br/>
+                            <br/>
+                          </apex:outputPanel>
+
+                          <apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" value="{!fPromo.quest[f]}" style="height:75px;width:550px" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                          <div id="char{!f.fieldpath}{!index1}"></div>
+                          </apex:inputfield>
+
+                          <apex:inputfield rendered="{!IF(AND(f.type!='textarea',f.type!='date',f.type!='datetime',f.type!='picklist',f.type!='date',f.fieldpath != 'External_Upload_ID__c',f.fieldpath != 'Client_Logo_ID__c',!CONTAINS(f.fieldpath,'DateString__c')), true, false)}" onkeyup="countChar(this,'{!lengthMap[f.fieldpath]}', '{!f.fieldpath}','{!index1}')" style="width:550px;" value="{!fPromo.quest[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}">
+                          <div id="char{!f.fieldpath}{!index1}"></div>
+                          </apex:inputfield>
+                        
+                          <apex:inputfield rendered="{!IF(f.type ='picklist', true, false)}" style="width:250px;" value="{!fPromo.quest[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" >
+                          </apex:inputField>
+
+                          <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateClass" rendered="{!CONTAINS(f.fieldpath,'DateString__c')}" value="{!fPromo.quest[f]}"/>
+
+                          <apex:outputPanel rendered="{!IF(OR(f.fieldpath='External_Upload_ID__c',f.fieldpath='Client_Logo_ID__c'),true,false)}">
+                            <apex:inputFile value="{!att.body}" 
+                                filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg,doc,docx,pdf,xls,xlsx" />
+                          </apex:outputPanel>
+                          <br/>
+                        </apex:repeat>
+                    </apex:repeat>
+               	 	<br/>
+
+               	 	<div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                      <apex:commandButton style="width:200px" action="{!addCustomQ}" reRender="custom"  value="Add New Custom Question +" >
+                      </apex:commandButton>
+                      <apex:outputPanel rendered="{!questions_custom != null && questions_custom.size > 0}">
+                      		 &nbsp;<apex:commandButton value="Remove New Custom Question -" onclick=" return removeCQ();" />
+                      </apex:outputPanel>
+                  <br/>
+                </div>
+                    
+                <div style="margin: auto; margin-top: 3em; margin-bottom: 2em;">
+                  <apex:commandButton style="width:100px" action="{!submitResults}" status="actStatusId" value="Submit" >
+                  </apex:commandButton>
+                  <br/>
+                </div>
+               
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #DCD6D6; height: 100%;opacity:0.65;width:100%;display:none;">
+                    <div class="waitingHolder" style="top: 74.2px; width: 91px;margin:0 auto;   ">
+                        <img class="waitingImage" src="/img/loading.gif"     title="Please Wait..." />
+                        <span class="waitingDescription">Saving...</span>
+                     </div>
+                </div>
+                 
+            </apex:outputPanel>
+        	</apex:pageBlock>
+            	<apex:actionFunction name="removeCQfunction" action="{!removeCustomQ}" reRender="custom" immediate="true"/>
+        	</apex:outputPanel>
+            <apex:outputPanel rendered="{!showSuccess}">
+                <apex:outputText style="text-align: center; font-weight: bold;" escape="false" value="{!$Label.RequirementForm_successmessage}"/>
+            </apex:outputPanel>
+	   	</apex:outputPanel>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,221 @@
+<apex:page tabStyle="case" standardStylesheets="false" controller="CSR_EditCaseController">
+
+    <apex:sectionHeader Title="Edit {!$ObjectType.Case.Label} #{!c.casenumber}" subtitle="{!IF(con.name != null, con.name, '')}"/>
+
+    <style>
+        .search{
+            font-size:14pt;
+            width:200px;    
+        }
+        .fyi{
+            color:red;
+            font-style:italic;
+        }
+        .label{
+            margin-right:10px;
+            font-weight:bold;
+        }
+        #expando{
+            clear:left;
+            overflow: auto;
+        }
+        .empty-column-content {
+	        display: none;
+	    }
+    </style>
+    
+    <script type='text/javascript'>
+
+        function switchMenu(obj,obj1,obj2) 
+        {
+            var el = document.getElementById(obj);                                       
+            if ( el.style.display != 'none' ) {
+            el.style.display = 'none';
+            }
+            else {
+            el.style.display = '';
+            }
+            var e2 = document.getElementById(obj1);                                       
+            if ( e2.style.display != 'none' ) {
+            e2.style.display = 'none';
+            }
+            else {
+            e2.style.display = '';
+            }
+             var e3 = document.getElementById(obj2);                                       
+            if ( e2.style.display != 'none' ) {
+            e3.style.display = 'none';
+            }
+            else {
+            e3.style.display = '';
+            }
+
+        }
+
+        j$ = jQuery.noConflict();
+        j$(function() {
+                 // date picker
+                 j$( ".dateexperienced" ).datepicker();
+                 j$( ".dateofbirth" ).datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-100:-15"
+                  });
+        });
+    </script>
+	<head>
+     <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+		<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen"/>-->
+	</head>
+  
+    <apex:form >
+        <apex:outputPanel id="bigErrorPanel">
+            <center>
+            <apex:messages style="color:red"/>
+            
+            <apex:outputPanel id="errorPanel" rendered="{!showError}">    
+                 <div class="alert alert-error">
+                     <div class="center">
+                         <h1 style="color:red;">Warning:</h1>
+                         <p style="color:red;">{!errorMessage}</p>
+                             <apex:commandButton action="{!clearError}" styleClass="btn btn-default" reRender="bigErrorPanel,casePanel" value="Ok"/>
+                     </div>
+                 </div>
+            </apex:outputPanel>
+
+            <!--<div id="newmodalform" class="modal hide fade">
+		                    
+		        <div class="modal-header">
+		           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        </div>           
+		        <div class="modal-body">   
+		               {!infoMessage}                                               
+		     	</div>
+		 	</div>
+
+            <apex:outputPanel id="infoPanel" rendered="{!showInfo}">    
+                 <div class="alert alert-error">
+                     <div class="center">
+                         <p style="color:red;">{!infoMessage}</p>
+                             <apex:commandButton action="{!clearInfo}" styleClass="btn btn-default" reRender="bigErrorPanel,casePanel" value="Ok"/>
+                     </div>
+                 </div>
+            </apex:outputPanel>-->
+            </center>
+        </apex:outputPanel>
+       	
+        <apex:outputpanel id="casePanel">
+	        <apex:pageBlock title="Edit Case Details">
+	            <div id="expando">
+                    <apex:outputPanel rendered="{!c.Channel__r.name != null && c.Channel__r.name == 'Choice'}">
+    	            	<apex:pageBlockSection title="Contact Details" columns="2">
+    	                    <apex:repeat var="f" value="{!$ObjectType.contact.FieldSets.CSR_CreateCase_ContactFields_CHOICE}">
+    			                    <apex:inputField rendered="{!f.label != 'Date of Birth'}" value="{!con[f]}" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+                                    <apex:inputText label="Date of Birth" id="theDOB" rendered="{!f.label == 'Date of Birth'}" value="{!dateExperiencedString}" styleClass="dateexperienced" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+    				        </apex:repeat>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!c.Channel__r.name != null && c.Channel__r.name == 'Engage'}">
+                        <apex:pageBlockSection title="Contact Details" columns="2">
+                            <apex:repeat var="f" value="{!$ObjectType.contact.FieldSets.CSR_CreateCase_ContactFields_ENGAGE}">
+                                    <apex:inputField rendered="{!f.label != 'Date of Birth'}" value="{!con[f]}" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+                                    <apex:inputText label="Date of Birth" id="theDOB" rendered="{!f.label == 'Date of Birth'}" value="{!dateExperiencedString}" styleClass="dateexperienced" required="{!IF(OR(f.dbrequired,f.required),true,false)}"/>
+                            </apex:repeat>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <script>
+                        j$( '.dateexperienced' ).datepicker();
+                    </script>
+                    <apex:outputPanel rendered="{! !caseClose}">
+                        <apex:outputPanel rendered="{!c.Channel__r.name != null && c.Channel__r.name == 'Engage'}">
+                            <apex:pageBlockSection title="Case Detail" columns="2">
+        	                    <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CSR_CreateCase_Case_Detail_ENGAGE}">
+        	                    	<apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" value="{!c[f]}" style="height:75px;width:300px" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+        	                        <apex:inputfield value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" rendered="{!OR(f.type='date',f.type='datetime')}"/>
+        	                        
+        	                        <apex:inputfield rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+        	                         <apex:inputfield style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+        				        </apex:repeat>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!c.Channel__r.name != null && c.Channel__r.name == 'Choice'}">
+                            <apex:pageBlockSection title="Case Detail" columns="2">
+                                <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CSR_CreateCase_Case_Detail_CHOICE}">
+                                    <apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" value="{!c[f]}" style="height:75px;width:300px" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                    <apex:inputfield value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" rendered="{!OR(f.type='date',f.type='datetime')}"/>
+                                    
+                                    <apex:inputfield rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                     <apex:inputfield style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+                                </apex:repeat>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!caseClose}">
+                        <apex:pageBlockSection title="Case Close Detail" columns="2">
+                            <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CSRCaseCloseInformation}">
+                                <apex:inputfield rendered="{!IF(f.type='textarea',true,false)}" value="{!c[f]}" style="height:75px;width:300px" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                <apex:inputfield value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateexperienced" rendered="{!OR(f.type='date',f.type='datetime')}"/>
+                                
+                                <apex:inputfield rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                 <apex:inputfield style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!c[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+                            </apex:repeat>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>    
+	            </div>
+	            <apex:pageBlockButtons location="top">
+                    <apex:outputPanel rendered="{! !caseClose}">
+                        <apex:outputPanel rendered="{!c.Channel__r.name != null && c.Channel__r.name = 'Engage'}">
+    	                   <apex:commandButton action="{!transferToOptum}" value="Close - Transfered to Optum"/>
+                        </apex:outputPanel>
+                        <apex:commandButton action="{!needInfo}" value="Need More Information" reRender="bigErrorPanel,casePanel">
+    	                <apex:commandButton action="{!closeCase}" reRender="bigErrorPanel,casePanel" value="Close Case"/>
+                            <apex:actionStatus startText="Loading...   " id="status2" >
+                                <apex:facet name="start" >
+                                    <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                                </apex:facet>
+                            </apex:actionStatus>  
+                        </apex:commandButton>
+                    </apex:outputPanel>
+	            </apex:pageBlockButtons>
+	            <apex:pageBlockButtons location="bottom">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:commandButton action="{!saveAnd}" value="Save and Return" style="String">
+                        <apex:actionStatus startText="Loading...   " id="status1" >
+                            <apex:facet name="start" >
+                                <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                            </apex:facet>
+                        </apex:actionStatus>  
+                    </apex:commandButton>
+                </apex:pageBlockButtons>
+	        
+	        </apex:pageBlock>
+	        <apex:pageBlock title="Emails" id="emailPageBlock">
+                <apex:pageBlockTable rendered="{!c.emailMessages != null}" var="emsg" value="{!c.emailMessages}">
+                <!-- get the case comments from the controller -->
+                	<apex:column headerValue="Action">
+                    	<apex:outputLink title="" value="../_ui/core/email/author/EmailAuthor?email_id={!emsg.id}&&replyToAll=1&retURL=/apex/{!$CurrentPage.Name}%3Fid={!c.id}" style="font-weight:bold">Reply To All</apex:outputLink> 
+                   </apex:column>
+                    <!-- display the email information  -->
+                    <apex:column headerValue="Status">
+                    	<apex:outputField value="{!emsg.status}"></apex:outputField>
+                    </apex:column>
+                    <!-- display the email body formatted using the apex outputField -->
+                    <apex:column headerValue="Email Body">
+                    	<apex:outputField value="{!emsg.TextBody}"></apex:outputField>
+                    </apex:column>
+            	</apex:pageBlockTable>
+            	<apex:pageBlockButtons location="top">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:outputLink styleClass="btn"	 title="" target="_top" value="/_ui/core/email/author/EmailAuthor?p2_lkid={!c.contactID}&rtype=003&p3_lkid={!c.id}&retURL=%2F{!c.id}">Send an Email</apex:outputLink>                     
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+	    </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,1 @@
+<apex:page standardController="Case" extensions="OverrideRedirectController" tabStyle="Case" showheader="true" action="{!redirect}" />

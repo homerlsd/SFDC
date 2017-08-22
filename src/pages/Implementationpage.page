@@ -1,0 +1,28 @@
+<apex:page showHeader="true" tabstyle="Milestone1_Project__c" controller="Implementationviewpagecontroller">
+
+  
+   
+   <apex:sectionHeader title="Rally Implementations" />
+
+
+    <apex:ListViews type="Milestone1_Project__c" />
+    
+     <apex:PageBlock title="Quick Links">
+     
+     <apex:variable value="{!1}" var="rowNum"/> 
+     
+       <apex:repeat value="{!links}" var="li" id="theRepeat" >
+         
+             <apex:image url="{!imageURL}" width="30" height="30"/>&nbsp;&nbsp;<span style="font-size: 20px"><a href="{!li.URL__c}" target="_blank">{!li.Name}</a></span>&nbsp;&nbsp;&nbsp; 
+              {!IF(rowNum!=count,'||', '')}
+              &nbsp;&nbsp;&nbsp;
+              <apex:outputLabel value="{!IF(rowNum==6, '<br/>', '')}" escape="false"/>
+              <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+            
+       </apex:repeat>       
+      
+   </apex:pageBlock>
+
+    
+
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page controller="ManageAffiliationRelationshipsController">
+    <apex:form >
+        <apex:pageBlock title="Affiliations">
+            <c:MultiselectPicklist leftLabel="Available Affiliations"
+                leftOptions="{!allAffiliation}"
+                rightLabel="Selected Affiliations"
+                rightOptions="{!selectedAffiliation}"
+                size="14"
+                width="250px"/>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:outputText >{!message}</apex:outputText>
+</apex:page>

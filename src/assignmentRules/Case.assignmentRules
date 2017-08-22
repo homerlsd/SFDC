@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Rally Support Assignment</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>Marketing_Bounces</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(
+
+TEXT(Sub_Origin__c) != &apos;No Reply Address&apos;,
+CONTAINS(To_Address__c, &apos;noreply&apos;))</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Marketing_Bounces</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(
+
+TEXT(Sub_Origin__c) != &apos;No Reply Address&apos;,
+
+OR(
+
+CONTAINS(To_Address__c, &apos;notifications@&apos;),
+CONTAINS(To_Address__c, &apos;replies@&apos;)))</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Pending_Tier_2_New_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.To_Address__c</field>
+                <operation>contains</operation>
+                <value>action@rallyhealth.com</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Choice</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;choicesupport@werally&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Rewards_Claims</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;internalrewards@&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;rewards@&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;info@werally&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;info@rallyhealth&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;support@werally&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;iosfeedback@rallyhealth&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Rally_Promotions</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;promos@&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;androidfeedback@rallyhealth&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Client_Support_Cases</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;clientsupport@&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>CONTAINS(To_Address__c, &apos;legal@werally&apos;)</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Web</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>New_Cases_Engage</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>AND(
+
+TEXT(Sub_Origin__c) != &apos;No Reply Address&apos;,
+NOT(ISBLANK(To_Address__c)))</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.CreatedById</field>
+                <operation>notEqual</operation>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

@@ -1,0 +1,141 @@
+<apex:page standardController="Account" extensions="AccountHeader" showHeader="false">
+
+  <style>
+          
+          /*Col 1*/
+          .bPageBlock .detailList .labelCol {
+              width: 38%;
+          }       
+          /*callout text -*/
+          .callout{
+              border: 1px solid #000000;
+              padding: 5px;
+              -moz-border-radius: 10px;
+              border-radius: 10px;
+          }
+          
+    
+        .channel{
+            font-size: 24px;
+            }
+            
+        .accthead{
+            
+            font-size: 16px;
+            color: black;
+            font-style: bold;
+        }
+        
+        .callout2{
+            background: #f0f9ff; /* Old browsers */
+            background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Opera11.10+ */
+            background: -ms-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* IE10+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+            background: linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C */
+            
+            padding: 5px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            min-width: 110px;
+            height: 150px;
+            margin: 0px auto;
+       }
+
+       .callout2 img {
+            margin: 10px 0px;
+       }
+        
+       .callout3{
+            background: #FE2E2E; /* Old browsers */
+            background: -moz-linear-gradient(top, #FE2E2E 0%, #F5A9A9 47%, #F6CECE 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FE2E2E), color-stop(47%,#F5A9A9), color-stop(100%,#F6CECE)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #FE2E2E 0%,#F5A9A9 47%,#F6CECE 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #FE2E2E 0%,#F5A9A9 47%,#F6CECE 100%); /* Opera11.10+ */
+            background: -ms-linear-gradient(top, #FE2E2E 0%,#F5A9A9 47%,#F6CECE 100%); /* IE10+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FE2E2E', endColorstr='#F6CECE',GradientType=0 ); /* IE6-9 */
+            background: linear-gradient(top, #FE2E2E 0%,#F5A9A9 47%,#F6CECE 100%); /* W3C */
+            
+            padding: 5px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+    
+        table.button-table tr td {
+          margin-left: 10px;
+        }
+    
+    }
+  
+  </style>  
+
+    
+  <script type="text/javascript">
+       
+       function NewOpp(){
+         var argv = NewOpp.arguments;
+         parent.window.location.href = "/apex/createOpp?acctId={!acct.id}&channel=" + argv[0]; 
+       }
+
+  </script>
+    
+  <apex:form >
+  
+	  <html>
+	        <apex:outputPanel >
+		        <table width="100%" align="center" class="callout2">
+		             <tr><td align="center" class="accthead"><h4><apex:outputText value="{!acct.name}"/></h4></td></tr>
+		             <tr><td align="center" class="accthead"><h4><apex:outputText value="Account Manager: {!IF(acct.Account_Manager__c != null, acct.account_manager__r.name, 'N/A')}"/></h4></td></tr>
+		             <apex:outputPanel rendered="{!acct.Current_Rally_Member__c}">
+		             	<tr><td align="center" class="accthead"><apex:outputText value="{!$Label.ACCOUNTHEADER_CURRENT_RALLY_MEMBER}"/></td></tr>
+		             </apex:outputPanel>
+		             <apex:outputPanel rendered="{!recentTask != null && (recentTask.recordId != null || recentTask.recordId != '')}">
+		             	<tr><td align="center" >
+		             	<h4><apex:outputText value="Recent Account Activity:  "/><apex:outputText styleClass="muted"  value="{!recentTask.TimeStampString}"/></h4>
+		             	<br/>
+		             	<apex:repeat value="{!recentTask.subject}" var="tsk">
+		             		<apex:outputText style="width:500px;height:200px;" value="{!tsk}"/>
+		             		<br/>
+		             	</apex:repeat>
+		             	<br/>
+		             	</td></tr>
+		             </apex:outputPanel>
+		             <apex:outputPanel rendered="{!recentEvent != null && (recentEvent.recordId != null || recentEvent.recordId != '')}">
+		             	<tr><td align="center" class="accthead"><apex:outputText value="{!recentEvent.subject}"/></td></tr>
+		             	<tr><td align="center" class="muted"><apex:outputText value="{!recentEvent.TimeStampString}"/></td></tr>
+		             </apex:outputPanel>
+		        </table>
+	        </apex:outputPanel>
+	   
+	    <!--<br></br>
+	   
+	     <table width="100%" align="center" class="button-table">
+	        <tr>     
+	            <apex:outputPanel >
+	                <apex:repeat value="{!activeChannels}" var="ac">
+	                    <td style="text-align:center; v-align:top;">      
+	                          <div class="callout2">
+	                              <div><span class="channel">{!ac.chan.name}</span></div>
+
+	                              <apex:outputPanel rendered="{!ac.chanStatus == 'Not Qualified' && !acct.Merchant_Red_Flag__c}"><div><apex:image url="{!$Resource.QuestionMark}"/></div></apex:outputPanel>
+	                              <apex:outputPanel rendered="{!ac.chanStatus == 'Active' && !acct.Merchant_Red_Flag__c}">
+	                                  <div><apex:image url="{!$Resource.YellowYield}"/></div>
+	                                  <div><apex:outputText value="Active Owner: {!ac.activeOwner.name}"/></div>
+	                              </apex:outputPanel>
+	                              <apex:outputPanel rendered="{!acct.Merchant_Red_Flag__c}"><div><apex:image url="{!$Resource.RedX}"/></div></apex:outputPanel>
+	                              <apex:outputPanel Rendered="{!assignAssoc && (ac.chanStatus != 'Active' || ac.allowMultipleOpps) && !acct.Merchant_Red_Flag__c && !isMarketPlace}"><div><input type="button" value="Assign to Assc" onclick="Assign('{!ac.chan.name}')" style="btnImportant"/></div></apex:outputPanel>
+	                              <apex:outputPanel Rendered="{!createOpp && (ac.chanStatus != 'Active' || ac.allowMultipleOpps) && !acct.Merchant_Red_Flag__c && !isMarketPlace}"><div><input type="button" value="New Opportunity" onclick="NewOpp('{!ac.chan.name}')" style="btn"/></div></apex:outputPanel>
+	                              <apex:outputPanel Rendered="{!setAppt && (ac.chanStatus != 'Active' || ac.allowMultipleOpps) && !acct.Merchant_Red_Flag__c && !isMarketPlace}"><div><input type="button" value="Set Appointment" onclick="SetAppt('{!ac.chan.name}')"  style="btn"/></div></apex:outputPanel>
+
+	                         </div>
+	                   </td>
+	             </apex:repeat>
+	           </apex:outputPanel>
+	        </tr>
+	      </table>-->
+	    </html>
+    
+    </apex:form>
+</apex:page>

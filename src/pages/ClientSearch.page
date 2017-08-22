@@ -1,0 +1,280 @@
+<apex:page showHeader="false" sidebar="false" controller="ClientSearchController" >
+    <head><title>Rally Onboarding</title>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" />
+        <apex:styleSheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/smoothness/jquery-ui.css" />
+    
+        <style>
+            .displayNone { 
+                display:none; 
+            }
+            .displayBlock {
+                display:block;
+            }
+            .ui-autocomplete-loading { 
+                background: white url(/img/loading32.gif) right center no-repeat;
+                background-size:15px 15px; 
+            }
+            .placeHolder {
+                font-style: italic;
+            }
+            .tt-search-box {
+              display:inline-block;
+              width:77%;
+              font-size: inherit;
+              height: 1.3em;
+              padding: 8px 12px;
+              line-height: 1.3em;
+              border: 2px solid #ccc;
+              -webkit-border-radius: 8px;
+                 -moz-border-radius: 8px;
+                      border-radius: 8px;
+              outline: none;
+            }
+
+            .linkbutton {
+                padding: 12px !important;
+                border-radius: 6px !important;
+                color: #fff !important;
+                text-shadow: 1px 1px rgba(0,0,0,0.1) !important;
+                border: 0 !important;
+                box-shadow: 0 1px 0 #2F4994 !important;
+                text-transform: none !important;
+                background-color: #535353;
+                width: 240px !important;
+                text-decoration: none !important;
+                margin-bottom: 10px !important;
+            }
+        </style>
+    </head>
+    <apex:composition template="ImplementationExternalTemplate" >-
+        <apex:define name="styles">
+            <style type="text/css">
+            </style>
+        </apex:define>
+        <apex:define name="body">
+        <apex:form id="autoCompleteForm" >
+            <apex:actionFunction action="{!getLinkStuff}" name="methodOneInJavascript" rerender="links">
+                <apex:param name="firstParam" assignTo="{!searchTerm}" value=""/>
+                <apex:param name="secondParam" assignTo="{!selectedRecordId}" value=""/>
+            </apex:actionFunction>
+
+            <div id="desk-content">
+                <div class="container">
+                    <div class="row-fluid">
+                        <div id="desk-leftcol" class="span9">
+                            <div id="desk-support-index" class="no-qna">
+                                <div id="desk-support-kb-content">
+                                    <div id="desk-kb-index">
+                                        <apex:Messages layout="table" styleClass="exceptionText" />
+                                        <apex:outputPanel id="theBigPanel">
+                                            <apex:outputPanel >
+                                                <apex:outputLabel for="chanList" style="font-weight: bold;" value="Select Product Channel: " > 
+                                                    <apex:SelectList size="1" id="chanList" value="{!chanID}">
+                                                        <apex:SelectOptions value="{!newSelects}"/>
+                                                        <apex:actionSupport event="onchange" action="{!setupChannels}" rerender="theBigPanel"/>
+                                                    </apex:SelectList>
+                                                </apex:outputLabel>
+                                            </apex:outputPanel>
+                                            <br/>
+                                            <br/>
+                                            <apex:outputPanel id="thePanel">
+                                                <apex:outputPanel rendered="{!showInput}">
+                                                    <apex:outputPanel >
+                                                        <apex:outputText >Start typing the client name...</apex:outputText>
+                                                        <br/>
+                                                        <apex:inputText id="searchBox" value="{!searchTerm}" styleClass="placeHolder tt-search-box" onkeyup="callAutoComplete()"/>
+                                                        <apex:inputHidden id="searchRecordId" value="{!selectedRecordId}" />
+                                                        &nbsp;
+                                                        <apex:commandButton value="Display Links" onclick="callMethod()" rerender="thePanel">
+                                                        </apex:commandButton>
+                                                    </apex:outputPanel>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <apex:outputPanel id="links">
+                                                        <apex:outputPanel rendered="{!showError}">
+                                                            <br/>
+                                                            <br/>
+                                                            <apex:outputText escape="false;" style="color: red;font-size: 2em" value="{!errorMessage}"/>
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!!showError}" > 
+                                                            <apex:outputPanel rendered="{!showOrderForm && !showImpLinks}">
+                                                                <table >
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="tdSpecial">
+                                                                                <apex:outputPanel >
+                                                                                    <center><b><apex:outputText value="{!$Label.ClientLinks_No_Impl_CreateBelow}"/></b></center>
+                                                                                </apex:outputPanel>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <apex:outputPanel id="linkBlock_dhp">
+                                                                                    <center>
+                                                                                        <br/>
+                                                                                        <br/>
+                                                                                        <apex:commandButton style="width: 240px;" onclick="window.open('{!$Label.ClentLinks_DomainName}RallyOrderForm?formID=dhp_uhc&accID={!selectedClientID.id}&pID={!$CurrentPage.parameters.id}');" value="Enter Implementation Requirements" reRender="none"/>
+                                                                                    </center>
+                                                                                </apex:outputPanel> 
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel rendered="{!showImpLinks}">
+                                                                <table >
+                                                                    <tbody>
+                                                                        <apex:variable value="{!-1}" var="index"/>
+                                                                        <apex:repeat value="{!selectedClientID.Rally_Implementations__r}" var="a" id="linktable" >       
+                                                                            <apex:variable var="index" value="{!index+1}"/>
+                                                                            <tr>
+                                                                                <td class="tdSpecial">
+                                                                                    <apex:outputPanel >
+                                                                                        <center><b><apex:outputText value="{!a.name}"/></b></center>
+                                                                                    </apex:outputPanel>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="padding-top: .5em;padding-bottom: 1em;">
+                                                                                    <apex:outputPanel rendered="{! !showOrderForm}" id="linkBlock1">
+                                                                                        <apex:panelGrid columns="4">
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0c&impID={!a.id}');"  value="Digital Campaign Requirements"/>
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0Y&rtype={!$Label.ChallengeRequirement_PrivRTID}&impID={!a.id}');" value="Private Challenge Requirements"/>
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0Y&rtype={!$Label.ChallengeRequirement_TeamRTID}&impID={!a.id}');" value="Team Challenge Requirements"/>
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0g&impID={!a.id}');"  value="Private Communities Requirements"/>
+                                                                                            <apex:outputPanel rendered="{!NOT(CONTAINS($CurrentPage.parameters.id, $Label.ManageAffiliations_BCBSPartnerID))}">
+                                                                                                <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}ResourcePageEntry?impID={!a.id}');" value="Resource Page Requirements"/>
+                                                                                            </apex:outputPanel>
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0i&impID={!a.id}');" value="Private Sweepstakes Requirements"/>
+                                                                                            <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}RequirementForm?recPrefix=a0f&impID={!a.id}');" value="Post Launch Change"/>
+                                                                                            <apex:outputPanel rendered="{!CONTAINS($CurrentPage.parameters.id, $Label.ManageAffiliations_BCBSPartnerID)}">
+                                                                                                <apex:commandButton style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}rewardplanentry?impID={!a.id}');" value="Reward Plan Entry"/>
+                                                                                            </apex:outputPanel>
+                                                                                        </apex:panelGrid>  
+                                                                                    </apex:outputPanel> 
+                                                                                    <!--DHP PANEl-->
+                                                                                    <apex:outputPanel rendered="{!showOrderForm}" id="linkBlock2">
+                                                                                        <apex:panelGrid columns="4">
+                                                                                            <apex:commandButton reRender="hiddenBlock" style="width: 240px" action="{!goLink}" value="Rx Providers">
+                                                                                                <apex:param value="dhp_rx" name="linkType"/> 
+                                                                                                <apex:param value="{!a.id}" name="impID"/> 
+                                                                                            </apex:commandButton>
+                                                                                            <apex:commandButton reRender="hiddenBlock" style="width: 240px" action="{!goLink}" value="Custom Links">
+                                                                                                <apex:param value="dhp_csl" name="linkType"/> 
+                                                                                                <apex:param value="{!a.id}" name="impID"/> 
+                                                                                            </apex:commandButton>
+                                                                                            <apex:commandButton reRender="hiddenBlock" style="width: 240px" action="{!goLink}" value="Custom Message">
+                                                                                                <apex:param value="dhp_csm" name="linkType"/> 
+                                                                                                <apex:param value="{!a.id}" name="impID"/> 
+                                                                                            </apex:commandButton>
+                                                                                            <apex:commandButton reRender="hiddenBlock" style="width: 240px" action="{!goLink}" value="Promotions">
+                                                                                                <apex:param value="dhp_prm" name="linkType"/> 
+                                                                                                <apex:param value="{!a.id}" name="impID"/> 
+                                                                                            </apex:commandButton>
+                                                                                            <apex:commandButton reRender="hiddenBlock" style="width: 240px" action="{!goLink}" value="Post Launch Changes">
+                                                                                                <apex:param value="dhp_plc" name="linkType"/> 
+                                                                                                <apex:param value="{!a.id}" name="impID"/> 
+                                                                                            </apex:commandButton>
+                                                                                        </apex:panelGrid>  
+                                                                                    </apex:outputPanel> 
+                                                                                </td>
+                                                                            </tr>
+                                                                        </apex:repeat>  
+                                                                    </tbody>
+                                                                </table>
+                                                                <apex:pageBlock id="hiddenBlock" rendered="false"></apex:pageBlock>
+                                                            </apex:outputPanel>
+                                                        </apex:outputPanel>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                        </apex:outputPanel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </apex:form>
+        </apex:define>
+    </apex:composition>
+        <script type="text/javascript">
+            var PLACEHOLDER = 'Enter Client Name Here'; 
+            var acctName = '{!searchTerm}';
+            
+            if(acctName != null && acctName != ''){
+                PLACEHOLDER = acctName;
+            }
+
+            var j$ = jQuery.noConflict();
+            var partnid="{!$CurrentPage.parameters.id}"
+            var queryTerm;
+            
+            function callAutoComplete() {
+                j$('[id$=searchBox]').autocomplete({
+                    minLength: 2,
+                    source: function(request, response) {
+                                queryTerm = request.term;
+                                ClientSearchController.getAccount(request.term,partnid, function(result, event){
+                                    if(event.type == 'exception') {
+                                          alert(event.message);
+                                    } else {
+                                         response(result);
+                                    }
+                                });
+                           },
+                    focus: function( event, ui ) {
+                            console.log(event);
+                            console.log(ui);
+                            //alert("Name" +ui.item.Name);
+                            j$('[id$=searchBox]').val( ui.item.Name );
+                            return false;
+                            },
+                    select: function( event, ui ) {
+                                console.log(event);
+                                console.log(ui);
+                                j$('[id$=searchBox]').val( ui.item.Name );
+                                j$('[id$=searchRecordId]').val( ui.item.Id );
+                                return false;
+                            },
+                 })
+                 .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                    var entry = "<a>" + item.Name;
+                   
+                    entry = entry + "</a>";
+                    entry = entry.replace(queryTerm, "<b>" + queryTerm + "</b>");
+                    return j$( "<li></li>" )
+                        .data( "ui-autocomplete-item", item )
+                        .append( entry )
+                        .appendTo( ul );
+                };
+            }
+                
+            // Add or remove placeholder values
+            j$('[id$=searchBox]').val(PLACEHOLDER);
+            j$('[id$=searchBox]').on("focus",  function(event){
+                $tgt = j$(event.target);
+                if($tgt.val() === PLACEHOLDER ){
+                    $tgt.val('');
+                    $tgt.removeClass('placeHolder');
+                }
+            });
+            j$('[id$=searchBox]').on( "blur",  function(event){
+                $tgt = j$(event.target);
+                if($tgt.val() === '' ){
+                    $tgt.val(PLACEHOLDER);
+                    $tgt.addClass('placeHolder');
+                }
+            });
+            
+            function callMethod() {
+                var a = j$('[id$=searchBox]');
+                var t = j$('[id$=searchBox]')[0].value;
+                var x = j$('[id$=searchRecordId]')[0].value;
+                methodOneInJavascript(t,x);
+            }
+        </script>
+</apex:page>

@@ -1,0 +1,48 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+<html lang="en"> 
+  <head>
+
+    <link rel="icon" sizes="152x152" href="{!URLFOR($Resource.CC_SupportAssets, 'image/rallyfavicon.ico')}" />
+    <title>Rally Support | Community</title>
+   
+    <!--main css-->
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'css/supportmain.css')}"/>
+   
+    <!--bootstrap css-->
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'lib/bootstrap/css/bootstrap.grid.min.css')}"/>
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'lib/font-awesome/css/font-awesome.css')}"/>
+    
+    <!--desk css-->
+    <link rel="stylesheet" href="{!URLFOR($Resource.CC_SupportAssets, 'css/v5.1.css')}"/>
+    
+    <!--script src="{!URLFOR($Resource.CC_SupportAssets, 'script/jquery-1.10.2.min.js')}"></script-->
+  </head>
+  <style type="text/css">
+  label{
+    display: inline !important;
+  }
+  </style>
+  <body>
+    <div class="wrapper">
+    <div class="content">
+    <!--header-->
+    <apex:insert name="header">
+      <c:CC_SupportHeader_NO_SEARCH />
+    </apex:insert>
+
+    <!--body-->
+    <div id="content">
+      <apex:insert name="body">
+        <!--div id="wrap" class="container-fluid"></div-->
+      </apex:insert>
+    </div>
+    </div>
+    </div>
+    <!--footer-->
+    <apex:insert name="footer">
+      <!--<c:CC_SupportFooter />-->
+    </apex:insert>
+  </body>
+</html>
+</apex:page>

@@ -1,0 +1,199 @@
+<apex:page showHeader="false" sidebar="false" controller="ClientLinkController">
+    <style type="text/css">
+        .twitter-typeahead {
+          width:100%;
+        }
+        .tt-search-box,
+        .tt-query,
+        .tt-hint {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-txtbox {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-search-box:focus {
+          border: 2px solid #0097cf;
+        }
+
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-dropdown-menu {
+          width: 100%;
+          margin-top: 5px;
+          padding: 8px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          font-size: inherit;
+          line-height: 1.5em;
+        }
+
+        .tt-suggestion.tt-cursor {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
+        }
+        .tablestuff2 thead {
+             display: table-header-group;
+        }
+        .tdSpecial {
+            padding: 15px;
+            text-align: left;
+        }
+        .table{
+            width: 100%;
+        }
+    </style>
+    <head><title>Rally Engage</title>
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+    <script >
+        //Create a new variable j$ just to avoid any conflicts with other libraries which may be using $.
+        var j$ = jQuery.noConflict();
+        //Capture the list of countries in a Array.
+        window.clients = new Array();
+        <apex:repeat value="{!clientNames}" var="arrayItem">
+        clients.push('{!arrayItem}');
+        </apex:repeat>
+
+        j$(document).ready(function(){
+            j$(".tt-search-box").autocomplete({
+                source : clients
+            });
+        });
+
+        function bindEvents() {
+            j$(".tt-search-box").autocomplete({
+                source : clients
+            });
+        }
+
+        j$(document).ready(function(){
+            bindEvents();
+        });
+            
+    </script>
+    </head>
+    <apex:composition template="ImplementationExternalTemplate" >
+        <apex:define name="styles">
+        <style type="text/css">
+        </style>
+        </apex:define>
+        <apex:define name="body">
+            <apex:form id="theForm">
+                <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <div id="desk-leftcol" class="span9">
+                                <div id="desk-support-index" class="no-qna">
+                                    <div id="desk-support-kb-content">
+                                        <div id="desk-kb-index">
+                                            <apex:Messages layout="table" styleClass="exceptionText" />
+                                            <apex:outputPanel id="thePanel">
+                                                <apex:outputText >Start typing the client name...</apex:outputText>
+                                                    <apex:actionRegion >
+                                                       <apex:inputText value="{!selectedClient}" styleClass="tt-search-box" >
+                                                        <!--<apex:actionSupport event="onchange" action="{!getLinkStuff}" reRender="links" oncomplete="bindEvents();" />-->
+                                                       </apex:inputText>
+                                                       &nbsp;
+                                                       <apex:commandButton value="Display Links" action="{!getLinkStuff}" reRender="links" oncomplete="bindEvents();" />
+                                                   </apex:actionRegion>
+                                            </apex:outputPanel> 
+                                            <apex:outputPanel id="links">
+                                                <apex:outputPanel rendered="{!showError}"  >
+                                                    <br/>
+                                                    <br/>
+                                                    <apex:outputText escape="false;" style="color: red;font-size: 2em" value="{!errorMessage}"/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{! !showError}"> 
+                                                    <table >
+                                                        <tbody>
+                                                            <apex:variable value="{!-1}" var="index"/>
+                                                            <apex:repeat value="{!selectedClientID.Rally_Implementations__r}" var="a" id="linktable" >       
+                                                            <apex:variable var="index" value="{!index+1}"/>
+                                                                <tr>
+                                                                    <td class="tdSpecial">
+                                                                        <apex:outputPanel >
+                                                                            <center><b><apex:outputText value="{!a.name}"/></b></center>
+                                                                        </apex:outputPanel>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <apex:outputPanel id="linkBlock">
+                                                                                <apex:panelGrid columns="4">
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0c&impID={!a.id}');"  value="Digital Campaign Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0Y&rtype={!$Label.ChallengeRequirement_PrivRTID}&impID={!a.id}');" value="Private Challenge Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0Y&rtype={!$Label.ChallengeRequirement_TeamRTID}&impID={!a.id}');" value="Team Challenge Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0g&impID={!a.id}');"  value="Private Communities Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/ResourcePageEntry?impID={!a.id}');" value="Resource Page Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0i&impID={!a.id}');" value="Private Sweepstakes Requirements"/>
+                                                                                    <apex:commandButton style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a0f&impID={!a.id}');" value="Post Launch Change"/>
+                                                                                    <apex:commandButton rendered="{!NOT(CONTAINS($CurrentPage.parameters.id, $Label.CC_ClientCaseController_OptumPartnerID))}" style="width: 240px" onclick="window.open('{!$Label.ClentLinks_DomainName}rewardplanentry?impID={!a.id}');" value="Reward Plans"/>
+                                                                                    <apex:commandButton rendered="{!NOT(CONTAINS($CurrentPage.parameters.id, $Label.CC_ClientCaseController_OptumPartnerID))}" style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a1Y&impID={!a.id}');" value="Exceptions"/>
+                                                                                    <apex:commandButton rendered="{!CONTAINS($CurrentPage.parameters.id, $Label.CC_ClientCaseController_OptumPartnerID)}"  style="width: 240px" onclick="window.open('https://support.werally.com/customer/RequirementForm?recPrefix=a1j&impID={!a.id}');" value="Custom Field Mapping"/>
+                                                                                </apex:panelGrid>  
+                                                                        </apex:outputPanel> 
+                                                                    </td>
+                                                                </tr>
+                                                            </apex:repeat>  
+                                                        </tbody>
+                                                    </table>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </apex:form>                            
+        </apex:define>
+    </apex:composition>
+</apex:page>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Brady_NPS__c</fullName>
+        <externalId>false</externalId>
+        <formula>((Brady_Positive_NPS_Count__c - Brady_Negative_NPS_Count__c)/Total_Responses__c)*100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Brady NPS</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Brady_Negative_NPS_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Brady Negative NPS Count</label>
+        <summaryFilterItems>
+            <field>SurveyQuestionResponse__c.NPS_Score_Field__c</field>
+            <operation>equals</operation>
+            <value>0,1,2,3,4</value>
+        </summaryFilterItems>
+        <summaryForeignKey>SurveyQuestionResponse__c.Survey_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Brady_Positive_NPS_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Brady Positive NPS Count</label>
+        <summaryFilterItems>
+            <field>SurveyQuestionResponse__c.NPS_Score_Field__c</field>
+            <operation>equals</operation>
+            <value>7,8,9,10</value>
+        </summaryFilterItems>
+        <summaryForeignKey>SurveyQuestionResponse__c.Survey_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Choices_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Choices New</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Choices__c</fullName>
+        <externalId>false</externalId>
+        <label>Choices</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Header__c</fullName>
+        <externalId>false</externalId>
+        <label>Header</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>NPS_Question__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+CONTAINS(Name,&apos;Based on your experience with our contact center today&apos;), &apos;Enterprise - Level (The Ultimate Question)&apos;,
+
+IF(
+CONTAINS(Name,&apos;Compared to your previous interactions with healthcare providers&apos;), &apos;Department - Level&apos;,
+
+IF(
+CONTAINS(Name,&apos;If you owned your own customer service company&apos;), &apos;Agent - Level&apos;,&apos;&apos;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NPS Question</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NPS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>NPS</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Negative_NPS__c</fullName>
+        <externalId>false</externalId>
+        <label>Negative NPS</label>
+        <summaryFilterItems>
+            <field>SurveyQuestionResponse__c.NPS_Score_Field__c</field>
+            <operation>equals</operation>
+            <value>0,1,2,3,4,5,6</value>
+        </summaryFilterItems>
+        <summaryForeignKey>SurveyQuestionResponse__c.Survey_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>OrderNumber__c</fullName>
+        <description>Field to specify in which position the question is in the survey.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the position of the question within the survey here.</inlineHelpText>
+        <label>OrderNumber</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Question_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Question New</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Question__c</fullName>
+        <externalId>false</externalId>
+        <label>Question</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Rally_NPS__c</fullName>
+        <externalId>false</externalId>
+        <formula>((Total_NPS_Count__c - Negative_NPS__c)/Total_Responses__c)*100</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rally NPS</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is the question required?</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this box if you want the taker to be required to take the question.</inlineHelpText>
+        <label>Required</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Star_Rating__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Rally_NPS__c &gt; 0.80,IMAGE(&quot;/img/samples/stars_500.gif&quot;, &quot;5 Stars&quot;),
+IF(Rally_NPS__c &gt; 0.60,IMAGE(&quot;/img/samples/stars_400.gif&quot;, &quot;4 Stars&quot;),
+IF(Rally_NPS__c &gt; 0.40,IMAGE(&quot;/img/samples/stars_300.gif&quot;, &quot;3 Stars&quot;),
+IF(Rally_NPS__c &gt; 0.20,IMAGE(&quot;/img/samples/stars_200.gif&quot;, &quot;2 Stars&quot;),
+IMAGE(&quot;/img/samples/stars_100.gif&quot;, &quot;1 Star&quot;)))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Star Rating</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Survey__c</fullName>
+        <externalId>false</externalId>
+        <label>Survey</label>
+        <referenceTo>Survey__c</referenceTo>
+        <relationshipLabel>SurveyQuestions</relationshipLabel>
+        <relationshipName>SurveyQuestions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Total_NPS_Count__c</fullName>
+        <externalId>false</externalId>
+        <label>Positive NPS Count</label>
+        <summaryFilterItems>
+            <field>SurveyQuestionResponse__c.NPS_Score_Field__c</field>
+            <operation>equals</operation>
+            <value>9,10</value>
+        </summaryFilterItems>
+        <summaryForeignKey>SurveyQuestionResponse__c.Survey_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Responses__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Responses</label>
+        <summaryForeignKey>SurveyQuestionResponse__c.Survey_Question__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Single Select--Vertical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Single Select--Horizontal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Multi-Select--Vertical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Free Text</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Survey Question</label>
+    <nameField>
+        <label>Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Survey Questions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

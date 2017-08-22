@@ -1,0 +1,20 @@
+<apex:page standardController="Opportunity">
+    <apex:detail inlineEdit="true" subject="{!Opportunity.Id}" relatedList="false"/>  
+    <apex:relatedList list="Opportunity_Next_Steps__r"/>
+    <c:RelatedListComponent oppyIDAttr="{!Opportunity.Id}" />
+    <apex:relatedList list="OpenActivities"/>
+    <apex:relatedList list="OpportunityContactRoles"/>
+    <apex:relatedList list="ActivityHistories"/>
+    <apex:relatedList list="CombinedAttachments"/>
+    <apex:relatedList list="OpportunityHistories"/>
+    <apex:relatedList list="Opportunity_Schedule__r"/>
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>
+    <script>
+        var j$ = jQuery.noConflict();
+        j$("iframe").each(function(){
+            j$(this).load(function() {
+                j$(this).height( j$(this).contents().find("body").height() );
+            });
+        });
+    </script>
+</apex:page>

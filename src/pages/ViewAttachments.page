@@ -1,0 +1,17 @@
+<apex:page controller="ViewAttachmentsController">
+	<apex:form >
+	  <apex:pageBlock title="Available Attachments">
+		  <apex:pageBlockTable columns="2" value="{!atts}" var="att">
+		  	<apex:column width="20%">
+		  		<a target="_top" href="https://staging-rally-support.cs52.force.com/partner/servlet/servlet.FileDownload?file={!att.id}">View/Download Attachment</a>
+		  	</apex:column>
+		  	<apex:column headerValue="Attachment Name">
+		  		{!att.name}
+		  	</apex:column>
+		  </apex:pageBlockTable>
+	  	<apex:pageBlockButtons location="bottom">
+	  		<apex:commandButton value="Return to Implementation" styleClass="btn newButton" action="{!goHome}"/>
+	  	</apex:pageBlockButtons>
+	  </apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page controller="EMERGENCYController" showHeader="true" sidebar="true">
+	<apex:form id="theForm">
+		<center>
+			<apex:outputPanel rendered="{!errorMessage == null || errormessage == ''}">
+				<apex:outputPanel rendered="{!siteUtility.Active__c}">
+					<h1><font size="5">Site Status: <font color="Blue">ACTIVE</font></font></h1>
+					<br/>
+					<br/>
+					<b><font size="4">{!downMessage}</font></b> <br/><br/> <apex:commandButton image="{!URLFOR($Resource.RedButton)}" reRender="theForm" action="{!siteDown}"/>
+				</apex:outputPanel>
+				<apex:outputPanel rendered="{! !siteUtility.active__c}">
+					<h1><font size="5">Site Status: <font color="Red">INACTIVE</font></font></h1>
+					<br/>
+					<br/>
+					<b><font size="4">{!upMessage}</font></b> <br/><br/> <apex:commandButton image="{!URLFOR($Resource.RedButton)}" reRender="theForm" action="{!siteUp}"/>
+				</apex:outputPanel>
+			</apex:outputPanel>
+			<apex:outputPanel rendered="{!errorMessage != null && errorMessage != ''}">
+				<font color="Red" size="5">{!errorMessage}</font>
+			</apex:outputPanel>
+		</center>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,104 @@
+<apex:page controller="LA_ChatController" showHeader="false"  title="Rally Support"  sidebar="false" standardStylesheets="false" docType="html-5.0" applyHTMLTag="false">
+    <html lang="en">    
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title>Rally Support</title>
+            <link rel="icon" sizes="152x152" href="{!URLFOR($Resource.CC_SupportAssets, 'image/rallyfavicon.ico')}" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        
+            <!-- <link href="{!URLFOR($Resource.RLC_Bootstrap, 'rlc custom bootstrap3/css/bootstrap.css')}" rel="stylesheet"/> -->
+            <!-- CSS -->
+            <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap.css')}" rel="stylesheet"/>
+            <link href="{!URLFOR($Resource.RLC_Bootstrap, 'css/bootstrap-theme.css')}" rel="stylesheet"/>
+            
+            <!-- JS -->
+            <apex:includeScript value="{!URLFOR($Resource.RLC_Bootstrap, 'js/bootstrap.js')}"/>
+            
+            
+            <!-- Change the domain name to the correct one for your org. -->
+             <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/deployment.js"></script>
+            
+            <!-- Standard LiveAgent resources, automatically loaded. This is provided for an easy reference -->
+            <!-- <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/js/38.0/chasitor.js"></script> -->        
+            <!-- <link class="user"  href="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/css/vf.css" rel="stylesheet"/> -->
+            
+            
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+              <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
+             
+            <script type="text/javascript" src="https://rf.la2-c2cs-phx.salesforceliveagent.com/content/g/deployment.js"></script>
+            <link href="{!URLFOR($Resource.RLC_Styles)}" rel="stylesheet"/> 
+             
+ 
+    </head>
+    
+    
+    <body>
+    
+        <div id="pageBodyDiv" class="container-fluid rc_chat">  
+            <!-- Banner -->
+            <div id="rc_HeaderContainer" class="rc_HeaderContainer"> 
+                <div id="rc_chatIconContainer" class="rc_chatIconContainer" >
+                    <apex:image url="{!URLFOR($Resource.HeaderIcon_60x60px)}" width="60" height="60" id="rc_chatIcon"/>
+                </div> 
+                <div id="rc_headerTextContainer" class="rc_headerTextContainer" >
+                    <span id="rc_headerText" class="rc_headerText">{!$Label.LA_ChatWindowHeaderText}</span>
+                </div>
+                <div class="rc_EndChatBtn" >
+                </div>                      
+            </div>          
+        
+            <div id="rc_chat" class="rc_chat">
+                <apex:insert name="content"/>
+            </div>
+        
+        </div>  
+         
+        <script>
+        
+            function setWinDim(width,height){    
+  
+                var totHg = document.body.clientHeight;
+                var totWh = document.body.clientWidth;
+                //excluding scrollbars
+                var innerHg = window.innerHeight;
+                var innerWh = window.innerWidth;
+                
+                var defHg = (isNaN(height*1))? 1200 : height*1;
+                var defWh = (isNaN(width*1))? 800 : width*1;
+                
+                if(totHg > defHg ){
+                    defHg = totHg -1;
+                    if(innerHg > defHg ){
+                       defHg =innerHg -1;
+                    }           
+                }
+                if(totHg > defWh ){
+                    defWh = totWh -1;
+                    if(innerWh > defWh ){
+                      defWh = innerWh -1;
+                    }           
+                }
+                
+                window.resizeTo(defWh,defHg);
+            }            
+        
+            var resizeWidth = "{!$Label.LA_WindowResizeWidth}";
+            var resizeHeight = "{!$Label.LA_WindowResizeHeight}";            
+            setWinDim(resizeWidth,resizeHeight);  
+
+        </script>      
+         
+         
+                      
+         </body>
+     </html>
+</apex:page>

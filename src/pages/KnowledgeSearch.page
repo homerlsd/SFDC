@@ -1,0 +1,167 @@
+<apex:page showHeader="true" sidebar="false" controller="KnowledgeSearchController" tabStyle="Sales_Channel__c">
+    <head>
+        <style type="text/css">
+            .container { width: 550px; }
+            * .sized {
+              table-layout: auto;
+            }
+
+            * .p2 {
+              width: 20%;
+            }
+
+            * .p1 {
+              width: 80%;
+              
+            }
+            
+        </style>
+        <script>
+        window.onload = function(){
+             var achorElement = window.location.hash.substring(1);
+             alert(anchorElement);
+             setAnchor(achorElement); //invoke action function
+         };
+
+        
+        </script>
+    </head>
+    <apex:form >
+        <div align="center"><h1 color="red"><apex:outputText value="{!custerror}" style="font-style:bold;color:red;"/></h1></div>  
+        <apex:pageBlock title="Rally Knowledgebase" id="thePageBlock">
+            <apex:pageBlockSection columns="1" title="Search/Filter">
+                <apex:SelectList size="1" id="qTypeList" value="{!selectedType}">
+                    <apex:outputLabel value="Type: "/>
+                    <apex:SelectOptions value="{!Qtypes}"/>
+                </apex:SelectList>
+                <apex:SelectList size="1" id="channelList" value="{!selectedchannel}">
+                    <apex:outputLabel value="Channel: "/>
+                    <apex:SelectOptions value="{!channels}"/>
+                </apex:SelectList>
+                <apex:SelectList size="1" id="partnerList" value="{!selectedPartner}">
+                    <apex:outputLabel value="Partner: "/>
+                    <apex:SelectOptions value="{!partners}"/>
+                </apex:SelectList>
+                <apex:inputText value="{!querystring_client}" ><apex:outputLabel value="Client Name: "/></apex:inputText>
+                <apex:inputText value="{!querystring_affiliation}" ><apex:outputLabel value="Affiliation String: "/></apex:inputText>
+                <apex:inputText value="{!querystring}" ><apex:outputLabel value="Category, Title or Summary keywords: "/></apex:inputText>
+                <apex:commandButton action="{!searchKB}" style="btnImportant" value="Search" reRender="mainPanel,detail,outPanel" status="status_search">
+                    <apex:actionStatus startText="Loading...   " id="status_search" >
+                        <apex:facet name="start" >
+                            <apex:image url="/img/loading.gif" height="20" width="20" />                     
+                        </apex:facet>
+                    </apex:actionStatus> 
+                </apex:commandButton>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:outputPanel id="outPanel">
+            <apex:tabPanel id="tabPanel" switchType="client" value="{!selectedTab}" tabClass="activeTab" inactiveTabClass="inactiveTab">
+                <apex:tab label="Search Results" name="name1" id="tabOne">
+                    <apex:pageBlock >
+                        <apex:outputPanel id="mainPanel">
+                            <apex:pageBlockSection rendered="{!noResults}" columns="1" Title="No Results Found">
+                                <center>
+                                Please change your search parameters and try again!
+                                </center>
+                            </apex:pageBlockSection>
+                            <apex:pageblockSection columns="1" Title="Knowledge Articles">
+                                    <apex:actionRegion >
+                                        <apex:actionFunction name="chooseFirstLetter" reRender="table" action="{!chooseFirstLetter}">
+                                            <apex:param name="letter" value=""/>
+                                        </apex:actionFunction>
+                                    </apex:actionRegion>
+                                    <a href="" onclick="chooseFirstLetter('A')" style="cursor: pointer;">A</a> | 
+                                    <a href="" onclick="chooseFirstLetter('B')" style="cursor: pointer;">B</a> | 
+                                    <a href="" onclick="chooseFirstLetter('C')" style="cursor: pointer;">C</a> | 
+                                    <a href="" onclick="chooseFirstLetter('D')" style="cursor: pointer;">D</a> | 
+                                    <a href="" onclick="chooseFirstLetter('E')" style="cursor: pointer;">E</a> | 
+                                    <a href="" onclick="chooseFirstLetter('F')" style="cursor: pointer;">F</a> | 
+                                    <a href="" onclick="chooseFirstLetter('G')" style="cursor: pointer;">G</a> | 
+                                    <a href="" onclick="chooseFirstLetter('H')" style="cursor: pointer;">H</a> | 
+                                    <a href="" onclick="chooseFirstLetter('I')" style="cursor: pointer;">I</a> | 
+                                    <a href="" onclick="chooseFirstLetter('J')" style="cursor: pointer;">J</a> | 
+                                    <a href="" onclick="chooseFirstLetter('K')" style="cursor: pointer;">K</a> | 
+                                    <a href="" onclick="chooseFirstLetter('L')" style="cursor: pointer;">L</a> | 
+                                    <a href="" onclick="chooseFirstLetter('M')" style="cursor: pointer;">M</a> | 
+                                    <a href="" onclick="chooseFirstLetter('N')" style="cursor: pointer;">N</a> | 
+                                    <a href="" onclick="chooseFirstLetter('O')" style="cursor: pointer;">O</a> | 
+                                    <a href="" onclick="chooseFirstLetter('P')" style="cursor: pointer;">P</a> | 
+                                    <a href="" onclick="chooseFirstLetter('Q')" style="cursor: pointer;">Q</a> |
+                                    <a href="" onclick="chooseFirstLetter('R')" style="cursor: pointer;">R</a> | 
+                                    <a href="" onclick="chooseFirstLetter('S')" style="cursor: pointer;">S</a> | 
+                                    <a href="" onclick="chooseFirstLetter('T')" style="cursor: pointer;">T</a> | 
+                                    <a href="" onclick="chooseFirstLetter('U')" style="cursor: pointer;">U</a> | 
+                                    <a href="" onclick="chooseFirstLetter('V')" style="cursor: pointer;">V</a> | 
+                                    <a href="" onclick="chooseFirstLetter('W')" style="cursor: pointer;">W</a> | 
+                                    <a href="" onclick="chooseFirstLetter('X')" style="cursor: pointer;">X</a> | 
+                                    <a href="" onclick="chooseFirstLetter('Y')" style="cursor: pointer;">Y</a> | 
+                                    <a href="" onclick="chooseFirstLetter('Z')" style="cursor: pointer;">Z</a> |
+                                    <a href="" onclick="chooseFirstLetter('#')" style="cursor: pointer;">#</a> 
+                                <apex:pageBlockTable value="{!questions}" rows="20" var="a" id="table" rendered="{!questions != null && questions.size > 0}">
+                                    <apex:column headerValue="Article Type">
+                                        <apex:outputtext value="{!a.questionType}"/>
+                                    </apex:column> 
+                                    <apex:column headerValue="Knowledge Article Name">
+                                        <apex:commandLink oncomplete="SFDCJumpTo('Section2');" action="{!loadQuestionDetail}" rerender="detail" value="{!a.Title}">
+                                        <!--<apex:param name="qbody" value="{!a.body}"/>-->
+                                        <apex:param name="qID" value="{!a.knowledgearticleID}"/>
+                                        <apex:variable var="d" value="true"/>
+                                        </apex:commandLink>
+                                    </apex:column> 
+                                    <apex:column headerValue="Summary">
+                                        <apex:outputText value="{!a.summary}"/>
+                                    </apex:column> 
+                                    <apex:column title="Vote">
+                                        <apex:vote objectId="{!a.knowledgearticleid}" rerender="mainPanel"/>
+                                    </apex:column>
+                                </apex:pageBlockTable>
+                            </apex:pageblockSection>
+                        </apex:outputPanel> 
+                        <!--<apex:pageblockButtons >
+                            <apex:outputPanel id="theButtons" rendered="{!questions != null && questions.size > 0}">
+                                <apex:commandButton value="First Page" rerender="detailPanel" action="{!FirstPage}" disabled="{!hasPrev}"/>
+                                <apex:commandButton value="Previous" rerender="detailPanel" action="{!previous}" disabled="{!hasPrev}"/>
+                                <apex:commandButton value="Next" rerender="detailPanel" action="{!next}" disabled="{!hasNxt}"/>
+                                <apex:commandButton value="Last Page" rerender="detailPanel" action="{!LastPage}" disabled="{!hasNxt}"/>
+                            </apex:outputPanel>
+                        </apex:pageblockButtons> -->
+                    </apex:pageBlock>
+                </apex:tab>
+                <a name="Section2" />
+                <apex:tab label="Troubleshooting Steps" name="name2" id="tabTwo">
+                    <apex:pageBlock title="Question Detail" rendered="{!loadQuestionDetail}" id="pageblock2">
+                        <apex:outputPanel id="detail">
+                            <apex:outputPanel rendered="{!loadQuestionDetail}" >
+                            <table class="">
+                            <tr>
+                            <td class="p1">
+                                <apex:outputPanel rendered="{!selectedBody == 'External'}">
+                                    <apex:outputText escape="false" value="{!selectedEx.RichTextSummary__c}" />   
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!selectedBody == 'Internal'}">
+                                    <apex:outputText escape="false" value="{!selectedInt.Troubleshooting_Steps__c}" />   
+                                </apex:outputPanel>
+                            </td>
+                            <td class="p2">
+                                <apex:outputPanel id="linkarticlePanel">
+                                    <apex:outputPanel rendered="{!caseID != null && caseID != '' && (custError != $Label.KnowledgeSearch_LinkArticleSuccess)}">
+                                        <apex:commandButton value="Link Case to Selected Article" reRender="linkarticlePanel" action="{!linkArticle}" >
+                                        <apex:param name="qid" value="{!$CurrentPage.parameters.qID}"/>
+                                        <apex:variable var="question_id" value="true"/>
+                                        </apex:commandButton>   
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!custError == $Label.KnowledgeSearch_LinkArticleSuccess}">
+                                        <h2 style="font:bold;">{!$Label.KnowledgeSearch_LinkArticleSuccess}</h2>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </td>
+                            </tr>
+                            </table>
+                            </apex:outputPanel> 
+                        </apex:outputPanel> 
+                    </apex:pageBlock>
+                </apex:tab>
+            </apex:tabPanel>
+        </apex:outputPanel>>
+    </apex:form>
+</apex:page>

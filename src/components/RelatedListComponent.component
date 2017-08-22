@@ -1,0 +1,51 @@
+<apex:component controller="RelatedListController" allowDML="true">
+    <apex:attribute name="oppyIDAttr" description="The Opportunity ID" type="string" assignTo="{!oppyid}" required="true"/>
+    <apex:form >
+        <apex:pageBlock title="Selected Packages" mode="detail" id="pageBlock">
+            <apex:pageBlockButtons location="top" >
+                <apex:outputLink target="_top" value="/p/opp/SelectSearch?addTo={!oppy.id}&retURL=%2F{!oppy.id}" styleClass="btn newButton">Manage Products</apex:outputLink>
+                <apex:commandLink target="_top" action="{!editOpptyProds}" rendered="{!isDirector}" styleClass="btn newButton">Edit Product Lines</apex:commandLink>
+                <apex:commandLink target="_top" action="{!priceBook}" rendered="{!isDirector}" styleClass="btn newButton">Select Price Book</apex:commandLink>
+            </apex:pageBlockButtons>
+            
+            <!-- Output error/warning messages here -->
+            <apex:outputText rendered="{!noProds}" value="{!pageMess}"/>
+            
+            <!-- Only show table if there are records returned -->
+            <apex:pageBlockTable value="{!showOlis}" var="r" rendered="{! !noProds}">
+                <apex:column headerValue="Action" styleClass="actionColumn">
+                    <apex:outputLink target="_top" value="/{!r.Id}/e?retURL={!$CurrentPage.url}" styleClass="actionLink">Edit</apex:outputLink> | &nbsp;
+                    <apex:commandLink value="Del" onclick="if(!confirm('Are you sure?')) return false;" action="{!deleteRecord}" target="_top" styleClass="actionLink">
+                        <apex:param name="deleteRecordId" assignTo="{!deleteRecordId}" value="{!r.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+
+                <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.Name.Label}">
+                    <apex:outputText value="{!r.pricebookentry.product2.name}"/>
+                </apex:column>
+
+                <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.quantity.Label}">
+                    <apex:outputText value="{!r.quantity}"/>
+                </apex:column>
+
+                <apex:column headerValue="List Price">
+                    <apex:outputText value="{!r.unitprice}"/>
+                </apex:column>
+
+                <apex:column headerValue="{!$ObjectType.OpportunityLineItem.Fields.Implementation_Fee__c.Label}">
+                    <apex:outputText value="{!r.Implementation_Fee__c}"/>
+                </apex:column>
+
+                <apex:column headerValue="Total Price">
+                    <apex:outputText value="{!IF(r.pricebookentry.product2.Product_Sub_Type__c == 'One Time Fee', r.totalPrice+r.Implementation_Fee__c, IF(oppy.Purchase_Type__c == 'Licensing Fee', r.totalPrice, (r.TotalPrice*12)+r.Implementation_Fee__c))}"/>
+                </apex:column>
+
+                <apex:column headerValue="Effective Date (Where Applicable)">
+                    <apex:outputField rendered="{!oppy.Purchase_Type__c == 'Licensing Fee'}" value="{!r.Effective_Date__c}"/>
+                    <apex:outputText rendered="{!oppy.Purchase_Type__c != 'Licensing Fee'}" value="N/A"/>
+                </apex:column>
+                {!r.Effective_Date__c}
+            </apex:pageBlockTable>  
+        </apex:pageBlock>
+    </apex:form>
+</apex:component>

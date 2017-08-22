@@ -1,0 +1,50 @@
+<apex:component controller="Implentationaffiliationcontr" access="global">
+<apex:attribute assignTo="{!Implid}" description="Id of implementation" type="String" name="Implemid"/>
+<apex:attribute assignTo="{!fieldSetName}" description="Name of Fieldset implementation" type="String" name="fsname"/>
+
+ Hello ,<br/>
+
+The implementation record is submitted and the details are:
+
+<table border="1" >
+<apex:repeat var="f" value="{!ImpFields}">
+  <tr>
+    <td>
+      <label><b>{!f.Label}</b></label>
+    </td> 
+    <td>
+      <apex:outputText value="{!objimp[f]}" />
+    </td>
+  </tr>
+</apex:repeat>
+</table>
+
+<br/>
+
+<b>Configuration Details:</b><br/>
+
+   <apex:dataTable value="{!pullrelated}" var="rc" border="1" columns="3" width="100%">
+     
+     <apex:column width="33%">
+     <apex:facet name="header">Affiliation Friendly Name</apex:facet>
+     <apex:outputText value="{!rc.affilfrndlyname}"/>
+     </apex:column>
+     
+     
+     <apex:column width="33%">
+      <apex:facet name="header">Segmentation Id</apex:facet>
+       <apex:outputText value="{!rc.lstseg[0].Name}"/>;
+      </apex:column>
+
+      <apex:column rendered="{!rc.lstseg[0].Segmentation_Prefix__c != null && rc.lstseg[0].Segmentation_Prefix__c != ''}" width="33%">
+      <apex:facet name="header">Segmentation Prefix</apex:facet>
+       <apex:outputText value="{!rc.lstseg[0].Segmentation_Prefix__c}"/>;
+      </apex:column>
+  
+     </apex:datatable>
+   
+   <br/>
+   <br/>
+
+
+</apex:component>

@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddToCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CallHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChangeStatus</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Convert</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EmailHighlightAction</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>FindDup</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ListClean</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <fields>
+        <fullName>Address</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>AnnualRevenue</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Areas_of_Interest__c</fullName>
+        <externalId>false</externalId>
+        <label>Areas of Interest</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Engagement/Wellness</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Transparency</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Population Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Provider search tool</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>International Offering</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Open Enrollment Capabilities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Benefit Admin Capabilities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>B2B_Newsletter_Opt_In__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>B2B Newsletter Opt-In</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CampaignId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Campaign_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign ID</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Campaign_Referral_URL__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Referral URL</label>
+        <length>10000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__ARDI__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Residential Delivery Indicator</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__AR__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address Type</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__AS__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address Status</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__ATZ__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address Timezone</label>
+        <length>48</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__AV__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address Vacancy</label>
+        <length>1</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CloudingoAgent__LES__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Lead Email Status</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Company</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Company_Size__c</fullName>
+        <externalId>false</externalId>
+        <label>Company Size</label>
+        <picklist>
+            <picklistValues>
+                <fullName>&lt;5,000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5,001 - 15,000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>&gt;15,000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Company_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Company Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Employer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>DoNotCall</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Document__c</fullName>
+        <externalId>false</externalId>
+        <label>Document</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eligibility__c</fullName>
+        <externalId>false</externalId>
+        <label>Eligibility</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Fax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>&apos;This is some text, or not, doesnt matter&apos;&apos;This is some text, or not, doesnt matter&apos;&apos;This is some text, or not, doesnt matter&apos;&apos;This is some text, or not, doesnt matter&apos;</inlineHelpText>
+        <label>First Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Generated_From__c</fullName>
+        <description>Field to identify where a lead was generated from as it relates to Optum/UHC relationship.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field to identify where a lead was generated from as it relates to Optum/UHC relationship.</inlineHelpText>
+        <label>Generated From</label>
+        <picklist>
+            <picklistValues>
+                <fullName>UHC Internal Conference</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHC Sales meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHC SAE meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum Internal Conference</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum Sales meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum SAE meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>External conferences</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfEmail</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>HasOptedOutOfFax</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Help_Text__c</fullName>
+        <description>&apos;This is some text, or not, doesnt matter&apos;</description>
+        <externalId>false</externalId>
+        <formula>&apos;This is some text, or not, doesnt matter&apos;</formula>
+        <inlineHelpText>&apos;This is some text, or not, doesnt matter&apos;</inlineHelpText>
+        <label>Help Text</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Industry</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Behavioral Health</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commercial Payer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consulting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Government</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Healthcare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medicaid</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medicare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medicare &amp; Medicaid</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PBM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Technology</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hospital System</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Ineligible_Reason1__c</fullName>
+        <externalId>false</externalId>
+        <label>Ineligible Reason</label>
+        <picklist>
+            <controllingField>Status</controllingField>
+            <picklistValues>
+                <fullName>Academic/research inquiry</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Competitor inquiry</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Current client- employer group</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Current client- payer/provider</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct consumer inquiry</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct employer group</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fake info/invalid info</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Marketing Agency Inquiry</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not a decision maker</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not responsive to follow ups</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Small-Market Consultant</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Vendor Inquiry</fullName>
+                <default>false</default>
+                <controllingFieldValues>Ineligible</controllingFieldValues>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Ineligible_Reason__c</fullName>
+        <description>Required if Lead is Ineligible.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required if Lead is Ineligible.</inlineHelpText>
+        <label>Ineligible Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Ineligible__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+ISPICKVAL(Status, &apos;Ineligible&apos;), 1, 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ineligible</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Initial_Campaign__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Initial Campaign</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>Leads</relationshipLabel>
+        <relationshipName>Leads</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Jigsaw</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>LastTransferDate</fullName>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Optum direct</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UHG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Lead_Campaign_Info__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Campaign Info</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MobilePhone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>NumberOfEmployees</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PartnerAccountId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Rating</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Hot</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Warm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Referral_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+
+CONTAINS(Short_Referral_String__c, &apos;utm_medium=email&apos;), &apos;Email&apos;,
+
+IF(
+
+CONTAINS(Short_Referral_String__c, &apos;utm_medium=newsletter&apos;), &apos;Newsletter&apos;,
+
+IF(
+
+CONTAINS(Short_Referral_String__c, &apos;utm_medium=paid&apos;), &apos;Paid&apos;,
+
+IF(
+
+CONTAINS(Short_Referral_String__c, &apos;utm_medium=organic&apos;), &apos;Organic&apos;, &apos;N/A&apos;))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Referral Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Short_Referral_String__c</fullName>
+        <externalId>false</externalId>
+        <label>Short Referral String</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>true</default>
+                <converted>false</converted>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contacted</fullName>
+                <default>false</default>
+                <converted>false</converted>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Eligible</fullName>
+                <default>false</default>
+                <converted>true</converted>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ineligible</fullName>
+                <default>false</default>
+                <converted>false</converted>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Title</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Website</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <listViews>
+        <fullName>AllOpenLeads</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>LEAD.COMPANY</columns>
+        <columns>LEAD.STATE</columns>
+        <columns>LEAD.PHONE</columns>
+        <columns>LEAD.EMAIL</columns>
+        <columns>LEAD.STATUS</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LEAD.CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LEAD.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Ineligible</value>
+        </filters>
+        <label>All Open Leads</label>
+    </listViews>
+    <listViews>
+        <fullName>MyUnreadLeads</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>LEAD.COMPANY</columns>
+        <columns>LEAD.STATE</columns>
+        <columns>LEAD.PHONE</columns>
+        <columns>LEAD.EMAIL</columns>
+        <columns>LEAD.RATING</columns>
+        <columns>LEAD.UNREAD</columns>
+        <columns>LEAD.STATUS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>LEAD.UNREAD</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Unread Leads</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Leads1</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>LEAD.EMAIL</columns>
+        <columns>LEAD.COMPANY</columns>
+        <columns>LEAD.STATE_CODE</columns>
+        <columns>LEAD.STATUS</columns>
+        <columns>LEAD.UNREAD</columns>
+        <columns>LEAD.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>LEAD.STATUS</field>
+            <operation>notEqual</operation>
+            <value>Eligible,Ineligible</value>
+        </filters>
+        <label>My Open Leads</label>
+    </listViews>
+    <listViews>
+        <fullName>New_Leads_Lead</fullName>
+        <filterScope>Queue</filterScope>
+        <label>New Leads</label>
+        <queue>New_Leads</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Optum_UHG_Leads_Lead</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Optum/UHG Leads</label>
+        <queue>Optum_UHG_Leads</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Sales_Ops_Open_Leads</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>LEAD.EMAIL</columns>
+        <columns>LEAD.COMPANY</columns>
+        <columns>LEAD.STATE_CODE</columns>
+        <columns>LEAD.STATUS</columns>
+        <columns>LEAD.UNREAD</columns>
+        <columns>LEAD.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LEAD.LAST_NAME</field>
+            <operation>notEqual</operation>
+        </filters>
+        <filters>
+            <field>LEAD.FIRST_NAME</field>
+            <operation>notContain</operation>
+            <value>test</value>
+        </filters>
+        <filters>
+            <field>First_Name__c</field>
+            <operation>notContain</operation>
+            <value>test</value>
+        </filters>
+        <filters>
+            <field>LEAD.COMPANY</field>
+            <operation>notContain</operation>
+            <value>test</value>
+        </filters>
+        <filters>
+            <field>LEAD.EMAIL</field>
+            <operation>notContain</operation>
+            <value>@gmail.com</value>
+        </filters>
+        <filters>
+            <field>LEAD.EMAIL</field>
+            <operation>notContain</operation>
+            <value>@aol.com</value>
+        </filters>
+        <filters>
+            <field>LEAD.EMAIL</field>
+            <operation>notContain</operation>
+            <value>@comcast.net</value>
+        </filters>
+        <filters>
+            <field>LEAD.STATUS</field>
+            <operation>equals</operation>
+            <value>Open</value>
+        </filters>
+        <filters>
+            <field>LEAD.EMAIL</field>
+            <operation>notContain</operation>
+            <value>@yahoo.com</value>
+        </filters>
+        <filters>
+            <field>LEAD.EMAIL</field>
+            <operation>notContain</operation>
+            <value>@hotmail.com</value>
+        </filters>
+        <label>Sales Ops Open Leads</label>
+    </listViews>
+    <listViews>
+        <fullName>TodaysLeads</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>LEAD.COMPANY</columns>
+        <columns>LEAD.STATE</columns>
+        <columns>LEAD.EMAIL</columns>
+        <columns>LEAD.STATUS</columns>
+        <columns>LEAD.CREATED_DATE</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>LEAD.UNREAD</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LEAD.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Today&apos;s Leads</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>FULL_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LEAD.COMPANY</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LEAD.PHONE</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <listViewButtons>Mass_Edit</listViewButtons>
+        <listViewButtons>Mass_Update</listViewButtons>
+        <lookupDialogsAdditionalFields>FULL_NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LEAD.COMPANY</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>FULL_NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LEAD.COMPANY</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LEAD.PHONE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LEAD.MOBILE_PHONE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>FULL_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LEAD.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LEAD.COMPANY</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LEAD.EMAIL</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LEAD.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LEAD.LEAD_SOURCE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Document__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWriteTransfer</sharingModel>
+    <validationRules>
+        <fullName>Leads_with_Eligibility_of_Ineligible</fullName>
+        <active>true</active>
+        <description>Leads with a Status of &apos;Ineligible&apos; require a reason for ineligibility.</description>
+        <errorConditionFormula>AND(
+$Profile.Id &lt;&gt; &apos;00eE0000000j7b3&apos;,
+$Profile.Id &lt;&gt; &apos;00eE0000000VOcx&apos;,
+ISPICKVAL(Status, &apos;Ineligible&apos;),
+ISBLANK(TEXT( Ineligible_Reason1__c)))</errorConditionFormula>
+        <errorDisplayField>Ineligible_Reason__c</errorDisplayField>
+        <errorMessage>Leads with a Status of &apos;Ineligible&apos; require a reason for ineligibility.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>AltavistaNews</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Altavista News</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://news.altavista.com/search?nc=0&amp;q={!Lead_Company}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Convert_Lead</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Convert Lead</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/28.0/connection.js&quot;)} 
+
+sforce.connection.sessionId=&quot;{!$Api.Session_ID}&quot;; 
+
+var user = sforce.connection.getUserInfo(); 
+
+var leadID = &quot;{!Lead.Id}&quot;; 
+
+var url = &quot;/lead/leadconvert.jsp?id=&quot;+leadID; 
+
+var company = &quot;{!Lead.Company}&quot;;
+
+var lastn = &quot;{!Lead.LastName}&quot;;
+
+var emal = &quot;{!Lead.Email}&quot;;
+
+if( company == lastn) 
+{ 
+alert(&quot;First and Last name cannot be blank, or the same as the Company name, on Lead Conversion&quot;); 
+} 
+else if(emal == null || emal == &apos;&apos;)
+{
+alert(&quot;Email cannot be blank on Lead Conversion&quot;); 
+
+}
+else 
+{ 
+window.location.replace(url); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://maps.google.com/maps?f=q&amp;hl=en&amp;q={!Lead_Street}+{!Lead_City}+{!Lead_State}&amp;om=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleNews</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google News</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://www.google.com/news?&amp;q={!Lead_Company}&amp;btnG=Search+News</url>
+    </webLinks>
+    <webLinks>
+        <fullName>GoogleSearch</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Google Search</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>http://www.google.com/search?q={!Lead_Company}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>HooversProfile</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Hoovers Profile</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://search.hoovers.com/cgi-bin/hol_search?which=company&amp;query_string={!Lead_Company}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Delete</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/9.0/connection.js&quot;)}
+
+var records = {!GETRECORDIDS(  $ObjectType.Lead )};
+
+if (records[0] == null) {
+alert(&quot;Please select at least one record.&quot;) }
+else {
+
+var errors = [];
+var result = sforce.connection.deleteIds(records);
+if (result &amp;&amp; result.length){
+var numFailed = 0;
+var numSucceeded = 0;
+for (var i = 0; i &lt; result.length; i++){
+var res = result[i];
+if (res &amp;&amp; res.success == &apos;true&apos;){
+numSucceeded++;
+} else {
+var es = res.getArray(&quot;errors&quot;);
+if (es.length &gt; 0) {
+errors.push(es[0].message);
+}
+numFailed++;
+}
+}
+if (numFailed &gt; 0){
+alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;));
+} else {
+alert(&quot;Number of records deleted: &quot; + numSucceeded);
+}
+}
+window.location.reload();
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Edit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Edit</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassEditLead</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Mass_Update</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Mass Update</masterLabel>
+        <openType>sidebar</openType>
+        <page>MassUpdateLead</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>SendGmail</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Send Gmail</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://mail.google.com/mail?view=cm&amp;tf=0&amp;to={!Lead_Email}&lt;{!Lead_LastName}, {!Lead_FirstName}&gt;&amp;tf=1</url>
+    </webLinks>
+    <webLinks>
+        <fullName>YahooMaps</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>true</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>true</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Yahoo Maps</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>true</showsLocation>
+        <showsStatus>true</showsStatus>
+        <url>http://maps.yahoo.com/py/maps.py?cn={!Lead_Country}&amp;csz={!Lead_City}+{!Lead_State}+{!Lead_PostalCode}+&amp;addr={!Lead_Address}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Add_to_Campaign</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add to Campaign</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var leadCount=0; 
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+//alert(checkedId1.length);
+if(checkedId1!=null &amp;&amp; checkedId1.length==18){
+    checkedId1=checkedId1.substring(0,15);
+}
+checkedIds+=&quot;&amp;ids=&quot;+checkedId1; 
+leadCount++; 
+}); 
+if(leadCount&lt;1){ 
+alert(&quot;Please select at least one row&quot;); 
+}else{ 
+var ret1=escape(&apos;../apex/zaapit__Add_To_Campaign_Completed?isdtp=vw&amp;s=&apos;);
+
+var win1=window.open(&quot;/ui/campaign/MassAddCMFromListingWizard?ent=lead&amp;retURL=&quot;+ret1+&quot;0&amp;wizardRetUrl=&quot;+ret1+&quot;1&amp;macmflw_idSourceType=List&amp;macmflw_memberType=Lead&quot;+checkedIds+&quot;&amp;isdtp=vw&quot;,&quot;Add to Campaign&quot;, &quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;);
+
+var timer = setInterval(function() { 
+if(win1.closed) { 
+clearInterval(timer); 
+jumpToClk(currPageCls,600); 
+} 
+}, 1000); 
+
+
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Auto_Mark</fullName>
+        <availability>online</availability>
+        <description>for dedup manager</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Auto Mark</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>if(licenseStatus!=&apos;Active&apos;){
+alert(&quot;This is a premium feature – contact sales@zaapit.com to activate!&quot;);
+return;
+}
+var ix=1;$(&quot;.list .dataRow&quot;).each(function(){
+if(!$(this).hasClass(&quot;tcx&quot;+ix)){
+ix=1-ix;
+}else{
+$(this).find(&quot;.lcbXRow&quot;).click();
+}
+});</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Convert_leads</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Convert</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var contOrg=&quot;&quot;; 
+var acc1=&quot;&quot;; 
+var contactCount=0; 
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+contOrg=contOrg+&quot;,.RID&quot;+checkedId1; 
+if(checkedId1!=null &amp;&amp; checkedId1.length&gt;15){ 
+checkedId1=checkedId1.substring(0,15); 
+} 
+checkedIds+=&quot;&amp;id=&quot;+checkedId1; 
+contactCount++; 
+}); 
+if(contactCount&gt;1 || contactCount&lt;1){ 
+ alert(&quot;Please select exactly 1 lead to convert!&quot;); 
+}else{ 
+
+var win1=window.open(&quot;/lead/leadconvert.jsp?&amp;retURL=%2Fapex%2Fzaapit__Convert_Completed&amp;isdtp=vw&quot;+checkedIds ,&quot;Merge_Contacts&quot;,&quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;); 
+win1.focus(); 
+
+var timer = setInterval(function() { 
+if(win1.closed) { 
+clearInterval(timer); 
+//$(&quot;.seatchInptFZP&quot;).keyup(); 
+jumpToClk(currPageCls,600);
+} 
+}, 1000); 
+
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Convert</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Convert</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>openMassConvert();</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Emails</fullName>
+        <availability>online</availability>
+        <description>Send email in mass to selected leads</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Emails</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var leadCount=0; 
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+//alert(checkedId1.length); 
+if(checkedId1!=null &amp;&amp; checkedId1.length==18){ 
+//checkedId1=checkedId1.substring(0,15); 
+} 
+checkedIds+=&quot;,&quot;+checkedId1; 
+leadCount++; 
+}); 
+if(leadCount&lt;1){ 
+alert(&quot;Please select at least one row&quot;); 
+}else{ 
+
+
+function appendTags(){
+    $(&apos;#dialog-mass-email&apos;).remove();
+       
+        $(&apos;body&apos;).append(
+            &apos;&lt;div id=&quot;dialog-mass-email&quot; title=&quot;Mass Emails&quot;&gt;&apos; + 
+                &apos;&lt;div &gt;&apos; + 
+              
+                    &apos;&lt;div style=&quot;margin:10px;font-weight:bold;&quot;&gt;1) Select an email template:&lt;/div&gt; &apos; +
+                    &apos;&apos; + 
+                    &apos;&lt;div id=&quot;email-template&quot; style=&quot;max-height:250px;overflow:auto;;width:100%;&quot;&gt; &lt;div class=&quot;bbt1Loading&quot;&gt;&lt;/div&gt;&lt;/div&gt;&apos; +
+
+            &apos;&lt;/div&gt;&apos;+
+                &apos;&lt;div style=&quot;margin:10px;font-weight:bold;&quot;&gt;2) Processing Options:&apos;+
+&apos;&lt;/div&gt;&apos;+
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;bccME&quot; id=&quot;bccME&quot; checked/&gt; BCC me on one message&lt;br&gt;&apos; +
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;storeActME&quot; id=&quot;storeActME&quot; checked/&gt; Store an Activity for each message&lt;br&gt;&apos; +
+&apos;&lt;input type=&quot;checkbox&quot; name=&quot;useSignatureME&quot; id=&quot;useSignatureME&quot;/&gt; Use my signature&lt;br&gt;&apos; +
+//&apos;Mass Email Name &lt;input type=&quot;text&quot; name=&quot;descriptionME&quot; id=&quot;descriptionME&quot; /&gt;&apos; +
+
+
+                &apos;&apos; +
+                &apos;&apos;  
+
+        ); 
+    
+}
+
+function createPopupWindow(){
+
+        $( &quot;#dialog-mass-email&quot; ).dialog({
+            resizable: false,
+            width: (isSF1()?($(&quot;body&quot;).width()-10):400),
+            height:500,
+            //modal: true,                
+            buttons: {
+                &quot;Send Emails&quot;: 
+                    function() {
+                        sendMail();
+                    },
+                
+                Cancel: 
+                    function() {
+                        jQuery( this ).dialog( &quot;close&quot; );
+                    }
+            }
+        });
+
+}
+
+function messagePopupWindow(message){
+        $( &quot;#dialog-mass-email&quot; ).html(message).dialog({
+            resizable: false,
+            width: 400,
+            height:250,
+            //modal: true,                
+            buttons: {
+                
+                Close: 
+                    function() {
+                        $( this ).dialog( &quot;close&quot; );
+                    }
+            },close:function(){
+                $(&quot;.lcbX input:checked&quot;).click();
+            }
+        });
+}
+
+function fetchEmailTemplates(){
+
+ var queryZZZ=&quot;SELECT Id,Name FROM EmailTemplate order by name asc&quot;;
+     Visualforce.remoting.Manager.invokeAction(
+                remoteQueryAjax2,
+                queryZZZ, 
+                function(result, event){
+
+                    if (event.status &amp;&amp; result!=null) {
+					
+					    var innerHtml = &apos;&apos;;
+						var records=result;
+                        for(var i=0; i&lt;records.length; i++)
+                            innerHtml += 
+                                &apos;&lt;div class=&quot;maxwith350s&quot; onmouseover=&quot;fixTitlex1(this);&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;emailTemp&quot; value=&quot;&apos; + records[i].Id + &apos;&quot;/&gt; &lt;a href=&quot;/&apos; + records[i].Id + &apos;&quot; target=&quot;_blank&quot;&gt;Preview&apos; + 
+                                    
+                                &apos;&lt;/a&gt; &apos; + 
+                                    records[i].Name +
+                                &apos;&lt;/div&gt;&apos;;
+
+                        $(&apos;#email-template&apos;).html(innerHtml);
+					 } else if (event.type === &apos;exception&apos;) {
+                        if(event.message!=null &amp;&amp; ((event.message+&quot;&quot;).indexOf(&quot;Logged in&quot;)&gt;-1 || (event.message+&quot;&quot;).indexOf(&quot;Refresh page&quot;)&gt;-1)){
+                            self.location=self.location;
+                        }else if(event.message!=null &amp;&amp; (event.message+&quot;&quot;).indexOf(&quot;Unable to connect&quot;)==-1){
+                            if($(&quot;body:visible&quot;).size()&gt;0)alert(&quot;An error has occurred: &quot;+event.message);
+                        }
+                    } else {
+                        //self.location=self.location;
+                        // $(&quot;#&quot;+filterIdSpan+&quot; .availVals&quot;).html(&quot;&quot;);
+                        //alert(1);
+                    }
+                    
+                }, 
+                {escape: true,buffer:true,timeout: 90000}
+            );
+   }
+
+function sendMail(){
+   var checkedIdsX=&quot;&quot;;
+  $(&quot;.lcbX input:checked&quot;).each(function(){ 
+      checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;); 
+
+      checkedIdsX+=&quot;,&quot;+checkedId1; 
+   }); 
+    var contactIds = checkedIdsX.substring(1).split(&quot;,&quot;);
+    var templateId = $(&quot;input[name=&apos;emailTemp&apos;]:checked&quot;).val();
+    //alert(templateId );
+    if( contactIds.length&gt;0 &amp;&amp; templateId!=&apos;&apos;){
+
+	   Visualforce.remoting.Manager.invokeAction(
+                remotesendMassEmails,
+                contactIds.join(&quot;,&quot;), 
+				templateId,
+				$(&quot;#storeActME&quot;).prop(&quot;checked&quot;),//saveAsActivity
+				$(&quot;#bccME&quot;).prop(&quot;checked&quot;),//bccSender
+				$(&quot;#useSignatureME&quot;).prop(&quot;checked&quot;),//useSignature
+				null,//replyTo &apos;noreply@salesforce.com&apos;
+                function(result, event){
+	
+					if (event.status &amp;&amp; result!=null) {
+						
+						if((result+&quot;&quot;)==&quot;OK&quot;){
+							 messagePopupWindow(&apos;&lt;br&gt;&lt;span class=&quot;ui-icon ui-icon-check&quot; style=&quot;float:left;margin-right:10px;display:inline-block;&quot;&gt;&lt;/span&gt;&lt;b&gt;Your email(s) have been submitted for processing.&lt;/b&gt;&lt;br&gt;&lt;br&gt;The Mass-Mailer result will be sent to you via email.&apos;);
+
+						}else{
+							messagePopupWindow(&apos;Your email(s) were not submitted due to an Error:&lt;br&gt;&apos;+result);
+						}
+		
+		} else if (event.type === &apos;exception&apos;) {
+                        if(event.message!=null &amp;&amp; ((event.message+&quot;&quot;).indexOf(&quot;Logged in&quot;)&gt;-1 || (event.message+&quot;&quot;).indexOf(&quot;Refresh page&quot;)&gt;-1)){
+                            self.location=self.location;
+                        }else if(event.message!=null &amp;&amp; (event.message+&quot;&quot;).indexOf(&quot;Unable to connect&quot;)==-1){
+                            if($(&quot;body:visible&quot;).size()&gt;0)alert(&quot;An error has occurred: &quot;+event.message);
+                        }
+                    } else {
+                        //self.location=self.location;
+                        // $(&quot;#&quot;+filterIdSpan+&quot; .availVals&quot;).html(&quot;&quot;);
+                        //alert(1);
+                    }
+                    
+                }, 
+                {escape: true,buffer:true,timeout: 90000}
+            );
+			
+    }
+}
+
+appendTags();
+fetchEmailTemplates();
+createPopupWindow();
+
+
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Emails2</fullName>
+        <availability>online</availability>
+        <description>mass emails outlook</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Emails via Outlook</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var emails=&quot;&quot;;
+var emailSearch=0;
+$(&quot;.lcbX input:checked&quot;).each(function(){
+  emailSearch=1;
+  var email=$.trim($(this).parents(&quot;tr:first&quot;).find(&quot;td.email&quot;).text());
+  if(email!=&quot;&quot;){
+    emails+=&quot;;&quot;+email;
+  }
+});
+
+if(emails==&quot;&quot; &amp;&amp; emailSearch==0){
+ alert(&quot;Please select at least one row&quot;); 
+}else if(emails==&quot;&quot; &amp;&amp; emailSearch==1){
+ alert(&quot;Please add the email-column to the layout&quot;); 
+
+}else{
+emails=emails.substring(1);
+top.location=&quot;mailto:&quot;+escape(emails);
+$(&quot;button:contains(&apos;Create Tasks&apos;)&quot;).click();
+}
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Mass_Merge</fullName>
+        <availability>online</availability>
+        <description>for dedup manager</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Mass Merge</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>massMergeX(&quot;Lead&quot;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__Merge_Leads1</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Merge Leads</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>var checkedIds=&quot;&quot;; 
+var checkedId1=&quot;&quot;; 
+var leadCount=0;
+$(&quot;.lcbX input:checked&quot;).each(function(){ 
+checkedId1=$(this).parents(&quot;.lcbX:first&quot;).attr(&quot;rid&quot;);
+checkedIds+=&quot;&amp;cid=&quot;+checkedId1; 
+leadCount++;
+});
+if(leadCount&gt;3){ 
+alert(&quot;Please select up to 3 leads to merge!&quot;); 
+}else if(leadCount&lt;2){ 
+alert(&quot;Please select at least 2 leads to merge!&quot;); 
+}else{ 
+var win1=window.open(&quot;/lead/leadmergewizard.jsp?currentStage=0&amp;goNext=Merge%20Leads&amp;id=&quot;+checkedId1+&quot;&amp;p1=1&amp;p3=1&amp;p4=1&amp;p6=1&amp;p7=&amp;p8=&amp;visited_0=1&quot;+checkedIds+&quot;&amp;retURL=%2Fapex%2Fzaapit__Merge_Completed&amp;isdtp=vw&quot;,&quot;Merge_Leads&quot;,&quot;height=800,width=800,top=100,left=100,fullscreen=0,scrollbars=yes&quot;);
+
+var timer = setInterval(function() {   
+    if(win1.closed) {  
+        clearInterval(timer);  
+        //$(&quot;.seatchInptFZP&quot;).keyup(); 
+        jumpToClk(currPageCls,600);
+    }  
+}, 1000); 
+} 
+return false;</url>
+    </webLinks>
+    <webLinks>
+        <fullName>zaapit__zp_actions</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>ZP Actions</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!requireScript($Label.zaapit__zp_action_link)}</url>
+    </webLinks>
+</CustomObject>

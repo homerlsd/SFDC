@@ -1,0 +1,224 @@
+<apex:page controller="CC_ClientCaseController" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+    <style type="text/css">
+        .twitter-typeahead {
+          width:100%;
+        }
+        .tt-search-box,
+        .tt-query,
+        .tt-hint {
+          display:inline-block;
+          width:95%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-txtbox {
+          display:inline-block;
+          width:77%;
+          font-size: inherit;
+          height: 1.3em;
+          padding: 8px 12px;
+          line-height: 1.3em;
+          border: 2px solid #ccc;
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          outline: none;
+        }
+
+        .tt-search-box:focus {
+          border: 2px solid #0097cf;
+        }
+
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-dropdown-menu {
+          width: 100%;
+          margin-top: 5px;
+          padding: 8px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 8px;
+             -moz-border-radius: 8px;
+                  border-radius: 8px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          font-size: inherit;
+          line-height: 1.5em;
+        }
+
+        .tt-suggestion.tt-cursor {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
+        }
+     </style>
+     <head><title>Rally Support | Community</title>
+     <apex:stylesheet value="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"  />
+     <apex:includeScript value="https://code.jquery.com/jquery-1.9.1.js" />
+     <apex:includeScript value="https://code.jquery.com/ui/1.10.3/jquery-ui.js" />
+
+<apex:outputPanel id="scriptBlock">
+ <script>
+             j$ = jQuery.noConflict();
+             j$(function() {
+                     // date picker
+                     j$( ".dateexperienced" ).datepicker();
+                     j$( ".dateofbirth" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true,
+                            yearRange: "-5:+2"
+                      });
+             });
+
+              function get_browser_info(){
+                var ua=navigator.userAgent,tem,M=ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
+                if(/trident/i.test(M[1])){
+                    tem=/\brv[ :]+(\d+)/g.exec(ua) || []; 
+                    return {name:'IE',version:(tem[1]||'')};
+                    }   
+                if(M[1]==='Chrome'){
+                    tem=ua.match(/\bOPR\/(\d+)/)
+                    if(tem!=null)   {return {name:'Opera', version:tem[1]};}
+                    }   
+                M=M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+                if((tem=ua.match(/version\/(\d+)/i))!=null) {M.splice(1,1,tem[1]);}
+                return {
+                  name: M[0],
+                  version: M[1]
+                };
+             }
+
+            window.onload = function(){
+              var browser=get_browser_info();
+              var bName = browser.name;
+              if(bName == "MSIE"){
+                bName = "IE " + browser.version;
+              }
+              document.getElementById('j_id0:j_id7:j_id15:hdnField').value = bName;
+            }
+
+</script>
+  </apex:outputPanel>
+     </head>
+     <apex:composition template="WhiteGloveTemplate" >
+       <apex:define name="body">
+           <div id="desk-content">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <apex:form >
+                              <apex:inputHidden id="hdnField" value="{!bType}" />
+                                <div id="desk-leftcol" class="span9">
+                                 <!-- Breadcrumb -->
+                                   <ul class="breadcrumb" id="breadcrumbs">
+                                        <li class="crumb"><apex:commandLink immediate="true" value="Home" action="{!NavigatesToHome}" > </apex:commandLink><span class="divider">/</span></li>
+                                        <li class="active crumb">UHG Client Contact Form</li>
+                                   </ul>
+                                   <div id="support-main">
+                                          <div class="support-head row-fluid">
+                                            <div class="span6">
+                                              <h2><i class="icon-envelope"></i> Client Contact Form</h2>
+                                                <apex:pageMessages ></apex:pageMessages>
+                                              <div class="form form-email">
+                                                    
+                                                <apex:outputPanel id="thankyou">
+
+                                                    <apex:outputPanel rendered="{!CaseSubmittedMessage!=null}" >
+                                                     <div style="height:100px;">
+                                                        <h3>{!CaseSubmittedMessage}</h3>
+                                                     </div>   
+                                                    </apex:outputPanel>
+                
+                                                    <apex:outputPanel rendered="{!CaseSubmittedMessage==null}">
+
+                                                    　　<div class="">
+                                                            <apex:outputPanel >
+                                                                <apex:outputPanel id="thePanel">
+                                                                    <apex:outputText >Client Name <span class="muted"> (required)</span></apex:outputText>
+                                                                    <br/>
+                                                                    <apex:actionRegion >
+                                                                        <apex:inputText value="{!selectedClient}" styleClass="tt-search-box" >
+                                                                        </apex:inputText>
+                                                                        <br/>
+                                                                        <br/>
+                                                                    </apex:actionRegion>
+                                                                </apex:outputPanel> 
+                                                              <apex:repeat var="f" value="{!$ObjectType.case.FieldSets.CC_Support_Case_Fields_CLIENT}">
+                                                                  <label>{!f.Label} <apex:outputPanel rendered="{!IF(OR(f.dbrequired,f.required), true, false)}"><span class="muted"> (required)</span></apex:outputPanel></label>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type='textarea',true,false)}" value="{!newCase[f]}" style="height:75px;width:300px;" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                  <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateofbirth" rendered="{!AND(OR(f.type='date',f.type='datetime'), f.fieldpath == 'Effective_Date__c')}" value="{!EffectiveDateString}"/>
+
+                                                                  <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateofbirth" rendered="{!AND(OR(f.type='date',f.type='datetime'), f.fieldpath == 'Open_Enrollment_Start_Date__c')}" value="{!EnrollStartString}"/>
+
+                                                                  <apex:inputText required="{!IF(OR(f.dbrequired,f.required), true, false)}" styleClass="dateofbirth" rendered="{!AND(OR(f.type='date',f.type='datetime'), f.fieldpath == 'Open_Enrollment_End_Date__c')}" value="{!EnrollEndString}"/>
+
+                                                                  <apex:inputfield styleClass="input-block-level" rendered="{!IF(f.type!='textarea' && f.type!='date' && f.type!='datetime' && f.label != 'Subject', true, false)}" value="{!newCase[f]}"  required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+
+                                                                   <apex:inputfield styleClass="input-block-level" style="width:300px;" rendered="{!IF(f.label == 'Subject', true, false)}" value="{!newCase[f]}" required="{!IF(OR(f.dbrequired,f.required), true, false)}"/>
+                                                                   <br/>
+                                                              </apex:repeat>
+                                                            </apex:outputPanel>
+                                                            <br/>
+                                                            <h2><u><i class="icon-file"></i> File Attachment</u></h2>
+                                                            <apex:repeat var="att" value="{!attList}">
+                                                            <apex:inputFile value="{!att.body}" 
+                                                                    filename="{!att.name}" styleClass="file image" accept="gif,png,jpg,jpeg" />
+                                                            </apex:repeat>
+
+                                                                <hr/>
+                                                                
+                                                                <apex:commandButton id="submitButton" value="Submit" action="{!CreateCase}" styleClass="btn btn-primary btn-large" > </apex:commandButton>
+                                                            </div>
+                                                        
+                                                            
+                                                        </apex:outputPanel>
+                                                        
+                                                </apex:outputPanel>
+
+                                                
+
+                                              </div>
+                                              
+                                            </div>
+                                            <div class="span6 hidden-phone">
+        
+              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div id="desk-rightcol" class="span2"></div>-->
+                           </apex:form>
+                       </div>
+                    </div>
+            </div>
+       </apex:define>
+     </apex:composition>
+</apex:page>

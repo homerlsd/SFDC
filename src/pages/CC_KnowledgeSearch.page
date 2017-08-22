@@ -1,0 +1,99 @@
+<apex:page controller="CC_KnowledgeSearchController" action="{!findSearchLogID}" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" >
+ <head><title>Rally Support | Search Results</title></head>
+ <apex:composition template="{!$Site.Template}" >
+	   <apex:define name="body">
+	    <div id="desk-content">
+    	        <div class="container">
+    	            <div class="row-fluid">
+    	                <apex:form >
+            	            <div id="desk-leftcol" class="span12">
+                                   <!-- Breadcrumb -->
+                                   <ul class="breadcrumb" id="breadcrumbs">
+                                        <li class="crumb"><apex:commandLink value="Home" action="{!NavigatesToHome}" > </apex:commandLink><span class="divider">/</span></li>
+                                        <li class="crumb">Search <span class="divider">/</span></li>
+                                        <li class="active crumb" title="Rally">{!SearchString}</li>
+                                   </ul>
+                               
+                               
+                                   <!-- Search Results-->
+                                   <div id="support-main" class="search-result">
+                                        
+                                        <!--Search Results Count-->
+                                        <div class="support-head row-fluid">
+                                            <h2><i class="icon-search"></i> {!resultsSize} results found for {!SearchString}</h2>
+                                        </div>
+                                        
+                                        <!--Search Results Repeat-->
+                                        <div class="support-body row-fluid">       
+                                            <apex:outputPanel id="resultsPanel">
+                                            <div class="span12">
+                                                        <apex:repeat value="{!ListOfKnowledge}" var="k">
+                                                              <div class="row-fluid search-result article">
+                                                              <div class="span11x span12"> 
+                                                                  <h3>
+                                                                      <apex:commandLink value="{!k.kv.Title}" action="{!NavigatesToDetail}"> 
+                                                                                       <apex:param name="KnowledgeId" value="{!k.kv.Id}" assignTo="{!TargetKnowledgeId}"/>
+                                                                       </apex:commandLink>
+                                                                  
+                                                                       <small class="muted">{!k.PublishedDate}</small>
+                                                                  </h3>
+                                                                  <p>{!k.ShortSummary}</p>
+                                                                  
+                                                              </div>
+                                                              </div>
+                                                              <hr></hr>
+                                                        </apex:repeat>
+                                                        <!-- pagenation -->
+                                                        <div id="pagination">
+                                                            <div id="paginate_block">
+                                                            <br/>
+                                                            <div id="results_string"></div>
+                                                            <br/>
+                                                            <div class="pagination">
+                                                                
+                                                                <span class="previous_page">
+                                                                    <apex:commandLink value="<<" action="{!PrevSet}" rerender="resultsPanel,paginationRepeat" rendered="{!hasPrevSet==true}"></apex:commandLink>
+                                                                    <apex:outputText value="<<" rendered="{!hasPrevSet==false}"></apex:outputText>
+                                                                </span>
+                                                                <apex:outputPanel id="paginationRepeat">    
+                                                                <apex:repeat value="{!PageNum}" var="p">
+                                                                    <!--Selected-->
+                                                                    <apex:outputPanel rendered="{!SpecifiedPageNumber==p}">
+                                                                        <em class="current">
+                                                                            <apex:commandLink value="{!p}" action="{!GoToPage}" rerender="resultsPanel">
+                                                                                <apex:param name="param" assignTo="{!SpecifiedPageNumber}" value="{!p}" />
+                                                                            </apex:commandLink>
+                                                                        </em>
+                                                                    </apex:outputPanel>
+                                                                    <!--Not Selected-->
+                                                                    <apex:outputPanel rendered="{!SpecifiedPageNumber!=p}">
+                                                                        <apex:commandLink value="{!p}" action="{!GoToPage}" rerender="resultsPanel">
+                                                                            <apex:param name="param" assignTo="{!SpecifiedPageNumber}" value="{!p}" />
+                                                                        </apex:commandLink>
+                                                                    </apex:outputPanel>
+                                                                </apex:repeat>
+                                                                </apex:outputPanel>
+                                                                <span class="next_page">
+                                                                    <apex:commandLink rendered="{!hasNextSet==true}" value=">>" action="{!NextSet}" rerender="resultsPanel,paginationRepeat"></apex:commandLink>
+                                                                    <apex:outputText value=">>" rendered="{!hasNextSet==false}"></apex:outputText>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        
+                                            </div>
+                                            </apex:outputPanel>
+                                        </div>
+                                   </div>
+                            </div>
+                            <!-- Sidebar -->
+                            <!--<div class="span2" id="desk-rightcol" >
+                             <c:CC_SupportContactUs />
+                            </div>-->
+                        </apex:form>
+                    </div>
+                </div>
+            </div>
+	   </apex:define>
+	 </apex:composition>
+</apex:page>

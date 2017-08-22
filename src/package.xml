@@ -88,5 +88,9 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
-    <version>31.0</version>
+    <types>
+        <members>*</members>
+        <name>GlobalPicklist</name>
+    </types>
+    <version>37.0</version>
 </Package>

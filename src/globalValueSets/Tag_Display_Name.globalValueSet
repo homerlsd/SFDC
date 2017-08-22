@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Female</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Male</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Pregnant</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Not Pregnant</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Parent</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Not a Parent</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotional Outlook, Happy</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotional Outlook, Up and Down</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotional Outlook, Blue</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Self Assessment of Health, Excellent</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Self Assessment of Health, Very Good</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Self Assessment of Health, Good</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Self Assessment of Health, Fair</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Self Assessment of Health, Poor</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Have a Doctor or Clinic</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Doctor or Clinic</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Employed</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Seeking Work</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Retired Or Not Working by Choice</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Sleep, &lt;6 Hrs Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Sleep, 6-7 Hrs Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Sleep, 8-9 Hrs Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Sleep, &gt;=9 Hrs Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Overwhelmed with Stress, Rarely</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Overwhelmed with Stress, Sometimes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Overwhelmed with Stress, Often</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Stress Impact on Health, High</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Stress Impact on Health, Moderate</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Stress Impact on Health, Not at All</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Financial Strain, Rarely or Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Financial Strain, Sometimes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Financial Strain, Often</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Financial Strain, All the time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Missed Obligations Due to Health, &lt;=3 Times in Last Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Missed Obligations Due to Health, 4-6 TImes in Last Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Missed Obligations Due to Health, 7-9 Times in Last Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Missed Obligations Due to Health, &gt;=10 Times in Last Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Depression, Current</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Depression, In Past</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Depression, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diet Quality, Terrible</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diet Quality, Not good</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diet Quality, Ok</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diet Quality, Good</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diet Quality, Excellent</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fast Food Eaten, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fast Food Eaten, 1-2 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fast Food Eaten, 3-4 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fast Food Eaten, &gt;=5 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fruit and Vegetable Servings, 0 Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fruit and Vegetable Servings, 1-2 Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fruit and Vegetable Servings, 3-4 Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Fruit and Vegetable Servings, &gt;=5 Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Fat Foods Eaten, Rarely</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Fat Foods Eaten, Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Fat Foods Eaten, Daily</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Fat Foods Eaten, Many Times a Day</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Exercise for 30+ Minutes, 0 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Exercise for 30+ Minutes, 1-2 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Exercise for 30+ Minutes, 3-4 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Exercise for 30+ Minutes, &gt;=5 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Confidence to Improve Health, High</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Confidence to Improve Health, Medium</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Confidence to Improve Health, Low</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Confidence to Improve Health, Very Low</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Motivation, Live Longer</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Motivation, More calm</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Motivation, Feel Better</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Motivation, Save Money</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Motivation, Other</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Barrier, Time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Barrier, Money</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Barrier, Motivation</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Barrier, Need Help</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Barrier, Other</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Frequent Smoker</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Occasional Smoker</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Former Smoker</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Non Smoker</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Chewing Tobacco User</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Pipe or Cigar User</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Chewing Tobacco and Pipe/ Cigar User</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Other Tobacco Forms Used</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Desire to Reduce Tobacco Use, High</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Desire to Reduce Tobacco Use, Medium</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Desire to Reduce Tobacco Use, Low</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Plan to Reduce Tobacco Use</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>In Tobacco Cessation Program</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Tobacco Use Cut Down Already</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Plans to Reduce Tobacco Use</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Prescriptions, 0</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Prescriptions, 1</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Prescriptions, 2</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Prescriptions, 3</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Prescriptions, &gt;=4</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Has Asthma or COPD</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Asthma or COPD</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Has Asthma</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Asthma</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Asthma, Well Controlled</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Asthma, Partially Controlled</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Asthma, Uncontrolled</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Has COPD</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Does Not Have COPD</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diabetic</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Pre-Diabetic</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Diabetes or Prediabetes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diabetes Management, Diet Only</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diabetes Management, Oral Medications</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diabetes Management, Insulin Injection</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Diabetes Management, Other Approach</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Heart Problems, Stroke</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No History of Heart Problems, Stroke</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Heart Condition, Angina</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Heart Condition, Atrial Fibrillation</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Heart Condition, Coronary Heart Disease</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Heart Condition, Other</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Heart Attack, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Heart Attack, None</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Stroke, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Stroke, None</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Pressure Check, In Past 2 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Pressure Check, Not in Past 2 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Pressure Check, Unknown</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Blood Pressure, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Blood Pressure, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Blood Pressure, Unknown</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Cholesterol Test, In Past 5 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Cholesterol Test, Not In Past 5 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Cholesterol Test, Timing Not Known</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Cholesterol</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No High Cholesterol</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Cholesterol Status, Unknown</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Have Back Problems</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No Back Problems</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Back Pain Impact on Activity, Rare</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Back Pain Impact on Activity, Sometimes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Back Pain Impact on Activity, Often</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Physician Treating Back Problem</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Physician Not Treating Back Problem</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Mammogram, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Mammogram, Within 1 Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Mammogram, 1-3 Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Mammogram, More Than 3 Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Mammogram, Not Applicable</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Pap Test, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Pap Test, Within 1 Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Pap Test, 1-3 Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Pap Test, &gt;3 Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Pap Test, Not Applicable</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Breast Cancer</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Cervical Cancer</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>History of Breast and Cervical Cancer</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No History of Breast or Cervical Cancer</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Colorectal Screening, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Colorectal Screening, Past Year</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Colorectal Screening, One to Five Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Last Colorectal Screening, Five or More Years Ago</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Received Latest Flu Shot</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Did Not Receive Latest Flu Shot</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Daily Activities, Limited All of Time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Daily Activities, Limited Most of the Time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Daily Activities, Limited Sometimes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Daily Activities, Limited a Little</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Regular Daily Activities, Not Limited</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotions Interfere, All of Time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotions Interfere, Most of Time</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotions Interfere, Sometimes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotions Interfere, A Little</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Emotions Interfere, Never</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>See Physician Regularly, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>See Physician Regularly, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Chronic Condition Cause ER or Hospital Visit, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Chronic Condition Cause ER or Hospital Visit, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Issues with Medicines, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Issues with Medicines, Too Costly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Issues with Medicines, Forget to Take</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Issues with Medicines, Unfilled Rx</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Issues with Medicines, Other</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Cancer, Medical Treatment</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Cancer, Medication</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Cancer, Treating and Medicating</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Cancer, No Treatment or Medication</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Interest in Info. on Living Will, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Interest in Info on Living Will, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Migraine Diagnosis, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Migraine Diagnosis, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Has CHF</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No CHF</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Sugar Tested In Last Year, Yes</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Sugar Tested in Last Year, No</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Blood Sugar Tested in Last Year, Unknown</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>A1C Testing in Last 5 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No A1C Testing in Last 5 Years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>A1C Testing, Unknown</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Weight Bearing Exercise, 0 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Weight Bearing Exercise, &gt;= 2 Times Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Weight Bearing Exercise, 1 Time Weekly</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>13</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>14</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>15</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>16</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>17</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>18</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>19</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>20</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 21 and 24</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 25 and 29</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 30 and 34</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 35 and 39</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 40 and 44</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 45 and 49</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 50 and 54</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 55 and 59</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 60 and 64</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is beteween 65 and 69</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 70 and 74</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 75 and 79</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is between 80 and 84</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When age is over 85</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>&lt; 40</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>≥ 40</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>&quot;I don&apos;t know&quot; selected OR no data available</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>&lt;15</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>15-24</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>25 or more</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When A1C is &lt;5.7</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When A1C is between 5.7 and 6.4</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When A1C is greater than or equal to 6.5</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>&quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When systolic blood pressure is &lt; 120</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When systolic blood pressure is between 120-139</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When systolic blood pressure is greater than 140</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No systolic blood pressure value OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When diastolic blood pressure is &lt; 80</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When diastolic blood pressure is between 80-89</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When diastolic blood pressure is greater than or equal to 90</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No diastolic blood pressure value OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When HDL for males is between 40 and 140</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When HDL for males is &lt; 40</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When HDL for females is between 50 and 140</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When HDL for females is &lt; 50</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No HDL value OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When LDL is &lt; 130</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When LDL is between 130 and 159</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When LDL is greater than or equal to 160</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No LDL value OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When triglycerides are &lt; 150</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When triglycerides are between 150 and 199</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When triglycerides are greater than or equal to 200</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No value OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When total cholesterol is &lt; 200</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When total cholesterol is between 200 and 239</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>When total cholesterol is greater than or equal to 240</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>No total cholesterol value entered OR &quot;I don&apos;t know&quot; selected</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>&lt; 100</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>100 – 125</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>≥ 126</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>under 2 years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>over 2 years</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>25 or more = heavy</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>0 days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>1-2 days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>3-5 days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>6-10 days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>11-15 days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>16+ days</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Cholesterol, Treating or Medicating</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>High Cholesterol, No Treatment or Medication</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>On Cholesterol Medication</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>Not On Cholesterol Medication</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>BMI &lt; 18.5 (Survey)</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>BMI, 18.5-24.9 (Survey)</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>BMI, 25-29.9 (Survey)</fullName>
+        <default>false</default>
+    </customValue>
+    <customValue>
+        <fullName>BMI &gt;=30 and Over (Survey)</fullName>
+        <default>false</default>
+    </customValue>
+    <masterLabel>Tag Display Name</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

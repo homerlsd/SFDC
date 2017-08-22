@@ -103,63 +103,65 @@
         <fullName>Non_Tailored_Options__c</fullName>
         <externalId>false</externalId>
         <label>Non Tailored Options</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Registration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Survey</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Dashboard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Missions</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>PHR/Profile</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Device Integration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Email Campaigns</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Communities</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Public Challenges</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Rally Coins (Rally Base Rewards)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Marketing Launch Plan</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Reporting</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Digital Tools for Live Coach</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Registration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Survey</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Dashboard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Missions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>PHR/Profile</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Device Integration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Email Campaigns</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public Communities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Public Challenges</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Rally Coins (Rally Base Rewards)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Marketing Launch Plan</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Reporting</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Digital Tools for Live Coach</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>8</visibleLines>
     </fields>
     <fields>
@@ -222,77 +224,81 @@ ISPICKVAL(Opportunity_Product_Type__c, &apos;Feature&apos;), 5, 100)))))</formul
         <fullName>Opportunity_Product_Sub_Type__c</fullName>
         <externalId>false</externalId>
         <label>Opportunity Product Sub-Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Base</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Standard</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Premium</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tailored Outcome Rewards</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Tailored Activity Rewards</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pre-Defined Outcomes</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Pre-Defined Activity</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>One Time Fee</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Other</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Base</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Premium</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tailored Outcome Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Tailored Activity Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pre-Defined Outcomes</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Pre-Defined Activity</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>One Time Fee</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Opportunity_Product_Type__c</fullName>
         <externalId>false</externalId>
         <label>Opportunity Product Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Package</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Add-On</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Feature</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Implementation Fee</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Up-Sell Feature</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Package</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Add-On</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Feature</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Implementation Fee</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Up-Sell Feature</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Parent_Opportunity_Product_ID__c</fullName>
@@ -381,439 +387,640 @@ ISPICKVAL(Opportunity_Product_Type__c, &apos;Feature&apos;), 5, 100)))))</formul
         <fullName>Rate_Period__c</fullName>
         <externalId>false</externalId>
         <label>Rate Period</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Per Month</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Per Event</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>N/A</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Per Month</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Per Event</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Rate_Type__c</fullName>
         <externalId>false</externalId>
         <label>Rate Type</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Per Member</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Per Participant</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Per Unit</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Per Member</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Per Participant</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Per Unit</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>Reward_Options__c</fullName>
         <externalId>false</externalId>
         <label>Reward Options</label>
-        <picklist>
-            <controllingField>Opportunity_Product_Sub_Type__c</controllingField>
-            <picklistValues>
-                <fullName>Achieve Your Blood Pressure Goal</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Glucose or A1c Goal</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve your Nicotine Target</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Outcomes</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Target BMI</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Target BMI Improvement</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Outcomes</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Tobacco Usage Goal</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Total Cholesterol Goal</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Waist Measurement Goal - Females</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Achieve Your Waist Measurement Goal - Males</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete 3 Missions</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Activity</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Biometric Screening or Annual Physical</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Activity</controllingFieldValues>
-                <controllingFieldValues>Pre-Defined Outcomes</controllingFieldValues>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Challenge</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Activity</controllingFieldValues>
-                <controllingFieldValues>Pre-Defined Outcomes</controllingFieldValues>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a CHF DM Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a COPD DM Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Diabetes DM Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Healthy Back Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Healthy Weight Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Maternity Support Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete an Annual Physical or Prenatal Screening</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete an Asthma DM Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete any Telephonic Wellness Coaching program OR complete a Rally Mission</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete any Wellness Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Personal Health Action</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Quit Power Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a Rally Mission</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS - Angina program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Back program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Benign Prostatic Hypertrophy program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Benign Uterine Conditions program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Breast Cancer program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Hip Replacement program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete a TDS – Knee Replacement program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Completed a CAD DM Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in April</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in August</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in December</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in February</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in January</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in July</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in June</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in March</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in May</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in November</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in October</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete FRP program in September</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Annual Physical Exam</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Cervical Screening</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Colorectal Cancer Screening</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Health Screening (Optum)</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Health Screening (Other)</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Health Survey - Short version</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Health Survey - Standard version</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Complete Your Mammography Screening</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Create a Health Care Cost Estimate - For UHC Clients Only</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in a Challenge</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in a Healthy Back Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in a Healthy Weight Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in a Maternity Support Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in any Telephonic Wellness Coaching Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Enroll in a Quit Power Program</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Survey (no gatekeeper)</fullName>
-                <default>false</default>
-                <controllingFieldValues>Pre-Defined Activity</controllingFieldValues>
-                <controllingFieldValues>Pre-Defined Outcomes</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Survey Gatekeeper</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Search for a Condition -For UHC Clients Only</fullName>
-                <default>false</default>
-                <controllingFieldValues>Tailored Activity Rewards</controllingFieldValues>
-                <controllingFieldValues>Tailored Outcome Rewards</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Donations Rewards</fullName>
-                <default>false</default>
-                <controllingFieldValues>Other</controllingFieldValues>
-            </picklistValues>
-            <picklistValues>
-                <fullName>N/A</fullName>
-                <default>false</default>
-                <controllingFieldValues>Other</controllingFieldValues>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>Picklist</type>
+        <valueSet>
+            <controllingField>Opportunity_Product_Sub_Type__c</controllingField>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Achieve Your Blood Pressure Goal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Glucose or A1c Goal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve your Nicotine Target</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Target BMI</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Target BMI Improvement</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Tobacco Usage Goal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Total Cholesterol Goal</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Waist Measurement Goal - Females</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Achieve Your Waist Measurement Goal - Males</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete 3 Missions</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Biometric Screening or Annual Physical</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Challenge</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a CHF DM Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a COPD DM Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Diabetes DM Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Healthy Back Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Healthy Weight Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Maternity Support Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete an Annual Physical or Prenatal Screening</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete an Asthma DM Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete any Telephonic Wellness Coaching program OR complete a Rally Mission</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete any Wellness Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Personal Health Action</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Quit Power Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a Rally Mission</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS - Angina program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Back program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Benign Prostatic Hypertrophy program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Benign Uterine Conditions program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Breast Cancer program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Hip Replacement program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete a TDS – Knee Replacement program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Completed a CAD DM Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in April</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in August</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in December</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in February</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in January</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in July</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in June</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in March</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in May</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in November</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in October</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete FRP program in September</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Annual Physical Exam</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Cervical Screening</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Colorectal Cancer Screening</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Health Screening (Optum)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Health Screening (Other)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Health Survey - Short version</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Health Survey - Standard version</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Complete Your Mammography Screening</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Create a Health Care Cost Estimate - For UHC Clients Only</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in a Challenge</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in a Healthy Back Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in a Healthy Weight Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in a Maternity Support Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in any Telephonic Wellness Coaching Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Enroll in a Quit Power Program</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Survey (no gatekeeper)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Survey Gatekeeper</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Search for a Condition -For UHC Clients Only</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Donations Rewards</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Blood Pressure Goal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Glucose or A1c Goal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Target BMI</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Outcomes</controllingFieldValue>
+                <valueName>Achieve Your Target BMI Improvement</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Tobacco Usage Goal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Total Cholesterol Goal</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Waist Measurement Goal - Females</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <valueName>Achieve Your Waist Measurement Goal - Males</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Outcomes</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Activity</controllingFieldValue>
+                <valueName>Complete a Biometric Screening or Annual Physical</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Outcomes</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Activity</controllingFieldValue>
+                <valueName>Complete a Challenge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a CHF DM Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a COPD DM Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Diabetes DM Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Healthy Back Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Healthy Weight Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Maternity Support Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete an Annual Physical or Prenatal Screening</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete an Asthma DM Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete any Telephonic Wellness Coaching program OR complete a Rally Mission</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete any Wellness Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Personal Health Action</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Quit Power Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a Rally Mission</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS - Angina program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Back program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Benign Prostatic Hypertrophy program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Benign Uterine Conditions program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Breast Cancer program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Hip Replacement program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete a TDS – Knee Replacement program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Completed a CAD DM Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in April</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in August</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in December</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in February</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in January</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in July</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in June</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in March</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in May</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in November</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in October</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete FRP program in September</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Annual Physical Exam</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Cervical Screening</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Colorectal Cancer Screening</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Health Screening (Optum)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Health Screening (Other)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Health Survey - Short version</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Health Survey - Standard version</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Complete Your Mammography Screening</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Create a Health Care Cost Estimate - For UHC Clients Only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in a Challenge</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in a Healthy Back Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in a Healthy Weight Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in a Maternity Support Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in any Telephonic Wellness Coaching Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Enroll in a Quit Power Program</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Health Survey Gatekeeper</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Tailored Outcome Rewards</controllingFieldValue>
+                <controllingFieldValue>Tailored Activity Rewards</controllingFieldValue>
+                <valueName>Search for a Condition -For UHC Clients Only</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pre-Defined Outcomes</controllingFieldValue>
+                <valueName>Achieve your Nicotine Target</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pre-Defined Outcomes</controllingFieldValue>
+                <controllingFieldValue>Pre-Defined Activity</controllingFieldValue>
+                <valueName>Health Survey (no gatekeeper)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Pre-Defined Activity</controllingFieldValue>
+                <valueName>Complete 3 Missions</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <valueName>Donations Rewards</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other</controllingFieldValue>
+                <valueName>N/A</valueName>
+            </valueSettings>
+        </valueSet>
     </fields>
     <fields>
         <fullName>ServiceDate</fullName>
@@ -825,47 +1032,49 @@ ISPICKVAL(Opportunity_Product_Type__c, &apos;Feature&apos;), 5, 100)))))</formul
         <fullName>Tailored_Options__c</fullName>
         <externalId>false</externalId>
         <label>Tailored Options</label>
-        <picklist>
-            <picklistValues>
-                <fullName>Friendly URL</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Co-Branding</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Choice of Long vs. Short Health Survey</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Digital Campaigns (Inline &amp; Email)</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Unique ID for Registration</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Health Survey - Add up to 10 Qs</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Communities</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Private Challenges</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Resource Page</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
         <required>false</required>
         <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Friendly URL</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Co-Branding</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Choice of Long vs. Short Health Survey</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Digital Campaigns (Inline &amp; Email)</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Unique ID for Registration</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Health Survey - Add up to 10 Qs</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Private Communities</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Private Challenges</fullName>
+                    <default>false</default>
+                </value>
+                <value>
+                    <fullName>Resource Page</fullName>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
         <visibleLines>8</visibleLines>
     </fields>
     <fields>

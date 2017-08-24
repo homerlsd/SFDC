@@ -21,7 +21,7 @@
         <name>AssignmentRules</name>
     </types>
     <types>
-        <members>Account</members>
+        <members>Account2</members>
         <members>AccountContactRole</members>
         <members>Activity</members>
         <members>Asset</members>
